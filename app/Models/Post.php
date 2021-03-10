@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Schema\Builder;
 use App\Traits\BelongsToTeam;
 
 class Post extends Model
@@ -11,6 +12,10 @@ class Post extends Model
     use HasFactory, BelongsToTeam;
 
     protected $guarded = [];
+
+    protected $casts = [
+        "publish_date" => "datetime"
+    ];
 
     public function blog()
     {
@@ -25,6 +30,14 @@ class Post extends Model
     public function team()
     {
         return $this->belongsTo(Team::class);
+    }
+
+    
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('title', 'like', '%'.$query.'%')
+                ->orwhere('slug', 'like' , '%'.$query.'%');
     }
 
     /**

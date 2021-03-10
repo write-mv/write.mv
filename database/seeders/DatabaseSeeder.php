@@ -21,7 +21,14 @@ class DatabaseSeeder extends Seeder
         $user = \App\Models\User::factory()->create(['team_id' => $team->id]);
         $blog = Blog::factory()->create(['team_id' => $team->id]);
 
-        Post::factory(10)->create([
+        Post::factory(50)->create([
+            "published" => true,
+            "blog_id" => $blog->id,
+            "user_id" => $user->id,
+            "team_id" => $team->id
+        ]);
+
+        Post::factory(50)->create([
             "blog_id" => $blog->id,
             "user_id" => $user->id,
             "team_id" => $team->id
