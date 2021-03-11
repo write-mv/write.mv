@@ -91,7 +91,7 @@
               <div class="p-6">
                 <div class="col-span-6 sm:col-span-2">
                     <label for="post_as" class="block text-sm font-medium text-gray-700">Post as</label>
-                    <select id="post_as" name="post_as" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                    <select id="post_as" name="post_as" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md">
                       <option value="anonymous">Anonymous</option>
                       <option selected>{{auth()->user()->name}}</option>
                     </select>
@@ -99,9 +99,7 @@
 
                   <div class="col-span-6 sm:col-span-2 mt-3">
                     <label for="location" class="block text-sm font-medium text-gray-700">Published Date</label>
-                    <select id="location" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                      <option value="anonymous" selected>3/5/2021 12:00 PM</option>
-                    </select>
+                   <x-form.date-picker />
                   </div>
 
                   <div class="col-span-6 sm:col-span-2 mt-3">

@@ -66,7 +66,7 @@
                         </x-slot>
                     </x-metric.stats>
 
-                    <x-metric.stats title="Scheduled" :value="$published_post_count">
+                    <x-metric.stats title="Scheduled" :value="$scheduled_post_count">
                         <x-slot name="icon">
                             <x-heroicon-o-clock class="w-6 h-6 mr-1 text-gray-500" />
                         </x-slot>

@@ -17,6 +17,9 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->boolean('is_english')->default(false);
+            $table->string('featured_image')->nullable();
+            $table->string('featured_image_caption')->nullable();
             $table->text('excerpt')->nullable();
             $table->json('content');
             $table->json('meta');
