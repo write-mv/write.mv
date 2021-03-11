@@ -9,14 +9,31 @@
     <div class="flex flex-col space-y-12 divide-y divide-gray-200">
         @foreach ($posts as $post)
         <div>
+          @if($post->is_english)
             <p class="pt-12 mb-3 text-sm font-normal text-gray-500">{{$post->published_date->format('F d, Y')}}</p>
-            <h2 class="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl">
-              <a href="#" class="text-gray-900 hover:text-purple-700">{{$post->title}}</a>
+            @else
+            <p class="pt-12 mb-3 text-sm font-normal text-gray-500 text-right faseyha" style="direction: rtl;">{{$post->published_date->locale('dv')->isoFormat('Do MMMM YYYY')}}</p>
+
+          @endif  
+            <h2 class="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl {{$post->is_english ? "" : "aammu text-right"}}"">
+              <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}" class="text-gray-800 hover:text-blue-700">{{$post->title}}</a>
             </h2>
-            <p class="mb-4 text-base font-normal text-gray-600">
+            <p class="mb-4 text-base font-normal text-gray-600 {{$post->is_english ? "" : "faseyha text-right"}}">
                 {{$post->excerpt}}
             </p>
-            <a href="#" class="btn btn-light btn-sm">Continue Reading</a>
+            @if($post->is_english)
+            <div class="mt-3">
+              <a href="#" class="text-base font-semibold text-blue-600 hover:text-blue-500">
+                Read more
+              </a>
+            </div>
+            @else
+            <div class="mt-3 flex justify-end mr-2">
+            <a href="#" class="text-base font-semibold text-blue-600 hover:text-blue-500 text-right faseyha" style="direction: rtl;">
+              އިތުރަށް ކިޔާލާ
+            </a>
+          </div>
+            @endif
           </div>
         @endforeach
     
@@ -28,13 +45,4 @@
         {{$posts->links()}}
     </div>
   </section> 
-@endsection
-
-@section('footer')
-<footer class="mb-4">
-    <div class="flex justify-center">
-        <p class="mb-8 text-sm text-center text-gray-700 md:text-left md:mb-0">Powered by <a href="https://write.mv"><span class="font-semibold text-blue-500">Write.mv</span></a></p>
-
-    </div>
-  </footer> 
 @endsection

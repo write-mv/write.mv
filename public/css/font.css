@@ -1,40 +1,40 @@
 @font-face {
-    font-family: "MvFaseyha";
+    font-family: "faseyha";
     src: url("/fonts/MVFaseyha.woff2");
   }
   
   @font-face {
-    font-family: "MvWaheed";
+    font-family: "waheed";
     src: url("/fonts/mv_waheed.otf");
   }
 
   @font-face {
-    font-family: "MvAammu";
+    font-family: "aammu";
     src: url("/fonts/mv-aammu-fk.ttf");
   }
 
   @font-face {
-    font-family: "MvTyper";
+    font-family: "typer";
     src: url("/fonts/mvtyper.ttf");
   }
 
 
   .waheed
   {
-    font-family: MvWaheed;
+    font-family: waheed;
   }
 
   .faseyha
   {
-    font-family: MvFaseyha;
+    font-family: faseyha;
   }
 
   .aammu
   {
-    font-family: MvAammu;
+    font-family: aammu;
   }
 
   .typer
   {
-    font-family: MvTyper;
+    font-family: typer;
   }

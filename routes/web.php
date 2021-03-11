@@ -48,3 +48,4 @@ require __DIR__.'/auth.php';
 
 //blog
 Route::get('/{name}',[PostController::class,'index'])->name('posts.index');
+Route::get('/{name}/{post}',[PostController::class,'show'])->name('posts.show');

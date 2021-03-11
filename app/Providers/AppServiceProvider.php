@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
@@ -26,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        Component::macro('notify', function ($message) {
+            $this->dispatchBrowserEvent('notify', $message);
+        });
     }
 }

@@ -7,20 +7,41 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-   public function index($name)
-   {
+    public function index($name)
+    {
 
-    $blog = Blog::withoutGlobalScopes()->where('name',$name)->first();
+        $blog = Blog::withoutGlobalScopes()->where('name', $name)->first();
 
-    if(!$blog) {
-        abort(404);
+        if (!$blog) {
+            abort(404);
+        }
+
+        $posts = $blog->posts()->live()->latest('published_date')->simplePaginate(8);
+
+        return view('posts.index', [
+            'blog' => $blog,
+            'posts' => $posts
+        ]);
     }
 
-    $posts = $blog->posts()->live()->latest('published_date')->simplePaginate(8);
+    public function show($name, $post)
+    {
+        $blog = Blog::withoutGlobalScopes()->where('name', $name)->first();
 
-       return view('posts.index', [
-           'blog' => $blog,
-           'posts' => $posts
-       ]);
-   }
+        if (!$blog) {
+            abort(404);
+        }
+
+        $post = $blog->posts()->live()->where('slug',$post)->first();
+
+        if (!$post) {
+            abort(404);
+        }
+
+
+        return view('posts.show', [
+            'blog' => $blog,
+            'post' => $post
+        ]);
+    }
 }

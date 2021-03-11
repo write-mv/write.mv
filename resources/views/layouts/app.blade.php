@@ -45,6 +45,7 @@
         <main style="background-color:#F1F4F8;">
             {{ $slot }}
         </main>
+        <x-session-notification />
         <x-notification />
     </div>
     @livewireScripts
