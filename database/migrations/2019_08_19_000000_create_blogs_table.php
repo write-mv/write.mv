@@ -21,6 +21,8 @@ class CreateBlogsTable extends Migration
             $table->string('url');
             $table->string('rss_feed_link')->nullable();
             $table->unsignedBigInteger('team_id');
+            $table->json('social_links')->default(json_encode(['instagram','twitter', 'facebook','youtube']));
+            $table->json('notification_channels')->default(json_encode(['telegram','twitter']));
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ class ListPosts extends Component
     use WithPagination;
     
     public $perPage = 8;
-    public $sortField = 'publish_date';
+    public $sortField = 'published_date';
     public $sortAsc = true;
     public $search = '';
 

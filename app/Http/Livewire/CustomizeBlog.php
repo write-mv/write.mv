@@ -24,6 +24,7 @@ class CustomizeBlog extends Component
         $this->validate();
 
         $this->blog->save();
+        $this->notify('Blog information updated.');
 
     }
 

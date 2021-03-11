@@ -8,6 +8,63 @@
     src: url("/fonts/mv_waheed.otf");
   }
 
+  @font-face {
+    font-family: "MvAammu";
+    src: url("/fonts/mv-aammu-fk.ttf");
+  }
+
+  @font-face {
+    font-family: "MvTyper";
+    src: url("/fonts/mvtyper.ttf");
+  }
+
+  #toolbar-container .ql-font span[data-label="MvFaseyha"]::before {
+    font-family: "MvFaseyha";
+  }
+  #toolbar-container .ql-font span[data-label="MvWaheed"]::before {
+    font-family: "MvWaheed";
+  }
+
+  #toolbar-container .ql-font span[data-label="MvAammu"]::before {
+    font-family: "MvAammu";
+  }
+
+  #toolbar-container .ql-font span[data-label="MvTyper"]::before {
+    font-family: "MvTyper";
+  }
+
+  #toolbar-container .ql-font span[data-label="Open Sans"]::before {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  #toolbar-container .ql-font span[data-label="Roboto"]::before {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Set content font-families */
+  .ql-font-faseyha {
+    font-family: "MvFaseyha";
+  }
+  .ql-font-waheed {
+    font-family: "MvWaheed";
+  }
+
+  .ql-font-aammu {
+    font-family: "MvAammu";
+  }
+
+  .ql-font-typer {
+    font-family: "MvTyper";
+  }
+
+  .ql-font-opensans {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .ql-font-roboto {
+    font-family: 'Roboto', sans-serif;
+  }
+
   .heading-dhivehi
   {
     font-family: MvWaheed;

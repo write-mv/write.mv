@@ -18,16 +18,18 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->boolean('is_english')->default(false);
+            $table->boolean('show_author')->default(true);
+            $table->string('display_name')->default('anonymous');
             $table->string('featured_image')->nullable();
             $table->string('featured_image_caption')->nullable();
             $table->text('excerpt')->nullable();
             $table->json('content');
-            $table->json('meta');
+            $table->json('meta')->nullable();
             $table->unsignedBigInteger('blog_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('team_id')->nullable();
             $table->boolean('published')->default(false);
-            $table->dateTime('publish_date')->default('2018-10-10 00:00:00');
+            $table->dateTime('published_date')->default('2018-10-10 00:00:00');
             $table->timestamps();
         });
     }

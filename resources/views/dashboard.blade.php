@@ -28,6 +28,7 @@
                     </div>
                     <div class="mt-5">
                         <a
+                            href="{{route('posts.new')}}"
                             class="inline-flex items-center justify-center px-4 py-2 mr-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm">
                             New Post
                         </a>

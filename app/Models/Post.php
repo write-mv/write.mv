@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Builder;
+use Illuminate\Support\HtmlString;
 use App\Traits\BelongsToTeam;
+use nadar\quill\Lexer;
 
 class Post extends Model
 {
@@ -14,7 +16,9 @@ class Post extends Model
     protected $guarded = [];
 
     protected $casts = [
-        "publish_date" => "datetime"
+        "published_date" => "datetime",
+        "meta" => "array",
+        "content" => "array"
     ];
 
     public function blog()
@@ -40,6 +44,14 @@ class Post extends Model
                 ->orwhere('slug', 'like' , '%'.$query.'%');
     }
 
+    /*
+
+    public function getContentAttribute($content)
+    {
+        $lexer = new Lexer($content);
+        return new HtmlString($lexer->render());
+    }
+*/
     /**
      * Scope a query to only include published posts.
      *
@@ -63,29 +75,29 @@ class Post extends Model
     }
 
     /**
-     * Scope a query to only include posts whose publish date is in the past (or now).
+     * Scope a query to only include posts whose published_date is in the past (or now).
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeLive($query)
     {
-        return $query->published()->where('publish_date', '<=', now());
+        return $query->published()->where('published_date', '<=', now());
     }
 
     /**
-     * Scope a query to only include posts whose publish date is in the future.
+     * Scope a query to only include posts whose published_date is in the future.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeScheduled($query)
     {
-        return $query->where('publish_date', '>', now());
+        return $query->where('published_date', '>', now());
     }
 
     /**
-     * Scope a query to only include posts whose publish date is before a given date.
+     * Scope a query to only include posts whose published_date is before a given date.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string $date
@@ -93,7 +105,7 @@ class Post extends Model
      */
     public function scopeBeforePublishDate($query, $date)
     {
-        return $query->where('publish_date', '<=', $date);
+        return $query->where('published_date', '<=', $date);
     }
 
     /**
@@ -105,6 +117,6 @@ class Post extends Model
      */
     public function scopeAfterPublishDate($query, $date)
     {
-        return $query->where('publish_date', '>', $date);
+        return $query->where('published_date', '>', $date);
     }
 }

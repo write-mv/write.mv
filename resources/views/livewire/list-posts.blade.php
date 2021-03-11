@@ -49,8 +49,11 @@
                                         :sortAsc="$sortAsc" />
                                     <x-th label="Slug" value="slug" :canSort="true" :sortField="$sortField"
                                         :sortAsc="$sortAsc" />
+
+                                 <x-th label="Status" value="published" :canSort="true" :sortField="$sortField" :sortAsc="$sortAsc" />
+                                  
                 
-                                    <x-th label="Publish Date" value="publish_date" :canSort="true"
+                                    <x-th label="Publish Date" value="published_date" :canSort="true"
                                         :sortField="$sortField" :sortAsc="$sortAsc" />
                                     <th
                                         class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
@@ -62,7 +65,7 @@
                                 <tr wire:key="{{$post->id}}">
                                  
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{$post->title}}</div>
+                                        <div class="text-sm leading-5 text-gray-900 {{$post->is_english ? "" : "para-dhivehi"}}">{{$post->title}}</div>
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -71,9 +74,21 @@
                                         </div>
 
                                     </td>
+
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        @if($post->published && $post->published_date->lessThanOrEqualTo(now()))
+                                        <x-badge label="published" color="green" />
+                                        @elseif($post->published == false && $post->published_date->lessThanOrEqualTo(now()))
+                                        <x-badge label="drafted" color="yellow" />
+                                        @elseif($post->published == true && $post->published_date->greaterThan(now()))
+                                        <x-badge label="scheduled" color="indigo" />
+                                        @else
+                                        <x-badge label="drafted" color="yellow" />
+                                        @endif
+                                    </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 text-gray-900">
-                                            {{$post->publish_date->format('M d, Y')}}
+                                            {{$post->published_date->format('M d, Y')}}
                                         </div>
 
                                     </td>
@@ -86,9 +101,9 @@
                                             </button>
                                           
 
-                                                <button  class="border-2 border-indigo-200 rounded-md p-1">
+                                                <a href="{{route('posts.update', $post)}}" class="border-2 border-indigo-200 rounded-md p-1">
                                                     <x-heroicon-o-pencil class="h-4 w-4 text-indigo-500" />
-                                                </button>
+                                                </a>
 
                                             <button class="border-2 border-red-200 rounded-md p-1">
                                               <x-heroicon-o-trash class="h-4 w-4 text-red-500" />
