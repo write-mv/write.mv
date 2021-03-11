@@ -7,8 +7,8 @@
         <a
         href="{{route('dashboard')}}"
         class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm">
-        Back
         <x-heroicon-o-arrow-narrow-left class="w-3 h-3 ml-1 text-blue-500" />
+        Back
     </a>
         </div>
     </x-slot>
@@ -58,7 +58,7 @@
                             </div>
                           </div>
                         </div>
-                   
+                     
                     </div>
                   </div>
                 </div>
@@ -67,8 +67,8 @@
                     Save
                   </button>
                 </div>
-            </form>
               </div>
+            </form>
         </div>
     </div>
 </div>

@@ -18,7 +18,8 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('excerpt')->nullable();
-            $table->text('content');
+            $table->json('content');
+            $table->json('meta');
             $table->unsignedBigInteger('blog_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('team_id')->nullable();

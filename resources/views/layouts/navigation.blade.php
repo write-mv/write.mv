@@ -17,7 +17,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')" class="font-semibold">
+                    <x-nav-link :href="route('posts')" :active="request()->routeIs('posts*')" class="font-semibold">
                         <x-heroicon-o-newspaper class="w-6 h-6 mr-1" />
                         {{ __('Posts') }}
                     </x-nav-link>

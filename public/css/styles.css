@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "MvFaseyha";
+    src: url("/fonts/MVFaseyha.woff2");
+  }
+  
+  @font-face {
+    font-family: "MvWaheed";
+    src: url("/fonts/mv_waheed.otf");
+  }
+
+  .heading-dhivehi
+  {
+    font-family: MvWaheed;
+  }
+
+  .para-dhivehi 
+  {
+    font-family: MvFaseyha;
+  }
