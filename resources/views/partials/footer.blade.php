@@ -1,6 +1,8 @@
 <footer class="bg-white">
     <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-     
+        <div class="flex justify-center pb-5">
+            <img src="/images/logo.svg" class="w-12 h-12">
+        </div>
       <div class="mt-8 flex justify-center space-x-6">
         <a href="#" class="text-gray-400 hover:text-gray-500">
           <span class="sr-only">Facebook</span>
