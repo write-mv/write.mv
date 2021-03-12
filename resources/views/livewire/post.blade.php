@@ -1,14 +1,27 @@
 <div>
   <x-slot name="header">
-    <div class="flex items-center justify-between">
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-
-      </h2>
-      <a href="{{route('posts')}}"
-        class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm">
-        <x-heroicon-o-arrow-narrow-left class="w-3 h-3 mr-1 text-gray-500" />
-        Back
-      </a>
+    <div class="flex items-center">
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol class="flex items-center space-x-4">
+          <li>
+            <div class="flex items-center">
+              <a href="{{route('posts')}}" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Posts</a>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <!-- Heroicon name: solid/chevron-right -->
+              <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd" />
+              </svg>
+              <p class="ml-4 text-sm font-medium text-gray-500">{{$label}}</p>
+            </div>
+          </li>
+        </ol>
+      </nav>
     </div>
   </x-slot>
 
@@ -53,7 +66,7 @@
                         <input type="text" name="title" id="title" wire:model.lazy="title"
                           class="focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm text-xl rounded-md border-gray-300 {{$is_english ? "" : "heading-dhivehi thaana-keyboard"}}"
                           {{$is_english ? "" : "dir=rtl"}}>
-                          @error('title') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
+                        @error('title') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                       </div>
 
 
@@ -62,7 +75,7 @@
                         <input type="text" name="slug" id="slug" wire:model.lazy="slug"
                           class="focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm text-xl rounded-md border-gray-300"
                           required>
-                          @error('slug') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
+                        @error('slug') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                       </div>
 
                       <div class="col-span-6 sm:col-span-2 mt-3">
@@ -70,7 +83,7 @@
                           <label for="location" class="block text-sm font-medium text-gray-700">Excerpt</label>
                           <textarea id="excerpt" name="excerpt" wire:model.lazy="excerpt" rows="3"
                             class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-md rounded-md border-gray-300 {{$is_english ? "" : "para-dhivehi thaana-keyboard"}}"" {{$is_english ? "" : "dir=rtl"}}></textarea>
-                            @error('excerpt') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
+                            @error('excerpt') <p class=" mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                         </div>
                       </div>
 
