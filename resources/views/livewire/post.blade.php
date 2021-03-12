@@ -5,8 +5,8 @@
 
       </h2>
       <a href="{{route('posts')}}"
-        class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm">
-        <x-heroicon-o-arrow-narrow-left class="w-3 h-3 mr-1 text-blue-500" />
+        class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm">
+        <x-heroicon-o-arrow-narrow-left class="w-3 h-3 mr-1 text-gray-500" />
         Back
       </a>
     </div>

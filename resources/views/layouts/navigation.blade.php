@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <h3 class="text-blue-600 uppercase font-bold">Write.mv</h3>
+                        <img class="h-8 w-auto sm:h-10" src="/images/writemvsidelogo.svg" />
                     </a>
                 </div>
 

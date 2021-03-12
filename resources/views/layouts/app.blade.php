@@ -47,7 +47,9 @@
         </main>
         <x-session-notification />
         <x-notification />
+    
     </div>
+    @include('partials.footer')
     @livewireScripts
     @stack('scripts')
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

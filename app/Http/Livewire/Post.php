@@ -11,7 +11,8 @@ class Post extends Component
 {
     public PostModel $post;
 
-    public $label = "Add new Post";
+    public $label = "Create Post";
+
     public $editing = false;
 
     public $title;
@@ -41,9 +42,8 @@ class Post extends Component
             $this->published_date = Carbon::now();
             $this->display_name = auth()->user()->name;
         } else {
+            $this->label = "Update post";
             $this->editing = true;
-            $this->label = "Update Post";
-
             $this->title = $post->title;
             $this->excerpt = $post->excerpt;
             $this->slug = $post->slug;
