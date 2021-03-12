@@ -16,6 +16,8 @@ class PostController extends Controller
             abort(404);
         }
 
+        $blog->vzt()->increment();
+
         $posts = $blog->posts()->live()->latest('published_date')->simplePaginate(8);
 
         return view('posts.index', [
@@ -32,11 +34,13 @@ class PostController extends Controller
             abort(404);
         }
 
-        $post = $blog->posts()->live()->where('slug',$post)->first();
+        $post = $blog->posts()->live()->where('slug', $post)->first();
 
         if (!$post) {
             abort(404);
         }
+
+        $post->vzt()->increment();
 
 
         return view('posts.show', [

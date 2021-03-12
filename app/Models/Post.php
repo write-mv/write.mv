@@ -20,6 +20,26 @@ class Post extends Model
         "meta" => "array",
         "content" => "array"
     ];
+    
+    /**
+     * Tracking visits
+     *
+     * @return void
+     */
+    public function vzt()
+    {
+        return visits($this);
+    }
+    
+    /**
+     * Tracking visits
+     *
+     * @return void
+     */
+    public function visits()
+    {
+        return visits($this)->relation();
+    }
 
     public function blog()
     {
