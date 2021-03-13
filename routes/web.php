@@ -25,6 +25,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/explore', function () {
+    return view('coming-soon');
+});
+
+Route::get('/screencasts', function () {
+    return view('coming-soon');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard', [
         'blog' => Blog::first(),
@@ -36,16 +44,16 @@ Route::get('/dashboard', function () {
 
 
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function(){
-    Route::get('/posts',ListPosts::class)->name('posts');
-    Route::get('/posts/new',Post::class)->name('posts.new');
-    Route::get('/posts/e/{post}',Post::class)->name('posts.update');
-    Route::get('/insights',Insights::class)->name('insights');
-    Route::get('/blog/{blog}/customize',CustomizeBlog::class)->name('blog.customize');
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
+    Route::get('/posts', ListPosts::class)->name('posts');
+    Route::get('/posts/new', Post::class)->name('posts.new');
+    Route::get('/posts/e/{post}', Post::class)->name('posts.update');
+    Route::get('/insights', Insights::class)->name('insights');
+    Route::get('/blog/{blog}/customize', CustomizeBlog::class)->name('blog.customize');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 //blog
-Route::get('/{name}',[PostController::class,'index'])->name('posts.index');
-Route::get('/{name}/{post}',[PostController::class,'show'])->name('posts.show');
+Route::get('/{name}', [PostController::class, 'index'])->name('posts.index');
+Route::get('/{name}/{post}', [PostController::class, 'show'])->name('posts.show');
