@@ -9,6 +9,6 @@
 - [ ] Select theme grid or row
 - [ ] Post featured image and caption create
 - [ ] Soft delete for post
-- [ ] Tabs for posts (published,drafted,trashed)
+- [x] Tabs for posts (published,drafted,trashed)
 - [x] Show counts on posts tab
 - [ ] Optimize Database queries
