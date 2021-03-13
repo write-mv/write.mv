@@ -16,7 +16,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        $blog->vzt()->increment();
+       $blog->RecordView();
 
         $posts = $blog->posts()->live()->latest('published_date')->simplePaginate(8);
 
@@ -40,7 +40,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        $post->vzt()->increment();
+        //$post->vzt()->increment();
 
 
         return view('posts.show', [

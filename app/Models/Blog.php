@@ -5,32 +5,25 @@ namespace App\Models;
 use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 
-class Blog extends Model
+class Blog extends Model implements Viewable
 {
-    use HasFactory, BelongsToTeam;
+    use HasFactory, BelongsToTeam,InteractsWithViews;
 
     protected $guarded = [];
-
-    /**
-     * Tracking visits
-     *
-     * @return void
-     */
-    public function vzt()
-    {
-        return visits($this);
-    }
     
     /**
-     * Tracking visits
+     * Record the view to the blog
      *
      * @return void
      */
-    public function visits()
+    public function RecordView()
     {
-        return visits($this)->relation();
+        views($this)->record();
     }
+
 
     public function posts()
     {

@@ -14,8 +14,8 @@
             Lifetime Summary
         </h3>
         <x-metric.group rowitem="2">
-            <x-metric.stats title="Total views" value="400" />
-            <x-metric.stats title="Visit Today" value="400" />
+            <x-metric.stats title="Total views" :value="$life_time_views" />
+            <x-metric.stats title="Total visitors" value="400" />
         </x-metric.group>
     </div>
 

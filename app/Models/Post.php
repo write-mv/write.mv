@@ -8,10 +8,12 @@ use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\HtmlString;
 use App\Traits\BelongsToTeam;
 use nadar\quill\Lexer;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 
-class Post extends Model
+class Post extends Model implements Viewable
 {
-    use HasFactory, BelongsToTeam;
+    use HasFactory, BelongsToTeam,InteractsWithViews;
 
     protected $guarded = [];
 
@@ -22,25 +24,15 @@ class Post extends Model
     ];
     
     /**
-     * Tracking visits
+     * Record the view to a post
      *
      * @return void
      */
-    public function vzt()
+    public function RecordView()
     {
-        return visits($this);
+        views($this)->record();
     }
     
-    /**
-     * Tracking visits
-     *
-     * @return void
-     */
-    public function visits()
-    {
-        return visits($this)->relation();
-    }
-
     public function blog()
     {
         return $this->belongsTo(Blog::class);
