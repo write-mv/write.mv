@@ -20,7 +20,7 @@
     </p>
   </div>
 
-  <div class="mx-auto prose">
+  <div class="mx-auto prose" style="font-family: Poppins;">
     {!! (new \nadar\quill\Lexer($post->content))->render() !!}
   </div>
 </article>
