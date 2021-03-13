@@ -5,8 +5,37 @@
         </h2>
     </x-slot>
 
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            <div class="mb-3">
+                <div>
+                  <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                      <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm">
+                     
+                        <span>All ({{$all_post_count}})</span>
+                      </a>
+                      <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm">
+                       
+                        <span>Published  ({{$published_post_count}})</span>
+                      </a>
+                      <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
+                      <a href="#" class="border-blue-500 text-blue-600 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm" aria-current="page">
+                       
+                        <span>Drafts ({{$draft_post_count}})</span>
+                      </a>
+
+                      <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm">
+                     
+                        <span>Scheduled ({{$scheduled_post_count}})</span>
+                      </a>
+                     
+                    </nav>
+                  </div>
+                </div>
+              </div>
 
             <div class="">
                 <div class="xl:col-span-3">
