@@ -17,6 +17,13 @@ class Post extends Model implements Viewable
 
     protected $guarded = [];
 
+    protected $filters = [
+        "all" => null,
+        "published" => "live",
+        "draft" => "draft",
+        "scheduled" => "scheduled"
+    ];
+
     protected $casts = [
         "published_date" => "datetime",
         "meta" => "array",
@@ -49,11 +56,20 @@ class Post extends Model implements Viewable
     }
 
     
-    public static function search($query)
+    public function scopeSearch($query, $search)
     {
-        return empty($query) ? static::query()
-            : static::where('title', 'like', '%'.$query.'%')
-                ->orwhere('slug', 'like' , '%'.$query.'%');
+        return empty($search) ? $query
+            : $query->where('title', 'like', '%'.$search.'%')
+                ->orwhere('slug', 'like' , '%'.$search.'%');
+    }
+
+    public function scopePostTabFilter($query, $filter)
+    {
+        if(is_null($this->filters[$filter])){
+            return;
+        }
+
+        return call_user_func(array(self::class, $this->filters[$filter]));
     }
 
     /*

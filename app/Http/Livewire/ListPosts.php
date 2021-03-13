@@ -15,6 +15,8 @@ class ListPosts extends Component
     public $sortField = 'published_date';
     public $sortAsc = true;
     public $search = '';
+    public $filter = "all";
+
 
     public function sortBy($field)
     {
@@ -27,10 +29,15 @@ class ListPosts extends Component
         $this->sortField = $field;
     }
 
+    public function switchFilter($filter)
+    {
+        $this->filter = $filter;
+    }
+
 
     public function render()
     {
-        $query = Post::search($this->search)
+        $query = Post::PostTabFilter($this->filter)->search($this->search)
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
 
 
