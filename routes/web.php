@@ -33,6 +33,10 @@ Route::get('/screencasts', function () {
     return view('coming-soon');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard', [
         'blog' => Blog::first(),

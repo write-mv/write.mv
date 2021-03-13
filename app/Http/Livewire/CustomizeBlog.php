@@ -11,7 +11,8 @@ class CustomizeBlog extends Component
 
     protected $rules = [
         "blog.site_title" => "required",
-        "blog.description" => "required"
+        "blog.description" => "required",
+        "blog.is_grid" => "required"
     ];
 
     public function mount(Blog $blog)

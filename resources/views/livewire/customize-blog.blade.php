@@ -68,7 +68,7 @@
                   </div>
 
                   <div class="col-span-6 sm:col-span-2">
-                    <label for="company_website" class="block text-sm font-medium text-gray-700">
+                    <label for="URL" class="block text-sm font-medium text-gray-700">
                       URL
                     </label>
                     <div class="mt-1 flex rounded-md shadow-sm">
@@ -81,6 +81,10 @@
                         disabled>
                     </div>
                   </div>
+                </div>
+
+                <div class="w-full max-w-3xl mx-auto my-12">
+                  <x-blog-style-selection :is_grid="$blog->is_grid" />
                 </div>
 
             </div>
