@@ -40,7 +40,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        //$post->vzt()->increment();
+        $post->RecordView();
 
 
         return view('posts.show', [

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Blog;
 use App\Models\Post;
 use App\Models\Team;
+use CyrildeWit\EloquentViewable\View;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $team  = Team::factory()->create();
+        /* $team  = Team::factory()->create();
 
         $user = \App\Models\User::factory()->create(['team_id' => $team->id]);
         $blog = Blog::factory()->create(['team_id' => $team->id]);
@@ -38,6 +39,18 @@ class DatabaseSeeder extends Seeder
             "blog_id" => null,
             "user_id" => null,
             "team_id" => null
-        ]);
+        ]); */
+        $faker = \Faker\Factory::create();
+
+        foreach(range(1,1000) as $range)
+        {
+            View::create([
+                "viewable_type" => "App\Models\Blog",
+                "viewable_id" => 1,
+                "visitor" => $faker->uuid,
+                "viewed_at" => $faker->dateTimeBetween("-1 months")
+            ]);
+        }
+        
     }
 }

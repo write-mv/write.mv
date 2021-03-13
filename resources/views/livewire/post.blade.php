@@ -37,7 +37,7 @@
 
               <div class="flex items-center">
                 <div class="col-span-6 sm:col-span-2 mt-3">
-                  <label for="location" class="block text-sm font-medium text-gray-700">is English?</label>
+                  <label for="location" class="block text-sm font-medium text-gray-700">Language: <span class="font-semibold">{{$is_english ? "English" : "Dhivehi"}}</span></label>
                   <x-form.toggle model="is_english" />
 
                 </div>

@@ -4,45 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7c7ef6d56654ac79923af9bcaf42cba",
+    "content-hash": "c69a2af2eee20003bccff6b28dba31ff",
     "packages": [
         {
-            "name": "asantibanez/livewire-charts",
-            "version": "v2.3.0",
+            "name": "arielmejiadev/larapex-charts",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/asantibanez/livewire-charts.git",
-                "reference": "582ad340ddf0d138df67319073886f9314cccd0a"
+                "url": "https://github.com/ArielMejiaDev/larapex-charts.git",
+                "reference": "7de57e5aed5b0851cf6043376addc838ef5123dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asantibanez/livewire-charts/zipball/582ad340ddf0d138df67319073886f9314cccd0a",
-                "reference": "582ad340ddf0d138df67319073886f9314cccd0a",
+                "url": "https://api.github.com/repos/ArielMejiaDev/larapex-charts/zipball/7de57e5aed5b0851cf6043376addc838ef5123dd",
+                "reference": "7de57e5aed5b0851cf6043376addc838ef5123dd",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^7.0|^8.0",
-                "livewire/livewire": "^2.3",
-                "php": "^7.2|^7.3|^7.4|^8.0"
+                "ext-json": "*"
             },
             "require-dev": {
-                "orchestra/testbench": "^4.0|^5.0",
-                "phpunit/phpunit": "^8.0"
+                "orchestra/testbench": "^4.4"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Asantibanez\\LivewireCharts\\LivewireChartsServiceProvider"
+                        "ArielMejiaDev\\LarapexCharts\\LarapexChartsServiceProvider"
                     ],
                     "aliases": {
-                        "LivewireCharts": "Asantibanez\\LivewireCharts\\LivewireChartsFacade"
+                        "LarapexChart": "ArielMejiaDev\\LarapexCharts\\Facades\\LarapexChart"
                     }
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Asantibanez\\LivewireCharts\\": "src"
+                    "ArielMejiaDev\\LarapexCharts\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -51,22 +48,16 @@
             ],
             "authors": [
                 {
-                    "name": "Andrés Santibáñez",
-                    "email": "santibanez.andres@gmail.com",
-                    "role": "Developer"
+                    "name": "ArielMejiaDev",
+                    "email": "arielmejiadev@gmail.com"
                 }
             ],
-            "description": "Livewire Charts",
-            "homepage": "https://github.com/asantibanez/livewire-charts",
-            "keywords": [
-                "asantibanez",
-                "livewire-charts"
-            ],
+            "description": "Package to provide easy api to build apex charts on Laravel",
             "support": {
-                "issues": "https://github.com/asantibanez/livewire-charts/issues",
-                "source": "https://github.com/asantibanez/livewire-charts/tree/v2.3.0"
+                "issues": "https://github.com/ArielMejiaDev/larapex-charts/issues",
+                "source": "https://github.com/ArielMejiaDev/larapex-charts/tree/2.1.0"
             },
-            "time": "2021-02-12T05:29:24+00:00"
+            "time": "2021-02-14T19:12:26+00:00"
         },
         {
             "name": "asm89/stack-cors",
