@@ -14,7 +14,7 @@
             <div class="flex items-center h-5">
                 <input id="settings-option-0" name="privacy_setting" type="radio" @click="select(0)"
                     @keydown.space="select(0)" @keydown.arrow-up="onArrowUp(0)" @keydown.arrow-down="onArrowDown(0)"
-                    class="focus:ring-blue-500 h-4 w-4 text-blue-600 cursor-pointer border-gray-300" {{$is_grid == 1  ? "checked" : ""}}>
+                    class="focus:ring-blue-500 h-4 w-4 text-blue-600 cursor-pointer border-gray-300" {{$is_grid == 0  ? "checked" : ""}}>
             </div>
             <label for="settings-option-0" class="ml-3 flex flex-col cursor-pointer">
                 <img class="mx-auto h-12 w-auto" src="/icons/list.svg">
@@ -32,7 +32,7 @@
             <div class="flex items-center h-5">
                 <input id="settings-option-1" name="privacy_setting" type="radio" @click="select(1)"
                     @keydown.space="select(1)" @keydown.arrow-up="onArrowUp(1)" @keydown.arrow-down="onArrowDown(1)"
-                    class="focus:ring-blue-500 h-4 w-4 text-blue-600 cursor-pointer border-gray-300" {{$is_grid == 0 ? "checked" : ""}}>
+                    class="focus:ring-blue-500 h-4 w-4 text-blue-600 cursor-pointer border-gray-300" {{$is_grid == 1 ? "checked" : ""}}>
             </div>
             <label for="settings-option-1" class="ml-3 flex flex-col cursor-pointer">
             
