@@ -3,6 +3,7 @@
 ## Stuff to do
 
 - [ ] Blog and Post insights
+- [ ] User Account update
 - [x] Update Registeration Page
 - [x] Update login page
 - [ ] Login with google and github
