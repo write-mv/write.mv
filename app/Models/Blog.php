@@ -31,7 +31,7 @@ class Blog extends Model implements Viewable
     {
         return $this->hasMany(Post::class);
     }
-    
+
     /**
      * Calculation for graph viewsPerMonthDays
      *
@@ -47,7 +47,7 @@ class Blog extends Model implements Viewable
                 DB::raw('COUNT(*) as "views"')
             ));
     }
-    
+
     /**
      * Calculation for graph uniqueVisitorsPerMonthDays
      *
