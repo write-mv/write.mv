@@ -32,15 +32,15 @@
                             </div>
 
                             <div>
-                                <label for="username" class="block text-sm font-medium text-gray-700" style="font-family: Poppins;">
-                                    Username
+                                <label for="blog_name" class="block text-sm font-medium text-gray-700" style="font-family: Poppins;">
+                                    Blog Name
                                 </label>
                                 <div class="mt-1">
-                                    <input id="username" name="username" type="text" value="{{old('username')}}"
-                                        autocomplete="username" required
+                                    <input id="blog_name" name="blog_name" type="text" value="{{old('blog_name')}}"
+                                        autocomplete="blog_name" required
                                         class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                    @error('username')<p class="mt-2 text-sm text-red-600">{{$message}}
-                                    </p>@enderror
+                                        <p class="mt-2 text-sm text-gray-500">We will use the blog name to create the main blog page for you.</p>
+                                    @error('blog_name')<p class="mt-2 text-sm text-red-600">{{$message}}</p>@enderror
                                 </div>
                             </div>
                             <div>

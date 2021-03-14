@@ -39,16 +39,17 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
+            'blog_name' => 'required|string|max:255|unique:blogs,name'
         ]);
 
         $team = Team::create([
-            "name" => $request->name
+            "name" => $request->blog_name
         ]);
 
         Blog::create([
-            "name" => Str::slug($request->name),
+            "name" => Str::slug($request->blog_name),
             "site_title" => $request->name,
-            "url" => url("/". Str::slug($request->name)),
+            "url" => url("/". Str::slug($request->blog_name)),
             "team_id" => $team->id
         ]);
 
