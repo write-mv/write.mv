@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use App\Http\Livewire\CustomizeBlog;
 use App\Http\Livewire\Insights;
@@ -60,20 +61,5 @@ require __DIR__ . '/auth.php';
 
 //blog
 Route::get('/{name}', [PostController::class, 'index'])->name('posts.index');
-Route::get('/{name}/feed', function ($name) {
-    $blog = Blog::withoutGlobalScopes()->where('name', $name)->first();
-
-    if (!$blog) {
-        abort(404);
-    }
-
-    $posts = $blog->posts()->live()->get();
-    $content = view('posts.feed', [
-        'posts' => $posts,
-        'blog' => $blog
-    ]);
-
-    return response($content, 200)
-        ->header('Content-Type', 'text/xml');
-});
+Route::get('/{name}/feed', FeedController::class);
 Route::get('/{name}/{post}', [PostController::class, 'show'])->name('posts.show');
