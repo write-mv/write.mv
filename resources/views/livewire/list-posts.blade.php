@@ -73,8 +73,8 @@
                     </div>
 
                     <div class="flex flex-col">
-                        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                            <div class="align-middle inline-block min-w-full shadow-sm overflow-hidden sm:rounded-lg">
+                        <div class="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                            <div class="align-middle inline-block min-w-full shadow-sm sm:rounded-lg">
                                 <table class="min-w-full">
                                     <thead>
                                         <tr>
@@ -99,7 +99,9 @@
                                         <tr wire:key="{{$post->id}}">
 
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900 {{$post->is_english ? "" : "para-dhivehi"}}">{{$post->title}}</div>
+                                                <div
+                                                    class="text-sm leading-5 text-gray-900 {{$post->is_english ? "" : "para-dhivehi"}}">
+                                                    {{$post->title}}</div>
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -129,23 +131,22 @@
 
                                             </td>
                                             <td
-                                                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                                                class="px-6 py-4 text-right border-b border-gray-200 text-sm leading-5 font-medium">
                                                 <div class="flex items-center gap-2">
+                                                    <x-action-dropdown>
+                                                        <a href="{{route('posts.update', $post)}}"
+                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                                            role="menuitem">Edit post</a>
+                                                        <a href="#"
+                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                                            role="menuitem">Delete post</a>
+                                                        <a href="#"
+                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                                            role="menuitem">View stats</a>
+                                                    </x-action-dropdown>
 
-                                                    <button class="border-2 border-gray-200 rounded-md p-1">
-                                                        <x-heroicon-o-eye class="h-4 w-4 text-gray-500" />
-                                                    </button>
-
-
-                                                    <a href="{{route('posts.update', $post)}}"
-                                                        class="border-2 border-indigo-200 rounded-md p-1">
-                                                        <x-heroicon-o-pencil class="h-4 w-4 text-indigo-500" />
-                                                    </a>
-
-                                                    <button class="border-2 border-red-200 rounded-md p-1">
-                                                        <x-heroicon-o-trash class="h-4 w-4 text-red-500" />
-                                                    </button>
                                                 </div>
+
 
                                             </td>
 

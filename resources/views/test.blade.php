@@ -1,44 +1,55 @@
 <x-guest-layout>
-    <div class="w-full max-w-3xl mx-auto my-12">
-      
-        <fieldset x-data="radioGroup()">
-          <legend class="sr-only">
-            Privacy setting
-          </legend>
-      
-          <div class="bg-white rounded-md -space-y-px flex gap-4" x-ref="radiogroup">
-            
-              
-                <div :class="{ 'border-gray-200': !(active === 0), 'bg-indigo-50 border-indigo-200 z-10': active === 0 }" class="relative border rounded-tl-md rounded-tr-md p-4 flex border-gray-200">
-                  <div class="flex items-center h-5">
-                    <input id="settings-option-0" name="privacy_setting" type="radio" @click="select(0)" @keydown.space="select(0)" @keydown.arrow-up="onArrowUp(0)" @keydown.arrow-down="onArrowDown(0)" class="focus:ring-blue-500 h-4 w-4 text-blue-600 cursor-pointer border-gray-300" checked="">
-                  </div>
-                  <label for="settings-option-0" class="ml-3 flex flex-col cursor-pointer">
-                    <img class="mx-auto h-12 w-auto" src="/icons/grid.svg">
-                    <span :class="{ 'text-indigo-900': active === 0, 'text-gray-900': !(active === 0) }" class="block text-sm font-medium text-gray-900">
-                      Grid View
-                    </span>
-                  
-                  </label>
-                </div>
-              
-              
-                <div :class="{ 'border-gray-200': !(active === 1), 'bg-indigo-50 border-indigo-200 z-10': active === 1 }" class="relative border border-gray-200 p-4 flex">
-                  <div class="flex items-center h-5">
-                    <input id="settings-option-1" name="privacy_setting" type="radio" @click="select(1)" @keydown.space="select(1)" @keydown.arrow-up="onArrowUp(1)" @keydown.arrow-down="onArrowDown(1)" class="focus:ring-blue-500 h-4 w-4 text-blue-600 cursor-pointer border-gray-300">
-                  </div>
-                  <label for="settings-option-1" class="ml-3 flex flex-col cursor-pointer">
-                    <img class="mx-auto h-12 w-auto" src="/icons/list.svg">
-                    <span :class="{ 'text-indigo-900': active === 1, 'text-gray-900': !(active === 1) }" class="block text-sm font-medium text-gray-900">
-                      List View
-                    </span>
-                  </label>
-                </div>
-              
-              
-              
-          </div>
-        </fieldset>
-      
-          </div>
+  <div class="flex flex-col">
+  <div x-data="{ open: true }" @keydown.escape.stop="open = false" @click.away="open = false" class="relative inline-block text-left">
+    <div>
+      <button type="button" class="bg-gray-100 rounded-full flex items-center text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" aria-expanded="true">
+        <span class="sr-only">Open options</span>
+        <svg class="h-5 w-5" x-description="Heroicon name: solid/dots-vertical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+  <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
+</svg>
+      </button>
+    </div>
+
+    
+      <div x-description="Dropdown menu, show/hide based on menu state." x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+        <div class="py-1" role="none">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Account settings</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Support</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">License</a>
+          <form method="POST" action="#" role="none">
+            <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+                Sign out
+              </button>
+          </form>
+        </div>
+      </div>
+    
+  </div>
+
+  <div x-data="{ open: true }" @keydown.escape.stop="open = false" @click.away="open = false" class="relative inline-block text-left">
+    <div>
+      <button type="button" class="bg-gray-100 rounded-full flex items-center text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" aria-expanded="true">
+        <span class="sr-only">Open options</span>
+        <svg class="h-5 w-5" x-description="Heroicon name: solid/dots-vertical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+  <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
+</svg>
+      </button>
+    </div>
+
+    
+      <div x-description="Dropdown menu, show/hide based on menu state." x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+        <div class="py-1" role="none">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Account settings</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Support</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">License</a>
+          <form method="POST" action="#" role="none">
+            <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+                Sign out
+              </button>
+          </form>
+        </div>
+      </div>
+    
+  </div>
+  </div>
 </x-guest-layout>

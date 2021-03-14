@@ -12,7 +12,7 @@
 - [x] Update Registeration Page
 - [x] Update login page
 - [ ] Login with google and github
-- [ ] Select theme grid or row
+- [x] Select theme grid or row
 - [ ] Post featured image and caption create
 - [ ] Soft delete for post
 - [x] Tabs for posts (published,drafted,trashed)
