@@ -37,7 +37,8 @@
 
               <div class="flex items-center">
                 <div class="col-span-6 sm:col-span-2 mt-3">
-                  <label for="location" class="block text-sm font-medium text-gray-700">Language: <span class="font-semibold">{{$is_english ? "English" : "Dhivehi"}}</span></label>
+                  <label for="location" class="block text-sm font-medium text-gray-700">Language: <span
+                      class="font-semibold">{{$is_english ? "English" : "Dhivehi"}}</span></label>
                   <x-form.toggle model="is_english" />
 
                 </div>
@@ -81,7 +82,7 @@
                       <div class="col-span-6 sm:col-span-2 mt-3">
                         <div class="mt-2">
                           <label for="location" class="block text-sm font-medium text-gray-700">Excerpt</label>
-                          <textarea id="excerpt" name="excerpt" wire:model.lazy="excerpt" rows="3"
+                          <textarea id="excerpt" name="excerpt" wire:model.lazy="excerpt" rows="5"
                             class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-md rounded-md border-gray-300 {{$is_english ? "" : "para-dhivehi thaana-keyboard"}}"" {{$is_english ? "" : "dir=rtl"}}></textarea>
                             @error('excerpt') <p class=" mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                         </div>
@@ -144,6 +145,25 @@
                     <x-form.toggle model="show_author" />
                     @error('show_author') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                   </div>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="section-2-title">
+            <div class="rounded-lg bg-white overflow-hidden">
+              <div class="p-6">
+                <div class="col-span-6 sm:col-span-2">
+                    <label for="featured_image" class="block text-sm font-medium text-gray-700">Featued Image</label>
+            
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-2">
+                    <label for="featured_image_caption" class="block text-sm font-medium text-gray-700">Image Caption</label>
+                    <input type="text" name="featured_image_caption" id="title" wire:model.lazy="featured_image_caption" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md">
+                  @error('featured_image_caption') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
+                  </div>
+
+           
               </div>
             </div>
           </section>
