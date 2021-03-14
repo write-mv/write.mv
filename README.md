@@ -14,5 +14,6 @@
 - [x] Tabs for posts (published,drafted,trashed)
 - [x] Show counts on posts tab
 - [ ] Update the notification message when the post is scheduled
+- [ ] Update published date to scheduled to post at {date} when post is scheduled
 - [ ] Update dashboard font
 - [ ] Optimize Database queries
