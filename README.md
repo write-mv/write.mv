@@ -2,7 +2,8 @@
 
 ## Stuff to do
 
-- Remove Posts with confirm modal
+- [ ] Configure meta tags for all pages
+- [ ] Ability to Remove Posts with confirm modal
 - [ ] Blog and Post insights
 - [ ] User Account update
 - [ ] Add loading indicators for save buttons
