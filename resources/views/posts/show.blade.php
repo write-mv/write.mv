@@ -23,17 +23,17 @@
             class="text-primary hover:text-primary-dark"><span itemprop="name">{{$post->display_name}}</span></a>
         </span>
       </div>
-      on
+
       @endif
 
-      @if($is_english)
+      @if($post->is_english)
       <time itemprop="datePublished dateModified" datetime="{{$post->published_date->format('F d, Y')}}"
         pubdate>{{$post->published_date->format('F d, Y')}}</time>
 
       @else
-      <time itemprop="datePublished dateModified"
-        datetime="{{$post->published_date->locale('dv')->isoFormat('F d, Y')}}" dir="rtl">
-        {{$post->published_date->locale('dv')->isoFormat('F d, Y')}}</time>
+      <time itemprop="datePublished dateModified" class="faseyha" dir="rtl">
+        {{$post->published_date->locale('dv')->isoFormat('Do MMMM YYYY')}}
+      </time>
 
 
       @endif
