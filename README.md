@@ -2,6 +2,7 @@
 
 ## Stuff to do
 
+- [ ] Fix navigation for mobile and UI card to mobile friendly
 - [ ] Configure meta tags for all pages
 - [ ] Ability to Remove Posts with confirm modal
 - [ ] Blog and Post insights

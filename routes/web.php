@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
+use App\Http\Livewire\Account;
 use App\Http\Livewire\CustomizeBlog;
 use App\Http\Livewire\Insights;
 use App\Http\Livewire\ListPosts;
@@ -55,6 +56,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::get('/posts/e/{post}', Post::class)->name('posts.update');
     Route::get('/insights', Insights::class)->name('insights');
     Route::get('/blog/{blog}/customize', CustomizeBlog::class)->name('blog.customize');
+    Route::get('/account', Account::class)->name('account');
 });
 
 require __DIR__ . '/auth.php';
