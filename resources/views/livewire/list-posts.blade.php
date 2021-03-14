@@ -99,9 +99,14 @@
                                         <tr wire:key="{{$post->id}}">
 
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                @if($post->is_english)
+                                                <div class="text-sm leading-5 text-gray-900">{{$post->title}}</div>
+                                                @else
                                                 <div
                                                     class="text-sm leading-5 text-gray-900 {{$post->is_english ? "" : "para-dhivehi"}}">
                                                     {{$post->title}}</div>
+                                                @endif
+
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">

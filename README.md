@@ -13,4 +13,5 @@
 - [ ] Soft delete for post
 - [x] Tabs for posts (published,drafted,trashed)
 - [x] Show counts on posts tab
+- [ ] Update dashboard font
 - [ ] Optimize Database queries
