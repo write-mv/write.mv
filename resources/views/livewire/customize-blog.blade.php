@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="w-full max-w-3xl mx-auto my-12">
-                  <x-blog-style-selection :is_grid="$blog->is_grid" />
+                  <x-blog-style-selection />
                 </div>
 
             </div>
