@@ -4,6 +4,7 @@
 
 - [ ] Blog and Post insights
 - [ ] User Account update
+- [ ] Add loading indicators for save buttons
 - [x] Update Registeration Page
 - [x] Update login page
 - [ ] Login with google and github
