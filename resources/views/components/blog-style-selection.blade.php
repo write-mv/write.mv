@@ -1,7 +1,7 @@
 @props([
     'is_grid' => ''
 ])
-<fieldset x-data="radioGroup()">
+<fieldset x-data="radioGroup()" wire:ignore>
     <label for="blog_style" class="block text-sm font-medium text-gray-700">
         Blog Style
     </label>
