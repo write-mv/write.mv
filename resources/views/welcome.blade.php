@@ -4,20 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description"
-    content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
-  <meta property="og:url" content="https://trycanvas.app">
+  <meta name="description" content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
+  <meta property="og:url" content="https://write.mv">
   <meta property="og:type" content="website">
-  <meta property="og:description"
-    content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
+  <meta property="og:description" content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
   <meta property="og:title" content="Write.mv ― Rant, share & scribble">
-  <meta property="og:image" content="https://trycanvas.app/img/opengraph.png">
-  <meta property="og:site_name" content="Canvas">
+  <meta property="og:image" content="https://write.mv/images/opengraph.png">
+  <meta property="og:site_name" content="Write.mv">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Write.mv ― Rant, share & scribble">
-  <meta name="twitter:image" content="https://trycanvas.app/img/opengraph.png">
-  <meta name="twitter:description"
-    content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
+  <meta name="twitter:image" content="https://write.mv/images/opengraph.png">
+  <meta name="twitter:description" content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
 
   <title>Write.mv ― Rant, share & scribble</title>
   <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
