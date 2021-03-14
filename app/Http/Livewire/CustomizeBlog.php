@@ -11,7 +11,7 @@ class CustomizeBlog extends Component
 
     protected $rules = [
         "blog.site_title" => "required",
-        "blog.description" => "required",
+        "blog.description" => "nullable",
         "blog.is_grid" => "required"
     ];
 
