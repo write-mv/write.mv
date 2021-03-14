@@ -103,7 +103,7 @@
                                                 <div class="text-sm leading-5 text-gray-900">{{$post->title}}</div>
                                                 @else
                                                 <div
-                                                    class="text-sm leading-5 text-gray-900 {{$post->is_english ? "" : "para-dhivehi"}}">
+                                                    class="text-sm leading-5 text-gray-900 {{$post->is_english ? "" : "para-dhivehi"}}" dir="rtl">
                                                     {{$post->title}}</div>
                                                 @endif
 
