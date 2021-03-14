@@ -5,6 +5,7 @@
 - [ ] Configure meta tags for all pages
 - [ ] Ability to Remove Posts with confirm modal
 - [ ] Blog and Post insights
+- [ ] Check if everything is properly validated
 - [ ] User Account update
 - [ ] Add loading indicators for save buttons
 - [x] Update Registeration Page
