@@ -28,9 +28,9 @@ class Insights extends Component
             $visitors_last_month = views($blog)->unique()->period(Period::pastMonths(2))->count();
 
             //Increased in views compared to last month
-            $views_increased = (($views_this_month - $views_last_month) / $views_last_month * 100);
+            $views_increased = (($views_this_month - $views_last_month) / max($views_last_month,1) * 100);
             //Increased in visitors compared to last month
-            $visitors_increased = (($visitors_this_month - $visitors_last_month) / $visitors_last_month * 100);
+            $visitors_increased = (($visitors_this_month - $visitors_last_month) / max($visitors_last_month,1) * 100);
 
             return [
                 "views_this_month" => $views_this_month,
