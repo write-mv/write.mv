@@ -27,7 +27,7 @@
   
   
       </div>
-      <p class="mt-8 text-center text-base text-gray-400">
+      <p class="mt-8 text-center text-base text-gray-400 poppins font-normal">
         &copy; 2021 Write.mv, Inc. All rights reserved.
       </p>
     </div>

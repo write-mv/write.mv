@@ -1,21 +1,16 @@
 <div>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Insights') }}
-        </h2>
-    </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <section>
                 <div class="flex justify-center gap-5">
                     <div class="inline-block align-bottom px-4 pt-5 pb-4 text-left">
                         <div>
-                            <h3 class="text-lg leading-6 font-medium text-gray-900 text-center">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900 text-center poppins">
                                 Lifetime Summary
                             </h3>
                             <dl
                                 class="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
-                                <div class="px-4 py-5 sm:p-6">
+                                <div class="px-4 py-5 sm:p-6 poppins">
                                     <dt class="text-base font-normal text-gray-900">
                                         Total views
                                     </dt>
@@ -26,7 +21,7 @@
                                     </dd>
                                 </div>
 
-                                <div class="px-4 py-5 sm:p-6">
+                                <div class="px-4 py-5 sm:p-6 poppins">
                                     <dt class="text-base font-normal text-gray-900">
                                         Total visitors
                                     </dt>
@@ -44,12 +39,12 @@
 
                     <div class="inline-block align-bottom px-4 pt-5 pb-4 text-left">
                         <div>
-                            <h3 class="text-lg leading-6 font-medium text-gray-900 text-center">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900 text-center poppins">
                                 Monthly Summary
                             </h3>
                             <dl
                                 class="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
-                                <div class="px-4 py-5 sm:p-6">
+                                <div class="px-4 py-5 sm:p-6 poppins">
                                     <dt class="text-base font-normal text-gray-900">
                                         Views
                                     </dt>
@@ -93,7 +88,7 @@
                                 </dd>
                         </div>
 
-                        <div class="px-4 py-5 sm:p-6">
+                        <div class="px-4 py-5 sm:p-6 poppins">
                             <dt class="text-base font-normal text-gray-900">
                                 Visitors
                             </dt>
@@ -153,50 +148,26 @@
     </section>
 
     <section>
-        <h3 class="text-gray-700 text-xl font-semibold mb-3 text-center">Top 10 Popular Posts 🔥</h3>
-        <div class="flex flex-col">
-            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Title
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Slug
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Published date
-                                    </th>
-
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($top_10_posts as $post)
-                                <tr>
-                                    <td
-                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900  {{$post->is_english ? "" : "para-dhivehi"}}">
-                                        {{$post->title}}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{$post->slug}}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{$post->published_date->format('M d, Y')}}
-                                    </td>
-
-                                </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-                    </div>
+        <h3 class="text-gray-700 text-xl font-semibold mb-3 text-center poppins">Top 10 Popular Posts 🔥</h3>
+        <div class="flex flex-col py-3 w-auto overflow-y-auto overflow-hidden bg-gray-100">
+            <div class="flex flex-col items-center">
+                @foreach ($top_10_posts as $post)
+                <div class="pt-4 ml-2 mr-2 rounded-lg w-2/3">
+                    <a href="#" class="block bg-white rounded-lg py-3 pb-4">
+                        <div class="px-4 py-2 flex justify-between">
+                            <span class="text-md font-semibold text-gray-700 {{$post->is_english ? "poppins" : "para-dhivehi"}}">{{$post->title}}</span>
+                            <div class="flex">
+                                <span class="px-4 text-sm font-semibold text-gray-600"> {{(new \Mtownsend\ReadTime\ReadTime($post->getRenderedHtmlContent()))->get()}}</span>
+                            </div>
+                        </div>
+                        <div class="px-4 py-2 text-sm font-semibold text-gray-700 flex justify-between">
+                            <span class="text-gray-500 text-sm poppins">Published on {{$post->published_date->format('M d, Y')}}</span>
+                            <span class="text-gray-500 text-sm poppins">{{$post->views_count}} Views</span>
+                        </div>
+                    </a>
                 </div>
+                @endforeach
+        
             </div>
         </div>
 

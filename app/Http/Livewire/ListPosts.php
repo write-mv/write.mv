@@ -11,12 +11,14 @@ class ListPosts extends Component
 {
     use WithPagination;
 
-    public $perPage = 8;
+    public $perPage = 2;
     public $sortField = 'published_date';
     public $sortAsc = true;
     public $search = '';
-    public $filter = "all";
+    public $showConfirmModal = false;
+    public $filter = "published";
 
+    public $post_delete_id;
 
     public function sortBy($field)
     {
@@ -34,11 +36,29 @@ class ListPosts extends Component
         $this->filter = $filter;
     }
 
+    public function openDeleteModal($id)
+    {
+        $this->post_delete_id = $id;
+        $this->showConfirmModal = true;
+    }
+
+    public function destroy()
+    {
+        Post::findOrFail($this->post_delete_id)->delete();
+        $this->showConfirmModal = false;
+        $this->notify('Post deleted.');
+    }
+
+    public function load()
+    {
+        $this->perPage += 4;
+    }
+
 
     public function render()
     {
         $query = Post::PostTabFilter($this->filter)->search($this->search)
-            ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
+            ->latest();
 
 
         return view('livewire.list-posts', [

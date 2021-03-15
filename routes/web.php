@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Blog;
 use App\Models\Post as PostModel;
 use App\Http\Livewire\Post;
+use App\Http\Livewire\ViewStats;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +36,6 @@ Route::get('/screencasts', function () {
     return view('coming-soon');
 });
 
-Route::get('/test', function () {
-    return view('test');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard', [
         'blog' => Blog::first(),
@@ -54,6 +51,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::get('/posts', ListPosts::class)->name('posts');
     Route::get('/posts/new', Post::class)->name('posts.new');
     Route::get('/posts/e/{post}', Post::class)->name('posts.update');
+    Route::get('/stats/{post}', ViewStats::class)->name('stats.show');
     Route::get('/insights', Insights::class)->name('insights');
     Route::get('/blog/{blog}/customize', CustomizeBlog::class)->name('blog.customize');
     Route::get('/account', Account::class)->name('account');

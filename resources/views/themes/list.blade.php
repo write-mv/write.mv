@@ -7,12 +7,17 @@
   <div class="flex flex-col space-y-12 divide-y divide-gray-200">
     @foreach ($posts as $post)
     <div>
+      @if($post->featured_image)
+      <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}">
+        <img class="object-cover lg:w-1/2 lg:h-1/2 mb-5 bg-center rounded" src="{{ $post->featuredImageUrl() }}" alt="Featured Image">
+      </a>
+      @endif
       @if($post->is_english)
       <p class="pt-12 mb-3 text-sm font-normal text-gray-500">{{$post->published_date->format('F d, Y')}}</p>
 
       <h2 class="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl"
         style="font-family: Poppins;">
-        <a href=" {{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}"
+        <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}"
           class="text-gray-800 hover:text-blue-700">{{$post->title}}</a>
       </h2>
 

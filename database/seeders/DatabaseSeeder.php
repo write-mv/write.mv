@@ -42,11 +42,11 @@ class DatabaseSeeder extends Seeder
         ]); */
         $faker = \Faker\Factory::create();
 
-        foreach(range(1,1000) as $range)
+        foreach(range(1,5000) as $range)
         {
             View::create([
-                "viewable_type" => "App\Models\Blog",
-                "viewable_id" => 1,
+                "viewable_type" => "App\Models\Post",
+                "viewable_id" => 9,
                 "visitor" => $faker->uuid,
                 "viewed_at" => $faker->dateTimeBetween("-1 months")
             ]);

@@ -1,5 +1,5 @@
 <fieldset x-data="radioGroup()" wire:ignore>
-    <label for="blog_style" class="block text-sm font-medium text-gray-700">
+    <label for="blog_style" class="block text-sm font-medium text-gray-700 poppins mb-2">
         Blog Style
     </label>
 
@@ -16,7 +16,7 @@
             <label for="settings-option-0" class="ml-3 flex flex-col cursor-pointer">
                 <img class="mx-auto h-12 w-auto" src="/icons/list.svg">
                 <span :class="{ 'text-blue-900': active === 0, 'text-gray-900': !(active === 0) }"
-                    class="block text-sm font-medium text-gray-900">
+                    class="block text-sm font-medium text-gray-900 poppins mt-1">
                     List View
                 </span>
 
@@ -35,7 +35,7 @@
             
                 <img class="mx-auto h-12 w-auto" src="/icons/grid.svg">
                 <span :class="{ 'text-blue-900': active === 1, 'text-gray-900': !(active === 1) }"
-                    class="block text-sm font-medium text-gray-900">
+                    class="block text-sm font-medium text-gray-900 poppins mt-1">
                    
                     Grid View
                 </span>

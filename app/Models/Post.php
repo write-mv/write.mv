@@ -10,6 +10,9 @@ use App\Traits\BelongsToTeam;
 use nadar\quill\Lexer;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
+use DB;
 
 class Post extends Model implements Viewable
 {
@@ -70,6 +73,12 @@ class Post extends Model implements Viewable
         }
 
         return call_user_func(array(self::class, $this->filters[$filter]));
+    }
+
+    public function getRenderedHtmlContent()
+    {
+        $lexer = new Lexer($this->content);
+        return $lexer->render();
     }
 
     /*
@@ -146,5 +155,54 @@ class Post extends Model implements Viewable
     public function scopeAfterPublishDate($query, $date)
     {
         return $query->where('published_date', '>', $date);
+    }
+
+     /**
+     * Calculation for graph viewsPerMonthDays
+     *
+     * @return void
+     */
+    public function viewsPerMonthDays()
+    {
+        return $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get(array(
+                DB::raw('Date(viewed_at) as date'),
+                DB::raw('COUNT(*) as "views"')
+            ));
+    }
+
+    /**
+     * Calculation for graph uniqueVisitorsPerMonthDays
+     *
+     * @return void
+     */
+    public function uniqueVisitorsPerMonthDays()
+    {
+        return $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
+            ->groupBy('date')
+            ->orderBy('date', 'DESC')
+            ->get(array(
+                DB::raw('Date(viewed_at) as date'),
+                DB::raw('COUNT(DISTINCT(visitor)) as "visits"')
+            ));
+    }
+
+    public function featuredImageUrl()
+    {
+        return $this->featured_image
+            ? Storage::disk('public')->url($this->featured_image)
+            : "";
+    }
+
+    public function isScheduled()
+    {
+        return $this->published_date->greaterThan(now());
+    }
+
+    public function isDrafted()
+    {
+        return $this->published == true ? false : true;
     }
 }

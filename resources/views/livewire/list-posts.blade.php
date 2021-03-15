@@ -1,181 +1,142 @@
 <div>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Posts') }}
-        </h2>
-    </x-slot>
+    <main class="max-w-screen-lg mx-auto py-16 px-4 sm:px-6">
+        <div class="space-y-8">
+            <div>
 
+                <div class="relative mt-2">
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            <div class="mb-3">
-                <div>
-                    <div class="border-b border-gray-200">
-                        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                            <a wire:click.prevent="switchFilter('all')"
-                                class="cursor-pointer {{ $filter == 'all' ? 'tab-active' : 'tab' }}">
-
-                                <span>All ({{$all_post_count}})</span>
-                            </a>
-                            <a wire:click.prevent="switchFilter('published')"
-                                class="cursor-pointer {{ $filter == 'published' ? 'tab-active' : 'tab' }}">
-
-                                <span>Published ({{$published_post_count}})</span>
-                            </a>
-
-                            <a wire:click.prevent="switchFilter('draft')"
-                                class="cursor-pointer {{ $filter == 'draft' ? 'tab-active' : 'tab' }}"
-                                aria-current="page">
-
-                                <span>Drafts ({{$draft_post_count}})</span>
-                            </a>
-
-                            <a wire:click.prevent="switchFilter('scheduled')"
-                                class="cursor-pointer {{ $filter == 'scheduled' ? 'tab-active' : 'tab' }}">
-
-                                <span>Scheduled ({{$scheduled_post_count}})</span>
-                            </a>
-
-                        </nav>
+                    <div class="mt-2 flex items-center justify-between">
+                        <h1 class="font-bold text-2xl leading-10 poppins">
+                            Your Publications
+                        </h1>
+                        
+                        <a href="{{route('posts.new')}}"
+                            class="inline-flex items-center justify-center border border-transparent rounded-md py-2 px-5 text-sm font-base text-white focus:ring-2 focus:ring-offset-2 focus:outline-none transition ease-in-out duration-150 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 focus:ring-blue-500 poppins">
+                            <x-heroicon-o-plus class="inline-block w-5 h-5" />
+                            Write a post
+                        </a>
                     </div>
+                    
                 </div>
-            </div>
+                
+                <div class="relative text-gray-600 mt-2">
+                    <input type="search" wire:model="search" name="search" placeholder="Search..." class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none border-none">
+                </div>
 
-            <div class="">
-                <div class="xl:col-span-3">
-                    <div class="flex justify-between mb-4 items-center">
-                        <div class="pr-2 w-24">
-                            <select wire:model.lazy="perPage" id="perPage"
-                                class="max-w-lg border-none w-full shadow-sm sm:max-w-xs sm:text-sm rounded-md">
-                                <option>8</option>
-                                <option>10</option>
-                                <option>15</option>
-                            </select>
-                        </div>
-
-
-
-                        <div class="w-full">
-                            <x-text-input class="fontfam-regular" wire:model="search" placeholder="Search Posts..." />
-                        </div>
-
-                        <div class="ml-5">
-                            <a href="{{route('posts.new')}}"
-                                class="flex items-center ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                <x-heroicon-o-plus class="inline-block w-5 h-5" />
-                                New
-                            </a>
-
-
-                        </div>
-
-                    </div>
-
-                    <div class="flex flex-col">
-                        <div class="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                            <div class="align-middle inline-block min-w-full shadow-sm sm:rounded-lg">
-                                <table class="min-w-full">
-                                    <thead>
-                                        <tr>
-                                            <x-th label="Title" value="title" :canSort="true" :sortField="$sortField"
-                                                :sortAsc="$sortAsc" />
-                                            <x-th label="Slug" value="slug" :canSort="true" :sortField="$sortField"
-                                                :sortAsc="$sortAsc" />
-
-                                            <x-th label="Status" value="published" :canSort="true"
-                                                :sortField="$sortField" :sortAsc="$sortAsc" />
-
-
-                                            <x-th label="Publish Date" value="published_date" :canSort="true"
-                                                :sortField="$sortField" :sortAsc="$sortAsc" />
-                                            <th
-                                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white">
-                                        @forelse($posts as $post)
-                                        <tr wire:key="{{$post->id}}">
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div
-                                                    class="text-sm leading-5 text-gray-900 {{$post->is_english ? "" : "para-dhivehi"}}">
-                                                    {{$post->title}}</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">
-                                                    {{$post->slug}}
-                                                </div>
-
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                @if($post->published && $post->published_date->lessThanOrEqualTo(now()))
-                                                <x-badge label="published" color="green" />
-                                                @elseif($post->published == false &&
-                                                $post->published_date->lessThanOrEqualTo(now()))
-                                                <x-badge label="drafted" color="yellow" />
-                                                @elseif($post->published == true &&
-                                                $post->published_date->greaterThan(now()))
-                                                <x-badge label="scheduled" color="indigo" />
-                                                @else
-                                                <x-badge label="drafted" color="yellow" />
-                                                @endif
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">
-                                                    {{$post->published_date->format('M d, Y')}}
-                                                </div>
-
-                                            </td>
-                                            <td
-                                                class="px-6 py-4 text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <div class="flex items-center gap-2">
-                                                    <x-action-dropdown>
-                                                        <a href="{{route('posts.update', $post)}}"
-                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                                            role="menuitem">Edit post</a>
-                                                        <a href="#"
-                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                                            role="menuitem">Delete post</a>
-                                                        <a href="#"
-                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                                            role="menuitem">View stats</a>
-                                                    </x-action-dropdown>
-
-                                                </div>
-
-
-                                            </td>
-
-
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td class="flex justify-center">
-                                                <div class="flex justify-center items-center space-x-2">
-                                                    <x-heroicon-o-newspaper class="w-10 h-10 mr-1 text-gray-400" />
-                                                    <span class="font-medium py-8 text-gray-400 text-xl">No posts
-                                                        found...</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="mt-3">
-                                {{ $posts->links() }}
-                            </div>
-                        </div>
-                    </div>
+                <div class="mb-3 mt-2">
                     <div>
+                        <div class="border-b border-gray-200">
+                            <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                                <a wire:click.prevent="switchFilter('all')"
+                                    class="cursor-pointer poppins font-normal {{ $filter == 'all' ? 'tab-active' : 'tab' }}">
+
+                                    <span>All ({{$all_post_count}})</span>
+                                </a>
+                                <a wire:click.prevent="switchFilter('published')"
+                                    class="cursor-pointer poppins font-normal {{ $filter == 'published' ? 'tab-active' : 'tab' }}">
+
+                                    <span>Published ({{$published_post_count}})</span>
+                                </a>
+
+                                <a wire:click.prevent="switchFilter('draft')"
+                                    class="cursor-pointer poppins font-normal {{ $filter == 'draft' ? 'tab-active' : 'tab' }}"
+                                    aria-current="page">
+
+                                    <span>Drafts ({{$draft_post_count}})</span>
+                                </a>
+
+                                <a wire:click.prevent="switchFilter('scheduled')"
+                                    class="cursor-pointer poppins font-normal {{ $filter == 'scheduled' ? 'tab-active' : 'tab' }}">
+
+                                    <span>Scheduled ({{$scheduled_post_count}})</span>
+                                </a>
+
+                            </nav>
+                        </div>
                     </div>
                 </div>
+
+                <div class="mt-8 grid grid-cols-1 gap-3">
+                    @forelse($posts as $post)
+                    <article
+                        class="grid bg-white p-7 sm:p-4 rounded-lg lg:col-span-2 grid-cols-4">
+                        <div class="pt-5 self-center sm:pt-0 sm:pl-10 col-span-3">
+                            <h2 class="text-gray-700 capitalize text-xl font-bold {{$post->is_english ? "poppins" : "para-dhivehi"}}">{{$post->title}}</h2>
+
+                            @if($post->isScheduled())
+                            <span class="text-gray-500 text-sm poppins">Scheduled to post on {{$post->published_date->format('M d, Y H:i A')}}</span>
+                            @elseif($post->isDrafted())
+                            <span class="text-gray-500 text-sm poppins">Drafted {{$post->published_date->diffForHumans()}}</span>
+                            @else
+                            <span class="text-gray-500 text-sm poppins">Published on {{$post->published_date->format('M d, Y')}}</span>
+                            @endif
+                        </div>
+                        <div class="justify-self-end">
+                            <div class="flex items-center gap-2">
+                                <x-action-dropdown wire:key="dropdown-{{ $post->id }}">
+                                    <a href="{{route('posts.update', $post)}}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
+                                        role="menuitem">Edit post</a>
+                                    <a href="#"
+                                        wire:click="openDeleteModal({{$post->id}})"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
+                                        role="menuitem">Delete post</a>
+                                    <a href="{{route('stats.show',$post->id)}}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
+                                        role="menuitem">View stats</a>
+                                </x-action-dropdown>
+
+                            </div>
+
+
+                        </div>
+                    </article>
+
+                    @empty
+
+                    <div class="flex justify-start items-center">
+                        <x-heroicon-o-newspaper class="w-10 h-10 mr-1 text-gray-400" />
+                        <span class="font-medium py-8 text-gray-400 text-xl poppins">No posts found.</span>
+                    </div>
+
+                    @endforelse
+                </div>
+
+                @if($posts->total() > 0 && $posts->count() < $posts->total())
+                <div class="mt-2 ml-1 poppins">
+                <a class="cursor-pointer text-gray-700" wire:click="load">Load more</a>
+                </div>
+                @endif
             </div>
+
+
+        </div>
+
+    </main>
+
+        <x-modal.confirmation wire:model.defer="showConfirmModal">
+            <x-slot name="title">Delete post</x-slot>
+            <x-slot name="content">
+               
+        
+                    <div class="mt-2">
+                      <p class="text-sm text-gray-500">
+                        Are you sure you want to remove this post?
+                      </p>
+                    </div>
+        
+            </x-slot>
+        
+            <x-slot name="footer">
+                <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                    <button wire:click="destroy" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                      Delete
+                    </button>
+                    <button wire:click="$set('showConfirmModal', false)" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm">
+                      Cancel
+                    </button>
+                  </div>
+            </x-slot>
+        </x-modal.confirmation>
+</div>
+

@@ -113,7 +113,7 @@
         </div>
         <div class="hidden lg:block relative w-0 flex-1">
             <img class="absolute inset-0 h-full w-full object-cover"
-                src="https://images.unsplash.com/photo-1517495306984-f84210f9daa8?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fHNreXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80"
                 alt="">
         </div>
     </div>

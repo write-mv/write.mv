@@ -8,22 +8,27 @@
 ## stuff before launch
 
 - [ ] Secure Post preview
-- [ ] Update the notification message when the post is scheduled
-- [ ] Update published date to scheduled to post at {date} when post is scheduled
+- [x] Update published date to scheduled to post at {date} when post is scheduled
+- [x] Updated drafts
+- [x] Load more pagination for the publications
 - [x] Update dashboard font
 - [ ] Optimize Database queries
-- [ ] Fix editor bugs
+- [x] Fix editor bugs
 - [x] Tabs for posts (published,drafted,trashed)
 - [x] Show counts on posts tab
 - [x] Select theme grid or row
-- [ ] Post featured image and caption create - working on it
-- [ ] Fix navigation for mobile and UI card to mobile friendly
+- [x] Post featured image and caption create - working on it
+- [x] Fix navigation for mobile
+- [ ] UI card to mobile friendly
 - [ ] Configure meta tags for all pages
 - [x] Ability to Remove Posts with confirm modal
-- [ ] Blog and Post insights
+- [x] Blog and Post insights
 - [ ] Check if everything is properly validated
 - [x] User Account update
 - [x] Add loading indicators for save buttons
 - [x] Update Registeration Page
 - [x] Update login page
+- [x] Meta information update of post in post create and edit
+- [x] Ability to remove a featured image
+- [ ] Commentable
 

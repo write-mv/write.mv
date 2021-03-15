@@ -20,6 +20,7 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.4",
+        "mtownsend/read-time": "^2.0",
         "nadar/quill-delta-parser": "^2.6"
     },
     "require-dev": {

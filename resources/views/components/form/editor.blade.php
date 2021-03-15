@@ -1,8 +1,3 @@
-@props([
-'model' => '',
-'value' => null
-])
-
 <div class="mt-2 bg-white" wire:ignore>
   <div id="toolbar-container">
     <span class="ql-formats">
@@ -52,10 +47,8 @@
       x-ref="quillEditor"
       x-init="
       Font = Quill.import('formats/font');
-
       Font.whitelist = ['faseyha', 'waheed', 'aammu','typer', 'opensans','roboto'];
       Quill.register(Font, true);
-
         quill = new Quill($refs.quillEditor, {
           theme: 'snow',
           modules: {
@@ -63,14 +56,12 @@
             toolbar: '#toolbar-container'
           },
         });
-        @if($value)
-       quill.setContents({{$value}});
-       @endif
+       quill.setContents(@this.get('{{$attributes['wire:model']}}'));
         quill.on('text-change', function () {
           $dispatch('quill-input', quill.getContents());
         });
       "
-      x-on:quill-input.debounce.2000ms="@this.set('{{$model}}', $event.detail)"
+      x-on:quill-input.debounce.2000ms="@this.set('{{$attributes['wire:model']}}', $event.detail)"
     >
     </div>
   </div>

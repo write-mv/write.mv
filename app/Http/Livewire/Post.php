@@ -6,53 +6,56 @@ use App\Models\Post as PostModel;
 use Illuminate\Support\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Component
 {
+    use WithFileUploads;
+
     public PostModel $post;
-
+    public $upload;
     public $label = "Create Post";
-
     public $editing = false;
-
-    public $title;
-    public $excerpt;
-    public $slug;
-    public $content;
-    public $published_date;
-    public $published = true;
-    public $is_english = false;
-    public $show_author = true;
-    public $display_name;
+    public $showMetaModal = false;
 
     protected $rules = [
-        'title' => 'required',
-        'slug' => 'required',
-        'content' => 'required',
-        'published_date' => 'required',
-        'published' => 'required',
-        'is_english' => 'required',
-        'show_author' => 'required',
-        'display_name' => 'required'
+        'post.title' => 'required',
+        'post.slug' => 'required',
+        'post.content' => 'required',
+        'post.excerpt' => 'nullable|string',
+        'post.published_date' => 'required',
+        'post.published' => 'required',
+        'post.is_english' => 'required',
+        'post.show_author' => 'required',
+        'post.display_name' => 'required',
+        'post.featured_image' => 'nullable',
+        'post.featured_image_caption' => 'nullable|string',
+        'post.meta.title' => 'nullable',
+        'post.meta.description' => 'nullable',
+        'upload' => 'nullable|image|max:1000'
+
     ];
 
     public function mount(PostModel $post)
     {
-        if (empty($post->toArray())) {
-            $this->published_date = Carbon::now();
-            $this->display_name = auth()->user()->name;
-        } else {
-            $this->label = "Update post";
+        if ($post->getKey()) {
+            $this->label = "Edit Post";
             $this->editing = true;
-            $this->title = $post->title;
-            $this->excerpt = $post->excerpt;
-            $this->slug = $post->slug;
-            $this->content = $post->content;
-            $this->published_date = $post->published_date;
-            $this->published = $post->published;
-            $this->is_english = $post->is_english;
-            $this->show_author = $post->show_author;
-            $this->display_name = $post->display_name;
+            $this->post = $post;
+        } else {
+            $this->post = $this->makeBlankPost();
+        }
+    }
+
+    public function removeFeaturedImage($image)
+    {
+        if ($image) {
+            //Delete the already attached image
+            if (Storage::disk('public')->exists($image)) {
+                Storage::disk('public')->delete($image);
+            }
+            $this->post->featured_image = null;
         }
     }
 
@@ -60,43 +63,38 @@ class Post extends Component
     {
         $this->validate();
 
-        $blog = auth()->user()->team->blogs()->first();
+        $this->post->user_id = auth()->user()->id;
+        $this->post->blog_id = auth()->user()->team->blogs()->first()->id;
 
-        if(!$this->editing) {
-            $post = auth()->user()->posts()->create([
-                "title" => $this->title,
-                "slug" => Str::slug($this->slug),
-                "excerpt" => $this->excerpt,
-                "is_english" => $this->is_english,
-                "show_author" => $this->show_author,
-                "display_name" => $this->display_name,
-                "published" => $this->published,
-                "published_date" => $this->published_date,
-                "content" => $this->content,
-                "blog_id" => $blog->id
-            ]);
-            session()->flash('notification', 'Post Created.');
+        $this->post->save();
 
-            return redirect()->route('posts.update', $post);
-        }else {
 
-        $this->post->update([
-            "title" => $this->title,
-            "slug" => Str::slug($this->slug),
-            "excerpt" => $this->excerpt,
-            "is_english" => $this->is_english,
-            "show_author" => $this->show_author,
-            "display_name" => $this->display_name,
-            "published" => $this->published,
-            "published_date" => $this->published_date,
-            "content" => $this->content,
-            "blog_id" => $blog->id
+        $this->upload && $this->post->update([
+            'featured_image' => $this->upload->store('featured_images', 'public'),
         ]);
 
-        session()->flash('notification', 'Post Updated.');
-        return redirect()->route('posts.update', $this->post);
+        if ($this->editing) {
+            session()->flash('notification', 'Post Updated.');
+        } else {
+            session()->flash('notification', 'Post Created.');
         }
+
+
+
+        return redirect()->route('posts.update', $this->post);
     }
+
+    public function makeBlankPost()
+    {
+        return PostModel::make([
+            'published_date' => Carbon::now(),
+            'display_name' => auth()->user()->name,
+            'published' => true,
+            'is_english' => false,
+            'show_author' => true
+        ]);
+    }
+
 
     public function render()
     {
