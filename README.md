@@ -32,5 +32,6 @@
 - [x] Update login page
 - [x] Meta information update of post in post create and edit
 - [x] Ability to remove a featured image
+- [x] Fix whole blog insight
 - [ ] Commentable
 

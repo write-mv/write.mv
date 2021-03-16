@@ -57,7 +57,7 @@ class Insights extends Component
             "monthly_visitors" => $stats["visitors_this_month"],
             "views_increased" => $stats["views_increased"],
             "visitors_increased" => $stats["visitors_increased"],
-            "top_10_posts" => $blog->posts()->live()->withCount('views')->orderByViews('desc')->limit(10)->get(),
+            "top_10_posts" => $blog->posts()->live()->withCount('views')->with('blog')->orderByViews('desc')->limit(10)->get(),
             'chart' => $chart
         ]);
     }

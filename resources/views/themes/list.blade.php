@@ -8,9 +8,18 @@
     @foreach ($posts as $post)
     <div>
       @if($post->featured_image)
+
+      @if($post->is_english)
       <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}">
-        <img class="object-cover lg:w-1/2 lg:h-1/2 mb-5 bg-center rounded" src="{{ $post->featuredImageUrl() }}" alt="Featured Image">
+        <img class="object-cover lg:w-1/2 lg:h-1/2 mb-5 bg-center rounded" src="{{ $post->featuredImageUrl() }}"
+          alt="Featured Image">
       </a>
+      @else
+      <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}" class="flex justify-end">
+        <img class="object-cover lg:w-1/2 lg:h-1/2 mb-5 bg-center rounded" src="{{ $post->featuredImageUrl() }}"
+          alt="Featured Image">
+      </a>
+      @endif
       @endif
       @if($post->is_english)
       <p class="pt-12 mb-3 text-sm font-normal text-gray-500">{{$post->published_date->format('F d, Y')}}</p>
@@ -41,13 +50,13 @@
 
       @if($post->is_english)
       <div class="mt-3">
-        <a href="#" class="text-base font-semibold text-blue-600 hover:text-blue-500">
+        <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}" class="text-base font-semibold text-blue-600 hover:text-blue-500">
           Read more
         </a>
       </div>
       @else
       <div class="mt-3 flex justify-end mr-2">
-        <a href="#" class="text-base font-semibold text-blue-600 hover:text-blue-500 text-right faseyha"
+        <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}" class="text-base font-semibold text-blue-600 hover:text-blue-500 text-right faseyha"
           style="direction: rtl;">
           އިތުރަށް ކިޔާލާ
         </a>
