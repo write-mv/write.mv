@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use App\Http\Livewire\Account;
@@ -25,12 +26,10 @@ use App\Http\Livewire\ViewStats;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.welcome');
 });
 
-Route::get('/explore', function () {
-    return view('coming-soon');
-});
+Route::get('/explore', ExploreController::class)->name('explore');
 
 Route::get('/screencasts', function () {
     return view('coming-soon');

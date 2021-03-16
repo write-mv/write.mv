@@ -20,10 +20,12 @@
 - [x] Post featured image and caption create - working on it
 - [x] Fix navigation for mobile
 - [ ] UI card to mobile friendly
-- [ ] Configure meta tags for all pages
+- [x] Configure meta tags for all pages
 - [x] Ability to Remove Posts with confirm modal
 - [x] Blog and Post insights
 - [ ] Check if everything is properly validated
+- [x] Explore Page design
+- [ ] Pagination for Explore Page
 - [x] User Account update
 - [x] Add loading indicators for save buttons
 - [x] Update Registeration Page
