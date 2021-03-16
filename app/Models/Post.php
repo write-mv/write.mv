@@ -17,7 +17,7 @@ use DB;
 
 class Post extends Model implements Viewable
 {
-    use HasFactory, BelongsToTeam,InteractsWithViews;
+    use HasFactory, BelongsToTeam, InteractsWithViews;
 
     protected $guarded = [];
 
@@ -46,7 +46,7 @@ class Post extends Model implements Viewable
     {
         $this->attributes['slug'] = Str::slug($value);
     }
-    
+
     /**
      * Record the view to a post
      *
@@ -56,7 +56,7 @@ class Post extends Model implements Viewable
     {
         views($this)->record();
     }
-    
+
     public function blog()
     {
         return $this->belongsTo(Blog::class);
@@ -72,17 +72,17 @@ class Post extends Model implements Viewable
         return $this->belongsTo(Team::class);
     }
 
-    
+
     public function scopeSearch($query, $search)
     {
         return empty($search) ? $query
-            : $query->where('title', 'like', '%'.$search.'%')
-                ->orwhere('slug', 'like' , '%'.$search.'%');
+            : $query->where('title', 'like', '%' . $search . '%')
+            ->orwhere('slug', 'like', '%' . $search . '%');
     }
 
     public function scopePostTabFilter($query, $filter)
     {
-        if(is_null($this->filters[$filter])){
+        if (is_null($this->filters[$filter])) {
             return;
         }
 
@@ -171,7 +171,7 @@ class Post extends Model implements Viewable
         return $query->where('published_date', '>', $date);
     }
 
-     /**
+    /**
      * Calculation for graph viewsPerMonthDays
      *
      * @return void
@@ -236,6 +236,6 @@ class Post extends Model implements Viewable
 
     public function isPublished()
     {
-        return $this->published == true && $this->published_date->lessThanOrEqualTo(now()) ? true : false;  
+        return $this->published == true && $this->published_date->lessThanOrEqualTo(now()) ? true : false;
     }
 }

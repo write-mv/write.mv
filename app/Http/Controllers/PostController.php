@@ -18,7 +18,7 @@ class PostController extends Controller
 
        $blog->RecordView();
 
-        $posts = $blog->posts()->live()->latest('published_date')->simplePaginate(8);
+        $posts = $blog->posts()->withoutGlobalScopes()->live()->latest('published_date')->simplePaginate(8);
 
         return view('posts.index', [
             'blog' => $blog,
@@ -34,7 +34,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        $post = $blog->posts()->live()->where('slug', $post)->first();
+        $post = $blog->posts()->withoutGlobalScopes()->live()->where('slug', $post)->first();
 
         if (!$post) {
             abort(404);

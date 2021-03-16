@@ -76,8 +76,8 @@ class ListPosts extends Component
 
     public function render()
     {
-        $query = Post::PostTabFilter($this->filter)->search($this->search)
-            ->latest();
+        $query = Post::PostTabFilter($this->filter)->with('blog')->search($this->search)
+            ->latest('published_date');
 
 
         return view('livewire.list-posts', [

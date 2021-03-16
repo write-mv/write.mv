@@ -34,8 +34,9 @@ class PostFactory extends Factory
             "blog_id" => Blog::factory(),
             "user_id" => User::factory(),
             "team_id" => Team::factory(),
+            "is_english" => true,
             "published" => false,
-            "publish_date" => $this->faker->dateTime()
+            "published_date" => $this->faker->dateTime()
         ];
     }
 }
