@@ -39,13 +39,20 @@ class Blog extends Model implements Viewable
      */
     public function viewsPerMonthDays()
     {
-        return $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
+        $chartData = [];
+
+        $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
             ->groupBy('date')
             ->orderBy('date', 'ASC')
             ->get(array(
-                DB::raw('Date(viewed_at) as date'),
+                DB::raw('DATE(viewed_at) as date'),
                 DB::raw('COUNT(*) as "views"')
-            ));
+            ))->each(function ($item, $key) use (&$chartData) {
+
+                $chartData[] = ["date" => date("M jS", strtotime($item->date)), "views" => $item->views];
+            });
+
+        return collect($chartData);
     }
 
     /**
@@ -55,12 +62,19 @@ class Blog extends Model implements Viewable
      */
     public function uniqueVisitorsPerMonthDays()
     {
-        return $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
+        $chartData = [];
+
+        $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
             ->groupBy('date')
-            ->orderBy('date', 'DESC')
+            ->orderBy('date', 'ASC')
             ->get(array(
-                DB::raw('Date(viewed_at) as date'),
+                DB::raw('DATE(viewed_at) as date'),
                 DB::raw('COUNT(DISTINCT(visitor)) as "visits"')
-            ));
+            ))->each(function ($item, $key) use (&$chartData) {
+
+                $chartData[] = ["date" => date("M jS", strtotime($item->date)), "visits" => $item->visits];
+            });
+
+        return collect($chartData);
     }
 }

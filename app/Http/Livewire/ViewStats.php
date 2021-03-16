@@ -47,11 +47,16 @@ class ViewStats extends Component
             ];
         });
 
+       
+        $viewsPerMonthDays = $this->post->viewsPerMonthDays();
         $chart = LarapexChart::areaChart()
-        ->addData('views', $this->post->viewsPerMonthDays()->pluck("views")->toArray())
-        ->addData('unique visitors',  $this->post->uniqueVisitorsPerMonthDays()->pluck("visits")->toArray())
-        ->setXAxis($this->generateDateFor(Carbon::now()->subMonth()))
-        ->setGrid();
+            ->addData('views', $viewsPerMonthDays->pluck("views")->toArray())
+            ->addData('unique visitors', $this->post->uniqueVisitorsPerMonthDays()->pluck("visits")->toArray())
+            ->setXAxis( $viewsPerMonthDays->pluck("date")->toArray())
+            ->setGrid();
+
+
+        
 
 
         return view('livewire.view-stats',[

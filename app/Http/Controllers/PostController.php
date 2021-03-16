@@ -40,6 +40,8 @@ class PostController extends Controller
             abort(404);
         }
 
+        $blog->RecordView();
+
         $post->RecordView();
 
 

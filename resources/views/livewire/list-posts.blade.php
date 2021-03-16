@@ -61,7 +61,8 @@
                     @forelse($posts as $post)
                     <article class="grid bg-white p-7 sm:p-4 rounded-lg lg:col-span-2 grid-cols-4">
                         <div class="pt-5 self-center sm:pt-0 sm:pl-10 col-span-3">
-                            <h2 class="text-gray-700 capitalize text-xl font-bold {{$post->is_english ? "poppins" : "para-dhivehi"}}">{{$post->title}}</h2>
+                            <h2 class="text-gray-700 capitalize text-xl font-bold {{$post->is_english ? "poppins" : "para-dhivehi"}}"
+                                {{!$post->is_english ? 'dir=rtl' : ""}}>{{$post->title}}</h2>
 
                             @if($post->isScheduled())
                             <span class="text-gray-500 text-sm poppins">Scheduled to post on
@@ -78,7 +79,7 @@
                             <div class="flex items-center gap-2">
                                 <x-action-dropdown wire:key="dropdown-{{ $post->id }}">
                                     @if($post->isPublished())
-                                    <a  wire:click="moveToDraft({{$post->id}})"
+                                    <a wire:click="moveToDraft({{$post->id}})"
                                         class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
                                         role="menuitem">Move to draft</a>
                                     @endif
@@ -97,6 +98,12 @@
                                     <a href="{{route('stats.show',$post->id)}}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
                                         role="menuitem">View stats</a>
+                                    @if($post->isPublished())
+                                    <a href="{{route('posts.show', ['name' => $post->blog->name ,'post' => $post->slug])}}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
+                                        role="menuitem">Visit post</a>
+
+                                    @endif
                                 </x-action-dropdown>
 
                             </div>

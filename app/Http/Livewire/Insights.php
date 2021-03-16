@@ -42,11 +42,11 @@ class Insights extends Component
             ];
         });
 
-
+        $viewsPerMonthDays = $blog->viewsPerMonthDays();
         $chart = LarapexChart::areaChart()
-            ->addData('views', $blog->viewsPerMonthDays()->pluck("views")->toArray())
+            ->addData('views', $viewsPerMonthDays->pluck("views")->toArray())
             ->addData('unique visitors', $blog->uniqueVisitorsPerMonthDays()->pluck("visits")->toArray())
-            ->setXAxis($this->generateDateFor(Carbon::now()->subMonth()))
+            ->setXAxis( $viewsPerMonthDays->pluck("date")->toArray())
             ->setGrid();
 
 

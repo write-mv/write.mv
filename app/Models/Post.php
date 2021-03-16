@@ -12,6 +12,7 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use DB;
 
 class Post extends Model implements Viewable
@@ -19,6 +20,8 @@ class Post extends Model implements Viewable
     use HasFactory, BelongsToTeam,InteractsWithViews;
 
     protected $guarded = [];
+
+    //protected $removeViewsOnDelete = true;
 
     protected $filters = [
         "all" => null,
@@ -32,6 +35,17 @@ class Post extends Model implements Viewable
         "meta" => "array",
         "content" => "array"
     ];
+
+    /**
+     * Set the user's slug
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = Str::slug($value);
+    }
     
     /**
      * Record the view to a post
@@ -164,13 +178,20 @@ class Post extends Model implements Viewable
      */
     public function viewsPerMonthDays()
     {
-        return $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
+        $chartData = [];
+
+        $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
             ->groupBy('date')
             ->orderBy('date', 'ASC')
             ->get(array(
-                DB::raw('Date(viewed_at) as date'),
+                DB::raw('DATE(viewed_at) as date'),
                 DB::raw('COUNT(*) as "views"')
-            ));
+            ))->each(function ($item, $key) use (&$chartData) {
+
+                $chartData[] = ["date" => date("M jS", strtotime($item->date)), "views" => $item->views];
+            });
+
+        return collect($chartData);
     }
 
     /**
@@ -180,13 +201,20 @@ class Post extends Model implements Viewable
      */
     public function uniqueVisitorsPerMonthDays()
     {
-        return $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
+        $chartData = [];
+
+        $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
             ->groupBy('date')
-            ->orderBy('date', 'DESC')
+            ->orderBy('date', 'ASC')
             ->get(array(
-                DB::raw('Date(viewed_at) as date'),
+                DB::raw('DATE(viewed_at) as date'),
                 DB::raw('COUNT(DISTINCT(visitor)) as "visits"')
-            ));
+            ))->each(function ($item, $key) use (&$chartData) {
+
+                $chartData[] = ["date" => date("M jS", strtotime($item->date)), "visits" => $item->visits];
+            });
+
+        return collect($chartData);
     }
 
     public function featuredImageUrl()

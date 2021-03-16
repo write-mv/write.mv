@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Blog;
 use App\Models\Post;
 use App\Models\Team;
+use Carbon\Carbon;
 use CyrildeWit\EloquentViewable\View;
 use Illuminate\Database\Seeder;
 
@@ -42,13 +43,13 @@ class DatabaseSeeder extends Seeder
         ]); */
         $faker = \Faker\Factory::create();
 
-        foreach(range(1,5000) as $range)
+        foreach(range(1,100) as $range)
         {
             View::create([
-                "viewable_type" => "App\Models\Post",
-                "viewable_id" => 9,
-                "visitor" => $faker->uuid,
-                "viewed_at" => $faker->dateTimeBetween("-1 months")
+                "viewable_type" => "App\Models\Blog",
+                "viewable_id" => 1,
+                "visitor" => "Eyaet5fdAqZ233AFVn2Y4t24RVhox5RHiEI4swZ0S8GsOZsyhTYu0CxBxNcXc6BLLqvSxkST6sPfRSX4",
+                "viewed_at" => $faker->dateTimeBetween('-1 week')
             ]);
         }
         

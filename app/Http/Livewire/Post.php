@@ -8,6 +8,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class Post extends Component
 {
@@ -19,23 +20,10 @@ class Post extends Component
     public $editing = false;
     public $showMetaModal = false;
 
-    protected $rules = [
-        'post.title' => 'required',
-        'post.slug' => 'required',
-        'post.content' => 'required',
-        'post.excerpt' => 'nullable|string',
-        'post.published_date' => 'required',
-        'post.published' => 'required',
-        'post.is_english' => 'required',
-        'post.show_author' => 'required',
-        'post.display_name' => 'required',
-        'post.featured_image' => 'nullable',
-        'post.featured_image_caption' => 'nullable|string',
-        'post.meta.title' => 'nullable',
-        'post.meta.description' => 'nullable',
-        'upload' => 'nullable|image|max:1000'
-
+    protected $messages = [
+        'post.slug.unique' => 'You already have a post with that slug.'
     ];
+
 
     public function mount(PostModel $post)
     {
@@ -93,6 +81,29 @@ class Post extends Component
             'is_english' => false,
             'show_author' => true
         ]);
+    }
+
+    protected function rules()
+    {
+        return [
+            'post.title' => ['required', 'string'],
+            'post.slug' => ['required', 'string', Rule::unique('posts', 'slug')->where(function ($query) {
+                return $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->post->slug);
+            })],
+            'post.content' => 'required',
+            'post.excerpt' => 'nullable|string',
+            'post.published_date' => 'required',
+            'post.published' => 'required',
+            'post.is_english' => 'required',
+            'post.show_author' => 'required',
+            'post.display_name' => 'required',
+            'post.featured_image' => 'nullable',
+            'post.featured_image_caption' => 'nullable|string',
+            'post.meta.title' => 'nullable',
+            'post.meta.description' => 'nullable',
+            'upload' => 'nullable|image|max:1000'
+
+        ];
     }
 
 
