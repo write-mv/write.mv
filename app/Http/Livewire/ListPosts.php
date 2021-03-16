@@ -11,7 +11,7 @@ class ListPosts extends Component
 {
     use WithPagination;
 
-    public $perPage = 2;
+    public $perPage = 8;
     public $sortField = 'published_date';
     public $sortAsc = true;
     public $search = '';
@@ -47,6 +47,25 @@ class ListPosts extends Component
         Post::findOrFail($this->post_delete_id)->delete();
         $this->showConfirmModal = false;
         $this->notify('Post deleted.');
+    }
+
+    public function moveToDraft(Post $post)
+    {
+        $post->update([
+            "published" => false
+        ]);
+
+        $this->notify('Post drafted.');
+    }
+
+    public function publishNow(Post $post)
+    {
+        $post->update([
+            "published" => true,
+            "published_date" => now()
+        ]);
+
+        $this->notify('Post published.');
     }
 
     public function load()

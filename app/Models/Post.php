@@ -205,4 +205,9 @@ class Post extends Model implements Viewable
     {
         return $this->published == true ? false : true;
     }
+
+    public function isPublished()
+    {
+        return $this->published == true && $this->published_date->lessThanOrEqualTo(now()) ? true : false;  
+    }
 }
