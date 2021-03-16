@@ -35,8 +35,9 @@
           <!-- End card-->
          @endforeach
       
-
         </div>
+        {{$posts->links()}}
     </div>
+    
     </div>
 @endsection

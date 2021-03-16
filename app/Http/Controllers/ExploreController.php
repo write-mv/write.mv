@@ -20,7 +20,7 @@ class ExploreController extends Controller
             'blog' => function ($query) {
               return $query->withoutGlobalScope(TeamScope::class);
             }
-          ])->latest('published_date')->paginate(10);
+          ])->latest('published_date')->simplePaginate(16);
 
         return view('pages.explore', [
             "posts" => $posts
