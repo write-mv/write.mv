@@ -1,15 +1,9 @@
 @extends('pages.layout')
 
 @section('content')
-<main class="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24 ">
+<main class="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-12 xl:mt-12 ">
   <div>
     <div class="sm:text-center md:max-w-2xl md:mx-auto">
-      <a href="https://github.com/blade-ui-kit/blade-ui-kit"
-        class="inline-flex items-center px-3 pb-1 pt-1.5 rounded-full uppercase text-sm font-semibold leading-5 bg-blue-100 hover:bg-blue-200 text-blue-800"
-        style="font-family: Poppins;">
-        Pre-release out now
-      </a>
-
       <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg md:text-xl">
         <img class="inline-block h-28 md:h-32 lg:h-36 w-auto" src="/images/profile.svg" alt="" />
       </p>
@@ -24,7 +18,7 @@
       <div class="mt-10 flex sm:justify-center justify-start" style="font-family: Poppins;">
 
 
-        <a href="/contact" class="relative mt-5">
+        <a href="/register" class="relative mt-5">
           <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-gray-900 rounded"></span>
           <span
             class="relative inline-block w-full h-full px-8 py-3 text-base font-bold bg-white border-2 border-black rounded hover:bg-blue-600 xl:text-xl fold-bold hover:text-white">Get
