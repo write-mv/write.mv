@@ -89,7 +89,7 @@ class Post extends Component
             'post.title' => ['required', 'string'],
             'post.slug' => ['required', 'string', Rule::unique('posts', 'slug')->where(function ($query) {
                 return $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->post->slug);
-            })],
+            })->ignore($this->post->id, 'id')],
             'post.content' => 'required',
             'post.excerpt' => 'nullable|string',
             'post.published_date' => 'required',
