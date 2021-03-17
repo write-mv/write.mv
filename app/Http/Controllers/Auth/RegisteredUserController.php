@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use App\Models\Team;
+use App\Rules\CheckIfBlockedNameIsUsed;
 use Illuminate\Support\Facades\Validator;
 
 class RegisteredUserController extends Controller
@@ -45,7 +46,7 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
-            'blog_name' => ['required', 'string', Rule::unique('blogs', 'name')]
+            'blog_name' => ['required', 'string','min:4',  new CheckIfBlockedNameIsUsed(),Rule::unique('blogs', 'name')]
         ])->validate();
 
         $team = Team::create([
