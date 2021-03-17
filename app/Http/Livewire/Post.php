@@ -96,11 +96,11 @@ class Post extends Component
             'post.published' => 'required',
             'post.is_english' => 'required',
             'post.show_author' => 'required',
-            'post.display_name' => 'required',
+            'post.display_name' => 'required|string',
             'post.featured_image' => 'nullable',
             'post.featured_image_caption' => 'nullable|string',
-            'post.meta.title' => 'nullable',
-            'post.meta.description' => 'nullable',
+            'post.meta.title' => 'nullable|string',
+            'post.meta.description' => 'nullable|string',
             'upload' => 'nullable|image|max:1000'
 
         ];
