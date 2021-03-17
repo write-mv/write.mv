@@ -19,7 +19,8 @@ return [
        "signup",
        "register",
        "features",
-       "team"
+       "team",
+       "teams"
    ]
 
 ];
