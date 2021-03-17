@@ -9,9 +9,7 @@
       </p>
 
       <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg md:text-xl" style="font-family: Poppins;">
-        <a class="font-semibold hover:underline" href="https://write.mv"><mark>Write.mv</mark></a> is platform built
-        to write,
-        share and spread your words. Primarily optimized for Dhivehi
+        <a class="font-semibold hover:underline" href="https://write.mv"><mark>Write.mv</mark></a> is a platform to write,share and spread your words online. Primarily optimized for Dhivehi
       </p>
 
 
@@ -49,7 +47,7 @@
         crafted a clean and modern UI that is both good looking and easy to the eye.
       </p>
     </div>
-    <div class="py-8">
+    <div class="py-24">
       <img src="/images/home/ui-dashboard.PNG" class="w-full h-full rounded-lg shadow-lg" />
 
     </div>
@@ -64,7 +62,7 @@
         your stories,journals,blogs or anything you want.
       </p>
     </div>
-    <div class="py-8">
+    <div class="py-24">
       <img src="/images/home/writing-en.PNG" class="w-full h-full rounded-lg shadow-lg" />
     </div>
   </div>
@@ -78,7 +76,7 @@
         Want to write in dhivehi? Oh boy we have dhivehi writing support as well.
       </p>
     </div>
-    <div class="py-8">
+    <div class="py-24">
       <img src="/images/home/writing.PNG" class="w-full h-full rounded-lg shadow-lg" />
     </div>
   </div>
@@ -92,7 +90,7 @@
         Get a great insight into your writings and measure the views & unique visitors foreach of your writings..
       </p>
     </div>
-    <div class="py-8">
+    <div class="py-24">
       <img src="/images/home/insights-post.PNG" class="w-full h-full rounded-lg shadow-lg" />
     </div>
   </div>
@@ -106,7 +104,7 @@
         Attach meta tags, descriptions to allow your content up to be discovered in as many ways as possible.
       </p>
     </div>
-    <div class="py-8">
+    <div class="py-24">
       <img src="/images/home/meta.PNG" class="w-full h-full rounded-lg shadow-lg" />
     </div>
   </div>
@@ -121,7 +119,7 @@
         friends.
       </p>
     </div>
-    <div class="py-8">
+    <div class="py-24">
       <img src="/images/home/place-on-the-web.PNG" class="w-full h-full rounded-lg shadow-lg" />
     </div>
   </div>
@@ -135,7 +133,7 @@
         Get Beautiful & easy to read rendered content for your readers.
       </p>
     </div>
-    <div class="py-8">
+    <div class="py-24">
       <img src="/images/home/rendered-content.PNG" class="w-full h-full rounded-lg shadow-lg" />
     </div>
   </div>
@@ -150,7 +148,7 @@
         exactly when you want it to
       </p>
     </div>
-    <div class="py-8">
+    <div class="py-24">
       <img src="/images/home/schedule.PNG" class="w-full h-full rounded-lg shadow-lg" />
     </div>
   </div>
@@ -166,7 +164,7 @@
         Connect with your readers and engage with their comments. This feature will be released soon.
       </p>
     </div>
-    <div class="py-8">
+    <div class="py-24">
       <img src="/images/home/comment.PNG" class="w-full h-full rounded-lg shadow-lg" />
     </div>
   </div>
