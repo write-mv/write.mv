@@ -4,6 +4,9 @@
 return [
 
    "blocked_names" => [
+       "home",
+       "pages",
+       "page",
        "test",
        "blog",
        "user",
