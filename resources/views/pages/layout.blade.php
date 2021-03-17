@@ -25,6 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;800&display=swap"
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <link href="/css/font.css" rel="stylesheet">
     <style>
         mark {
             background: linear-gradient(90deg, #097FFF .3%, #9DFCCE 102.11%);

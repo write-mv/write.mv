@@ -23,9 +23,15 @@
                 </h2>
             </div>
             <div class="-mt-6 relative">
+              @if($post->is_english)
               <p class="text-black text-xl 2xl:text-3xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2" style="font-family: Poppins;">
                 {{$post->title}}
             </p>
+          @else
+          <p class="text-black text-xl 2xl:text-3xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2 aammu" dir="rtl">
+            {{$post->title}}
+        </p>
+            @endif
               <br />
               <p class="text-black text-opacity-50 font-normal md:text-sm 2xl:text-2xl px-7 lg:px-9 mb-3 2xl:pb-8 2xl:mx-2" style="font-family: Poppins;">
                {{substr( $post->excerpt, 0, 150). " ... "}}
