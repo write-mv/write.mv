@@ -52,7 +52,7 @@
         quill = new Quill($refs.quillEditor, {
           theme: 'snow',
           modules: {
-            syntax: true,
+            syntax: false,
             toolbar: '#toolbar-container'
           },
         });
