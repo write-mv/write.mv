@@ -119,7 +119,7 @@
                         </div>
                     </div>
                     <div class="px-2 pt-2 pb-3">
-                        <a href="/home" style="font-family: Poppins;"
+                        <a href="/" style="font-family: Poppins;"
                             class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
                             role="menuitem">
                             Home
