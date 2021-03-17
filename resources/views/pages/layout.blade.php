@@ -40,7 +40,7 @@
         <nav class="relative max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-6">
             <div class="flex items-center flex-1">
                 <div class="flex items-center justify-between w-full md:w-auto">
-                    <a href="https://blade-ui-kit.com" aria-label="Home">
+                    <a href="https://write.mv" aria-label="Home">
                         <img class="h-8 w-auto sm:h-10" src="/images/logo.svg" alt="Logo" />
                     </a>
                     <div class="-mr-2 flex items-center md:hidden">
