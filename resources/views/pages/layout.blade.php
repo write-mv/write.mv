@@ -70,8 +70,11 @@
                     </a>
                 </div>
             </div>
+           
+                
+          
             <div class="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
-
+                @guest
 
                 <a href="/login" style="font-family: Poppins;"
                     class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
@@ -82,10 +85,14 @@
                     class="whitespace-nowrap bg-blue-100 border border-transparent rounded-lg py-2 px-4 inline-flex items-center justify-center text-sm font-medium text-blue-600 hover:bg-blue-200 transition ease-in-out duration-150">
                     Sign up
                 </a>
+                @endguest
 
-
-
-
+                @auth
+                <a href="/dashboard" style="font-family: Poppins;"
+                class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
+                Dashboard
+            </a>
+                @endauth
             </div>
         </nav>
 
@@ -131,7 +138,7 @@
                     <div class="bg-gray-50 text-center py-3">
                         <div class="flex items-center justify-center space-x-8 md:flex-1 lg:w-0">
 
-
+                            @guest
                             <a href="/login" style="font-family: Poppins;"
                                 class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
                                 Sign in
@@ -142,7 +149,15 @@
                                 Sign up
                             </a>
 
+                            @endguest
 
+                            @auth
+                            <a href="/dashboard" style="font-family: Poppins;"
+                            class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
+                            Dashboard
+                        </a>
+
+                            @endauth
 
 
                         </div>
