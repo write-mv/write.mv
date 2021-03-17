@@ -53,8 +53,7 @@
                                         <input type="text" wire:model.lazy="user.name" name="name" id="name"
                                             autocomplete="name"
                                             class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        @error('user.name')<p class="mt-2 text-sm text-red-600 poppins"
-                                            id="email-error">{{$message}}</p>@enderror
+                                        @error('user.name')<p class="mt-2 text-sm text-red-600 poppins" id="email-error">{{$message}}</p>@enderror
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-2">
@@ -63,8 +62,16 @@
                                         <input type="text" wire:model.lazy="user.email" name="email" id="email"
                                             autocomplete="email"
                                             class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        @error('user.email')<p class="mt-2 text-sm text-red-600 poppins"
-                                            id="email-error">{{$message}}</p>@enderror
+                                        @error('user.email')<p class="mt-2 text-sm text-red-600 poppins" id="email-error">{{$message}}</p>@enderror
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-2">
+                                        <label for="email"
+                                            class="block text-sm font-medium text-gray-700 poppins">Password</label>
+                                        <input type="password" wire:model.lazy="user.password" name="password" id="password"
+                                            autocomplete="password"
+                                            class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        @error('user.password')<p class="mt-2 text-sm text-red-600 poppins" id="email-error">{{$message}}</p>@enderror
                                     </div>
 
 

@@ -152,7 +152,7 @@
         <div class="flex flex-col py-3 w-auto overflow-y-auto overflow-hidden bg-gray-100">
             <div class="flex flex-col items-center">
                 @foreach ($top_10_posts as $post)
-                <div class="pt-4 ml-2 mr-2 rounded-lg w-2/3">
+                <div class="pt-4 ml-2 mr-2 rounded-lg lg:w-2/3">
                     <a href="{{route('posts.show', ['name' => $post->blog->name ,'post' => $post->slug])}}" class="block bg-white rounded-lg py-3 pb-4">
                         <div class="px-4 py-2 flex justify-between">
                             <span class="text-md font-semibold text-gray-700 {{$post->is_english ? "poppins" : "para-dhivehi"}}">{{$post->title}}</span>

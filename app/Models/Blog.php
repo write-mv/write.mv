@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use DB;
 
 class Blog extends Model implements Viewable

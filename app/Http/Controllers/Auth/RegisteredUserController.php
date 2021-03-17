@@ -11,7 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use App\Models\Team;
+use Illuminate\Support\Facades\Validator;
 
 class RegisteredUserController extends Controller
 {
@@ -35,12 +37,16 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $inputs = $request->only('name', 'email', 'password', 'blog_name', 'password_confirmation');
+
+        $inputs["blog_name"] = Str::slug($inputs["blog_name"]);
+
+        Validator::make($inputs, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
-            'blog_name' => 'required|string|max:255|unique:blogs,name'
-        ]);
+            'blog_name' => ['required', 'string', Rule::unique('blogs', 'name')]
+        ])->validate();
 
         $team = Team::create([
             "name" => $request->blog_name
@@ -49,7 +55,7 @@ class RegisteredUserController extends Controller
         Blog::create([
             "name" => Str::slug($request->blog_name),
             "site_title" => $request->name,
-            "url" => url("/". Str::slug($request->blog_name)),
+            "url" => url("/" . Str::slug($request->blog_name)),
             "team_id" => $team->id
         ]);
 

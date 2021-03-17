@@ -20,7 +20,7 @@
 - [x] Select theme grid or row
 - [x] Post featured image and caption create - working on it
 - [x] Fix navigation for mobile
-- [ ] UI card to mobile friendly
+- [x] UI card to mobile friendly
 - [x] Configure meta tags for all pages
 - [x] Ability to Remove Posts with confirm modal
 - [x] Blog and Post insights
