@@ -9,7 +9,7 @@
       </p>
 
       <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg md:text-xl" style="font-family: Poppins;">
-        <a class="font-semibold hover:underline" href="https://write.mv"><mark>Write.mv</mark></a> is a platform to write,share and spread your words online. Primarily optimized for Dhivehi
+        <a class="font-semibold hover:underline" href="https://write.mv"><mark>Write.mv</mark></a> is a dhivehi first platform to write,share and spread your words online.
       </p>
 
 
