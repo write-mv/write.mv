@@ -31,7 +31,9 @@
             <p class="mb-3 text-sm font-normal text-gray-500 faseyha text-right" dir="rtl">
                 @endif
                 <div class="mb-3 text-sm font-normal text-gray-500 flex justify-between items-center">
-                    <a href="#" class="font-medium text-gray-900 hover:text-purple-700">Praveen Juge</a>
+                    @if($post->show_author)
+                    <a class="font-medium text-gray-900 hover:text-purple-700">{{$post->display_name}}</a>
+                    @endif
                     @if($post->is_english)
                     <p class="text-sm font-normal text-gray-500">{{$post->published_date->format('F d, Y')}}</p>
                     @else
