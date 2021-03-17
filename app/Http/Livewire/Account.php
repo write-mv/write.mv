@@ -28,8 +28,7 @@ class Account extends Component
     {
         return [
             'user.name' => 'required',
-            'user.email' => 'required|unique:users,email,' . $this->user->id,
-            'user.password' => 'nullable|string|min:8'
+            'user.email' => 'required|unique:users,email,' . $this->user->id
         ];
     }
 
