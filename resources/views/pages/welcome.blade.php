@@ -156,10 +156,11 @@
 
   <div class="grid flex-col-reverse items-center grid-cols-1 md:grid-cols-2 gap-y-10 md:gap-y-32 gap-x-10 md:gap-x-24">
     <div>
+      <span class="inline-block mt-0 rounded-lg text-black bg-blue-300 px-2 ml-36 relative text-md">Coming soon</span>
       <h2
         class="mb-4 text-2xl font-extrabold tracking-tight text-center text-gray-800 md:leading-tight sm:text-left md:text-4xl">
         <mark>Engage</mark> with your readers.</h2>
-      <span class="inline-block mt-0 rounded-lg text-black bg-blue-300 px-2 relative text-md">Coming soon</span>
+  
       <p class="mb-5 text-base text-center text-gray-600 sm:text-left md:text-lg">
         Connect with your readers and engage with their comments. This feature will be released soon.
       </p>
