@@ -113,7 +113,7 @@
 
                   <div class="col-span-6 sm:col-span-2 mt-3">
                     <label for="location" class="block text-sm font-medium text-gray-700 poppins mb-2">Published Date</label>
-                   <x-form.date-picker wire:model.lazy="post.published_date" />
+                   <x-form.date-picker wire:model="post.published_date" />
                    @error('post.published_date') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                   </div>
 
@@ -177,7 +177,7 @@
               </div>
               <div class="col-span-6 sm:col-span-2 mt-3">
                 <label for="description" class="block text-sm font-medium text-gray-700 poppins">Description</label>
-                <textarea id="meta_description" name="meta_description" wire:model.lazy="post.meta.description" rows="5" class="mt-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-md rounded-md border-gray-300 {{$post->is_english ? "" : "para-dhivehi thaana-keyboard"}}"" {{$post->is_english ? "" : "dir=rtl"}}></textarea>
+                <textarea id="meta_description" name="meta_description" wire:model.lazy="post.meta.description" rows="5" class="mt-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-md rounded-md border-gray-300"></textarea>
                           @error('post.meta.description') <p class=" mt-2 text-sm text-red-600">{{$message}}</p>
                           @enderror
                         </div>

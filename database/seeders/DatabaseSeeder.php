@@ -43,13 +43,13 @@ class DatabaseSeeder extends Seeder
         ]); */
         $faker = \Faker\Factory::create();
 
-        foreach(range(1,100) as $range)
+        foreach(range(1,3000) as $range)
         {
             View::create([
-                "viewable_type" => "App\Models\Blog",
+                "viewable_type" => "App\Models\Post",
                 "viewable_id" => 1,
-                "visitor" => "Eyaet5fdAqZ233AFVn2Y4t24RVhox5RHiEI4swZ0S8GsOZsyhTYu0CxBxNcXc6BLLqvSxkST6sPfRSX4",
-                "viewed_at" => $faker->dateTimeBetween('-1 week')
+                "visitor" => "99be1bcc-f31f-3bd5-8b1c-49a3f656be19",
+                "viewed_at" => $faker->dateTimeBetween('-5 months')
             ]);
         }
         

@@ -35,6 +35,10 @@ Route::get('/screencasts', function () {
     return view('coming-soon');
 });
 
+Route::get('/about', function () {
+    return view('pages.about');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard', [
         'blog' => Blog::first(),
