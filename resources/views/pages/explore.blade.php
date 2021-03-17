@@ -19,7 +19,7 @@
           <a href="{{route('posts.show', ['name' => $post->blog->name ,'post' => $post->slug])}}" class="hover:bg-blue-200 hover:text:white border border-gray-600 lg:order-1 lg:row-span-1 2xl:row-span-1 lg:col-span-2 rounded-lg  mb-5 lg:mb-0">
             <div class="mx-6 my-8 mt-10">
               <h2 class="text-black text-opacity-50 text-md md:text-base 2xl:text-2xl 2xl:my-2 ml-1 sm:ml-5">
-                Published {{$post->published_date->format('F d, Y')}}@if($post->show_author)<div>, by {{$post->display_name}}</div>@endif
+                Published {{$post->published_date->format('F d, Y')}}@if($post->show_author)<div>by {{$post->display_name}}</div>@endif
                 </h2>
             </div>
             <div class="-mt-6 relative">
