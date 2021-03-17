@@ -113,7 +113,7 @@
     <div class="order-none md:order-2">
       <h2
         class="mb-4 text-2xl font-extrabold tracking-tight text-center text-gray-800 md:leading-tight sm:text-left md:text-4xl">
-        <mark>Place</mark> for you in web.</h2>
+        A <mark>home</mark> for you on the <mark>web</mark>.</h2>
       <p class="mb-5 text-base text-center text-gray-600 sm:text-left md:text-lg">
         All our user's get a beautiful blog page that lists all of the writings published. So you can share with your
         friends.
