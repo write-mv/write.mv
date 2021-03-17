@@ -26,7 +26,7 @@
 - [x] Blog and Post insights
 - [ ] Check if everything is properly validated
 - [x] Explore Page design
-- [ ] Pagination for Explore Page
+- [x] Pagination for Explore Page
 - [x] User Account update
 - [x] Add loading indicators for save buttons
 - [x] Update Registeration Page
