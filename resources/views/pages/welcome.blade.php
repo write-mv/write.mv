@@ -243,18 +243,6 @@
               </svg>
             </div>
             <div class="text-gray-600 text-lg">
-              <strong>Tags & Topics</strong>
-            </div>
-          </li>
-
-          <li class="flex mb-4">
-            <div class="flex-shrink-0 mr-4 w-6 h-6 rounded-full bg-green-200 flex items-center justify-center">
-              <svg class="stroke-current w-5 h-5 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-            <div class="text-gray-600 text-lg">
               <strong>Categories</strong>
             </div>
           </li>
