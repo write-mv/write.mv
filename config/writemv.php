@@ -21,7 +21,10 @@ return [
        "features",
        "team",
        "teams",
-       "forgot-password"
+       "forgot-password",
+       "whats-new",
+       "new",
+       "posts"
    ]
 
 ];
