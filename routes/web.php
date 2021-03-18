@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ChangeLogController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\WhatsNewController;
 use App\Http\Livewire\Account;
 use App\Http\Livewire\CustomizeBlog;
 use App\Http\Livewire\Insights;
@@ -38,6 +40,9 @@ Route::get('/screencasts', function () {
 Route::get('/about', function () {
     return view('pages.about');
 });
+
+
+Route::get('/change-log', ChangeLogController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard', [

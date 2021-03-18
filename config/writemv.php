@@ -24,7 +24,9 @@ return [
        "forgot-password",
        "whats-new",
        "new",
-       "posts"
+       "posts",
+       "changelog",
+       "change-log"
    ]
 
 ];
