@@ -26,7 +26,7 @@ class CheckIfBlockedNameIsUsed implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Arr::exists(config('writemv.blocked_names'), strtolower($value));
+        return in_array(strtolower($value), config('writemv.blocked_names'), TRUE) ? false : true;
     }
 
     /**
