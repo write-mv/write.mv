@@ -26,7 +26,9 @@ return [
        "new",
        "posts",
        "changelog",
-       "change-log"
+       "change-log",
+       "write.mv",
+       "writemv"
    ]
 
 ];
