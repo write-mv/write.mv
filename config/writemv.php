@@ -20,7 +20,8 @@ return [
        "register",
        "features",
        "team",
-       "teams"
+       "teams",
+       "forgot-password"
    ]
 
 ];
