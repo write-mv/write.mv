@@ -64,6 +64,10 @@
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                         About
                     </a>
+                    <a href="https://write.mv/writemv/" style="font-family: Poppins;"
+                    class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
+                    Our blog
+                </a>
                     <a href="/explore" style="font-family: Poppins;"
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                         Explore
@@ -129,6 +133,11 @@
                             role="menuitem">
                             About
                         </a>
+                        <a href="https://write.mv/writemv/" style="font-family: Poppins;"
+                        class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                        role="menuitem">
+                        Our blog
+                    </a>
                         <a href="/explore" style="font-family: Poppins;"
                             class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
                             role="menuitem">
