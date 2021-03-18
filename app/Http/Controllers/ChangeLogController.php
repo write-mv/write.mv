@@ -17,7 +17,7 @@ class ChangeLogController extends Controller
     public function __invoke(Request $request)
     {
        
-        $issues = Cache::remember("whats-new", 300, function (){
+        $issues = Cache::remember("change-log", 2000, function (){
             return Http::get("https://api.github.com/repos/baraveli/write.mv-issues-and-features/issues?state=closed")->json();
         });
         
