@@ -49,9 +49,9 @@
                     <div class="mt-1 flex rounded-md shadow-sm poppins font-normal">
                       <span
                         class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                        https://
+                        write.mv/
                       </span>
-                      <input type="text" value="{{$blog->url}}" name="url" id="url"
+                      <input type="text" value="{{$blog->name}}" name="url" id="url"
                         class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 text-gray-500"
                         disabled>
                     </div>
