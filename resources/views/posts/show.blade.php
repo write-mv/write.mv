@@ -3,7 +3,7 @@
 @section('meta')
 <meta name="title" content="{{$post->meta['title'] ?? ""}}">
 <meta name="description" content="{{$post->meta['description'] ?? ""}}">
-<meta property="og:url" content="https://write.mv">
+<meta property="og:url" content="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}">
 <meta property="og:type" content="website">
 <meta property="og:description" content="{{$post->meta['description'] ?? ""}}">
 <meta property="og:title" content="{{$post->meta['title'] ?? ""}} - Write.mv">
