@@ -4,16 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Blog;
+use Illuminate\Validation\Rule;
+use App\Rules\CheckIfBlockedNameIsUsed;
+use Illuminate\Support\Str;
 
 class CustomizeBlog extends Component
 {
     public Blog $blog;
-
-    protected $rules = [
-        "blog.site_title" => "required",
-        "blog.description" => "nullable",
-        "blog.is_grid" => "required"
-    ];
 
     public function mount(Blog $blog)
     {
@@ -25,8 +22,21 @@ class CustomizeBlog extends Component
         $this->validate();
 
         $this->blog->save();
+        $this->blog->update([
+            "url" => url("/" . Str::slug($this->blog->name))
+        ]);
         $this->notify('Blog information updated.');
 
+    }
+
+    protected function rules()
+    {
+        return [
+            "blog.site_title" => "required|string",
+            "blog.description" => "nullable|string",
+            "blog.is_grid" => "required",
+            "blog.name" => ['required', 'string','min:4',  new CheckIfBlockedNameIsUsed(),Rule::unique('blogs', 'name')->ignore($this->blog->id, 'id')]
+        ];
     }
 
     public function render()
