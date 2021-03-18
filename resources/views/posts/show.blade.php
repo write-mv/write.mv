@@ -24,11 +24,11 @@
   <div class="w-full mx-auto mb-12 text-center md:w-2/3">
 
     @if($post->is_english)
-    <h1 class="mb-3 text-4xl font-bold text-gray-900 md:leading-tight md:text-5xl" style="font-family: Poppins;">
+    <h1 class="mb-3 text-4xl font-bold text-gray-800 md:leading-tight md:text-5xl" style="font-family: Poppins;">
       {{$post->title}}
     </h1>
     @else
-    <h1 class="mb-3 text-4xl font-bold text-gray-900 md:leading-tight md:text-5xl aammu" dir="rtl">
+    <h1 class="mb-3 text-4xl font-bold text-gray-800 md:leading-tight md:text-5xl aammu" dir="rtl">
       {{$post->title}}
     </h1>
     @endif
