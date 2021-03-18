@@ -1,6 +1,8 @@
 @extends('layouts.default')
 
 @section('meta')
+<meta data-rh="true" property="al:android:app_name" content="Medium" />
+<meta property="article:published_time" content="{{$post->published_date}}"/>
 <meta name="title" content="{{$post->meta['title'] ?? ""}}">
 <meta name="description" content="{{$post->meta['description'] ?? ""}}">
 <meta property="og:url" content="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}">
