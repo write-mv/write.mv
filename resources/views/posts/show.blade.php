@@ -71,7 +71,7 @@
   </div>
   @else
 
-  <div class="mx-auto prose" style="font-family: faseyha;" dir="rtl">
+  <div class="mx-auto prose" style="font-family: typer;" dir="rtl">
     {!! $post->getRenderedHtmlContent() !!}
   </div>
   @endif

@@ -1,53 +1,70 @@
-<section class="container px-4 py-24 mx-auto">
-    <h2 class="mb-2 text-3xl font-extrabold leading-tight text-gray-900" style="font-family: Poppins;">
+<section class="container w-full px-4 py-24 mx-auto md:w-3/4 lg:w-2/4">
+    <div class="mb-12 text-center">
+      <h2 class="mb-2 text-3xl font-extrabold leading-tight text-gray-900" style="font-family: Poppins;">
         {{$blog->site_title}}</h2>
-    <p class="mb-20 text-md text-gray-500" style="font-family: Poppins;">{{$blog->description}}</p>
-    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-        @foreach ($posts as $post)
-        <div>
-            @if($post->featured_image)
-            <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}">
-                <img src="{{$post->featuredImageUrl()}}" class="object-cover md:w-1/2 md:h-1/2 mb-5 bg-center rounded" alt="{{$post->featured_image_caption}}"
-                    loading="lazy" />
-            </a>
-            @endif
-            @if($post->is_english)
-            <h2 class="mb-2 text-lg font-semibold text-gray-900" style="font-family: Poppins;">
-                <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}" class="text-gray-900 hover:text-purple-700">{{$post->title}}</a>
-            </h2>
+      <p class="text-lg text-gray-500" style="font-family: Poppins;">{{$blog->description}}</p>
+    </div>
+    <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-3 lg:grid-cols-3 m-5 mb-10">
+  
+      @foreach ($posts as $post)
+  
+      @if($post->is_english)
+ <!-- start Card -->
+ <a href="{{route('posts.show', ['name' => $post->blog->name ,'post' => $post->slug])}}"
+    class=" shadow-sm rounded-lg mb-5 lg:mb-0 hover:shadow-lg border border-gray-400" style="background-color:#F9F4F0;">
+    <div class="mx-6 my-8 mt-10">
+      <h2 class="text-black text-opacity-70 text-md 2xl:my-2 ml-1 sm:ml-5" style="font-family: Poppins;">
+        Published {{$post->published_date->format('F d, Y')}}@if($post->show_author)<div>by {{$post->display_name}}
+        </div>@endif
+      </h2>
+    </div>
+    <div class="-mt-6 relative">
 
-            @else
-            <h2 class="mb-2 text-lg font-semibold text-gray-900 faseyha text-right" dir="rtl">
-                <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}" class="text-gray-900 hover:text-purple-700">{{$post->title}}</a>
-            </h2>
+      <p class="text-black text-xl 2xl:text-3xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2" style="font-family: Poppins;">
+        {{$post->title}}
+      </p>
+      <br />
 
-            @endif
-
-            @if($post->is_english)
-            <p class="mb-3 text-sm font-normal text-gray-500 faseyha text-right" style="font-family: Poppins;">
-                {{$post->excerpt}}
-            </p>
-            @else
-            <p class="mb-3 text-sm font-normal text-gray-500 faseyha text-right" dir="rtl">
-                @endif
-                <div class="mb-3 text-sm font-normal text-gray-500 flex justify-between items-center">
-                    @if($post->show_author)
-                    <a class="font-medium text-gray-900 hover:text-purple-700">{{$post->display_name}}</a>
-                    @endif
-                    @if($post->is_english)
-                    <p class="text-sm font-normal text-gray-500">{{$post->published_date->format('F d, Y')}}</p>
-                    @else
-                    <p class="text-sm font-normal text-gray-500 text-right faseyha" style="direction: rtl;">
-                        {{$post->published_date->locale('dv')->isoFormat('Do MMMM YYYY')}}</p>
-                    @endif
-
-                </div>
-        </div>
-        @endforeach
+      <p class="text-black text-opacity-70 font-normal text-sm  px-7 lg:px-9 mb-3 2xl:pb-8 2xl:mx-2 leading-7" style="font-family: Poppins;">
+        {{substr( $post->excerpt, 0, 150). " ... "}}
+      </p>
 
     </div>
-    <div
-        class="flex flex-col items-center justify-center mt-20 space-x-0 space-y-2 md:space-x-2 md:space-y-0 md:flex-row">
+  </a>
+  <!-- End card-->
+      @else
+ <!-- start Card -->
+ <a href="{{route('posts.show', ['name' => $post->blog->name ,'post' => $post->slug])}}"
+    class=" shadow-sm rounded-lg mb-5 lg:mb-0 hover:shadow-lg border border-gray-400" style="background-color:#F9F4F0;">
+    <div class="mx-6 my-8 mt-10">
+      <h2 class="text-black text-opacity-70 text-md 2xl:my-2 ml-1 sm:ml-5 typer"  dir="rtl">
+        {{$post->published_date->locale('dv')->isoFormat('Do MMMM YYYY')}}
+      </h2>
+    </div>
+    <div class="-mt-6 relative">
+
+      <p class="text-black text-xl 2xl:text-3xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2 aammu" dir="rtl">
+        {{$post->title}}
+      </p>
+      <br />
+
+      <p class="text-black text-opacity-70 font-normal text-sm  px-7 lg:px-9 mb-3 2xl:pb-8 2xl:mx-2 typer leading-7"
+        dir="rtl">
+        {{ $post->excerpt}}
+      </p>
+
+    </div>
+  </a>
+  <!-- End card-->
+      @endif
+     
+  
+      @endforeach
+
+    </div>
+  
+  
+      <div class="mt-12">
         {{$posts->links()}}
-    </div>
-</section>
+      </div>
+  </section>

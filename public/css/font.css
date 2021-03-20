@@ -18,6 +18,11 @@
     src: url("/fonts/mvtyper.ttf");
   }
 
+  @font-face {
+    font-family: "typer-bold";
+    src: url("/fonts/mvtypebold.ttf");
+  }
+
 
   .waheed
   {
@@ -37,4 +42,9 @@
   .typer
   {
     font-family: typer;
+  }
+
+  .typer-bold
+  {
+    font-family: typer-bold;
   }
