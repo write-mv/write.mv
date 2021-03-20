@@ -10,7 +10,7 @@
   
       @if($post->is_english)
  <!-- start Card -->
- <a href="{{route('posts.show', ['name' => $post->blog->name ,'post' => $post->slug])}}"
+ <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}"
     class=" shadow-sm rounded-lg mb-5 lg:mb-0 hover:shadow-lg border border-gray-400" style="background-color:#F9F4F0;">
     <div class="mx-6 my-8 mt-10">
       <h2 class="text-black text-opacity-70 text-md 2xl:my-2 ml-1 sm:ml-5" style="font-family: Poppins;">
@@ -34,7 +34,7 @@
   <!-- End card-->
       @else
  <!-- start Card -->
- <a href="{{route('posts.show', ['name' => $post->blog->name ,'post' => $post->slug])}}"
+ <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}"
     class=" shadow-sm rounded-lg mb-5 lg:mb-0 hover:shadow-lg border border-gray-400" style="background-color:#F9F4F0;">
     <div class="mx-6 my-8 mt-10">
       <h2 class="text-black text-opacity-70 text-md 2xl:my-2 ml-1 sm:ml-5 typer"  dir="rtl">
