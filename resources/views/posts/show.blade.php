@@ -28,7 +28,7 @@
       {{$post->title}}
     </h1>
     @else
-    <h1 class="mb-3 text-4xl font-bold text-gray-800 md:leading-tight md:text-5xl aammu" dir="rtl">
+    <h1 class="mb-3 text-3xl text-gray-800 md:leading-tight md:text-5xl aammu" dir="rtl">
       {{$post->title}}
     </h1>
     @endif
