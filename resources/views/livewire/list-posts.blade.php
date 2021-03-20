@@ -67,8 +67,8 @@
                             <span class="text-gray-500 text-sm poppins">Scheduled to post on
                                 {{$post->published_date->format('M d, Y H:i A')}}</span>
                             @elseif($post->isDrafted())
-                            <span class="text-gray-500 text-sm poppins">Drafted
-                                {{$post->published_date->diffForHumans()}}</span>
+                            <span class="text-gray-500 text-sm poppins">Written
+                                {{$post->created_at->diffForHumans()}}</span>
                             @else
                             <span class="text-gray-500 text-sm poppins">Published on
                                 {{$post->published_date->format('M d, Y')}}</span>
