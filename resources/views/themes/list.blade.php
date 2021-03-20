@@ -45,7 +45,7 @@
       </div>
       <div class="-mt-6 relative">
 
-        <p class="text-black text-xl 2xl:text-3xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2 aammu" dir="rtl">
+        <p class="text-black text-xl 2xl:text-3xl font-bold px-7 lg:px-9 2xl:pt-6 2xl:mx-2 typer-bold" dir="rtl">
           {{$post->title}}
         </p>
         <br />
