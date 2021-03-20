@@ -61,8 +61,7 @@
                     @forelse($posts as $post)
                     <article class="grid bg-white p-7 sm:p-4 rounded-lg lg:col-span-2 grid-cols-4">
                         <div class="pt-5 self-center sm:pt-0 sm:pl-10 col-span-3">
-                            <h2 class="text-gray-700 capitalize text-xl font-bold {{$post->is_english ? "poppins" : "para-dhivehi"}}"
-                                {{!$post->is_english ? 'dir=rtl' : ""}}>{{$post->title}}</h2>
+                            <h2 class="text-gray-700 capitalize text-xl font-bold {{$post->is_english ? "poppins" : "para-dhivehi"}}">{{$post->title}}</h2>
 
                             @if($post->isScheduled())
                             <span class="text-gray-500 text-sm poppins">Scheduled to post on
