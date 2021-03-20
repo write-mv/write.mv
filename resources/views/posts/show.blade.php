@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="{{$post->featuredImageUrl() ?? ""}}">
 <meta name="twitter:description" content="{{$post->meta['description'] ?? ""}}">
 
-<title>{{$post->meta['title'] ?? ""}} - Write.mv</title>
+<title>{{$post->meta['title'] ? $post->meta['title'] : $post->title}} - Write.mv</title>
 @endsection
 
 @section('content')
