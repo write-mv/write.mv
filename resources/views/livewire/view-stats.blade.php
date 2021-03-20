@@ -6,7 +6,7 @@
                 <div class="relative mt-2">
 
                     <div class="mt-2 flex items-center justify-between">
-                        <h1 class="font-bold text-2xl leading-10 poppins text-gray-800">
+                        <h1 class="font-bold text-2xl leading-10 text-gray-800  {{$post->is_english ? "poppins" : "para-dhivehi"}}">
                             {{$post->title}}
                         </h1>
                         <a href="{{route('insights')}}"
