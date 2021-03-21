@@ -23,6 +23,13 @@
                         {{ __('Posts') }}
                     </x-nav-link>
 
+                    
+                    <x-nav-link :href="route('tags')" :active="request()->routeIs('tags')"
+                        class="font-medium">
+                        <x-heroicon-o-tag class="w-6 h-6 mr-1" />
+                        {{ __('Tags') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('insights')" :active="request()->routeIs('insights')"
                         class="font-medium">
                         <x-heroicon-o-chart-pie class="w-6 h-6 mr-1" />

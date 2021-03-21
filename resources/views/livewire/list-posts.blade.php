@@ -67,8 +67,8 @@
                             <span class="text-gray-500 text-sm poppins">Scheduled to post on
                                 {{$post->published_date->format('M d, Y H:i A')}}</span>
                             @elseif($post->isDrafted())
-                            <span class="text-gray-500 text-sm poppins">Written
-                                {{$post->created_at->diffForHumans()}}</span>
+                            <span class="text-gray-500 text-sm poppins">Drafted
+                                {{$post->updated_at->diffForHumans()}}</span>
                             @else
                             <span class="text-gray-500 text-sm poppins">Published on
                                 {{$post->published_date->format('M d, Y')}}</span>
@@ -77,6 +77,10 @@
                         <div class="justify-self-end">
                             <div class="flex items-center gap-2">
                                 <x-action-dropdown wire:key="dropdown-{{ $post->id }}">
+                                    <x-slot name="icon">
+                                        <x-heroicon-s-dots-vertical class="h-5 w-5" />
+                                      </x-slot>
+
                                     @if($post->isPublished())
                                     <a wire:click="moveToDraft({{$post->id}})"
                                         class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"

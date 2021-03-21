@@ -5,10 +5,7 @@
     <button type="button" class="flex items-center text-gray-400 hover:text-gray-600 focus:outline-none"
       id="options-menu" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" aria-expanded="true">
       <span class="sr-only">Open options</span>
-      <svg class="h-5 w-5" x-description="Heroicon name: solid/dots-vertical" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
-      </svg>
+      {{$icon}}
     </button>
   </div>
 

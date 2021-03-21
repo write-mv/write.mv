@@ -9,6 +9,7 @@ use App\Http\Livewire\Account;
 use App\Http\Livewire\CustomizeBlog;
 use App\Http\Livewire\Insights;
 use App\Http\Livewire\ListPosts;
+use App\Http\Livewire\ListTags;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Blog;
@@ -42,6 +43,7 @@ Route::get('/about', function () {
 });
 
 
+Route::get('/whats-new', WhatsNewController::class);
 Route::get('/change-log', ChangeLogController::class);
 
 Route::get('/dashboard', function () {
@@ -57,6 +59,7 @@ Route::get('/dashboard', function () {
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::get('/posts', ListPosts::class)->name('posts');
+    Route::get('/tags', ListTags::class)->name('tags');
     Route::get('/posts/new', Post::class)->name('posts.new');
     Route::get('/posts/e/{post}', Post::class)->name('posts.update');
     Route::get('/stats/{post}', ViewStats::class)->name('stats.show');

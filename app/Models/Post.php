@@ -72,6 +72,11 @@ class Post extends Model implements Viewable
         return $this->belongsTo(Team::class);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
 
     public function scopeSearch($query, $search)
     {
@@ -171,6 +176,21 @@ class Post extends Model implements Viewable
         return $query->where('published_date', '>', $date);
     }
 
+     /**
+     * Scope a query to only include posts that have a specific tag (by slug).
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $slug
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeTag($query, string $slug)
+    {
+        return $query->whereHas('tags', function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        });
+    }
+
+
     /**
      * Calculation for graph viewsPerMonthDays
      *
@@ -237,5 +257,27 @@ class Post extends Model implements Viewable
     public function isPublished()
     {
         return $this->published == true && $this->published_date->lessThanOrEqualTo(now()) ? true : false;
+    }
+    
+    /**
+     * add a tag to a post
+     *
+     * @param  mixed $tag
+     * @return void
+     */
+    public function addTag($tag)
+    {
+        $this->tags()->attach($tag);
+    }
+    
+    /**
+     * Remove a tag from a post
+     *
+     * @param  mixed $tag
+     * @return void
+     */
+    public function removeTag($tag)
+    {
+        $this->tags()->detach($tag);
     }
 }

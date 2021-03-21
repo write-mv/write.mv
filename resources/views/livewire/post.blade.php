@@ -158,6 +158,21 @@
               </div>
             </div>
           </section>
+
+          <section aria-labelledby="section-2-title">
+            <div class="rounded-lg bg-white overflow-hidden">
+              <div class="p-6">
+               
+                  <div class="col-span-6 sm:col-span-2">
+                    <label for="featured_image_caption" class="block text-sm font-medium text-gray-700 poppins mb-2">Tags</label>
+
+                    <x-input.tag />
+                 
+                  </div>
+           
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>

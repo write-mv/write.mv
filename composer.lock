@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9df66b8603a309e749bec35e32a892f8",
+    "content-hash": "dc08a10c567d1c8ecd4fa7a210c64a17",
     "packages": [
         {
             "name": "arielmejiadev/larapex-charts",
@@ -2106,6 +2106,45 @@
                 }
             ],
             "time": "2020-12-02T09:24:40+00:00"
+        },
+        {
+            "name": "naxeem/thaana-transliterator",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/naxeem/thaana-transliterator.git",
+                "reference": "49a767d9694348775d5a9b5b502ebaa0b5d7df02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/naxeem/thaana-transliterator/zipball/49a767d9694348775d5a9b5b502ebaa0b5d7df02",
+                "reference": "49a767d9694348775d5a9b5b502ebaa0b5d7df02",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Thaana\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Naxeem",
+                    "email": "n@naxeem.com",
+                    "homepage": "https://www.naxeem.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Thaana transliterator",
+            "support": {
+                "issues": "https://github.com/naxeem/thaana-transliterator/issues",
+                "source": "https://github.com/naxeem/thaana-transliterator/tree/1.0.3"
+            },
+            "time": "2020-09-17T05:36:36+00:00"
         },
         {
             "name": "nesbot/carbon",
