@@ -166,7 +166,7 @@
                   <div class="col-span-6 sm:col-span-2">
                     <label for="featured_image_caption" class="block text-sm font-medium text-gray-700 poppins mb-2">Tags</label>
 
-                    <x-input.tag />
+                    <x-input.tag :tags="$tags->pluck('name')->toArray()" />
                  
                   </div>
            

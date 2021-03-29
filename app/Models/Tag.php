@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Tag extends Model
 {
@@ -22,6 +23,11 @@ class Tag extends Model
         static::deleting(function ($item) {
             $item->posts()->detach();
         });
+    }
+
+    public function setSlugAttribute($value): void
+    {
+        $this->attributes['slug'] = Str::slug($value);
     }
 
     public function scopeSearch($query, $search)

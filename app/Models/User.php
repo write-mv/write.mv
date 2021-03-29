@@ -9,7 +9,7 @@ use App\Traits\BelongsToTeam;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, BelongsToTeam;
 

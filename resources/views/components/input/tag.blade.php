@@ -1,3 +1,4 @@
+@props(['tags'])
 <div x-data @tags-update="console.log('tags updated', $event.detail.tags)" data-tags='["aaa","bbb"]' class="max-w-lg m-6">
     <div x-data="tagSelect()" x-init="init('parentEl')" @click.away="clearSearch()" @keydown.escape="clearSearch()">
       <div class="relative" @keydown.enter.prevent="addTag(textInput)">
@@ -29,7 +30,7 @@ function tagSelect() {
     textInput: '',
     tags: [],
     init() {
-      this.tags = JSON.parse(this.$el.parentNode.getAttribute('data-tags'));
+      this.tags = @json($tags)
     },
     addTag(tag) {
       tag = tag.trim()

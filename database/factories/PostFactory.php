@@ -29,7 +29,13 @@ class PostFactory extends Factory
             "title" => $this->faker->sentence,
             "slug" => Str::slug($this->faker->sentence),
             "excerpt" => $this->faker->sentence,
-            "content" => json_encode($this->faker->paragraph),
+            "content" => '{
+                "ops": [
+                  {
+                    "insert": "get nae naed\n"
+                  }
+                ]
+              }',
             "meta" => [],
             "blog_id" => Blog::factory(),
             "user_id" => User::factory(),

@@ -127,7 +127,7 @@
 
                 @if($posts->total() > 0 && $posts->count() < $posts->total())
                     <div class="mt-2 ml-1 poppins">
-                        <a class="cursor-pointer text-gray-700" wire:click="load">Load more</a>
+                        <a class="cursor-pointer text-gray-700 hover:underline" wire:click="load">Load more</a>
                     </div>
                     @endif
             </div>

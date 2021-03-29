@@ -9,7 +9,6 @@ class PostController extends Controller
 {
     public function index($name)
     {
-
         $blog = Blog::withoutGlobalScopes()->where('name', $name)->first();
 
         if (!$blog) {
