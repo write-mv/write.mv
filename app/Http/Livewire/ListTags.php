@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Tag;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class ListTags extends Component
@@ -33,6 +34,11 @@ class ListTags extends Component
     public function mount(): void
     {
         $this->editing = $this->makeBlankTag();
+    }
+
+    public function updatingEditingName($name)
+    {
+      $this->editing->slug = Str::slug($name);
     }
 
 
