@@ -77,4 +77,18 @@
   @endif
 </article>
 
+<div class="flex justify-center mb-5">
+  @include('partials.comments._form')
+</div>
+
+<div class="flex justify-center mb-5">
+  <div class="antialiased mx-auto max-w-screen-sm">
+    <h3 class="mb-4 text-lg font-semibold text-gray-900">Comments</h3>
+    @if($comments->isNotEmpty())
+        @include('partials.comments._list',['collection' => $comments['root']])
+    @else
+    <p>No comments yet.</p>
+  @endif
+  </div>
+</div>
 @endsection
