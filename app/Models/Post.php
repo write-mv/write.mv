@@ -77,6 +77,11 @@ class Post extends Model implements Viewable
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 
     public function scopeSearch($query, $search)
     {
@@ -257,6 +262,16 @@ class Post extends Model implements Viewable
     public function isPublished()
     {
         return $this->published == true && $this->published_date->lessThanOrEqualTo(now()) ? true : false;
+    }
+
+    /**
+     * Load a threaded set of comments for the post.
+     *
+     * @return App\Comments\CommentsCollection
+     */
+    public function getThreadedComments()
+    {
+        return $this->comments()->with('owner')->get()->threaded();
     }
     
     /**

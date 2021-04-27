@@ -30,7 +30,7 @@
                         {{ __('Tags') }}
                     </x-nav-link>
 
-                    <x-nav-link href="#"
+                    <x-nav-link :href="route('responses')" :active="request()->routeIs('responses')"
                         class="font-medium">
                         <x-heroicon-o-annotation class="w-6 h-6 mr-1" />
                         {{ __('Responses') }}
