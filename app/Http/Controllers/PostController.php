@@ -43,10 +43,13 @@ class PostController extends Controller
 
         $post->RecordView();
 
+        $comments = $post->getThreadedComments();
+
 
         return view('posts.show', [
             'blog' => $blog,
-            'post' => $post
+            'post' => $post,
+            'comments' => $comments
         ]);
     }
 }
