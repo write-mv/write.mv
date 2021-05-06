@@ -271,7 +271,7 @@ class Post extends Model implements Viewable
      */
     public function getThreadedComments()
     {
-        return $this->comments()->with('owner')->get()->threaded();
+        return $this->comments()->with('owner')->Approved()->get()->threaded();
     }
     
     /**
