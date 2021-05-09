@@ -9,7 +9,7 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class Blog extends Model implements Viewable
 {

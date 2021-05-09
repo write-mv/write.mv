@@ -18,7 +18,7 @@ use DB;
 class Post extends Model implements Viewable
 {
     use HasFactory, BelongsToTeam, InteractsWithViews;
-
+    
     protected $guarded = [];
 
     //protected $removeViewsOnDelete = true;
