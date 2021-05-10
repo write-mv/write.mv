@@ -75,7 +75,7 @@
         <div class="flex flex-col mt-8">
             <div class="-my-2 sm:-mx-6 lg:-mx-8">
               <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <div class="shadow-sm border-b border-gray-200 sm:rounded-lg rounded">
                   <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                       <tr>
@@ -126,13 +126,38 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {{$comment->body}}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <td>
+                          <div class="flex items-center gap-2">
+                          <x-action-dropdown wire:key="dropdown-{{ $comment->id }}">
+                            <x-slot name="icon">
+                                <x-heroicon-s-dots-vertical class="h-5 w-5" />
+                              </x-slot>
                           @if($comment->approved)
-                          <a wire:click="markAsPending({{$comment->id}})" class="text-indigo-600 hover:text-indigo-900 mr-2 cursor-pointer">Mark as Pending</a>
+                          <a wire:click="markAsPending({{$comment->id}})"
+                            class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins flex items-center cursor-pointer"
+                            role="menuitem">
+                            <svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Mark as pending</span>
+                        </a>
                           @else
-                          <a wire:click="approved({{$comment->id}})" class="text-green-600 hover:text-green-900 mr-2 cursor-pointer">Approve</a>
+                          <a wire:click="approved({{$comment->id}})"
+                          class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins flex items-center cursor-pointer"
+                          role="menuitem">
+                          <svg class="w-6 h-6 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                          <span>Mark as approved</span>
+                      </a>
+                          
                           @endif
-                          <a href="#" class="text-red-600 hover:text-red-900">Mark as spam</a>
+
+                          <a href="#"
+                            class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins flex items-center"
+                            role="menuitem">
+                            <svg class="w-6 h-6 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path></svg>
+                            <span>Mark as spam</span>
+                        </a>
+                        
+                          </x-action-dropdown>
+                          </div>
                         </td>
                       </tr>
                       @endforeach
