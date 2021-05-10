@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('post_id')->index();
             $table->unsignedBigInteger('user_id')->index()->nullable();
             $table->unsignedBigInteger('parent_id')->index()->nullable();
-            $table->boolean('approved')->default(false);
+            $table->string('status')->default('pending');
             $table->text('body');
             $table->timestamps();
         });

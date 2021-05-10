@@ -12,7 +12,16 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    /* status vars */
+    public const APPROVED = "approved";
+    public const PENDING = "pending";
+    public const SPAM = "spam";
+
+    protected $fillable = [
+        "body",
+        "parent_id",
+        "status"
+    ];
 
     protected $filters = [
         "all" => null,
@@ -48,12 +57,12 @@ class Comment extends Model
 
     public function scopeApproved(Builder $query) : Builder
     {
-        return $query->AllBlogCommentsForTheUser()->where('approved', true);
+        return $query->AllBlogCommentsForTheUser()->where('status', $this::APPROVED);
     }
 
     public function scopePending(Builder $query) : Builder
     {
-        return $query->AllBlogCommentsForTheUser()->where('approved', false);
+        return $query->AllBlogCommentsForTheUser()->where('status', $this::PENDING);
     }
 
     public function scopeAllBlogCommentsForTheUser(Builder $query, User $user = null): Builder
@@ -72,7 +81,7 @@ class Comment extends Model
 
     public function scopePendingComments(Builder $query, User $user = null): Builder
     {
-       return $query->AllBlogCommentsForTheUser()->where('approved', false);
+       return $query->AllBlogCommentsForTheUser()->where('status', $this::PENDING);
     }
 
     /**

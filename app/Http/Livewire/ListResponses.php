@@ -24,7 +24,7 @@ class ListResponses extends Component
     public function approved(Comment $comment)
     {
         $comment->update([
-            "approved" => true
+            "status" => Comment::APPROVED
         ]);
 
         $this->notify('Comment approved.');
@@ -33,7 +33,7 @@ class ListResponses extends Component
     public function markAsPending(Comment $comment)
     {
         $comment->update([
-            "approved" => false
+            "status" => Comment::PENDING
         ]);
 
         $this->notify('Comment marked as pending.');

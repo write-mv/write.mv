@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentStoreRequest;
 use App\Models\Comment;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
 class CommentsController extends Controller
 {
-    public function store($post,Request $request)
+    public function store($post, CommentStoreRequest $request)
     {
        $post = Post::withoutGlobalScopes()->findOrFail($post);
 
