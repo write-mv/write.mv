@@ -13,12 +13,12 @@ use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class Post extends Model implements Viewable
 {
     use HasFactory, BelongsToTeam, InteractsWithViews;
-    
+
     protected $guarded = [];
 
     //protected $removeViewsOnDelete = true;

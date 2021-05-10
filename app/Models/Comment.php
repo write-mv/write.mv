@@ -18,6 +18,7 @@ class Comment extends Model
     public const SPAM = "spam";
 
     protected $fillable = [
+        "user_id",
         "body",
         "parent_id",
         "status"

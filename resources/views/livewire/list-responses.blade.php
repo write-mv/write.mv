@@ -106,13 +106,13 @@
                             </div>
                             <div class="ml-4">
                               <div class="text-sm font-medium text-gray-900">
-                                {{$comment->owner->name}}
+                                {{ $comment->owner->name }}
                               </div>
                             </div>
                           </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="text-sm text-gray-500 underline">{{$comment->post->title}}</div>
+                          <a href="{{route('posts.show', ["name" => $comment->post->blog->name, "post" => $comment->post->slug])}}" target="_blank" class="text-sm text-gray-500 underline">{{$comment->post->title}}</a>
                         </td>
 
                         <td class="px-6 py-4 whitespace-nowrap">
