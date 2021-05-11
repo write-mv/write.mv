@@ -9,6 +9,6 @@ The main goal of Write.mv is to give anyone a space on the web to freely share t
 
 #### ===== Important docs ======
 
-- [Publishing guidelines](PublishingGuideline.md)
+- [Publishing guidelines](https://github.com/write-mv/policies/blob/main/PublishingGuideline.md)
 
-- [Comment guidelines](CommentGuideline.md)
+- [Comment guidelines](https://github.com/write-mv/policies/blob/main/CommentGuideline.md)
