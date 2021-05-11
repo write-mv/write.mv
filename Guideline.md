@@ -2,7 +2,7 @@
 
 As a publishing platform, we are an amplifier for voices that write here, and take that role seriously. To ensure that everyone feels (and continues feeling) welcome to express themselves, we have a few guidelines on what is expected of everyone in our community to follow.
 
-## Don't use Read Write.mv for this
+## Don't use Write.mv for this
 
 ### Pure self-promotion & advertising. 
 
