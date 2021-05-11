@@ -5,6 +5,6 @@ Actively developing.
 
 #### ===== Important docs ======
 
-- [Publishing guidelines](Guideline.md)
+- [Publishing guidelines](PublishingGuideline.md)
 
 - [Comment guidelines](CommentGuideline.md)
