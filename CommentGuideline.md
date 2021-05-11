@@ -1,1 +1,0 @@
-# Writemv Comment Guideline
