@@ -9,6 +9,9 @@ module.exports = {
         './resources/views/components/*.blade.php'
     ],
 
+    important: false,
+    darkMode: false, // or 'media' or 'class'
+
     theme: {
         extend: {
             fontFamily: {
@@ -18,9 +21,10 @@ module.exports = {
     },
 
     variants: {
-        opacity: ['responsive', 'hover', 'focus', 'disabled'],
+        extend: {
+            opacity: ['disabled'],
+        },
     },
-
     plugins: [
         require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/forms'), 

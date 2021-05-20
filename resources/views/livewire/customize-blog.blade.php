@@ -8,13 +8,12 @@
       </div>
       <div class="space-y-6">
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
-          <div class="md:grid md:grid-cols-3 md:gap-6">
-            <div class="md:col-span-1">
-              <h3 class="text-lg font-medium leading-6 text-gray-900 poppins">Blog Information</h3>
-              <p class="mt-1 text-sm text-gray-500 poppins font-normal">
-                This information will be displayed publicly so be careful what you share.
-              </p>
-            </div>
+          <div class="md:col-span-1 mb-8">
+            <h3 class="text-lg font-medium leading-6 text-gray-900 poppins">Blog Information</h3>
+            <p class="mt-1 text-sm text-gray-500 poppins font-normal">
+              This information will be displayed publicly so be careful what you share.
+            </p>
+          </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
               <form class="space-y-6" wire:submit.prevent="save">
                 <div class="grid grid-cols-3 gap-6">
@@ -34,7 +33,7 @@
                     </label>
                     <div class="mt-1">
                       <textarea wire:model.lazy="blog.description" id="description" name="description" rows="8" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                        placeholder="description..."></textarea>
+                        placeholder="Description..."></textarea>
                       @error('blog.description')<p class="mt-2 text-sm text-red-600 poppins" id="email-error">{{$message}}</p>@enderror
                     </div>
                     <p class="mt-2 text-sm text-gray-500 poppins font-normal">
@@ -57,14 +56,41 @@
                   </div>
                 </div>
 
-                <div class="w-full max-w-3xl mx-auto my-12">
-                  <x-blog-style-selection />
-                  @error('blog.is_grid')<p class="mt-2 text-sm text-red-600 poppins" id="email-error">{{$message}}</p>@enderror
-                </div>
-
-            </div>
+              
           </div>
         </div>
+
+        <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+          <div class="md:col-span-1 mb-8">
+            <h3 class="text-lg font-medium leading-6 text-gray-900 poppins">Themes</h3>
+            <p class="mt-1 text-sm text-gray-500 poppins font-normal">
+              Customize your blog style with themes.
+            </p>
+          </div>
+            
+            <ul role="list" class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-x-6 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                
+              @foreach ($themes as $theme)
+              <li class="relative">
+                <div class="ring-2 ring-offset-2 group block w-full aspect-w-10 aspect-h-10 rounded-lg bg-gray-100 overflow-hidden">
+                  <img src="{{ $theme->preview_img }}" alt="" class=" object-cover pointer-events-none">
+                  <button type="button" class="absolute inset-0 focus:outline-none">
+                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                  </button>
+                </div>
+                <p class="mt-2 block text-md font-medium text-gray-900 truncate uppercase text-center pointer-events-none">{{ $theme->name }}</p>
+                <p class="block text-sm font-medium text-gray-500 pointer-events-none text-center">{{ $theme->description }}</p>
+              </li>
+              @endforeach
+    
+            
+             
+            
+          </ul>
+
+      
+        </div>
+
         <div class="flex justify-end">
           <button type="submit"
             wire:loading.attr="disabled"

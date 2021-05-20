@@ -18,6 +18,7 @@ class CreateThemesTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('link')->nullable();
+            $table->string('preview_img')->nullable();
             $table->timestamps();
         });
     }
