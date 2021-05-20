@@ -1,4 +1,4 @@
-@extends("themes.{$blog->theme->name}._layout")
+@extends("themes.ink._layout")
 
 @section('meta')
     <meta name="title" content="{{ $blog->site_title }}">

@@ -1,4 +1,4 @@
-@extends("themes.{$blog->theme->name}._layout")
+@extends("themes.ink._layout")
 
 @section('meta')
 <meta data-rh="true" property="al:android:app_name" content="Medium" />

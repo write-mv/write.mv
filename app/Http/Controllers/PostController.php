@@ -15,11 +15,18 @@ class PostController extends Controller
             abort(404);
         }
 
-       $blog->RecordView();
+        $blog->RecordView();
 
         $posts = $blog->posts()->withoutGlobalScopes()->live()->latest('published_date')->simplePaginate(8);
 
-        return view("themes.{$blog->theme->name}._list", [
+        //Checking the theme dir
+        if ($blog->theme) {
+            $themeDir =  "themes.{$blog->theme->name}._list";
+        } else {
+            $themeDir =  "themes.default._list";
+        }
+
+        return view($themeDir, [
             'blog' => $blog,
             'posts' => $posts
         ]);
@@ -45,8 +52,15 @@ class PostController extends Controller
 
         $comments = $post->getThreadedComments();
 
+        //Checking the theme dir
+        if ($blog->theme) {
+            $themeDir =  "themes.{$blog->theme->name}._post";
+        } else {
+            $themeDir =  "themes.default._post";
+        }
 
-        return view("themes.{$blog->theme->name}._post", [
+
+        return view($themeDir, [
             'blog' => $blog,
             'post' => $post,
             'comments' => $comments
