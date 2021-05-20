@@ -33,6 +33,11 @@ class Blog extends Model implements Viewable
         return $this->hasMany(Post::class);
     }
 
+    public function theme()
+    {
+        return $this->belongsTo(Theme::class);
+    }
+
     /**
      * Calculation for graph viewsPerMonthDays
      *

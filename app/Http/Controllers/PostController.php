@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index($name)
     {
-        $blog = Blog::withoutGlobalScopes()->where('name', $name)->first();
+        $blog = Blog::withoutGlobalScopes()->with('theme')->where('name', $name)->first();
 
         if (!$blog) {
             abort(404);
@@ -19,7 +19,7 @@ class PostController extends Controller
 
         $posts = $blog->posts()->withoutGlobalScopes()->live()->latest('published_date')->simplePaginate(8);
 
-        return view('posts.index', [
+        return view("themes.{$blog->theme->name}._list", [
             'blog' => $blog,
             'posts' => $posts
         ]);
@@ -27,7 +27,7 @@ class PostController extends Controller
 
     public function show($name, $post)
     {
-        $blog = Blog::withoutGlobalScopes()->where('name', $name)->first();
+        $blog = Blog::withoutGlobalScopes()->with('theme')->where('name', $name)->first();
 
         if (!$blog) {
             abort(404);
@@ -46,7 +46,7 @@ class PostController extends Controller
         $comments = $post->getThreadedComments();
 
 
-        return view('posts.show', [
+        return view("themes.{$blog->theme->name}._post", [
             'blog' => $blog,
             'post' => $post,
             'comments' => $comments
