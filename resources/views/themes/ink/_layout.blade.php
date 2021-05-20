@@ -24,7 +24,7 @@
         <div class="header">
 
 
-            <h1 class="site-title"><a href="{{ route('posts.index', $blog->name) }}">{{ $blog->name }}</a></h1>
+            <h1 class="site-title"><a href="{{ route('posts.index', $blog->name) }}">{{ $blog->site_title }}</a></h1>
             <div class="site-description">
                 <p>
                     {{ $blog->description }}

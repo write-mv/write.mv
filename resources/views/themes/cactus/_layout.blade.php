@@ -32,7 +32,7 @@
                 </div>
 
                 <div id="title">
-                    <h1>{{ $blog->name }}</h1>
+                    <h1>{{ $blog->site_title }}</h1>
                 </div>
             </a>
             <div id="nav">
