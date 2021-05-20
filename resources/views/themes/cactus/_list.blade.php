@@ -17,6 +17,8 @@
 @endsection
 
 @section('content')
+<section id="about">{{ $blog->description }}</section>
+
     <section id="writing">
         <span class="h1"><a href="https://themes.gohugo.io/theme/hugo-theme-cactus/posts">Writings</a></span>
 

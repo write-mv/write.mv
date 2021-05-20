@@ -48,9 +48,6 @@
                 </ul>
             </div>
         </header>
-
-
-        <section id="about">{{ $blog->description }}</section>
         @yield('content')
 
         @include('themes.cactus.partials._footer')
