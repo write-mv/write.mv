@@ -6,15 +6,6 @@
         "framework",
         "laravel"
     ],
-    "repositories": {
-        "writemv-themes" : {
-            "type": "path",
-            "url": "packages/write-mv/writemv-themes",
-            "options": {
-                "symlink": true
-            }
-        }
-    },
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
@@ -30,8 +21,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.4",
         "mtownsend/read-time": "^2.0",
-        "nadar/quill-delta-parser": "^2.6",
-        "write-mv/writemv-themes" : "@dev" 
+        "nadar/quill-delta-parser": "^2.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
