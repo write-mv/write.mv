@@ -55,11 +55,11 @@ Route::get('/dashboard', function () {
         'published_post_count' => PostModel::live()->count(),
         'scheduled_post_count' => PostModel::scheduled()->count()
     ]);
-})->middleware(['auth','verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 
-
-Route::group(['middleware' => ['auth','verified'], 'prefix' => 'dashboard'], function () {
+//['auth','verified']
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::get('/posts', ListPosts::class)->name('posts');
     Route::get('/responses', ListResponses::class)->name('responses');
     Route::get('/tags', ListTags::class)->name('tags');
