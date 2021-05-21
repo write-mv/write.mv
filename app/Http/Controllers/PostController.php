@@ -50,7 +50,7 @@ class PostController extends Controller
 
         $post->RecordView();
 
-        $comments = $post->getThreadedComments();
+        //$comments = $post->getThreadedComments();
 
         //Checking the theme dir
         if ($blog->theme) {
@@ -63,7 +63,7 @@ class PostController extends Controller
         return view($themeDir, [
             'blog' => $blog,
             'post' => $post,
-            'comments' => $comments
+            //'comments' => $comments
         ]);
     }
 }
