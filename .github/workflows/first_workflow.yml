@@ -1,0 +1,21 @@
+name: Deployment Workflow
+on:
+  push:
+    branches: [ staging ]
+
+jobs:
+  job_one:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: testing writemv server ssh connection
+    uses: appleboy/ssh-action@master
+    with:
+      host: write.mv
+      username: baraveli
+      key: ${{ secrets.JINAS_KEY }}
+      port: 22
+      script: |
+        cd writemv-staging
+        git pull origin staging
+        git status

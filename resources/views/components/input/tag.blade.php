@@ -29,8 +29,9 @@ function tagSelect() {
     open: false,
     textInput: '',
     tags: [],
+    loadedTags: [],
     init() {
-      this.tags = @json($tags)
+      this.loadedTags = @json($tags)
     },
     addTag(tag) {
       tag = tag.trim()
