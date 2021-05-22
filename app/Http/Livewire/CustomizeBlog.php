@@ -43,7 +43,7 @@ class CustomizeBlog extends Component
     public function render()
     {
         return view('livewire.customize-blog', [
-            'themes' => Theme::all()
+            'themes' => Theme::OrderBySelectedThemeFirst($this->blog)->get()
         ]);
     }
 }
