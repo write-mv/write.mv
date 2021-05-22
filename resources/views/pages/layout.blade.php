@@ -32,12 +32,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .poppins {
+            font-family: Poppins;
+        }
     </style>
 
 </head>
 
-<body class="antialiased">
-    <div class="relative pt-6 pb-4 sm:pb-10 bg-gray-50" x-data="{ open: false }">
+<body class="antialiased bg-gray-50">
+    <div class="relative pt-6 pb-4 sm:pb-10" x-data="{ open: false }">
         <nav class="relative max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-6">
             <div class="flex items-center flex-1">
                 <div class="flex items-center justify-between w-full md:w-auto">
