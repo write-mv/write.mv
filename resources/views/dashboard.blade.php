@@ -28,6 +28,7 @@
                             Customize
                         </a>
                         <a
+                            target="_blank"
                             href="{{$blog->url}}"
                             class="inline-flex items-center mt-3 justify-center px-4 py-2 border border-transparent font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:text-sm poppins">
                             View Blog
