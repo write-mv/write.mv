@@ -11,7 +11,7 @@
                   is a dhivehi first platform to write,share and spread your words online.
               </h1>
               <div class="mb-4 text-gray-500 text-lg font-medium md:mb-8 lg:text-xl">
-                  Share the untold stories.
+                    Rant, Share & Scribble
               </div>
 
               <div class="flex justify-center">
