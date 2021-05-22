@@ -3,15 +3,15 @@
   @section('content')
       <div class="mt-16 mb-16 text-center md:mt-32 md:mb-24 poppins">
           <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mt-2 mb-10">
-              <img class="inline-block h-28 md:h-32 lg:h-36 w-auto" src="/images/logo.svg" alt="">
-            </div>
+              <div class="mt-2 mb-10">
+                  <img class="inline-block h-28 md:h-32 lg:h-36 w-auto" src="/images/logo.svg" alt="">
+              </div>
               <h1 class="mb-4 text-3xl leading-tight font-display font-bold md:leading-tight md:text-5xl lg:mb-8">
                   <span class="sm:text-transparent sm:bg-clip-text"><mark>Write mv</mark></span>
                   is a dhivehi first platform to write,share and spread your words online.
               </h1>
               <div class="mb-4 text-gray-500 text-lg font-medium md:mb-8 lg:text-xl">
-                    Rant, Share & Scribble
+                  Rant, Share & Scribble
               </div>
 
               <div class="flex justify-center">
@@ -36,26 +36,26 @@
 
       <!--
 
-              <div class="my-16 lg:my-32 md:py-8">
-                  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                      <div
-                          class="text-center w-full grid grid-cols-1 gap-x-4 gap-y-8 md:gap-y-16 md:px-16 md:text-left md:grid-cols-2 lg:px-0 lg:grid-cols-3">
-                          <div class="flex flex-col lg:mx-auto">
-                              <span class="text-3xl font-bold text-blue-500 md:text-5xl">1,100,000+</span>
-                              <span>Data points processed</span>
-                          </div>
-                          <div class="flex flex-col lg:mx-auto">
-                              <span class="text-3xl font-bold text-blue-500 md:text-5xl">100+</span>
-                              <span>Sites monitored</span>
-                          </div>
-                          <div class="flex flex-col lg:mx-auto">
-                              <span class="text-3xl font-bold text-blue-500 md:text-5xl">20,000+</span>
-                              <span>Unique pages processed</span>
+                      <div class="my-16 lg:my-32 md:py-8">
+                          <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+                              <div
+                                  class="text-center w-full grid grid-cols-1 gap-x-4 gap-y-8 md:gap-y-16 md:px-16 md:text-left md:grid-cols-2 lg:px-0 lg:grid-cols-3">
+                                  <div class="flex flex-col lg:mx-auto">
+                                      <span class="text-3xl font-bold text-blue-500 md:text-5xl">1,100,000+</span>
+                                      <span>Data points processed</span>
+                                  </div>
+                                  <div class="flex flex-col lg:mx-auto">
+                                      <span class="text-3xl font-bold text-blue-500 md:text-5xl">100+</span>
+                                      <span>Sites monitored</span>
+                                  </div>
+                                  <div class="flex flex-col lg:mx-auto">
+                                      <span class="text-3xl font-bold text-blue-500 md:text-5xl">20,000+</span>
+                                      <span>Unique pages processed</span>
+                                  </div>
+                              </div>
                           </div>
                       </div>
-                  </div>
-              </div>
-            -->
+                    -->
       <div class="relative overflow-hidden">
           <div class="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full" aria-hidden="true">
               <div class="relative h-12 max-w-7xl mx-auto">
@@ -164,6 +164,59 @@
                   </div>
               </div>
           </div>
+
+
+          <div class="my-16 md:my-32 poppins">
+              <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div class="max-w-4xl mx-auto text-center">
+                      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                          Write.mv stats
+                      </h2>
+                      <p class="mt-3 text-xl text-gray-500 sm:mt-4">
+                          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus repellat laudantium.
+                      </p>
+                  </div>
+              </div>
+              <div class="mt-10 pb-12 sm:pb-16">
+                  <div class="relative">
+                      <div class="absolute inset-0 h-1/2 bg-gray-50"></div>
+                      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                          <div class="max-w-4xl mx-auto">
+                              <dl class="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3">
+                                  <div
+                                      class="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
+                                      <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
+                                          Blogs
+                                      </dt>
+                                      <dd class="order-1 text-5xl font-extrabold text-blue-600">
+                                          200
+                                      </dd>
+                                  </div>
+                                  <div
+                                      class="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
+                                      <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
+                                          Users
+                                      </dt>
+                                      <dd class="order-1 text-5xl font-extrabold text-blue-600">
+                                          1000
+                                      </dd>
+                                  </div>
+                                  <div
+                                      class="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
+                                      <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
+                                          Publications
+                                      </dt>
+                                      <dd class="order-1 text-5xl font-extrabold text-blue-600">
+                                          100k
+                                      </dd>
+                                  </div>
+                              </dl>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
 
 
 
