@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\GenerateBlogOgImage;
 use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,6 +17,17 @@ class Blog extends Model implements Viewable
     use HasFactory, BelongsToTeam, InteractsWithViews;
 
     protected $guarded = [];
+
+    public static function boot()
+    {
+
+        parent::boot();
+
+        static::created(function ($blog) {
+            //Firing the blog og image generation
+            GenerateBlogOgImage::dispatch($blog);
+        });
+    }
 
     /**
      * Record the view to the blog
