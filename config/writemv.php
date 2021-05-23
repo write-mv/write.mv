@@ -29,6 +29,10 @@ return [
        "change-log",
        "write.mv",
        "writemv"
+   ],
+
+   "blog_og_image" => [
+       "path" => "/blog_og/"
    ]
 
 ];
