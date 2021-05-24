@@ -21,9 +21,9 @@ class PostController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes.{$blog->theme->name}._list";
+            $themeDir =  "themes::{$blog->theme->name}._list";
         } else {
-            $themeDir =  "themes.default._list";
+            $themeDir =  "themes::default._list";
         }
 
         return view($themeDir, [
@@ -54,9 +54,9 @@ class PostController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes.{$blog->theme->name}._post";
+            $themeDir =  "themes::{$blog->theme->name}._post";
         } else {
-            $themeDir =  "themes.default._post";
+            $themeDir =  "themes::default._post";
         }
 
 
