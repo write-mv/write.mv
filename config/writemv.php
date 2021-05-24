@@ -32,7 +32,7 @@ return [
     ],
 
     "blog_og_image" => [
-        "path" => 'public/blog_og'
+        "path" => 'public/blog_og/'
     ]
 
 ];
