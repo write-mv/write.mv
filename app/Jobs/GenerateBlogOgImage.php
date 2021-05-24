@@ -38,13 +38,13 @@ class GenerateBlogOgImage implements ShouldQueue
     {
         $canvas = Image::canvas(1200, 630);
 
-        $template = Image::make(public_path("images/og-templates/blog-og-template.png"));
+        $template = Image::make(public_path("images/og-templates/blog-template.png"));
         $canvas->insert($template);
 
         $canvas->text(strtoupper($this->blog->name), 600, 320, function ($font) {
             $font->file(public_path("fonts/Poppins/Poppins-Bold.ttf"));
             $font->size(64);
-            $font->color('#0d0d0d');
+            $font->color('#ffffff');
             $font->align('center');
             $font->valign('center');
             $font->angle(0);
@@ -53,7 +53,7 @@ class GenerateBlogOgImage implements ShouldQueue
         $canvas->text("write.mv/{$this->blog->name}", 600, 580, function ($font) {
             $font->file(public_path("fonts/Poppins/Poppins-Light.ttf"));
             $font->size(24);
-            $font->color('#7f7f7f');
+            $font->color('#ffffff');
             $font->align('center');
             $font->valign('center');
             $font->angle(0);
