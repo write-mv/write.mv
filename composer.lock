@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22632c62557f3a9df71081c8e43c5d2a",
+    "content-hash": "60361fbafcb473141ec2c35da7efa634",
     "packages": [
         {
             "name": "arielmejiadev/larapex-charts",
@@ -5606,6 +5606,69 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "write-mv/themes",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/write-mv/themes",
+                "reference": "438e42761122ff1790285f395c5f1b6f2c41142c"
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "WriteMv\\Themes\\ThemesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WriteMv\\Themes\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "WriteMv\\Themes\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Jinas",
+                    "email": "j@live.mv",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Write.mv themes",
+            "homepage": "https://github.com/write-mv/themes",
+            "keywords": [
+                "themes",
+                "write-mv"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         }
     ],
     "packages-dev": [
@@ -8384,7 +8447,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "write-mv/themes": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
