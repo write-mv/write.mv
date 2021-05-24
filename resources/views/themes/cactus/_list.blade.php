@@ -7,7 +7,7 @@
     <meta property="og:type" content="website">
     <meta property="og:description" content="{{ $blog->description ?? '' }}">
     <meta property="og:title" content="{{ $blog->site_title }} - Write.mv">
-    <meta property="og:image" content="https://write.mv/images/opengraph.png">
+    <meta property="og:image" content="{{$blog->meta['og_image'] ?  url($blog->meta['og_image']) : "https://write.mv/images/opengraph.png"}}">
     <meta property="og:site_name" content="Write.mv">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $blog->site_title }} - Write.mv">

@@ -59,9 +59,9 @@ class GenerateBlogOgImage implements ShouldQueue
             $font->angle(0);
         });
 
-        $file_path_name = config('writemv.blog_og_image.path').Str::random(40) . ".png";
+        $file_path_name = config('writemv.blog_og_image.path').Str::random(40).".png";
 
-        Storage::put($file_path_name, (string) $canvas->encode("png"), [
+        Storage::disk('public')->put($file_path_name, (string) $canvas->encode("png"), [
             'visibility' => 'public',
         ]);
 

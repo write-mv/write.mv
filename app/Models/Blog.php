@@ -18,6 +18,10 @@ class Blog extends Model implements Viewable
 
     protected $guarded = [];
 
+    protected $casts = [
+        "meta" => "array"
+    ];
+
     public static function boot()
     {
 
