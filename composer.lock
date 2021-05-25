@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "61c468d4611c6a910e6a4f54b8bb51b7",
+    "content-hash": "b93a0a61da6c2b332245a8cb4876a55c",
     "packages": [
         {
             "name": "arielmejiadev/larapex-charts",
@@ -5745,21 +5745,22 @@
         },
         {
             "name": "write-mv/themes",
-            "version": "v0.1",
+            "version": "v0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/write-mv/themes.git",
-                "reference": "a6abb8bd6f384bdabb500085b96786cc65b11c47"
+                "reference": "d65761fccad10f9f072308cc33d63091a5ee2118"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/write-mv/themes/zipball/a6abb8bd6f384bdabb500085b96786cc65b11c47",
-                "reference": "a6abb8bd6f384bdabb500085b96786cc65b11c47",
+                "url": "https://api.github.com/repos/write-mv/themes/zipball/d65761fccad10f9f072308cc33d63091a5ee2118",
+                "reference": "d65761fccad10f9f072308cc33d63091a5ee2118",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^8.0",
-                "php": "^7.4|^8.0"
+                "php": "^7.4|^8.0",
+                "romanzipp/laravel-seo": "^2.2"
             },
             "require-dev": {
                 "orchestra/testbench": "^6.0",
@@ -5797,9 +5798,9 @@
             ],
             "support": {
                 "issues": "https://github.com/write-mv/themes/issues",
-                "source": "https://github.com/write-mv/themes/tree/v0.1"
+                "source": "https://github.com/write-mv/themes/tree/v0.2"
             },
-            "time": "2021-05-25T09:59:28+00:00"
+            "time": "2021-05-25T11:02:52+00:00"
         }
     ],
     "packages-dev": [
