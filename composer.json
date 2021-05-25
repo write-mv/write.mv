@@ -10,7 +10,6 @@
     "require": {
         "php": "^7.3|^8.0",
         "arielmejiadev/larapex-charts": "^2.1",
-        "artesaos/seotools": "^0.20.1",
         "blade-ui-kit/blade-heroicons": "^0.3.1",
         "cyrildewit/eloquent-viewable": "^6.0",
         "fideloper/proxy": "^4.4",
@@ -25,6 +24,7 @@
         "livewire/livewire": "^2.4",
         "mtownsend/read-time": "^2.0",
         "nadar/quill-delta-parser": "^2.6",
+        "romanzipp/laravel-seo": "^2.2",
         "write-mv/themes": "^0.1"
     },
     "require-dev": {

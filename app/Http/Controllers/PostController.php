@@ -26,7 +26,7 @@ class PostController extends Controller
             $themeDir =  "themes::default._list";
         }
 
-        $this->buildBlogSeo();
+        $this->buildBlogSeo($blog);
 
         return view($themeDir, [
             'blog' => $blog,
@@ -68,14 +68,16 @@ class PostController extends Controller
         ]);
     }
 
-    protected function buildBlogSeo()
+    protected function buildBlogSeo(Blog $blog)
     {
-        SEOTools::setTitle('Home');
-        SEOTools::setDescription('This is my page description');
-        SEOTools::opengraph()->setUrl('http://current.url.com');
-        SEOTools::setCanonical('https://codecasts.com.br/lesson');
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@LuizVinicius73');
-        SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
+        seo()->csrfToken()
+            ->title($blog->name . " - Write.mv")
+            ->description($blog->description)
+            ->twitter('card', 'summary_large_image')
+            ->twitter('image', isset($blog->meta['og_image']) ? url($blog->meta['og_image'])  : "https://write.mv/images/opengraph.png")
+            ->og('site_name', $blog->name)
+            ->og('url', route('posts.index', $blog->name))
+            ->og('type', 'website')
+            ->og('image', isset($blog->meta['og_image']) ? url($blog->meta['og_image'])  : "https://write.mv/images/opengraph.png");
     }
 }
