@@ -68,6 +68,10 @@
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                         About
                     </a>
+                    <a href="/publishing-guideline" style="font-family: Poppins;"
+                    class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
+                    Guidelines
+                </a>
                     <a href="https://write.mv/writemv/" style="font-family: Poppins;"
                     class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                     Our blog
