@@ -36,13 +36,9 @@ Route::get('/', function () {
 
 Route::get('/explore', ExploreController::class)->name('explore');
 
-Route::get('/screencasts', function () {
-    return view('coming-soon');
-});
-
-Route::get('/about', function () {
-    return view('pages.about');
-});
+Route::get('/screen-casts', fn () => view('coming-soon'));
+Route::get('/about', fn () => view('pages.about'));
+Route::get('/publishing-guideline', fn () => view('pages.publishing-guideline'));
 
 
 Route::get('/whats-new', WhatsNewController::class);
