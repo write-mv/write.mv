@@ -25,6 +25,7 @@
         "mtownsend/read-time": "^2.0",
         "nadar/quill-delta-parser": "^2.6",
         "romanzipp/laravel-seo": "^2.2",
+        "spatie/laravel-activitylog": "^3.17",
         "write-mv/themes": "^0.2"
     },
     "require-dev": {

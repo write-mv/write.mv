@@ -5,14 +5,13 @@ namespace App\Models;
 use App\Jobs\GenerateBlogOgImage;
 use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
-class Blog extends Model implements Viewable
+class Blog extends WriteMvBaseModel implements Viewable
 {
     use HasFactory, BelongsToTeam, InteractsWithViews;
 
