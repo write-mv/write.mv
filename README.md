@@ -12,3 +12,38 @@ The main goal of Write.mv is to give anyone a space on the web to freely share t
 - [Publishing guidelines](https://github.com/write-mv/policies/blob/main/PublishingGuideline.md)
 
 - [Comment guidelines](https://github.com/write-mv/policies/blob/main/CommentGuideline.md)
+
+
+## Development Setup
+
+Clone the repo
+
+```bash
+composer install
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+Configure `.env`
+
+```
+DB_CONNECTION=mysql
+DB_HOST=host.docker.internal
+DB_PORT=3306
+DB_DATABASE=writemv
+DB_USERNAME=
+DB_PASSWORD=
+```
+Then run
+
+```bash
+sail up
+```
+
+Application will be live at: `localhost:8085`
