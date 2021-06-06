@@ -39,6 +39,8 @@ DB_PORT=3306
 DB_DATABASE=writemv
 DB_USERNAME=
 DB_PASSWORD=
+
+CACHE_DRIVER=redis
 ```
 Then run
 
