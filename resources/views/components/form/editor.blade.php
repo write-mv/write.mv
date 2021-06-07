@@ -24,7 +24,7 @@
       <button class="ql-header" value="1"></button>
       <button class="ql-header" value="2"></button>
       <button class="ql-blockquote"></button>
-      <button class="ql-code-block"></button>
+      <!--<button class="ql-code-block"></button> -->
     </span>
     <span class="ql-formats">
       <button class="ql-list" value="ordered"></button>
