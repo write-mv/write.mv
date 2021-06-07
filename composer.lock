@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9df66b8603a309e749bec35e32a892f8",
+    "content-hash": "1684c79dc75bfc178131ca0c0a960453",
     "packages": [
         {
             "name": "arielmejiadev/larapex-charts",
@@ -2027,16 +2027,16 @@
         },
         {
             "name": "nadar/quill-delta-parser",
-            "version": "2.7.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nadar/quill-delta-parser.git",
-                "reference": "7a5b6a59619aeadee948ebf371d0e9f8ea321c8a"
+                "reference": "e2f1330e776241a14690aa01e56ff66ce3e9e829"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nadar/quill-delta-parser/zipball/7a5b6a59619aeadee948ebf371d0e9f8ea321c8a",
-                "reference": "7a5b6a59619aeadee948ebf371d0e9f8ea321c8a",
+                "url": "https://api.github.com/repos/nadar/quill-delta-parser/zipball/e2f1330e776241a14690aa01e56ff66ce3e9e829",
+                "reference": "e2f1330e776241a14690aa01e56ff66ce3e9e829",
                 "shasum": ""
             },
             "require-dev": {
@@ -2061,7 +2061,7 @@
             "description": "A PHP library to parse Quill Deltas into HTML",
             "support": {
                 "issues": "https://github.com/nadar/quill-delta-parser/issues",
-                "source": "https://github.com/nadar/quill-delta-parser/tree/2.7.0"
+                "source": "https://github.com/nadar/quill-delta-parser/tree/2.6.1"
             },
             "funding": [
                 {
@@ -2069,7 +2069,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-07T17:53:27+00:00"
+            "time": "2021-06-01T14:23:22+00:00"
         },
         {
             "name": "nesbot/carbon",
