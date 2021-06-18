@@ -6,6 +6,7 @@ use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WhatsNewController;
+use App\Http\Controllers\Account\PasswordController;
 use App\Http\Livewire\Account;
 use App\Http\Livewire\CustomizeBlog;
 use App\Http\Livewire\Insights;
@@ -64,7 +65,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::get('/stats/{post}', ViewStats::class)->name('stats.show');
     Route::get('/insights', Insights::class)->name('insights');
     Route::get('/blog/{blog}/customize', CustomizeBlog::class)->name('blog.customize');
+    
     Route::get('/account', Account::class)->name('account');
+    Route::put('account/password', [PasswordController::class, 'update'])->name('account.password.update');
 });
 
 require __DIR__ . '/auth.php';
