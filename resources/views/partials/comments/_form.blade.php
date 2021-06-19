@@ -8,7 +8,8 @@ form {
   width: 400px;
 }
 </style>
-<form action="{{route('comments.store', $post->id)}}" method="POST">
+<!--<form action="{{route('comments.store', $post->id)}}" method="POST"> -->
+<form  method="POST">
     @csrf
       <input type="hidden" name="parent_id" value="{{$parent_id ?? ''}}" />
     @guest
