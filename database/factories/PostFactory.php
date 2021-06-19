@@ -26,9 +26,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            "title" => $this->faker->sentence,
-            "slug" => Str::slug($this->faker->sentence),
-            "excerpt" => $this->faker->sentence,
+            "title" => $this->faker->sentence(),
+            "slug" => Str::slug($this->faker->sentence()),
+            "excerpt" => $this->faker->sentence(),
             "content" => '{
                 "ops": [
                   {
