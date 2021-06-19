@@ -1,7 +1,5 @@
 <section aria-labelledby="password_settings_heading" class="mt-6 poppins">
-    <form method="POST" action="{{ route('account.password.update') }}">
-        @csrf
-        @method('PUT')
+    <form wire:submit.prevent="update">
         <div class="shadow sm:rounded-md sm:overflow-hidden">
             <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
                 <div>
@@ -20,8 +18,8 @@
                         <div>
                             <div class="relative">
 
-                                <input name="current_password" type="password" id="current_password"
-                                    class="block w-full border-gray-300 rounded-md focus:border-lio-300 focus:ring focus:ring-lio-200 focus:ring-opacity-50 sm:text-sm sm:leading-5 mt-1"
+                                <input name="current_password" wire:model.lazy="current_password" type="password" id="current_password"
+                                    class="block w-full border-gray-300 rounded-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 sm:text-sm sm:leading-5 mt-1"
                                     required="required">
 
                             </div>
@@ -37,8 +35,8 @@
                         <div>
                             <div class="relative">
 
-                                <input name="password" type="password" id="password"
-                                    class="block w-full border-gray-300 rounded-md focus:border-lio-300 focus:ring focus:ring-lio-200 focus:ring-opacity-50 sm:text-sm sm:leading-5 mt-1"
+                                <input name="password" wire:model.lazy="password"  type="password" id="password"
+                                    class="block w-full border-gray-300 rounded-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 sm:text-sm sm:leading-5 mt-1"
                                     required="required">
 
                             </div>
@@ -54,8 +52,8 @@
                         <div>
                             <div class="relative">
 
-                                <input name="password_confirmation" type="password" id="password_confirmation"
-                                    class="block w-full border-gray-300 rounded-md focus:border-lio-300 focus:ring focus:ring-lio-200 focus:ring-opacity-50 sm:text-sm sm:leading-5 mt-1"
+                                <input name="password_confirmation" wire:model.lazy="password_confirmation"  type="password" id="password_confirmation"
+                                    class="block w-full border-gray-300 rounded-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 sm:text-sm sm:leading-5 mt-1"
                                     required="required">
 
                             </div>

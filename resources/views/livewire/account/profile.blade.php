@@ -18,7 +18,7 @@
 
                                 <input type="text" wire:model.lazy="user.name" name="name" id="name"
                                             autocomplete="name"
-                                            class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            class="block w-full border-gray-300 rounded-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 sm:text-sm sm:leading-5 mt-1">
                             </div>
 
                         </div>
@@ -34,7 +34,7 @@
 
                                 <input type="text" wire:model.lazy="user.email" name="email" id="email"
                                 autocomplete="email"
-                                class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                class="block w-full border-gray-300 rounded-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 sm:text-sm sm:leading-5 mt-1">
                             </div>
 
                         </div>
