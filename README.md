@@ -49,3 +49,16 @@ sail up
 ```
 
 Application will be live at: `localhost:8085`
+
+
+### TODO
+
+- [x] Darkmode
+- [x] Account password update
+- [ ] Selecting Tags for a post
+
+
+
+#### Selecting Tags for a post
+
+For this I have two approach right now. Either use a jquery implementation or to re-write the component outside of livewire context. The last option is better since I am doing a direct page refresh on this page anyways. And this will minimize bundle size to avoid using something extra like a jquery solution.
