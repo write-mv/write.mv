@@ -31,14 +31,14 @@
                         {{ __('Tags') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('responses')" :active="request()->routeIs('responses')"
+                    {{-- <x-nav-link :href="route('responses')" :active="request()->routeIs('responses')"
                         class="font-medium">
                         <x-heroicon-o-annotation class="w-6 h-6 mr-1" />
                         {{ __('Responses') }}
                         @if($pending_response_count > 0)
                         <span class="bg-blue-500 text-white hidden ml-3 py-1 px-2.5 rounded-full text-xs font-semibold md:inline-block poppins">{{ $pending_response_count }}</span>
                         @endif
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
                     <x-nav-link :href="route('insights')" :active="request()->routeIs('insights')"
                         class="font-medium">
