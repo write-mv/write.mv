@@ -1,4 +1,4 @@
-<div class="mt-2 bg-white" wire:ignore>
+<div class="mt-2 bg-white rounded dark:bg-gray-300" wire:ignore>
   <div id="toolbar-container">
     <span class="ql-formats">
       <select class="ql-font">

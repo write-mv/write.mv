@@ -2,15 +2,15 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-5">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight poppins">
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight poppins">
                     Customize {{ $blog->name }}'s blog
                 </h2>
             </div>
             <div class="space-y-6">
-                <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+                <div class="bg-white dark:bg-gray-900 shadow px-4 py-5 sm:rounded-lg sm:p-6">
                     <div class="md:col-span-1 mb-8">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900 poppins">Blog Information</h3>
-                        <p class="mt-1 text-sm text-gray-500 poppins font-normal">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200 poppins">Blog Information</h3>
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400 poppins font-normal">
                             This information will be displayed publicly so be careful what you share.
                         </p>
                     </div>
@@ -19,44 +19,41 @@
                             <div class="grid grid-cols-3 gap-6">
 
                                 <div class="col-span-6 sm:col-span-2">
-                                    <label for="site_title" class="block text-sm font-medium text-gray-700 poppins">Site
+                                    <label for="site_title" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Site
                                         Title</label>
                                     <input type="text" wire:model.lazy="blog.site_title" name="site_title"
                                         id="site_title" autocomplete="given-name"
-                                        class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:bg-gray-300">
                                     @error('blog.site_title')<p class="mt-2 text-sm text-red-600 poppins"
                                         id="email-error">{{ $message }}</p>@enderror
 
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-2">
-                                    <label for="description" class="block text-sm font-medium text-gray-700 poppins">
+                                    <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">
                                         Description
                                     </label>
                                     <div class="mt-1">
                                         <textarea wire:model.lazy="blog.description" id="description" name="description"
                                             rows="8"
-                                            class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                            class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md dark:bg-gray-300"
                                             placeholder="Description..."></textarea>
                                         @error('blog.description')<p class="mt-2 text-sm text-red-600 poppins"
                                             id="email-error">{{ $message }}</p>@enderror
                                     </div>
-                                    <p class="mt-2 text-sm text-gray-500 poppins font-normal">
-                                        Brief description of your blog.
-                                    </p>
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-2">
-                                    <label for="URL" class="block text-sm font-medium text-gray-700 poppins">
+                                    <label for="URL" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">
                                         URL
                                     </label>
                                     <div class="mt-1 flex rounded-md shadow-sm poppins font-normal">
                                         <span
-                                            class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                                            class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 dark:bg-gray-300 text-gray-500 text-sm">
                                             write.mv/
                                         </span>
                                         <input type="text" wire:model.lazy="blog.name" name="url" id="url"
-                                            class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 text-gray-500">
+                                            class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 text-gray-500 dark:bg-gray-300">
                                     </div>
                                     @error('blog.name')<p class="mt-2 text-sm text-red-600 poppins" id="email-error">
                                         {{ $message }}</p>@enderror
@@ -67,10 +64,10 @@
                     </div>
                 </div>
 
-                <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+                <div class="bg-white dark:bg-gray-900 shadow px-4 py-5 sm:rounded-lg sm:p-6">
                     <div class="md:col-span-1 mb-8">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900 poppins">Themes</h3>
-                        <p class="mt-1 text-sm text-gray-500 poppins font-normal">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 poppins dark:text-gray-200">Themes</h3>
+                        <p class="mt-1 text-sm text-gray-500 poppins font-normal dark:text-gray-400">
                             Customize your blog style with themes.
                         </p>
                     </div>

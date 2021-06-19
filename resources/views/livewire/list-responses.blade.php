@@ -3,7 +3,7 @@
         <div class="space-y-8">
             <div>
                 <div class="mt-2 flex items-center justify-between">
-                    <h1 class="font-bold text-2xl leading-10 poppins">
+                    <h1 class="font-bold text-2xl leading-10 poppins dark:text-gray-200">
                         Responses from your Reader's
                     </h1>
 

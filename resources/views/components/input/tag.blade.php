@@ -2,7 +2,7 @@
 <div x-data @tags-update="console.log('tags updated', $event.detail.tags)" data-tags='["aaa","bbb"]' class="max-w-lg m-6">
     <div x-data="tagSelect()" x-init="init('parentEl')" @click.away="clearSearch()" @keydown.escape="clearSearch()">
       <div class="relative" @keydown.enter.prevent="addTag(textInput)">
-        <input x-model="textInput" x-ref="textInput" @input="search($event.target.value)" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md" placeholder="Enter some tags">
+        <input x-model="textInput" x-ref="textInput" @input="search($event.target.value)" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-300" placeholder="Enter some tags">
         <div :class="[open ? 'block' : 'hidden']">
           <div class="absolute z-40 left-0 mt-2 w-full">
             <div class="py-1 text-sm bg-white rounded shadow-lg border border-gray-300">

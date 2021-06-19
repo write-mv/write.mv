@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Account;
 
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 
-class Account extends Component
+class Profile extends Component
 {
     public User $user;
 
@@ -15,7 +16,7 @@ class Account extends Component
         $this->user = auth()->user();
     }
 
-    public function save()
+    public function save() : void
     {
         $this->validate();
 
@@ -24,7 +25,7 @@ class Account extends Component
         $this->notify("Account settings updated.");
     }
 
-    protected function rules()
+    protected function rules() : array
     {
         return [
             'user.name' => 'required',
@@ -32,8 +33,8 @@ class Account extends Component
         ];
     }
 
-    public function render()
+    public function render() : View
     {
-        return view('livewire.account');
+        return view('livewire.account.profile');
     }
 }

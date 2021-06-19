@@ -36,6 +36,7 @@
         .poppins {
             font-family: Poppins;
         }
+
     </style>
 
 </head>
@@ -68,38 +69,42 @@
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                         About
                     </a>
+                    <a href="/publishing-guideline" style="font-family: Poppins;"
+                        class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
+                        Guidelines
+                    </a>
                     <a href="https://write.mv/writemv/" style="font-family: Poppins;"
-                    class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
-                    Our blog
-                </a>
+                        class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
+                        Our blog
+                    </a>
                     <a href="/explore" style="font-family: Poppins;"
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                         Explore
                     </a>
                 </div>
             </div>
-           
-                
-          
+
+
+
             <div class="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
                 @guest
 
-                <a href="/login" style="font-family: Poppins;"
-                    class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
-                    Sign in
-                </a>
+                    <a href="/login" style="font-family: Poppins;"
+                        class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
+                        Sign in
+                    </a>
 
-                <a href="/register" style="font-family: Poppins;"
-                    class="whitespace-nowrap bg-blue-100 border border-transparent rounded-lg py-2 px-4 inline-flex items-center justify-center text-sm font-medium text-blue-600 hover:bg-blue-200 transition ease-in-out duration-150">
-                    Sign up
-                </a>
+                    <a href="/register" style="font-family: Poppins;"
+                        class="whitespace-nowrap bg-blue-100 border border-transparent rounded-lg py-2 px-4 inline-flex items-center justify-center text-sm font-medium text-blue-600 hover:bg-blue-200 transition ease-in-out duration-150">
+                        Sign up
+                    </a>
                 @endguest
 
                 @auth
-                <a href="/dashboard" style="font-family: Poppins;"
-                class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
-                Dashboard
-            </a>
+                    <a href="/dashboard" style="font-family: Poppins;"
+                        class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
+                        Dashboard
+                    </a>
                 @endauth
             </div>
         </nav>
@@ -137,11 +142,17 @@
                             role="menuitem">
                             About
                         </a>
+
+                        <a href="/publishing-guideline" style="font-family: Poppins;"
+                            class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                            role="menuitem">
+                            Guidelines
+                        </a>
                         <a href="https://write.mv/writemv/" style="font-family: Poppins;"
-                        class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                        role="menuitem">
-                        Our blog
-                    </a>
+                            class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                            role="menuitem">
+                            Our blog
+                        </a>
                         <a href="/explore" style="font-family: Poppins;"
                             class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
                             role="menuitem">
@@ -152,23 +163,23 @@
                         <div class="flex items-center justify-center space-x-8 md:flex-1 lg:w-0">
 
                             @guest
-                            <a href="/login" style="font-family: Poppins;"
-                                class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
-                                Sign in
-                            </a>
+                                <a href="/login" style="font-family: Poppins;"
+                                    class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
+                                    Sign in
+                                </a>
 
-                            <a href="/register" style="font-family: Poppins;"
-                                class="whitespace-nowrap bg-blue-100 border border-transparent rounded-lg py-2 px-4 inline-flex items-center justify-center text-sm font-medium text-blue-600 hover:bg-blue-200 transition ease-in-out duration-150">
-                                Sign up
-                            </a>
+                                <a href="/register" style="font-family: Poppins;"
+                                    class="whitespace-nowrap bg-blue-100 border border-transparent rounded-lg py-2 px-4 inline-flex items-center justify-center text-sm font-medium text-blue-600 hover:bg-blue-200 transition ease-in-out duration-150">
+                                    Sign up
+                                </a>
 
                             @endguest
 
                             @auth
-                            <a href="/dashboard" style="font-family: Poppins;"
-                            class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
-                            Dashboard
-                        </a>
+                                <a href="/dashboard" style="font-family: Poppins;"
+                                    class="text-sm font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
+                                    Dashboard
+                                </a>
 
                             @endauth
 

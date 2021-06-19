@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\HtmlString;
 use App\Traits\BelongsToTeam;
@@ -15,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
-class Post extends Model implements Viewable
+class Post extends WriteMvBaseModel implements Viewable
 {
     use HasFactory, BelongsToTeam, InteractsWithViews;
 

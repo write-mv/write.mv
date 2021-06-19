@@ -24,10 +24,10 @@ class TagFactory extends Factory
     public function definition()
     {
         return [
-           "name" => $this->faker->word,
+           "name" => $this->faker->word(),
            "team_id" => Team::factory(),
-           "slug" => Str::slug($this->faker->word),
-           "description" => $this->faker->paragraph
+           "slug" => Str::slug($this->faker->word()),
+           "description" => $this->faker->paragraph()
         ];
     }
 }
