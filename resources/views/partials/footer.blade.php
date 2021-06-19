@@ -1,7 +1,8 @@
 <footer class="bg-white dark:bg-gray-900">
     <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
         <div class="flex justify-center pb-5">
-            <img src="/images/logo.svg" class="w-12 h-12">
+            <img src="/images/logo.svg" class="w-12 h-12 dark:hidden">
+            <img src="/images/logo-dark-bg.svg" class="w-12 h-12 hidden dark:block">
         </div>
       <div class="mt-8 flex justify-center space-x-6">
         <a href="https://www.facebook.com/write.mv" class="text-gray-400 hover:text-gray-500">

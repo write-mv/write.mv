@@ -1763,6 +1763,10 @@ video {
 		display: flex;
 	}
 
+	.dark\:block {
+		display: block;
+	}
+
 	.dark\:hidden {
 		display: none;
 	}
