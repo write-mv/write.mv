@@ -79,7 +79,7 @@
                                 <x-action-dropdown wire:key="dropdown-{{ $post->id }}">
                                     <x-slot name="icon">
                                         <x-heroicon-s-dots-vertical class="h-5 w-5" />
-                                      </x-slot>
+                                    </x-slot>
 
                                     @if($post->isPublished())
                                     <a wire:click="moveToDraft({{$post->id}})"
