@@ -6,7 +6,7 @@
                     Here's the tags you created so far
                 </div>
                 <div class="mt-2 flex items-center justify-between">
-                    <h1 class="font-bold text-2xl leading-10 poppins">
+                    <h1 class="font-bold text-2xl leading-10 dark:text-gray-200 poppins">
                         Your tags
                     </h1>
 

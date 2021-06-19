@@ -1,4 +1,4 @@
-<footer class="bg-white">
+<footer class="bg-white dark:bg-gray-900">
     <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
         <div class="flex justify-center pb-5">
             <img src="/images/logo.svg" class="w-12 h-12">

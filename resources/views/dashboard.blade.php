@@ -2,16 +2,16 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <div class="bg-white sm:rounded-lg mb-5 lg:w-1/2">
+            <div class="dark:bg-gray-900 bg-white sm:rounded-lg mb-5 lg:w-1/2">
                 <div class="px-4 py-5 sm:p-6">
-                    <h3 class="text-xl font-semibold text-gray-700 mb-5 poppins">
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-5 poppins">
                         Blog
                     </h3>
                     <div class="mt-2 max-w-xl text-sm text-gray-500 flex items-center">
-                        <h3 class="text-lg font-normal text-gray-700 poppins">
+                        <h3 class="text-lg font-normal text-gray-700 dark:text-gray-200 poppins">
                             {{$blog->name}}
                         </h3>
-                        <h3 class="ml-8 text-lg font-light text-gray-500 poppins">
+                        <h3 class="ml-8 text-lg font-light text-gray-500 dark:text-gray-200 poppins">
                             <a href="{{$blog->url}}">{{$blog->url}}</a>
                         </h3>
                     </div>
@@ -40,7 +40,7 @@
 
 
             <div>
-                <h3 class="text-lg leading-6 font-medium text-gray-900 poppins">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-200 poppins">
                     Posts Stats
                 </h3>
                 <x-metric.group>

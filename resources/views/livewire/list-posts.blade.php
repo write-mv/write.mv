@@ -6,7 +6,7 @@
                 <div class="relative mt-2">
 
                     <div class="mt-2 flex items-center justify-between">
-                        <h1 class="font-bold text-2xl leading-10 poppins">
+                        <h1 class="font-bold text-2xl leading-10 poppins dark:text-gray-200">
                             Your Publications
                         </h1>
 
@@ -26,7 +26,7 @@
 
                 <div class="mb-3 mt-2">
                     <div>
-                        <div class="border-b border-gray-200">
+                        <div class="border-b dark:border-gray-700 border-gray-200">
                             <nav class="-mb-px flex space-x-8" aria-label="Tabs">
                                 <a wire:click.prevent="switchFilter('all')"
                                     class="cursor-pointer poppins font-normal {{ $filter == 'all' ? 'tab-active' : 'tab' }}">
@@ -59,9 +59,9 @@
 
                 <div class="mt-8 grid grid-cols-1 gap-3">
                     @forelse($posts as $post)
-                    <article class="grid bg-white p-7 sm:p-4 rounded-lg lg:col-span-2 grid-cols-4">
+                    <article class="grid bg-white dark:bg-gray-900 p-7 sm:p-4 rounded-lg lg:col-span-2 grid-cols-4">
                         <div class="pt-5 self-center sm:pt-0 sm:pl-10 col-span-3">
-                            <h2 class="text-gray-700 capitalize text-xl font-bold {{$post->is_english ? "poppins" : "para-dhivehi"}}">{{$post->title}}</h2>
+                            <h2 class="text-gray-700 dark:text-gray-200 capitalize text-xl font-bold {{$post->is_english ? "poppins" : "para-dhivehi"}}">{{$post->title}}</h2>
 
                             @if($post->isScheduled())
                             <span class="text-gray-500 text-sm poppins">Scheduled to post on

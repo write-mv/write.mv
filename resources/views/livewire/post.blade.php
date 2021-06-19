@@ -5,13 +5,13 @@
         <form wire:submit.prevent="save">
           <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div class="mb-2 flex justify-between">
-              <h2 class="font-semibold text-xl text-gray-800 leading-tight poppins">
+              <h2 class="font-semibold text-xl text-gray-800 leading-tight poppins dark:text-gray-200">
                 {{$label}}
               </h2>
 
               <div class="flex items-center">
                 <div class="col-span-6 sm:col-span-2 mt-3">
-                  <label for="location" class="block text-sm text-gray-700 poppins font-normal">Language: <span
+                  <label for="location" class="block text-sm text-gray-700 dark:text-gray-200 poppins font-normal">Language: <span
                       class="font-semibold">{{$post->is_english ? "English" : "Dhivehi"}}</span></label>
                   <x-form.toggle model="post.is_english" />
 
@@ -37,31 +37,31 @@
               <!-- Left column -->
               <div class="grid grid-cols-1 gap-4 lg:col-span-2">
                 <section aria-labelledby="section-1-title">
-                  <div class="rounded-lg bg-white">
+                  <div class="rounded-lg bg-white dark:bg-gray-900">
                     <div class="p-6">
 
                       <div class="col-span-6 sm:col-span-2">
-                        <label for="title" class="block text-sm font-medium text-gray-700 poppins">Title</label>
+                        <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Title</label>
                         <input type="text" name="title" id="title" wire:model.lazy="post.title"
-                          class="focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm text-xl rounded-md border-gray-300 {{$post->is_english ? "" : "heading-dhivehi thaana-keyboard"}}"
+                          class="focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm text-xl rounded-md dark:bg-gray-300 border-gray-300 {{$post->is_english ? "" : "heading-dhivehi thaana-keyboard"}}"
                           {{$post->is_english ? "" : "dir=rtl"}}>
                         @error('post.title') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                       </div>
 
 
                       <div class="col-span-6 sm:col-span-2 mt-3">
-                        <label for="slug" class="block text-sm font-medium text-gray-700 poppins">Slug</label>
+                        <label for="slug" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Slug</label>
                         <input type="text" name="slug" id="slug" wire:model.lazy="post.slug"
-                          class="focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm text-xl rounded-md border-gray-300"
+                          class="focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm text-xl rounded-md dark:bg-gray-300 border-gray-300"
                           required>
                         @error('post.slug') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                       </div>
 
                       <div class="col-span-6 sm:col-span-2 mt-3">
                         <div class="mt-2">
-                          <label for="location" class="block text-sm font-medium text-gray-700 poppins">Excerpt</label>
+                          <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Excerpt</label>
                           <textarea id="excerpt" name="excerpt" wire:model.lazy="post.excerpt" rows="5"
-                            class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-md rounded-md border-gray-300 {{$post->is_english ? "" : "para-dhivehi thaana-keyboard"}}"" {{$post->is_english ? "" : "dir=rtl"}}></textarea>
+                            class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-md rounded-md dark:bg-gray-300 border-gray-300 {{$post->is_english ? "" : "para-dhivehi thaana-keyboard"}}"" {{$post->is_english ? "" : "dir=rtl"}}></textarea>
                             @error('post.excerpt') <p class=" mt-2 text-sm
                             text-red-600">{{$message}}</p> @enderror
                         </div>
@@ -95,11 +95,11 @@
         <!-- Right column -->
         <div class="grid grid-cols-1 gap-4">
           <section aria-labelledby="section-2-title">
-            <div class="rounded-lg bg-white overflow-hidden">
+            <div class="rounded-lg bg-white dark:bg-gray-900 overflow-hidden">
               <div class="p-6">
                 <div class="col-span-6 sm:col-span-2">
-                    <label for="post_as" class="block text-sm font-medium text-gray-700 poppins">Post as</label>
-                    <select id="post_as" wire:model="post.display_name" name="post_as" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md mt-2">
+                    <label for="post_as" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Post as</label>
+                    <select id="post_as" wire:model="post.display_name" name="post_as" class="block w-full pl-3 pr-10 py-2 text-base dark:bg-gray-300 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md mt-2">
                       <option value="{{auth()->user()->name}}">{{auth()->user()->name}}</option>
                       <option value="anonymous">Anonymous</option>
                     </select>
@@ -107,19 +107,19 @@
                   </div>
 
                   <div class="col-span-6 sm:col-span-2 mt-3">
-                    <label for="location" class="block text-sm font-medium text-gray-700 poppins mb-2">Published Date</label>
+                    <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-200  poppins mb-2">Published Date</label>
                    <x-form.date-picker wire:model="post.published_date" />
                    @error('post.published_date') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                   </div>
 
                   <div class="col-span-6 sm:col-span-2 mt-3">
-                    <label for="location" class="block text-sm font-medium text-gray-700 poppins">Publish?</label>
+                    <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Publish?</label>
                    <x-form.toggle model="post.published" />
                    @error('post.published') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                   </div>
 
                   <div class="col-span-6 sm:col-span-2 mt-3">
-                    <label for="show_author" class="block text-sm font-medium text-gray-700 poppins">Show Author?</label>
+                    <label for="show_author" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Show Author?</label>
                     <x-form.toggle model="post.show_author" />
                     @error('post.show_author') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                   </div>
@@ -128,10 +128,10 @@
           </section>
 
           <section aria-labelledby="section-2-title">
-            <div class="rounded-lg bg-white overflow-hidden">
+            <div class="rounded-lg bg-white dark:bg-gray-900 overflow-hidden">
               <div class="p-6">
                 <div class="col-span-6 sm:col-span-2">
-                    <label for="featured_image" class="block text-sm font-medium text-gray-700 poppins mb-2">Featured Image</label>
+                    <label for="featured_image" class="block text-sm font-medium text-gray-700  dark:text-gray-200 poppins mb-2">Featured Image</label>
                     @if ($upload)
                     <img class="mt-2 rounded-2xl border border-gray-100 dark:border-gray-700 mb-3" src="{{ $upload->temporaryUrl() }}" alt="Featured Image">
                   @elseif($post->featured_image)
@@ -149,8 +149,8 @@
                   </div>
 
                   <div class="col-span-6 sm:col-span-2">
-                    <label for="featured_image_caption" class="block text-sm font-medium text-gray-700 poppins mb-2">Image Caption</label>
-                    <input type="text" name="featured_image_caption" id="featured_image_caption" wire:model.lazy="post.featured_image_caption" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md">
+                    <label for="featured_image_caption" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins mb-2">Image Caption</label>
+                    <input type="text" name="featured_image_caption" id="featured_image_caption" wire:model.lazy="post.featured_image_caption" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-300">
                   @error('post.featured_image_caption') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
                   </div>
 
@@ -160,11 +160,11 @@
           </section>
 
           <section aria-labelledby="section-2-title">
-            <div class="rounded-lg bg-white overflow-hidden">
+            <div class="rounded-lg bg-white dark:bg-gray-900 overflow-hidden">
               <div class="p-6">
                
                   <div class="col-span-6 sm:col-span-2">
-                    <label for="featured_image_caption" class="block text-sm font-medium text-gray-700 poppins mb-2">Tags</label>
+                    <label for="featured_image_caption" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins mb-2">Tags</label>
 
                     <x-input.tag :tags="$tags->pluck('name')->toArray()" />
                  
