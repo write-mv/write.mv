@@ -58,7 +58,7 @@ Route::get('/dashboard', function () {
 //['auth','verified']
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::get('/posts', ListPosts::class)->name('posts');
-    Route::get('/responses', ListResponses::class)->name('responses');
+    //Route::get('/responses', ListResponses::class)->name('responses');
     Route::get('/tags', ListTags::class)->name('tags');
     Route::get('/posts/new', Post::class)->name('posts.new');
     Route::get('/posts/e/{post}', Post::class)->name('posts.update');
@@ -75,4 +75,5 @@ require __DIR__ . '/auth.php';
 Route::get('/{name}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/{name}/feed', FeedController::class);
 Route::get('/{name}/{post}', [PostController::class, 'show'])->name('posts.show');
-Route::post('/{post}/comments', [CommentsController::class, 'store'])->name('comments.store');
+
+//Route::post('/{post}/comments', [CommentsController::class, 'store'])->name('comments.store');
