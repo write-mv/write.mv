@@ -111,7 +111,7 @@
                 </div>
                 @if($tags->total() > 0 && $tags->count() < $tags->total())
                 <div class="mt-2 ml-1 poppins">
-                    <a class="cursor-pointer text-gray-700 hover:underline" wire:click="load">Load more</a>
+                    <a class="cursor-pointer text-gray-700 dark:text-gray-200 hover:underline" wire:click="load">Load more</a>
                 </div>
                 @endif
               </div>
