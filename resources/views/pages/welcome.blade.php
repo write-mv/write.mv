@@ -219,7 +219,7 @@
 
  --}}
 
-
+  {{--
           <div class="my-16 md:my-32 poppins">
               <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div class="px-6 py-6 bg-blue-500 rounded-lg md:py-12 md:px-12 lg:py-12 lg:px-12 xl:flex xl:items-center">
@@ -249,5 +249,7 @@
                       </div>
                   </div>
               </div>
+
+              --}}
           </div>
       @endsection
