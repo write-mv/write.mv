@@ -87,7 +87,7 @@
                                     </button>
                                 </div>
                                 <p
-                                    class="mt-2 block text-md font-medium text-gray-900 truncate uppercase text-center pointer-events-none">
+                                    class="mt-2 block text-md font-medium text-gray-900 dark:text-gray-200 truncate uppercase text-center pointer-events-none">
                                     {{ $theme->name }}</p>
                                 <p class="block text-sm font-medium text-gray-500 pointer-events-none text-center">
                                     {{ $theme->description }}</p>
