@@ -3,9 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Schema\Builder;
-use Illuminate\Support\HtmlString;
 use App\Traits\BelongsToTeam;
 use nadar\quill\Lexer;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
@@ -13,9 +10,9 @@ use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use DB;
+use Illuminate\Support\Facades\DB;
 
-class Post extends Model implements Viewable
+class Post extends WriteMvBaseModel implements Viewable
 {
     use HasFactory, BelongsToTeam, InteractsWithViews;
 
@@ -70,6 +67,16 @@ class Post extends Model implements Viewable
     public function team()
     {
         return $this->belongsTo(Team::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 
@@ -171,6 +178,21 @@ class Post extends Model implements Viewable
         return $query->where('published_date', '>', $date);
     }
 
+     /**
+     * Scope a query to only include posts that have a specific tag (by slug).
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $slug
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeTag($query, string $slug)
+    {
+        return $query->whereHas('tags', function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        });
+    }
+
+
     /**
      * Calculation for graph viewsPerMonthDays
      *
@@ -237,5 +259,37 @@ class Post extends Model implements Viewable
     public function isPublished()
     {
         return $this->published == true && $this->published_date->lessThanOrEqualTo(now()) ? true : false;
+    }
+
+    /**
+     * Load a threaded set of comments for the post.
+     *
+     * @return App\Comments\CommentsCollection
+     */
+    public function getThreadedComments()
+    {
+        return $this->comments()->with('owner')->Approved()->get()->threaded();
+    }
+    
+    /**
+     * add a tag to a post
+     *
+     * @param  mixed $tag
+     * @return void
+     */
+    public function addTag($tag)
+    {
+        $this->tags()->attach($tag);
+    }
+    
+    /**
+     * Remove a tag from a post
+     *
+     * @param  mixed $tag
+     * @return void
+     */
+    public function removeTag($tag)
+    {
+        $this->tags()->detach($tag);
     }
 }

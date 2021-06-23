@@ -2,20 +2,35 @@
 
 namespace App\Models;
 
+use App\Jobs\GenerateBlogOgImage;
 use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use DB;
+use Illuminate\Support\Facades\DB;
 
-class Blog extends Model implements Viewable
+class Blog extends WriteMvBaseModel implements Viewable
 {
     use HasFactory, BelongsToTeam, InteractsWithViews;
 
     protected $guarded = [];
+
+    protected $casts = [
+        "meta" => "array"
+    ];
+
+    public static function boot()
+    {
+
+        parent::boot();
+
+        static::created(function ($blog) {
+            //Firing the blog og image generation
+            GenerateBlogOgImage::dispatch($blog);
+        });
+    }
 
     /**
      * Record the view to the blog
@@ -31,6 +46,11 @@ class Blog extends Model implements Viewable
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function theme()
+    {
+        return $this->belongsTo(Theme::class);
     }
 
     /**

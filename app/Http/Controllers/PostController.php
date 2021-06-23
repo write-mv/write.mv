@@ -4,23 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class PostController extends Controller
 {
     public function index($name)
     {
+        $blog = Blog::withoutGlobalScopes()
+            ->with('theme')
+            ->where('name', $name)
+            ->firstOrFail();
 
-        $blog = Blog::withoutGlobalScopes()->where('name', $name)->first();
-
-        if (!$blog) {
-            abort(404);
-        }
-
-       $blog->RecordView();
+        $blog->RecordView();
 
         $posts = $blog->posts()->withoutGlobalScopes()->live()->latest('published_date')->simplePaginate(8);
 
-        return view('posts.index', [
+        //Checking the theme dir
+        if ($blog->theme) {
+            $themeDir =  "themes::{$blog->theme->name}._list";
+        } else {
+            $themeDir =  "themes::default._list";
+        }
+
+        $this->buildBlogSeo($blog);
+
+        return view($themeDir, [
             'blog' => $blog,
             'posts' => $posts
         ]);
@@ -28,11 +36,10 @@ class PostController extends Controller
 
     public function show($name, $post)
     {
-        $blog = Blog::withoutGlobalScopes()->where('name', $name)->first();
-
-        if (!$blog) {
-            abort(404);
-        }
+        $blog = Blog::withoutGlobalScopes()
+            ->with('theme')
+            ->where('name', $name)
+            ->firstOrFail();
 
         $post = $blog->posts()->withoutGlobalScopes()->live()->where('slug', $post)->first();
 
@@ -44,10 +51,33 @@ class PostController extends Controller
 
         $post->RecordView();
 
+        //$comments = $post->getThreadedComments();
 
-        return view('posts.show', [
+        //Checking the theme dir
+        if ($blog->theme) {
+            $themeDir =  "themes::{$blog->theme->name}._post";
+        } else {
+            $themeDir =  "themes::default._post";
+        }
+
+
+        return view($themeDir, [
             'blog' => $blog,
-            'post' => $post
+            'post' => $post,
+            //'comments' => $comments
         ]);
+    }
+
+    protected function buildBlogSeo(Blog $blog)
+    {
+        seo()->csrfToken()
+            ->title($blog->name . " - Write.mv")
+            ->description($blog->description)
+            ->twitter('card', 'summary_large_image')
+            ->twitter('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image'])  : "https://write.mv/images/opengraph.png")
+            ->og('site_name', $blog->name)
+            ->og('url', route('posts.index', $blog->name))
+            ->og('type', 'website')
+            ->og('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image'])  : "https://write.mv/images/opengraph.png");
     }
 }

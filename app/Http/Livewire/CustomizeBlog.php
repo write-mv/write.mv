@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Blog;
+use App\Models\Theme;
 use Illuminate\Validation\Rule;
 use App\Rules\CheckIfBlockedNameIsUsed;
 use Illuminate\Support\Str;
@@ -34,13 +35,15 @@ class CustomizeBlog extends Component
         return [
             "blog.site_title" => "required|string",
             "blog.description" => "nullable|string",
-            "blog.is_grid" => "required",
-            "blog.name" => ['required', 'string','min:4',  new CheckIfBlockedNameIsUsed(),Rule::unique('blogs', 'name')->ignore($this->blog->id, 'id')]
+            "blog.name" => ['required', 'string','min:4',  new CheckIfBlockedNameIsUsed(),Rule::unique('blogs', 'name')->ignore($this->blog->id, 'id')],
+            "blog.theme_id" => "nullable"
         ];
     }
 
     public function render()
     {
-        return view('livewire.customize-blog');
+        return view('livewire.customize-blog', [
+            'themes' => Theme::OrderBySelectedThemeFirst($this->blog)->orderBy('name')->get()
+        ]);
     }
 }

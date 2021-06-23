@@ -1,36 +1,63 @@
-# Write.mv
+# Write.mv Core source code
 
-## Stuff to do
+Actively developing.
+
+## Mission
+
+The main goal of Write.mv is to give anyone a space on the web to freely share their stories & knowledge online without the need for any technical knowledge to set up their own blog. 
 
 
-- [ ] Soft delete for post
-- [ ] Login with google and github
-- [ ] Responses ( Comment to post and approve comments)
-## stuff before launch
+#### ===== Important docs ======
 
-- [ ] Secure Post preview
-- [x] Update published date to scheduled to post at {date} when post is scheduled
-- [x] Updated drafts
-- [x] Load more pagination for the publications
-- [x] Update dashboard font
-- [x] Optimize Database queries
-- [x] Fix editor bugs
-- [x] Tabs for posts (published,drafted,trashed)
-- [x] Show counts on posts tab
-- [x] Select theme grid or row
-- [x] Post featured image and caption create - working on it
-- [x] Fix navigation for mobile
-- [x] UI card to mobile friendly
-- [x] Configure meta tags for all pages
-- [x] Ability to Remove Posts with confirm modal
-- [x] Blog and Post insights
-- [ ] Check if everything is properly validated
-- [x] Explore Page design
-- [x] Pagination for Explore Page
-- [x] User Account update
-- [x] Add loading indicators for save buttons
-- [x] Update Registeration Page
-- [x] Update login page
-- [x] Meta information update of post in post create and edit
-- [x] Ability to remove a featured image
-- [x] Fix whole blog insight
+- [Publishing guidelines](https://github.com/write-mv/policies/blob/main/PublishingGuideline.md)
+
+- [Comment guidelines](https://github.com/write-mv/policies/blob/main/CommentGuideline.md)
+
+
+## Development Setup
+
+Clone the repo
+
+```bash
+composer install
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+Configure `.env`
+
+```
+DB_CONNECTION=mysql
+DB_HOST=host.docker.internal
+DB_PORT=3306
+DB_DATABASE=writemv
+DB_USERNAME=
+DB_PASSWORD=
+
+CACHE_DRIVER=redis
+```
+Then run
+
+```bash
+sail up
+```
+
+Application will be live at: `localhost:8085`
+
+
+### TODO
+
+- [x] Darkmode
+- [x] Account password update
+- [ ] Social Login ( Github)
+- [ ] Selecting Tags for a post
+
+#### Selecting Tags for a post
+
+For this I have two approach right now. Either use a jquery implementation or to re-write the component outside of livewire context. The last option is better since I am doing a direct page refresh on this page anyways. And this will minimize bundle size to avoid using something extra like a jquery solution.

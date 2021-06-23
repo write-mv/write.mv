@@ -14,11 +14,13 @@ class ListPosts extends Component
     public $perPage = 8;
     public $sortField = 'published_date';
     public $sortAsc = true;
-    public $search = '';
+    public $search = null;
     public $showConfirmModal = false;
     public $filter = "published";
 
     public $post_delete_id;
+
+    protected $queryString = ['search'];
 
     public function sortBy($field)
     {

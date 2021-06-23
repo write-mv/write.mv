@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /* $team  = Team::factory()->create();
+        $team  = Team::factory()->create();
 
         $user = \App\Models\User::factory()->create(['team_id' => $team->id]);
         $blog = Blog::factory()->create(['team_id' => $team->id]);
@@ -36,11 +36,7 @@ class DatabaseSeeder extends Seeder
             "team_id" => $team->id
         ]);
 
-        Post::factory(5)->create([
-            "blog_id" => null,
-            "user_id" => null,
-            "team_id" => null
-        ]); */
+        /*
         $faker = \Faker\Factory::create();
 
         foreach(range(1,3000) as $range)
@@ -52,6 +48,8 @@ class DatabaseSeeder extends Seeder
                 "viewed_at" => $faker->dateTimeBetween('-5 months')
             ]);
         }
+
+        */
         
     }
 }

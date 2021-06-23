@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-900 ">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img class="h-12 w-auto" src="/images/logo.svg" />
+                        <img class="h-12 w-auto hidden dark:block" src="/images/logo-dark-bg.svg" />
+                        <img class="h-12 w-auto dark:hidden" src="/images/logo.svg" />
                     </a>
                 </div>
 
@@ -23,6 +24,22 @@
                         {{ __('Posts') }}
                     </x-nav-link>
 
+                      {{--
+                    <x-nav-link :href="route('tags')" :active="request()->routeIs('tags')"
+                        class="font-medium">
+                        <x-heroicon-o-tag class="w-6 h-6 mr-1" />
+                        {{ __('Tags') }}
+                    </x-nav-link> --}}
+
+                    {{-- <x-nav-link :href="route('responses')" :active="request()->routeIs('responses')"
+                        class="font-medium">
+                        <x-heroicon-o-annotation class="w-6 h-6 mr-1" />
+                        {{ __('Responses') }}
+                        @if($pending_response_count > 0)
+                        <span class="bg-blue-500 text-white hidden ml-3 py-1 px-2.5 rounded-full text-xs font-semibold md:inline-block poppins">{{ $pending_response_count }}</span>
+                        @endif
+                    </x-nav-link> --}}
+
                     <x-nav-link :href="route('insights')" :active="request()->routeIs('insights')"
                         class="font-medium">
                         <x-heroicon-o-chart-pie class="w-6 h-6 mr-1" />
@@ -36,7 +53,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="flex items-center text-sm font-normal text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out poppins">
+                            class="flex items-center text-sm font-normal text-gray-500 dark:text-gray-300 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out poppins">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">

@@ -1,12 +1,16 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
+    mode: 'jit',
     purge: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/views/components/*.blade.php'
     ],
+
+    important: false,
+    darkMode: 'media', // or 'media' or 'class'
 
     theme: {
         extend: {
@@ -21,6 +25,9 @@ module.exports = {
             opacity: ['disabled'],
         },
     },
-
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/forms'), 
+        require('@tailwindcss/typography')
+    ],
 };

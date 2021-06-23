@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use App\Modules\ThaanaTransliterator;
 
 class Post extends Component
 {
@@ -33,6 +34,22 @@ class Post extends Component
             $this->post = $post;
         } else {
             $this->post = $this->makeBlankPost();
+        }
+    }
+    
+    /**
+     * Automatically generating the slug and filling the input
+     *
+     * @param $title $title [explicite description]
+     *
+     * @return void
+     */
+    public function updatingPostTitle($title)
+    {
+        if($this->post->is_english) {
+            $this->post->slug = Str::slug($title);
+        }else {
+            $this->post->slug = Str::slug(ThaanaTransliterator::transliterate($title));
         }
     }
 

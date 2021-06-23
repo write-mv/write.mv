@@ -1,8 +1,8 @@
 @extends('pages.layout')
 
 @section('content')
-<div class="py-12" style="font-family: Poppins;">
-    <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
+<div class="mt-12" style="font-family: Poppins;">
+    <div class="max-w-8xl mx-auto">
         <div class="relative py-8 bg-white overflow-hidden">
             <div class="relative px-4 sm:px-6 lg:px-8">
               <div class="text-lg max-w-prose mx-auto">

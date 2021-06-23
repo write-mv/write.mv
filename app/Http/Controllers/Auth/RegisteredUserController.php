@@ -15,6 +15,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Team;
 use App\Rules\CheckIfBlockedNameIsUsed;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -46,29 +47,33 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
-            'blog_name' => ['required', 'string','min:4',  new CheckIfBlockedNameIsUsed(),Rule::unique('blogs', 'name')]
+            'blog_name' => ['required', 'string', 'min:4',  new CheckIfBlockedNameIsUsed(), Rule::unique('blogs', 'name')]
         ])->validate();
 
-        $team = Team::create([
-            "name" => $request->blog_name
-        ]);
+        DB::transaction(function () use ($request) {
 
-        Blog::create([
-            "name" => Str::slug($request->blog_name),
-            "site_title" => $request->name,
-            "url" => url("/" . Str::slug($request->blog_name)),
-            "team_id" => $team->id
-        ]);
+            $team = Team::create([
+                "name" => $request->blog_name
+            ]);
 
-        Auth::login($user = User::create([
-            'name' => $request->name,
-            'role' => 'admin',
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'team_id' => $team->id
-        ]));
+            Blog::create([
+                "name" => Str::slug($request->blog_name),
+                "site_title" => $request->name,
+                "url" => url("/" . Str::slug($request->blog_name)),
+                "team_id" => $team->id
+            ]);
 
-        event(new Registered($user));
+            Auth::login($user = User::create([
+                'name' => $request->name,
+                'role' => 'admin',
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'team_id' => $team->id
+            ]));
+            event(new Registered($user));
+        });
+
+
 
         return redirect(RouteServiceProvider::HOME);
     }
