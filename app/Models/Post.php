@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Schema\Builder;
-use Illuminate\Support\HtmlString;
 use App\Traits\BelongsToTeam;
 use nadar\quill\Lexer;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;

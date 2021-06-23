@@ -79,7 +79,7 @@
                                 <x-action-dropdown wire:key="dropdown-{{ $post->id }}">
                                     <x-slot name="icon">
                                         <x-heroicon-s-dots-vertical class="h-5 w-5" />
-                                      </x-slot>
+                                    </x-slot>
 
                                     @if($post->isPublished())
                                     <a wire:click="moveToDraft({{$post->id}})"
@@ -145,7 +145,7 @@
 
                 @if($posts->total() > 0 && $posts->count() < $posts->total())
                     <div class="mt-2 ml-1 poppins">
-                        <a class="cursor-pointer text-gray-700 hover:underline" wire:click="load">Load more</a>
+                        <a class="cursor-pointer text-gray-700 dark:text-gray-200 hover:underline" wire:click="load">Load more</a>
                     </div>
                     @endif
             </div>
