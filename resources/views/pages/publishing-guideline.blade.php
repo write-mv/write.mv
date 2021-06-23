@@ -19,7 +19,7 @@
                     <span class="mt-8 block text-xl leading-8 font-bold tracking-tight text-gray-900">Malicious speech.</span>
                   </h6>
                 <p class="mt-2 text-xl text-gray-500 leading-8">
-                    To help us maintain a welcoming space full of diverse perspectives, don't encourage violence or hatred. Don't use Read Write.mv to bully people.                
+                    To help us maintain a welcoming space full of diverse perspectives, don't encourage violence or hatred. Don't use Write.mv to bully people.                
                  </p>
 
                  <h6>
