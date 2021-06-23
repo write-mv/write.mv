@@ -59,7 +59,7 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::get('/posts', ListPosts::class)->name('posts');
     //Route::get('/responses', ListResponses::class)->name('responses');
-    Route::get('/tags', ListTags::class)->name('tags');
+    //Route::get('/tags', ListTags::class)->name('tags');
     Route::get('/posts/new', Post::class)->name('posts.new');
     Route::get('/posts/e/{post}', Post::class)->name('posts.update');
     Route::get('/stats/{post}', ViewStats::class)->name('stats.show');

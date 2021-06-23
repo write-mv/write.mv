@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post as PostModel;
-use App\Models\Tag;
 use Illuminate\Support\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -127,8 +126,6 @@ class Post extends Component
 
     public function render()
     {
-        return view('livewire.post', [
-            "tags" => Tag::all()
-        ]);
+        return view('livewire.post');
     }
 }
