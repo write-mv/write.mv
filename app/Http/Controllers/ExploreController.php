@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Scopes\TeamScope;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ExploreController extends Controller
 {
@@ -12,9 +13,9 @@ class ExploreController extends Controller
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request) : View
     {
         $posts = Post::withoutGlobalScopes()->live()->with([
             'blog' => function ($query) {

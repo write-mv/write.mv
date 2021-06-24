@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use App\Jobs\UpdatePassword;
 use Illuminate\Support\Facades\Auth;
-use App\Rules\PasscheckRule;
+use App\Rules\PassCheckRule;
 use Illuminate\Validation\Rules\Password as PasswordRule;
 
 class Password extends Component
@@ -27,7 +27,7 @@ class Password extends Component
     public function rules()
     {
         return [
-            'current_password' => ['sometimes', 'required', new PasscheckRule()],
+            'current_password' => ['sometimes', 'required', new PassCheckRule()],
             'password' => ['required', 'confirmed', PasswordRule::min(8)->uncompromised()],
         ];
     }
