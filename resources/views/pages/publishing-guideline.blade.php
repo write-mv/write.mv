@@ -33,7 +33,7 @@
                     <span class="mt-8 block text-xl leading-8 font-bold tracking-tight text-gray-900">Privacy violations.</span>
                   </h6>
                 <p class="mt-2 text-xl text-gray-500 leading-8">
-                    So we can uphold our strong reputation, do not undermine anyone's privacy. Don't post personal details without someone's consent, including credit card numbers, social security numbers, or other sensitive information. Unlawful uses. To keep people safe and make sure our lives don't get so difficult we need to shut down, don't use Read Write.mv to conduct illegal behavior, like
+                    So we can uphold our strong reputation, do not undermine anyone's privacy. Don't post personal details without someone's consent, including credit card numbers, social security numbers, or other sensitive information. Unlawful uses. To keep people safe and make sure our lives don't get so difficult we need to shut down, don't use Write.mv to conduct illegal behavior, like
                 </p>
 
                 <h6>
