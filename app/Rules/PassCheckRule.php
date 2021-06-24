@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-final class PasscheckRule implements Rule
+final class PassCheckRule implements Rule
 {
     public function passes($attribute, $value): bool
     {
