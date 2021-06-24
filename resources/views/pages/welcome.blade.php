@@ -251,5 +251,12 @@
               </div>
 
               --}}
+
+              <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 poppins text-center mb-10">
+              <h1 class="mb-4 text-3xl leading-tight font-display font-bold md:leading-tight md:text-5xl lg:mb-8">
+                Need to share a dhivehi snippet? head over to 
+                <a href="https://paste.write.mv" class="hover:underline"><mark>paste.write.mv</mark></a>
+            </h1>
+              </div>
           </div>
       @endsection
