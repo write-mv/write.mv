@@ -76,7 +76,7 @@ class PostController extends Controller
             ->twitter('card', 'summary_large_image')
             ->twitter('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image'])  : "https://write.mv/images/opengraph.png")
             ->og('site_name', $blog->name)
-            ->og('url', route('posts.index', $blog->name))
+            ->og('url', route('domain.posts.index', $blog->name))
             ->og('type', 'website')
             ->og('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image'])  : "https://write.mv/images/opengraph.png");
     }
