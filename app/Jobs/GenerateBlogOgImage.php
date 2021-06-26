@@ -50,7 +50,7 @@ class GenerateBlogOgImage implements ShouldQueue
             $font->angle(0);
         });
 
-        $canvas->text("write.mv/{$this->blog->name}", 600, 580, function ($font) {
+        $canvas->text("{$this->blog->name}.write.mv", 600, 580, function ($font) {
             $font->file(public_path("fonts/Poppins/Poppins-Light.ttf"));
             $font->size(24);
             $font->color('#ffffff');
