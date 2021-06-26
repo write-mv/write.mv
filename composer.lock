@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "arielmejiadev/larapex-charts",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ArielMejiaDev/larapex-charts.git",
-                "reference": "7de57e5aed5b0851cf6043376addc838ef5123dd"
+                "reference": "821f9a99c47e51f7306d04c2eeb7c6c3ee9f1e1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ArielMejiaDev/larapex-charts/zipball/7de57e5aed5b0851cf6043376addc838ef5123dd",
-                "reference": "7de57e5aed5b0851cf6043376addc838ef5123dd",
+                "url": "https://api.github.com/repos/ArielMejiaDev/larapex-charts/zipball/821f9a99c47e51f7306d04c2eeb7c6c3ee9f1e1b",
+                "reference": "821f9a99c47e51f7306d04c2eeb7c6c3ee9f1e1b",
                 "shasum": ""
             },
             "require": {
@@ -55,9 +55,9 @@
             "description": "Package to provide easy api to build apex charts on Laravel",
             "support": {
                 "issues": "https://github.com/ArielMejiaDev/larapex-charts/issues",
-                "source": "https://github.com/ArielMejiaDev/larapex-charts/tree/2.1.0"
+                "source": "https://github.com/ArielMejiaDev/larapex-charts/tree/2.1.1"
             },
-            "time": "2021-02-14T19:12:26+00:00"
+            "time": "2021-06-24T16:16:54+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -1380,16 +1380,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.48.0",
+            "version": "v8.48.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "014443366257e4fa34071882e2b04217274a3ec9"
+                "reference": "4c50ebbb7d1a66c5f3511261413cd499d30ba4cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/014443366257e4fa34071882e2b04217274a3ec9",
-                "reference": "014443366257e4fa34071882e2b04217274a3ec9",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4c50ebbb7d1a66c5f3511261413cd499d30ba4cd",
+                "reference": "4c50ebbb7d1a66c5f3511261413cd499d30ba4cd",
                 "shasum": ""
             },
             "require": {
@@ -1544,7 +1544,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-06-22T13:41:32+00:00"
+            "time": "2021-06-25T23:57:38+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -1794,16 +1794,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "9be3b16c877d477357c015cec057548cf9b2a14a"
+                "reference": "f3ad69181b8afed2c9edf7be5a2918144ff4ea32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/9be3b16c877d477357c015cec057548cf9b2a14a",
-                "reference": "9be3b16c877d477357c015cec057548cf9b2a14a",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f3ad69181b8afed2c9edf7be5a2918144ff4ea32",
+                "reference": "f3ad69181b8afed2c9edf7be5a2918144ff4ea32",
                 "shasum": ""
             },
             "require": {
@@ -1819,7 +1819,6 @@
                 "phpunit/phpunit": "^8.5.8"
             },
             "suggest": {
-                "ext-fileinfo": "Required for MimeType",
                 "ext-ftp": "Allows you to use FTP server storage",
                 "ext-openssl": "Allows you to use FTPS server storage",
                 "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
@@ -1877,7 +1876,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/1.x"
+                "source": "https://github.com/thephpleague/flysystem/tree/1.1.4"
             },
             "funding": [
                 {
@@ -1885,7 +1884,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2020-08-23T07:39:11+00:00"
+            "time": "2021-06-23T21:56:05+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -5839,16 +5838,16 @@
         },
         {
             "name": "write-mv/themes",
-            "version": "v0.2.3",
+            "version": "v0.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/write-mv/themes.git",
-                "reference": "f78105d77ff98c39e08ef934c3efb5b3062339d9"
+                "reference": "4252880b2185aa7107af878c1c6aaf403160f58a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/write-mv/themes/zipball/f78105d77ff98c39e08ef934c3efb5b3062339d9",
-                "reference": "f78105d77ff98c39e08ef934c3efb5b3062339d9",
+                "url": "https://api.github.com/repos/write-mv/themes/zipball/4252880b2185aa7107af878c1c6aaf403160f58a",
+                "reference": "4252880b2185aa7107af878c1c6aaf403160f58a",
                 "shasum": ""
             },
             "require": {
@@ -5892,9 +5891,9 @@
             ],
             "support": {
                 "issues": "https://github.com/write-mv/themes/issues",
-                "source": "https://github.com/write-mv/themes/tree/v0.2.3"
+                "source": "https://github.com/write-mv/themes/tree/v0.2.4"
             },
-            "time": "2021-06-23T07:26:57+00:00"
+            "time": "2021-06-26T11:51:57+00:00"
         }
     ],
     "packages-dev": [
@@ -9605,5 +9604,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
