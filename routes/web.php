@@ -31,7 +31,7 @@ use App\Http\Livewire\ViewStats;
 |
 */
 
-Route::domain('{name}.write.mv')->group(function () {
+Route::domain('{name}.write.mv')->as('domain.')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('posts.index');
     Route::get('/feed', FeedController::class);
     Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
