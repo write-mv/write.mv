@@ -71,6 +71,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
 
 require __DIR__ . '/auth.php';
 
+Route::domain('{name}.write.mv')->group(function () {
+    Route::get('/', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/feed', FeedController::class);
+    Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
+});
+
 //blog
 Route::get('/{name}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/{name}/feed', FeedController::class);
