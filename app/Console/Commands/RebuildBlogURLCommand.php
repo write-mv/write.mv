@@ -43,5 +43,7 @@ class RebuildBlogURLCommand extends Command
                 "url" => "https://".$item->name.".write.mv"
             ]);
         });
+
+        $this->info("Done!");
     }
 }
