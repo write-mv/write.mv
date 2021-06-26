@@ -49,9 +49,9 @@
                                     </label>
                                     <div class="mt-1 flex rounded-md shadow-sm poppins font-normal">
                                         <input type="text" wire:model.lazy="blog.name" name="url" id="url"
-                                        class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 text-gray-500 dark:bg-gray-300">
+                                        class="focus:ring-blue-500 focus:border-blue-500 flex-1 block rounded-none rounded-l-md sm:text-sm border-gray-300 text-gray-500 dark:bg-gray-300">
                                         <span
-                                            class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 dark:bg-gray-300 text-gray-500 text-sm">
+                                            class="inline-flex items-center px-3 rounded-r-md border border-r-0 border-gray-300 bg-gray-50 dark:bg-gray-300 text-gray-500 text-sm">
                                             .write.mv
                                         </span>
                                     </div>
