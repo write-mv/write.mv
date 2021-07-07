@@ -48,12 +48,12 @@
                                         URL
                                     </label>
                                     <div class="mt-1 flex rounded-md shadow-sm poppins font-normal">
-                                        <span
-                                            class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 dark:bg-gray-300 text-gray-500 text-sm">
-                                            write.mv/
-                                        </span>
                                         <input type="text" wire:model.lazy="blog.name" name="url" id="url"
-                                            class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 text-gray-500 dark:bg-gray-300">
+                                        class="focus:ring-blue-500 focus:border-blue-500 flex-1 block rounded-none rounded-l-md sm:text-sm border-gray-300 text-gray-500 dark:bg-gray-300">
+                                        <span
+                                            class="inline-flex items-center px-3 rounded-r-md border border-r-0 border-gray-300 bg-gray-50 dark:bg-gray-300 text-gray-500 text-sm">
+                                            .write.mv
+                                        </span>
                                     </div>
                                     @error('blog.name')<p class="mt-2 text-sm text-red-600 poppins" id="email-error">
                                         {{ $message }}</p>@enderror
@@ -87,7 +87,7 @@
                                     </button>
                                 </div>
                                 <p
-                                    class="mt-2 block text-md font-medium text-gray-900 truncate uppercase text-center pointer-events-none">
+                                    class="mt-2 block text-md font-medium text-gray-900 dark:text-gray-200 truncate uppercase text-center pointer-events-none">
                                     {{ $theme->name }}</p>
                                 <p class="block text-sm font-medium text-gray-500 pointer-events-none text-center">
                                     {{ $theme->description }}</p>
