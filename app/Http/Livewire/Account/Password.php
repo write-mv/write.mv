@@ -22,6 +22,8 @@ class Password extends Component
         $this->validate();
         dispatch(new UpdatePassword(Auth::user(), $this->password));
         $this->notify("Password updated.");
+
+        $this->reset('current_password', 'password', 'password_confirmation');
     }
 
     public function rules()
