@@ -81,7 +81,7 @@ class PostController extends Controller
             ->og('site_name', $blog->name)
             ->og('url', route('domain.posts.show', ["name" => $blog->name, "post" => $post->slug]))
             ->og('type', 'website')
-            ->og('image', url("/storage" . $post->featured_image))
+            ->og('image', url("/storage/" . $post->featured_image))
             ->add(
                 Meta::make()
                     ->attr('data-rh', 'true')
