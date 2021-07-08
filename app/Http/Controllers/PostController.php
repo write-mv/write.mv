@@ -85,7 +85,7 @@ class PostController extends Controller
             ->add(
                 Meta::make()
                     ->attr('data-rh', 'true')
-                    ->attr('property', 'real:android:app_named')
+                    ->attr('property', 'al:android:app_name')
                     ->attr('content', 'Medium')
             )->add(
                 Meta::make()
