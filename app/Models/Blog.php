@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
 class Blog extends WriteMvBaseModel implements Viewable
@@ -91,7 +90,7 @@ class Blog extends WriteMvBaseModel implements Viewable
             ->get(array(
                 DB::raw('DATE(viewed_at) as date'),
                 DB::raw('COUNT(DISTINCT(visitor)) as "visits"')
-            ))->each(function ($item, $key) use (&$chartData) {
+            ))->each(function ($item) use (&$chartData) {
 
                 $chartData[] = ["date" => date("M jS", strtotime($item->date)), "visits" => $item->visits];
             });
