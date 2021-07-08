@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Blog;
 use Illuminate\Http\Request;
-use Artesaos\SEOTools\Facades\SEOTools;
+use romanzipp\Seo\Structs\Meta;
 
 class PostController extends Controller
 {
@@ -81,7 +81,16 @@ class PostController extends Controller
             ->og('site_name', $blog->name)
             ->og('url', route('domain.posts.show', ["name" => $blog->name, "post" => $post->slug]))
             ->og('type', 'website')
-            ->og('image', url("/storage" . $post->featured_image));
+            ->og('image', url("/storage" . $post->featured_image))
+            ->add(
+                Meta::make()
+                    ->attr('data-rh', 'true')
+                    ->attr('property', 'real:android:app_named')
+                    ->attr('content', 'Medium')
+            )->add(
+                Meta::make()
+                    ->attr('property', 'article:published_time')
+            );
     }
 
     protected function buildBlogSeo(Blog $blog)
