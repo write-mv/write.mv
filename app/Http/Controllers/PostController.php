@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Livewire\Post;
+use App\Models\Post;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -77,11 +77,11 @@ class PostController extends Controller
             ->title($post->title . " - Write.mv")
             ->description($post->excerpt)
             ->twitter('card', 'summary_large_image')
-            ->twitter('image', url('/storage' . $post->featured_image))
+            ->twitter('image', url("/storage/" . $post->featured_image))
             ->og('site_name', $blog->name)
             ->og('url', route('domain.posts.show', ["name" => $blog->name, "post" => $post->slug]))
             ->og('type', 'website')
-            ->og('image', url('/storage' . $post->featured_image));
+            ->og('image', url("/storage" . $post->featured_image));
     }
 
     protected function buildBlogSeo(Blog $blog)
