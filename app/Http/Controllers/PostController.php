@@ -77,11 +77,11 @@ class PostController extends Controller
             ->title($post->title . " - Write.mv")
             ->description($post->excerpt)
             ->twitter('card', 'summary_large_image')
-            ->twitter('image', url('/storage' . $post->featured_image))
+            ->twitter('image', url("/storage/" . $post->featured_image))
             ->og('site_name', $blog->name)
             ->og('url', route('domain.posts.show', ["name" => $blog->name, "post" => $post->slug]))
             ->og('type', 'website')
-            ->og('image', url('/storage' . $post->featured_image));
+            ->og('image', url("/storage" . $post->featured_image));
     }
 
     protected function buildBlogSeo(Blog $blog)
@@ -90,10 +90,10 @@ class PostController extends Controller
             ->title($blog->name . " - Write.mv")
             ->description($blog->description)
             ->twitter('card', 'summary_large_image')
-            ->twitter('image', isset($blog->meta['og_image']) ? url("/storage/" . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png")
+            ->twitter('image', isset($blog->meta['og_image']) ? url('/storage' . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png")
             ->og('site_name', $blog->name)
             ->og('url', route('domain.posts.index', $blog->name))
             ->og('type', 'website')
-            ->og('image', isset($blog->meta['og_image']) ? url("/storage/" . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png");
+            ->og('image', isset($blog->meta['og_image']) ? url('/storage' . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png");
     }
 }
