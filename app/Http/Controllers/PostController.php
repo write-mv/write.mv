@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Livewire\Post;
+use App\Models\Post;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOTools;
