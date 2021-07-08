@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Post;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -60,6 +61,8 @@ class PostController extends Controller
             $themeDir =  "themes::default._post";
         }
 
+        $this->buildPostSeo($post, $blog);
+
 
         return view($themeDir, [
             'blog' => $blog,
@@ -68,16 +71,29 @@ class PostController extends Controller
         ]);
     }
 
+    protected function buildPostSeo(Post $post, Blog $blog)
+    {
+        seo()->csrfToken()
+            ->title($post->title . " - Write.mv")
+            ->description($post->excerpt)
+            ->twitter('card', 'summary_large_image')
+            ->twitter('image', url('/storage' . $post->featured_image))
+            ->og('site_name', $blog->name)
+            ->og('url', route('domain.posts.show', ["name" => $blog->name, "post" => $post->slug]))
+            ->og('type', 'website')
+            ->og('image', url('/storage' . $post->featured_image));
+    }
+
     protected function buildBlogSeo(Blog $blog)
     {
         seo()->csrfToken()
             ->title($blog->name . " - Write.mv")
             ->description($blog->description)
             ->twitter('card', 'summary_large_image')
-            ->twitter('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image'])  : "https://write.mv/images/opengraph.png")
+            ->twitter('image', isset($blog->meta['og_image']) ? url('/storage' . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png")
             ->og('site_name', $blog->name)
             ->og('url', route('domain.posts.index', $blog->name))
             ->og('type', 'website')
-            ->og('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image'])  : "https://write.mv/images/opengraph.png");
+            ->og('image', isset($blog->meta['og_image']) ? url('/storage' . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png");
     }
 }
