@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Component::macro('notify', function ($message) {
             $this->dispatchBrowserEvent('notify', $message);
         });
+
+        URL::forceScheme('https');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post as PostModel;
+use App\Models\Tag;
 use Illuminate\Support\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -10,6 +11,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Modules\ThaanaTransliterator;
+use Illuminate\Support\Collection;
 
 class Post extends Component
 {
@@ -20,6 +22,7 @@ class Post extends Component
     public $label = "Create Post";
     public $editing = false;
     public $showMetaModal = false;
+    public $tags = [];
 
     protected $messages = [
         'post.slug.unique' => 'You already have a post with that slug.'
@@ -32,11 +35,13 @@ class Post extends Component
             $this->label = "Edit Post";
             $this->editing = true;
             $this->post = $post;
+
+            $this->tags = $this->makeTags($this->post->tags()->get());
         } else {
             $this->post = $this->makeBlankPost();
         }
     }
-    
+
     /**
      * Automatically generating the slug and filling the input
      *
@@ -46,9 +51,9 @@ class Post extends Component
      */
     public function updatingPostTitle($title)
     {
-        if($this->post->is_english) {
+        if ($this->post->is_english) {
             $this->post->slug = Str::slug($title);
-        }else {
+        } else {
             $this->post->slug = Str::slug(ThaanaTransliterator::transliterate($title));
         }
     }
@@ -72,6 +77,10 @@ class Post extends Component
         $this->post->blog_id = auth()->user()->team->blogs()->first()->id;
 
         $this->post->save();
+
+        foreach ($this->tags as $tag) {
+            $this->post->addTag($tag['id']);
+        }
 
 
         $this->upload && $this->post->update([
@@ -100,6 +109,19 @@ class Post extends Component
         ]);
     }
 
+    public function makeTags(Collection $tag = null): Collection
+    {
+        if (is_null($tag)) {
+            $tag = Tag::all();
+        }
+        return $tag->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'name' => $item->name
+            ];
+        });
+    }
+
     protected function rules()
     {
         return [
@@ -126,6 +148,8 @@ class Post extends Component
 
     public function render()
     {
-        return view('livewire.post');
+        return view('livewire.post', [
+            'AvailableTags' => $this->makeTags()->toArray()
+        ]);
     }
 }

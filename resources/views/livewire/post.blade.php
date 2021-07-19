@@ -128,7 +128,7 @@
           </section>
 
           <section aria-labelledby="section-2-title">
-            <div class="rounded-lg bg-white dark:bg-gray-900 overflow-hidden">
+            <div class="rounded-lg bg-white dark:bg-gray-900">
               <div class="p-6">
                 <div class="col-span-6 sm:col-span-2">
                     <label for="featured_image" class="block text-sm font-medium text-gray-700  dark:text-gray-200 poppins mb-2">Featured Image</label>
@@ -152,6 +152,15 @@
                     <label for="featured_image_caption" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins mb-2">Image Caption</label>
                     <input type="text" name="featured_image_caption" id="featured_image_caption" wire:model.lazy="post.featured_image_caption" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-300">
                   @error('post.featured_image_caption') <p class="mt-2 text-sm text-red-600">{{$message}}</p> @enderror
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-2 mt-3">
+                    <label for="tags" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins mb-2">Tags</label>
+                    <x-multiselect
+                    placeholder="Select a tag"
+                    wire:model="tags"
+                    :options="$AvailableTags"
+                />
                   </div>
 
            
