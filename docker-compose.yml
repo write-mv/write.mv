@@ -8,6 +8,14 @@ services:
             args:
                 WWWGROUP: '${WWWGROUP}'
         image: sail-8.0/app
+        labels:
+            - traefik.enable=true
+            - traefik.docker.network=docker
+            - traefik.http.routers.writemv.entrypoints=http,https
+            - traefik.http.routers.writemv.rule=Host(`writemv.this.lan`) # You can use any domain allowed by your TLS certificate
+            - traefik.http.routers.writemv.tls=true
+            - traefik.http.routers.writemv.service=writemv@docker
+            - traefik.http.services.writemv.loadbalancer.server.port=80 # Adapt to the exposed port in the service
         ports:
             - '${APP_PORT:-80}:80'
         environment:

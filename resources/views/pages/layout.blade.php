@@ -4,12 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
+    <meta name="description" content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
     <meta property="og:url" content="https://write.mv">
     <meta property="og:type" content="website">
-    <meta property="og:description"
-        content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
+    <meta property="og:description" content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
     <meta property="og:title" content="Write.mv ― Rant, share & scribble">
     <meta property="og:image" content="https://write.mv/images/opengraph.png">
     <meta property="og:site_name" content="Write.mv">
