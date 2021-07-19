@@ -4,10 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
+    <meta name="description"
+        content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
     <meta property="og:url" content="https://write.mv">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
+    <meta property="og:description"
+        content="Writing platform built to write, share and spread your words. Primarily optimized for Dhivehi">
     <meta property="og:title" content="Write.mv ― Rant, share & scribble">
     <meta property="og:image" content="https://write.mv/images/opengraph.png">
     <meta property="og:site_name" content="Write.mv">
@@ -70,6 +72,10 @@
                     <a href="/publishing-guideline" style="font-family: Poppins;"
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                         Guidelines
+                    </a>
+                    <a href="https://paste.write.mv" style="font-family: Poppins;"
+                        class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
+                        Paste
                     </a>
                     <a href="https://write.mv/writemv/" style="font-family: Poppins;"
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
@@ -145,6 +151,11 @@
                             class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
                             role="menuitem">
                             Guidelines
+                        </a>
+                        <a href="https://paste.write.mv" style="font-family: Poppins;"
+                            class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                            role="menuitem">
+                            Paste
                         </a>
                         <a href="https://write.mv/writemv/" style="font-family: Poppins;"
                             class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
