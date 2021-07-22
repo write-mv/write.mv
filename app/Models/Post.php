@@ -7,6 +7,9 @@ use App\Traits\BelongsToTeam;
 use nadar\quill\Lexer;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -54,27 +57,27 @@ class Post extends WriteMvBaseModel implements Viewable
         views($this)->record();
     }
 
-    public function blog()
+    public function blog() : BelongsTo
     {
         return $this->belongsTo(Blog::class);
     }
 
-    public function user()
+    public function user() : BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function team()
+    public function team() : BelongsTo
     {
         return $this->belongsTo(Team::class);
     }
 
-    public function tags()
+    public function tags() : BelongsToMany
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
-    public function comments()
+    public function comments() : HasMany
     {
         return $this->hasMany(Comment::class);
     }

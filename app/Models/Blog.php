@@ -7,6 +7,8 @@ use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -42,12 +44,12 @@ class Blog extends WriteMvBaseModel implements Viewable
     }
 
 
-    public function posts()
+    public function posts() : HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    public function theme()
+    public function theme() : BelongsTo
     {
         return $this->belongsTo(Theme::class);
     }
