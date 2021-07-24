@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\LogOptions;
 
 class Blog extends WriteMvBaseModel implements Viewable
 {
@@ -44,12 +45,12 @@ class Blog extends WriteMvBaseModel implements Viewable
     }
 
 
-    public function posts() : HasMany
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    public function theme() : BelongsTo
+    public function theme(): BelongsTo
     {
         return $this->belongsTo(Theme::class);
     }
