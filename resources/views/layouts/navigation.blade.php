@@ -134,7 +134,7 @@
                                 </svg>
 
 
-                                <span>Profile</span>
+                                <span>Your Profile</span>
                             </div>
 
                         </x-dropdown-link>

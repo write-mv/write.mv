@@ -56,18 +56,18 @@ Route::get('/publishing-guideline', fn () => view('pages.publishing-guideline'))
 Route::get('/whats-new', WhatsNewController::class);
 Route::get('/change-log', ChangeLogController::class);
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        'blog' => Blog::first(),
-        'total_post_count' => PostModel::count(),
-        'published_post_count' => PostModel::live()->count(),
-        'scheduled_post_count' => PostModel::scheduled()->count()
-    ]);
-})->middleware(['auth'])->name('dashboard');
-
 
 //['auth','verified']
-Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
+Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], function () {
+    Route::get('/', function () {
+        return view('dashboard', [
+            'blog' => Blog::first(),
+            'total_post_count' => PostModel::count(),
+            'published_post_count' => PostModel::live()->count(),
+            'scheduled_post_count' => PostModel::scheduled()->count()
+        ]);
+    })->name('dashboard');
+
     Route::get('/posts', ListPosts::class)->name('posts');
     //Route::get('/responses', ListResponses::class)->name('responses');
     Route::get('/tags', ListTags::class)->name('tags');

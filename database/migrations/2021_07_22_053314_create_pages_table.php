@@ -17,6 +17,7 @@ class CreatePagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('team_id')->index();
             $table->unsignedBigInteger('blog_id')->nullable();
+            $table->boolean('is_english')->default(false);
             $table->string('title');
             $table->string('slug')->unique();
             $table->json('content');
