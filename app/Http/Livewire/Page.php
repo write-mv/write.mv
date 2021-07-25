@@ -64,7 +64,7 @@ class Page extends Component
     {
         return PageModel::make([
             'published_date' => Carbon::now(),
-            'published' => false,
+            'published' => true,
             'is_english' => false
         ]);
     }

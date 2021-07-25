@@ -8,20 +8,26 @@
                             class="text-2xl font-bold leading-7 dark:text-gray-200 text-gray-900 sm:text-3xl sm:truncate">
                             {{ $label }}
                         </h2>
-                        @if($editing)
-                        <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
-                            <div class="mt-2 flex items-center text-sm text-gray-500">
-                                {{ $page->published_date->format('d/m/Y at H:i A') }}
+                        @if ($editing)
+                            <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+                                <div class="mt-2 flex items-center text-sm text-gray-500">
+                                    Published: {{ $page->published_date->format('d/m/Y H:i A') }}
+                                </div>
                             </div>
-                        </div>
                         @endif
                     </div>
                     <div class="mt-5 flex lg:mt-0 lg:ml-4 justify-between">
 
                         <div class="sm:mr-3 flex items-center space-x-2">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Publish?</label>
+                            <x-form.toggle model="page.published" />
+                            @error('page.published') <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="sm:mr-3 flex items-center space-x-2">
                             <label class="block text-sm text-gray-700 dark:text-gray-200 poppins font-normal">Language:
-                                <span
-                                    class="font-semibold">{{ $page->is_english ? 'English' : 'Dhivehi' }}</span></label>
+                                <span class="font-semibold">{{ $page->is_english ? 'English' : 'Dhivehi' }}</span></label>
                             <x-form.toggle model="page.is_english" />
 
                         </div>
@@ -40,10 +46,6 @@
                                 Save
                             </button>
                         </span>
-
-
-
-
                     </div>
                 </div>
 
@@ -75,8 +77,7 @@
                     <label for="content"
                         class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Publish
                         date:</label>
-                    <x-form.date-picker
-                         wire:model="page.published_date"
+                    <x-form.date-picker wire:model="page.published_date"
                         class="max-w-lg block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" />
                 </div>
 
