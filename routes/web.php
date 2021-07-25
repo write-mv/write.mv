@@ -68,13 +68,19 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
         ]);
     })->name('dashboard');
 
-    Route::get('/posts', ListPosts::class)->name('posts');
+  
     //Route::get('/responses', ListResponses::class)->name('responses');
     Route::get('/tags', ListTags::class)->name('tags');
+
     Route::get('/pages', ListPages::class)->name('pages');
     Route::get('/pages/new', Page::class)->name('pages.new');
+    Route::get('/pages/e/{page}', Page::class)->name('pages.update');
+
+    Route::get('/posts', ListPosts::class)->name('posts');
     Route::get('/posts/new', Post::class)->name('posts.new');
     Route::get('/posts/e/{post}', Post::class)->name('posts.update');
+
+
     Route::get('/stats/{post}', ViewStats::class)->name('stats.show');
     Route::get('/insights', Insights::class)->name('insights');
     Route::get('/blog/{blog}/customize', CustomizeBlog::class)->name('blog.customize');

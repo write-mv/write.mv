@@ -50,18 +50,18 @@ class ListPages extends Component
         $this->notify('Page deleted.');
     }
 
-    public function moveToDraft(Post $post)
+    public function moveToDraft(Page $page)
     {
-        $post->update([
+        $page->update([
             "published" => false
         ]);
 
         $this->notify('Page drafted.');
     }
 
-    public function publishNow(Post $post)
+    public function publishNow(Page $page)
     {
-        $post->update([
+        $page->update([
             "published" => true,
             "published_date" => now()
         ]);

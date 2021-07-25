@@ -44,7 +44,20 @@ class Page extends Component
 
     public function save()
     {
+        $this->validate();
 
+        $this->page->blog_id = auth()->user()->team->blogs()->first()->id;
+
+        $this->page->save();
+
+        if ($this->editing) {
+            session()->flash('notification', 'Page Updated.');
+        } else {
+            session()->flash('notification', 'Page Created.');
+        }
+
+
+        return redirect()->route('pages.update', $this->page);
     }
 
     public function makeBlankPage()

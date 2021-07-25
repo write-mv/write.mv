@@ -11,7 +11,8 @@
 
                             <div class="flex items-center">
                                 <div class="col-span-6 sm:col-span-2 mt-3">
-                                    <label class="block text-sm text-gray-700 dark:text-gray-200 poppins font-normal">Language:
+                                    <label
+                                        class="block text-sm text-gray-700 dark:text-gray-200 poppins font-normal">Language:
                                         <span
                                             class="font-semibold">{{ $post->is_english ? 'English' : 'Dhivehi' }}</span></label>
                                     <x-form.toggle model="post.is_english" />
@@ -142,14 +143,14 @@
                     <label for="featured_image" class="block text-sm font-medium text-gray-700  dark:text-gray-200 poppins mb-2">Featured Image</label>
                     @if ($upload)
                     <img class="mt-2 rounded-2xl border border-gray-100 dark:border-gray-700 mb-3" src="{{ $upload->temporaryUrl() }}" alt="Featured Image">
-              @elseif($post->featured_image)
+          @elseif($post->featured_image)
                 <div class="flex justify-end">
                   <a wire:click="removeFeaturedImage('{{ $post->featured_image }}')" class="cursor-pointer w-4 mr-2 transform hover:text-red-600 hover:scale-110">
                   <x-heroicon-o-trash class="w-6 h-6 mr-1 text-red-500" />
                   </a>
                 </div>
                   <img class="mt-2 rounded-2xl border border-gray-100 dark:border-gray-700 mb-3" src="{{ $post->featuredImageUrl() }}" alt="Featured Image">
-               @else
+           @else
                    @endif
 
                     <x-input.filepond wire:model="upload" />

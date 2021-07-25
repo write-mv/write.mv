@@ -62,8 +62,8 @@
                         <article class="grid bg-white dark:bg-gray-900 p-7 sm:p-4 rounded-lg lg:col-span-2 grid-cols-4">
                             <div class="pt-5 self-center sm:pt-0 sm:pl-10 col-span-3">
                                 <h2
-                                    class="text-gray-700 dark:text-gray-200 capitalize text-xl font-bold {{ $post->is_english ? 'poppins' : 'para-dhivehi' }}">
-                                    {{ $post->title }}</h2>
+                                    class="text-gray-700 dark:text-gray-200 capitalize text-xl font-bold {{ $page->is_english ? 'poppins' : 'para-dhivehi' }}">
+                                    {{ $page->title }}</h2>
 
                                 @if ($page->isScheduled())
                                     <span class="text-gray-500 text-sm poppins">Scheduled to post on
@@ -85,7 +85,7 @@
 
                                         @if ($page->isPublished())
                                             <a wire:click="moveToDraft({{ $page->id }})"
-                                                class="cursor-pointer inline-flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
+                                                class="cursor-pointer flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
                                                 role="menuitem">
                                                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@
                                                 <span>Publish now</span>
                                             </a>
                                         @endif
-                                        <a href="{{ route('posts.update', $page) }}"
+                                        <a href="{{ route('pages.update', $page) }}"
                                             class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins flex items-center"
                                             role="menuitem">
                                             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
@@ -120,7 +120,7 @@
                                                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
                                                 </path>
                                             </svg>
-                                            <span>Edit post</span>
+                                            <span>Edit page</span>
                                         </a>
                                         <a href="#" wire:click="openDeleteModal({{ $page->id }})"
                                             class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins flex items-center"
@@ -131,7 +131,7 @@
                                                     d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
                                                 </path>
                                             </svg>
-                                            <span>Delete post</span>
+                                            <span>Delete page</span>
                                         </a>
                                         <a href="{{ route('stats.show', $page->id) }}"
                                             class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
@@ -155,7 +155,7 @@
                                                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
                                                     </path>
                                                 </svg>
-                                                <span>Visit post</span>
+                                                <span>Visit page</span>
                                             </a>
 
                                         @endif

@@ -42,7 +42,7 @@
                         {{ __('Posts') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('pages')" :active="request()->routeIs('pages')" class="font-medium">
+                    <x-nav-link :href="route('pages')" :active="request()->routeIs('pages*')" class="font-medium">
                         <svg class="w-6 h-6 mr-1" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="1.5"
