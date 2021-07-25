@@ -50,6 +50,11 @@ class Blog extends WriteMvBaseModel implements Viewable
         return $this->hasMany(Post::class);
     }
 
+    public function pages(): HasMany
+    {
+        return $this->hasMany(Page::class);
+    }
+
     public function theme(): BelongsTo
     {
         return $this->belongsTo(Theme::class);

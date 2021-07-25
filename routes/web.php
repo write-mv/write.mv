@@ -8,6 +8,7 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WhatsNewController;
 use App\Http\Controllers\Account\PasswordController;
+use App\Http\Controllers\PageController;
 use App\Http\Livewire\CustomizeBlog;
 use App\Http\Livewire\Insights;
 use App\Http\Livewire\ListPages;
@@ -37,6 +38,7 @@ if (env('APP_ENV') != 'local') {
     Route::domain('{name}.write.mv')->as('domain.')->group(function () {
         Route::get('/', [PostController::class, 'index'])->name('posts.index');
         Route::get('/feed', FeedController::class);
+        Route::get('/{page}', PageController::class)->name('pages.show');
         Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
     });
 }
@@ -91,6 +93,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
 require __DIR__ . '/auth.php';
 
 //blog
+Route::get('/{name}/{page}', PageController::class)->name('pages.show');
 Route::get('/{name}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/{name}/feed', FeedController::class);
 Route::get('/{name}/{post}', [PostController::class, 'show'])->name('posts.show');

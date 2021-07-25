@@ -6,12 +6,15 @@ use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
+use nadar\quill\Lexer;
 
-class Page extends Model
+class Page extends Model implements Viewable
 {
-    use HasFactory, BelongsToTeam;
+    use HasFactory, BelongsToTeam, InteractsWithViews;
 
     protected $guarded = [];
 
@@ -146,5 +149,21 @@ class Page extends Model
         }
 
         return call_user_func(array(self::class, $this->filters[$filter]));
+    }
+
+    /**
+     * Record the view to a page
+     *
+     * @return void
+     */
+    public function RecordView()
+    {
+        views($this)->record();
+    }
+
+    public function getRenderedHtmlContent()
+    {
+        $lexer = new Lexer($this->content);
+        return $lexer->render();
     }
 }
