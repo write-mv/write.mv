@@ -3,6 +3,9 @@
   @section('content')
       <div class="mt-16 mb-16 text-center md:mt-32 md:mb-24 poppins">
           <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="#" class="inline-flex items-center px-3 pb-1 pt-1.5 rounded-full uppercase text-sm font-semibold leading-5 bg-blue-100 hover:bg-blue-200 text-blue-800">
+                Beta
+            </a>
               <div class="mt-2 mb-10">
                   <img class="inline-block h-28 md:h-32 lg:h-36 w-auto" src="/images/logo.svg" alt="">
               </div>
