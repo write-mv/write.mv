@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Collections\CommentCollection;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
 
 class Comment extends WriteMvBaseModel
@@ -30,12 +31,12 @@ class Comment extends WriteMvBaseModel
         "spam" => "spam"
     ];
 
-    public function post()
+    public function post() : BelongsTo
     {
         return $this->belongsTo(Post::class);
     }
 
-    public function owner()
+    public function owner() : BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id')->withoutGlobalScopes();
     }

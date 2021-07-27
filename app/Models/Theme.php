@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder;
 
 class Theme extends WriteMvBaseModel
 {
     use HasFactory;
 
-    public function blog()
+    public function blog() : HasMany
     {
         return $this->hasMany(Blog::class);
     }

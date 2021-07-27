@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
 class Tag extends WriteMvBaseModel
@@ -36,7 +37,7 @@ class Tag extends WriteMvBaseModel
             ->orwhere('slug', 'like', '%' . $search . '%');
     }
 
-    public function posts()
+    public function posts() : BelongsToMany
     {
         return $this->belongsToMany(Post::class)->withTimestamps();
     }
