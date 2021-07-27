@@ -24,7 +24,7 @@ class CustomizeBlog extends Component
 
         $this->blog->save();
         $this->blog->update([
-            "url" => "https://".Str::slug($this->blog->name)."write.mv"
+            "url" => "https://".Str::slug($this->blog->name).".write.mv"
         ]);
         $this->notify('Blog information updated.');
 
