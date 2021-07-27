@@ -2,7 +2,7 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            {{ config('app.name') }}
+        <img src="https://write.mv/images/logo.svg" class="logo" alt="Writemv Logo">
         @endcomponent
     @endslot
 

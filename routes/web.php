@@ -22,6 +22,7 @@ use App\Models\Blog;
 use App\Models\Post as PostModel;
 use App\Http\Livewire\Post;
 use App\Http\Livewire\ViewStats;
+use App\Mail\WelcomeEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,8 @@ use App\Http\Livewire\ViewStats;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/email', fn() => new WelcomeEmail);
 
 if (env('APP_ENV') != 'local') {
     Route::domain('{name}.write.mv')->as('domain.')->group(function () {
