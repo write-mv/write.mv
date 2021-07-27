@@ -7,13 +7,13 @@
 
                     <div class="mt-2 flex items-center justify-between">
                         <h1 class="font-bold text-2xl leading-10 poppins dark:text-gray-200">
-                            Your Publications
+                            Your Pages
                         </h1>
 
-                        <a href="{{ route('posts.new') }}"
+                        <a href="{{ route('pages.new') }}"
                             class="inline-flex items-center justify-center border border-transparent rounded-md py-2 px-5 text-sm font-base text-white focus:ring-2 focus:ring-offset-2 focus:outline-none transition ease-in-out duration-150 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 focus:ring-blue-500 poppins">
                             <x-heroicon-o-plus class="inline-block w-5 h-5" />
-                            Write a post
+                            Create a page
                         </a>
                     </div>
 
@@ -31,25 +31,25 @@
                                 <a wire:click.prevent="switchFilter('all')"
                                     class="cursor-pointer poppins font-normal {{ $filter == 'all' ? 'tab-active' : 'tab' }}">
 
-                                    <span>All ({{ $all_post_count }})</span>
+                                    <span>All ({{ $all_page_count }})</span>
                                 </a>
                                 <a wire:click.prevent="switchFilter('published')"
                                     class="cursor-pointer poppins font-normal {{ $filter == 'published' ? 'tab-active' : 'tab' }}">
 
-                                    <span>Published ({{ $published_post_count }})</span>
+                                    <span>Published ({{ $published_page_count }})</span>
                                 </a>
 
                                 <a wire:click.prevent="switchFilter('draft')"
                                     class="cursor-pointer poppins font-normal {{ $filter == 'draft' ? 'tab-active' : 'tab' }}"
                                     aria-current="page">
 
-                                    <span>Drafts ({{ $draft_post_count }})</span>
+                                    <span>Drafts ({{ $draft_page_count }})</span>
                                 </a>
 
                                 <a wire:click.prevent="switchFilter('scheduled')"
                                     class="cursor-pointer poppins font-normal {{ $filter == 'scheduled' ? 'tab-active' : 'tab' }}">
 
-                                    <span>Scheduled ({{ $scheduled_post_count }})</span>
+                                    <span>Scheduled ({{ $scheduled_page_count }})</span>
                                 </a>
 
                             </nav>
@@ -58,34 +58,34 @@
                 </div>
 
                 <div class="mt-8 grid grid-cols-1 gap-3">
-                    @forelse($posts as $post)
+                    @forelse($pages as $page)
                         <article class="grid bg-white dark:bg-gray-900 p-7 sm:p-4 rounded-lg lg:col-span-2 grid-cols-4">
                             <div class="pt-5 self-center sm:pt-0 sm:pl-10 col-span-3">
                                 <h2
-                                    class="text-gray-700 dark:text-gray-200 capitalize text-xl font-bold {{ $post->is_english ? 'poppins' : 'para-dhivehi' }}">
-                                    {{ $post->title }}</h2>
+                                    class="text-gray-700 dark:text-gray-200 capitalize text-xl font-bold {{ $page->is_english ? 'poppins' : 'para-dhivehi' }}">
+                                    {{ $page->title }}</h2>
 
-                                @if ($post->isScheduled())
+                                @if ($page->isScheduled())
                                     <span class="text-gray-500 text-sm poppins">Scheduled to post on
-                                        {{ $post->published_date->format('M d, Y H:i A') }}</span>
-                                @elseif($post->isDrafted())
+                                        {{ $page->published_date->format('M d, Y H:i A') }}</span>
+                                @elseif($page->isDrafted())
                                     <span class="text-gray-500 text-sm poppins">Drafted
-                                        {{ $post->updated_at->diffForHumans() }}</span>
+                                        {{ $page->updated_at->diffForHumans() }}</span>
                                 @else
                                     <span class="text-gray-500 text-sm poppins">Published on
-                                        {{ $post->published_date->format('M d, Y') }}</span>
+                                        {{ $page->published_date->format('M d, Y') }}</span>
                                 @endif
                             </div>
                             <div class="justify-self-end">
                                 <div class="flex items-center gap-2">
-                                    <x-action-dropdown wire:key="dropdown-{{ $post->id }}">
+                                    <x-action-dropdown wire:key="dropdown-{{ $page->id }}">
                                         <x-slot name="icon">
                                             <x-heroicon-s-dots-vertical class="h-5 w-5" />
                                         </x-slot>
 
-                                        @if ($post->isPublished())
-                                            <a wire:click="moveToDraft({{ $post->id }})"
-                                                class="cursor-pointer inline-flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
+                                        @if ($page->isPublished())
+                                            <a wire:click="moveToDraft({{ $page->id }})"
+                                                class="cursor-pointer flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
                                                 role="menuitem">
                                                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -97,8 +97,8 @@
                                             </a>
                                         @endif
 
-                                        @if ($post->isScheduled() || $post->isDrafted())
-                                            <a wire:click="publishNow({{ $post->id }})"
+                                        @if ($page->isScheduled() || $page->isDrafted())
+                                            <a wire:click="publishNow({{ $page->id }})"
                                                 class="cursor-pointer flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
                                                 role="menuitem">
                                                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
@@ -111,7 +111,7 @@
                                                 <span>Publish now</span>
                                             </a>
                                         @endif
-                                        <a href="{{ route('posts.update', $post) }}"
+                                        <a href="{{ route('pages.update', $page) }}"
                                             class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins flex items-center"
                                             role="menuitem">
                                             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
@@ -120,9 +120,9 @@
                                                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
                                                 </path>
                                             </svg>
-                                            <span>Edit post</span>
+                                            <span>Edit page</span>
                                         </a>
-                                        <a href="#" wire:click="openDeleteModal({{ $post->id }})"
+                                        <a href="#" wire:click="openDeleteModal({{ $page->id }})"
                                             class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins flex items-center"
                                             role="menuitem">
                                             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
@@ -131,9 +131,9 @@
                                                     d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
                                                 </path>
                                             </svg>
-                                            <span>Delete post</span>
+                                            <span>Delete page</span>
                                         </a>
-                                        <a href="{{ route('stats.show', $post->id) }}"
+                                        <a href="{{ route('stats.show', $page->id) }}"
                                             class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
                                             role="menuitem">
                                             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
@@ -144,8 +144,8 @@
                                             </svg>
                                             <span>View stats</span>
                                         </a>
-                                        @if ($post->isPublished())
-                                            <a href="{{ route('posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
+                                        @if ($page->isPublished())
+                                            <a href="{{ route('posts.show', ['name' => $page->blog->name, 'post' => $page->slug]) }}"
                                                 class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
                                                 role="menuitem">
                                                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
@@ -155,7 +155,7 @@
                                                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
                                                     </path>
                                                 </svg>
-                                                <span>Visit post</span>
+                                                <span>Visit page</span>
                                             </a>
 
                                         @endif
@@ -170,32 +170,33 @@
                     @empty
 
 
-                        <a href="{{ route('posts.new') }}"
+                        <a href="{{ route('pages.new') }}"
                             class="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+
+
                             <svg class="mx-auto h-12 w-12 text-gray-400" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M12.75 4.75H7.75C6.64543 4.75 5.75 5.64543 5.75 6.75V17.25C5.75 18.3546 6.64543 19.25 7.75 19.25H12.25M12.75 4.75V8.25C12.75 9.35457 13.6454 10.25 14.75 10.25H18.25L12.75 4.75Z"
+                                    d="M12.75 4.75H7.75C6.64543 4.75 5.75 5.64543 5.75 6.75V17.25C5.75 18.3546 6.64543 19.25 7.75 19.25H16.25C17.3546 19.25 18.25 18.3546 18.25 17.25V10.25M12.75 4.75V8.25C12.75 9.35457 13.6454 10.25 14.75 10.25H18.25M12.75 4.75L18.25 10.25"
                                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                     stroke-linejoin="round"></path>
-                                <path d="M17 14.75V19.25" stroke="currentColor" stroke-width="1.5"
+                                <path d="M8.75 15.75H15.25" stroke="currentColor" stroke-width="1.5"
                                     stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M19.25 17H14.75" stroke="currentColor" stroke-width="1.5"
+                                <path d="M8.75 12.75H11.25" stroke="currentColor" stroke-width="1.5"
                                     stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
 
+
                             <span class="mt-2 block text-sm font-medium dark:text-gray-200 text-gray-900">
-                                Create a new post
+                                Create a new page
                             </span>
                         </a>
-
-
 
 
                     @endforelse
                 </div>
 
-                @if ($posts->total() > 0 && $posts->count() < $posts->total())
+                @if ($pages->total() > 0 && $pages->count() < $pages->total())
                     <div class="mt-2 ml-1 poppins">
                         <a class="cursor-pointer text-gray-700 dark:text-gray-200 hover:underline"
                             wire:click="load">Load more</a>

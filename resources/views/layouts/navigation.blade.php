@@ -15,19 +15,60 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex poppins">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
                         class="font-medium">
-                        <x-heroicon-o-shield-check class="w-6 h-6 mr-1" />
+                        <svg class="w-6 h-6 mr-1" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M4.75 6.75C4.75 5.64543 5.64543 4.75 6.75 4.75H17.25C18.3546 4.75 19.25 5.64543 19.25 6.75V17.25C19.25 18.3546 18.3546 19.25 17.25 19.25H6.75C5.64543 19.25 4.75 18.3546 4.75 17.25V6.75Z">
+                            </path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M9.75 8.75V19"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M5 8.25H19"></path>
+                        </svg>
+
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('posts')" :active="request()->routeIs('posts*')" class="font-medium">
-                        <x-heroicon-o-newspaper class="w-6 h-6 mr-1" />
+                        <svg class="w-6 h-6 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4.75 19.25L9 18.25L18.9491 8.30083C19.3397 7.9103 19.3397 7.27714 18.9491 6.88661L17.1134 5.05083C16.7228 4.6603 16.0897 4.6603 15.6991 5.05083L5.75 15L4.75 19.25Z"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path d="M14.0234 7.03906L17.0234 10.0391" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+
                         {{ __('Posts') }}
                     </x-nav-link>
 
-                    
-                    <x-nav-link :href="route('tags')" :active="request()->routeIs('tags')"
-                        class="font-medium">
-                        <x-heroicon-o-tag class="w-6 h-6 mr-1" />
+                    <x-nav-link :href="route('pages')" :active="request()->routeIs('pages*')" class="font-medium">
+                        <svg class="w-6 h-6 mr-1" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M7.75 19.25H16.25C17.3546 19.25 18.25 18.3546 18.25 17.25V9L14 4.75H7.75C6.64543 4.75 5.75 5.64543 5.75 6.75V17.25C5.75 18.3546 6.64543 19.25 7.75 19.25Z">
+                            </path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M18 9.25H13.75V5"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M9.75 15.25H14.25"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M9.75 12.25H14.25"></path>
+                        </svg>
+
+                        {{ __('Pages') }}
+                    </x-nav-link>
+
+
+                    <x-nav-link :href="route('tags')" :active="request()->routeIs('tags')" class="font-medium">
+                        <svg class="w-6 h-6 mr-1" fill="none" viewBox="0 0 24 24">
+                            <circle cx="15" cy="9" r="1" fill="currentColor"></circle>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M12 4.75H19.25V12L12.5535 18.6708C11.7544 19.4668 10.4556 19.445 9.68369 18.6226L5.28993 13.941C4.54041 13.1424 4.57265 11.8895 5.36226 11.1305L12 4.75Z">
+                            </path>
+                        </svg>
+
                         {{ __('Tags') }}
                     </x-nav-link>
 
@@ -35,14 +76,26 @@
                         class="font-medium">
                         <x-heroicon-o-annotation class="w-6 h-6 mr-1" />
                         {{ __('Responses') }}
-                        @if($pending_response_count > 0)
+                        @if ($pending_response_count > 0)
                         <span class="bg-blue-500 text-white hidden ml-3 py-1 px-2.5 rounded-full text-xs font-semibold md:inline-block poppins">{{ $pending_response_count }}</span>
                         @endif
                     </x-nav-link> --}}
 
-                    <x-nav-link :href="route('insights')" :active="request()->routeIs('insights')"
-                        class="font-medium">
-                        <x-heroicon-o-chart-pie class="w-6 h-6 mr-1" />
+                    <x-nav-link :href="route('insights')" :active="request()->routeIs('insights')" class="font-medium">
+
+                        <svg class="w-6 h-6 mr-1" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M4.75 6.75C4.75 5.64543 5.64543 4.75 6.75 4.75H17.25C18.3546 4.75 19.25 5.64543 19.25 6.75V17.25C19.25 18.3546 18.3546 19.25 17.25 19.25H6.75C5.64543 19.25 4.75 18.3546 4.75 17.25V6.75Z">
+                            </path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M8.75 15.25V9.75"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M15.25 15.25V9.75"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M12 15.25V12.75"></path>
+                        </svg>
+
                         {{ __('Insights') }}
                     </x-nav-link>
                 </div>
@@ -70,7 +123,20 @@
                     <x-slot name="content">
 
                         <x-dropdown-link :href="route('account')" :active="request()->routeIs('account')">
-                            Account Settings
+                            <div class="flex gap-1 items-center">
+                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="1.5"></circle>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5"
+                                        d="M6.8475 19.25H17.1525C18.2944 19.25 19.174 18.2681 18.6408 17.2584C17.8563 15.7731 16.068 14 12 14C7.93201 14 6.14367 15.7731 5.35924 17.2584C4.82597 18.2681 5.70558 19.25 6.8475 19.25Z">
+                                    </path>
+                                </svg>
+
+
+                                <span>Your Profile</span>
+                            </div>
+
                         </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -78,7 +144,21 @@
 
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log out') }}
+                                <div class="flex gap-1 items-center">
+                                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5" d="M15.75 8.75L19.25 12L15.75 15.25"></path>
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5" d="M19 12H10.75"></path>
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M15.25 4.75H6.75C5.64543 4.75 4.75 5.64543 4.75 6.75V17.25C4.75 18.3546 5.64543 19.25 6.75 19.25H15.25">
+                                        </path>
+                                    </svg>
+
+                                    <span>Log out</span>
+
+                                </div>
                             </x-dropdown-link>
                         </form>
 
@@ -106,7 +186,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden poppins">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="font-medium">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
+                class="font-medium">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
@@ -114,7 +195,8 @@
                 {{ __('Posts') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('insights')" :active="request()->routeIs('insights')" class="font-medium">
+            <x-responsive-nav-link :href="route('insights')" :active="request()->routeIs('insights')"
+                class="font-medium">
                 {{ __('Insights') }}
             </x-responsive-nav-link>
         </div>
@@ -129,7 +211,7 @@
             </div>
 
             <x-responsive-nav-link :href="route('account')" :active="request()->routeIs('account')">
-               Account
+                Account
             </x-responsive-nav-link>
 
             <div class="mt-3 space-y-1">
@@ -144,7 +226,7 @@
                 </form>
             </div>
 
-            
+
         </div>
     </div>
 </nav>

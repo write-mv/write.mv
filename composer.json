@@ -11,11 +11,12 @@
         "php": "^7.3|^8.0",
         "arielmejiadev/larapex-charts": "^2.1",
         "blade-ui-kit/blade-heroicons": "^0.3.1",
+        "cesargb/laravel-magiclink": "^2.8",
         "cyrildewit/eloquent-viewable": "^6.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "goldspecdigital/laravel-eloquent-uuid": "^8.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.3",
         "intervention/image": "^2.5",
         "laravel-notification-channels/telegram": "^0.5.1",
         "laravel/framework": "^8.12",
@@ -25,7 +26,7 @@
         "mtownsend/read-time": "^2.0",
         "nadar/quill-delta-parser": "^2.6",
         "romanzipp/laravel-seo": "^2.2",
-        "spatie/laravel-activitylog": "^3.17",
+        "spatie/laravel-activitylog": "^4.1.1",
         "write-mv/themes": "^0.2"
     },
     "require-dev": {
