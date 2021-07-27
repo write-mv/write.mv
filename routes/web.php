@@ -51,7 +51,8 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
-Route::get('/explore', ExploreController::class)->name('explore');
+//Route::get('/explore', ExploreController::class)->name('explore');
+Route::get('/explore', fn () => view('coming-soon'))->name('explore');
 
 Route::get('/screen-casts', fn () => view('coming-soon'));
 Route::get('/about', fn () => view('pages.about'));
