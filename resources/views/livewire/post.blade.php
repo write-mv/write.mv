@@ -163,7 +163,6 @@
                   @error('post.featured_image_caption') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
                   </div>
 
-                  {{-- 
                   <div class="col-span-6 sm:col-span-2 mt-3">
                     <label for="tags" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins mb-2">Tags</label>
                     <x-multiselect
@@ -173,7 +172,6 @@
                     :options="$AvailableTags"
                 />
                   </div>
-                  --}}
 
            
               </div>
