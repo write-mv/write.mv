@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class MultiSelect extends Component
+class TagSelect extends Component
 {
     public $options = [];
 
@@ -34,6 +34,6 @@ class MultiSelect extends Component
      */
     public function render()
     {
-        return view('components.multiselect');
+        return view('components.tag-select');
     }
 }
