@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
@@ -35,6 +36,11 @@ class Tag extends WriteMvBaseModel
         return empty($search) ? $query
             : $query->where('name', 'like', '%' . $search . '%')
             ->orwhere('slug', 'like', '%' . $search . '%');
+    }
+
+    public function blog() : BelongsTo
+    {
+        return $this->belongsTo(Blog::class);
     }
 
     public function posts() : BelongsToMany
