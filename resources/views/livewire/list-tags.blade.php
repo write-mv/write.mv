@@ -134,18 +134,18 @@
 
                     <div class="col-span-6 sm:col-span-2">
                         <label for="name" class="block text-sm font-medium text-gray-700 poppins">Name</label>
-                        <input type="text" name="name" id="name" wire:model.lazy="editing.name"
+                        <input type="text" name="name" id="name" wire:model.lazy="tag.name"
                             class="mt-2 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm text-xl rounded-md border-gray-300">
-                        @error('editing.name') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+                        @error('tag.name') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
                     </div>
 
 
                     <div class="col-span-6 sm:col-span-2 mt-3">
                         <label for="slug" class="block text-sm font-medium text-gray-700 poppins">Slug</label>
-                        <input type="text" name="slug" id="slug" wire:model.lazy="editing.slug"
+                        <input type="text" name="slug" id="slug" wire:model.lazy="tag.slug"
                             class="mt-2 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm text-xl rounded-md border-gray-300"
                             required>
-                        @error('editing.slug') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+                        @error('tag.slug') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
                     </div>
 
                 </div>
