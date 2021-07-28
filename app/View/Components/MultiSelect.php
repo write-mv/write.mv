@@ -34,6 +34,6 @@ class MultiSelect extends Component
      */
     public function render()
     {
-        return view('components.multiselect');
+        return view('components.multi-select');
     }
 }
