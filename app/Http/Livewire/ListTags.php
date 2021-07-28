@@ -82,6 +82,9 @@ class ListTags extends Component
    public function save() : void
    {
        $this->validate();
+
+       $this->tag->blog_id = auth()->user()->team->blogs()->first()->id;
+
        $this->tag->save();
        $this->showEditModal = false;
 
