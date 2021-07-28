@@ -41,7 +41,7 @@ if (env('APP_ENV') != 'local') {
     Route::domain('{name}.write.mv')->as('domain.')->group(function () {
         Route::get('/', [PostController::class, 'index'])->name('posts.index');
         Route::get('/feed', FeedController::class);
-        Route::get('/{page}', PageController::class)->name('pages.show');
+        Route::get('/page/{page}', PageController::class)->name('pages.show');
         Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
     });
 }

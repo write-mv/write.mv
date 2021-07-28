@@ -13,12 +13,16 @@ class ListTags extends Component
     public $search = null;
     public $showEditModal = false;
     public $showConfirmModal = false;
-    public Tag $editing;
+    public Tag $tag;
     public $label = "Create tag";
     public $tag_delete_id;
     public $sort = "desc";
+    
 
     protected $queryString = ['search', 'sort'];
+    protected $messages = [
+        'tag.slug.unique' => 'You already have a post with that slug.'
+    ];
 
     public $colors = [
         "green",
@@ -33,12 +37,12 @@ class ListTags extends Component
 
     public function mount(): void
     {
-        $this->editing = $this->makeBlankTag();
+        $this->tag = $this->makeBlankTag();
     }
 
-    public function updatingEditingName($name)
+    public function updatingTagName($name)
     {
-      $this->editing->slug = Str::slug($name);
+      $this->tag->slug = Str::slug($name);
     }
 
 
@@ -49,14 +53,14 @@ class ListTags extends Component
 
     public function create(): void
     {
-       if($this->editing->getKey()) $this->editing = $this->makeBlankTag();
+       if($this->tag->getKey()) $this->tag = $this->makeBlankTag();
        $this->showEditModal = true;
     }
 
     public function edit(Tag $tag): void
     {
         $this->label = "Edit Tag";
-        if ($this->editing->isNot($tag)) $this->editing = $tag;
+        if ($this->tag->isNot($tag)) $this->tag = $tag;
 
         $this->showEditModal = true;
     }
@@ -78,7 +82,7 @@ class ListTags extends Component
    public function save() : void
    {
        $this->validate();
-       $this->editing->save();
+       $this->tag->save();
        $this->showEditModal = false;
 
        $this->notify("Tag created.");
@@ -92,11 +96,11 @@ class ListTags extends Component
    protected function rules(): array
    {
        return [
-        'editing.name' => 'required|string',
-        'editing.slug' => ['required', 'string', Rule::unique('tags', 'slug')->where(function ($query) {
-            return $query->where('slug', $this->editing->slug);
-        })->ignore($this->editing->id, 'id')],
-        'editing.description' => 'nullable'
+        'tag.name' => 'required|string',
+        'tag.slug' => ['required', 'string', Rule::unique('tags', 'slug')->where(function ($query) {
+            return $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->tag->slug);
+        })->ignore($this->tag->id, 'id')],
+        'tag.description' => 'nullable'
        ];
    }
     
