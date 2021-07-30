@@ -1,4 +1,4 @@
-@props(['blog'])
+@props(['blog', 'key'])
 
 <li class="border-b pb-3 pt-5">
     <div class="flex justify-between items-center px-5">
@@ -21,7 +21,7 @@
         <div>
             <span class="flex items-center gap-x-3 text-lio-500">
                 <span class="text-xl font-medium">
-                    1
+                    {{ $key + 1 }}
                 </span>
 
                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"

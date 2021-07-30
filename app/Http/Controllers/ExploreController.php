@@ -27,7 +27,7 @@ class ExploreController extends Controller
 
     return view('pages.explore.overview', [
       "posts" => $posts,
-      "blogs" => Blog::orderByViews()->withCount('posts')->get()
+      "blogs" => Blog::withoutGlobalScopes()->orderByViews()->withCount('posts')->limit(10)->get()
     ]);
   }
 }
