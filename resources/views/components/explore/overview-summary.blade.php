@@ -25,9 +25,18 @@
     <div class="mt-3 break-words">
         <a href="{{ route('posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
             class="hover:underline">
+
+            @if ($post->is_english)
             <h3 class="text-xl text-gray-900 font-semibold">
                 {{ $post->title }}
             </h3>
+            @else
+
+            <h3 class="text-xl text-gray-900 font-semibold text-right typer-bold" dir="rtl">
+                {{ $post->title }}
+            </h3>
+
+            @endif
         </a>
 
         <a href="{{ route('posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
