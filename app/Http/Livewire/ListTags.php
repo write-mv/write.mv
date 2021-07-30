@@ -11,6 +11,7 @@ class ListTags extends Component
 {
     public $per_page = 8;
     public $search = null;
+    public $editing = false;
     public $showEditModal = false;
     public $showConfirmModal = false;
     public Tag $tag;
@@ -54,6 +55,7 @@ class ListTags extends Component
     public function create(): void
     {
         if ($this->tag->getKey()) $this->tag = $this->makeBlankTag();
+        $this->editing = true;
         $this->showEditModal = true;
     }
 
