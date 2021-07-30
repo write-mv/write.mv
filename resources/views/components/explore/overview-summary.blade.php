@@ -7,7 +7,7 @@
                 <div class="flex">
 
                     @if ($post->show_author)
-                        <a href="https://laravelio.this.lan/user/jinas123" class="hover:underline">
+                        <a href="{{route('domain.posts.index',['name' => $post->blog->name])}}" class="hover:underline">
                             <span class="text-gray-900 mr-5">{{ $post->display_name }}</span>
                         </a>
 

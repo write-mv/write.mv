@@ -35,24 +35,23 @@ use App\Mail\WelcomeEmail;
 |
 */
 
-Route::get('/email', fn() => new WelcomeEmail);
 
-if (env('APP_ENV') != 'local') {
+//if (env('APP_ENV') != 'local') {
     Route::domain('{name}.write.mv')->as('domain.')->group(function () {
         Route::get('/', [PostController::class, 'index'])->name('posts.index');
         Route::get('/feed', FeedController::class);
         Route::get('/page/{page}', PageController::class)->name('pages.show');
         Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
     });
-}
+//}
 
 
 Route::get('/', function () {
     return view('pages.welcome');
 });
 
-//Route::get('/explore', ExploreController::class)->name('explore');
-Route::get('/explore', fn () => view('coming-soon'))->name('explore');
+Route::get('/explore', ExploreController::class)->name('explore');
+//Route::get('/explore', fn () => view('coming-soon'))->name('explore');
 
 Route::get('/screen-casts', fn () => view('coming-soon'));
 Route::get('/about', fn () => view('pages.about'));
