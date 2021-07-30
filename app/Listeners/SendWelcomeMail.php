@@ -6,6 +6,7 @@ use App\Mail\WelcomeEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Events\Verified;
 
 class SendWelcomeMail
 {
@@ -25,7 +26,7 @@ class SendWelcomeMail
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(Verified $event)
     {
         Mail::to($event->user->email)->send(new WelcomeEmail());
     }

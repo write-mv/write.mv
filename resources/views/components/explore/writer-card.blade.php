@@ -3,11 +3,10 @@
 <li class="border-b pb-3 pt-5">
     <div class="flex justify-between items-center px-5">
         <div class="flex items-center gap-x-5">
-            <img src="https://unavatar.now.sh/github/gottlieb.gussie?fallback=https%3A%2F%2Flaravelio.this.lan%2Fimages%2Fuser.svg"
-                alt="Prof. Ellis Corwin" class="rounded-full text-gray-500 w-10 h-10">
+            <img src="https://unavatar.now.sh/github/gottlieb.gussie?fallback=https%3A%2F%2Flaravelio.this.lan%2Fimages%2Fuser.svg" class="rounded-full text-gray-500 w-10 h-10">
 
             <span class="flex flex-col">
-                <a href="https://laravelio.this.lan/user/dorothy57" class="hover:underline">
+                <a href="{{route('domain.posts.index',['name' => $blog->name])}}" class="hover:underline">
                     <span class="text-gray-900 font-medium">
                        {{ $blog->name }}
                     </span>
