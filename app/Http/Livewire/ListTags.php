@@ -21,7 +21,7 @@ class ListTags extends Component
 
     protected $queryString = ['search', 'sort'];
     protected $messages = [
-        'tag.slug.unique' => 'You already have a post with that slug.'
+        'tag.slug.unique' => 'You already have a tag with that slug.'
     ];
 
     public $colors = [
@@ -82,6 +82,9 @@ class ListTags extends Component
    public function save() : void
    {
        $this->validate();
+
+       $this->tag->blog_id = auth()->user()->team->blogs()->first()->id;
+
        $this->tag->save();
        $this->showEditModal = false;
 

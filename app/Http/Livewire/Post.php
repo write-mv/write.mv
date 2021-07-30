@@ -140,7 +140,8 @@ class Post extends Component
             'post.featured_image_caption' => 'nullable|string',
             'post.meta.title' => 'nullable|string',
             'post.meta.description' => 'nullable|string',
-            'upload' => 'nullable|image|max:1000'
+            'upload' => 'nullable|image|max:1000',
+            'tags' => 'array|nullable'
 
         ];
     }
