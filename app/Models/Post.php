@@ -273,6 +273,18 @@ class Post extends WriteMvBaseModel implements Viewable
     {
         return $this->comments()->with('owner')->Approved()->get()->threaded();
     }
+
+     /**
+     * Method addTags
+     *
+     * @param  $tags []
+     *
+     * @return void
+     */
+    public function addTags($tags)
+    {
+        $this->tags()->sync($tags);
+    }
     
     /**
      * add a tag to a post

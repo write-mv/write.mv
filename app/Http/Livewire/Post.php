@@ -78,9 +78,7 @@ class Post extends Component
 
         $this->post->save();
 
-        foreach ($this->tags as $tag) {
-            $this->post->addTag($tag['id']);
-        }
+        $this->post->addTags(collect($this->tags)->pluck('id'));
 
 
         $this->upload && $this->post->update([

@@ -11,13 +11,14 @@ class ListTags extends Component
 {
     public $per_page = 8;
     public $search = null;
+    public $editing = false;
     public $showEditModal = false;
     public $showConfirmModal = false;
     public Tag $tag;
     public $label = "Create tag";
     public $tag_delete_id;
     public $sort = "desc";
-    
+
 
     protected $queryString = ['search', 'sort'];
     protected $messages = [
@@ -42,7 +43,7 @@ class ListTags extends Component
 
     public function updatingTagName($name)
     {
-      $this->tag->slug = Str::slug($name);
+        $this->tag->slug = Str::slug($name);
     }
 
 
@@ -53,8 +54,9 @@ class ListTags extends Component
 
     public function create(): void
     {
-       if($this->tag->getKey()) $this->tag = $this->makeBlankTag();
-       $this->showEditModal = true;
+        if ($this->tag->getKey()) $this->tag = $this->makeBlankTag();
+        $this->editing = true;
+        $this->showEditModal = true;
     }
 
     public function edit(Tag $tag): void
@@ -79,34 +81,39 @@ class ListTags extends Component
         $this->notify('Tag deleted.');
     }
 
-   public function save() : void
-   {
-       $this->validate();
+    public function save(): void
+    {
+        $this->validate();
 
-       $this->tag->blog_id = auth()->user()->team->blogs()->first()->id;
+        $this->tag->blog_id = auth()->user()->team->blogs()->first()->id;
 
-       $this->tag->save();
-       $this->showEditModal = false;
+        $this->tag->save();
+        $this->showEditModal = false;
 
-       $this->notify("Tag created.");
-   }
+        if ($this->editing) {
 
-   public function load(): void
-   {
-       $this->per_page += 8;
-   }
+            $this->notify("Tag updated.");
+        } else {
+            $this->notify("Tag created.");
+        }
+    }
 
-   protected function rules(): array
-   {
-       return [
-        'tag.name' => 'required|string',
-        'tag.slug' => ['required', 'string', Rule::unique('tags', 'slug')->where(function ($query) {
-            return $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->tag->slug);
-        })->ignore($this->tag->id, 'id')],
-        'tag.description' => 'nullable'
-       ];
-   }
-    
+    public function load(): void
+    {
+        $this->per_page += 8;
+    }
+
+    protected function rules(): array
+    {
+        return [
+            'tag.name' => 'required|string',
+            'tag.slug' => ['required', 'string', Rule::unique('tags', 'slug')->where(function ($query) {
+                return $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->tag->slug);
+            })->ignore($this->tag->id, 'id')],
+            'tag.description' => 'nullable'
+        ];
+    }
+
     public function render()
     {
         $tags = Tag::query()->search($this->search)->withCount('posts')
