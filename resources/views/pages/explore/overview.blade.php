@@ -46,8 +46,8 @@
                         </h3>
 
                         <ul>
-                            @foreach ($blogs as $blog)
-                                <x-explore.writer-card :blog="$blog" />
+                            @foreach ($blogs as $key => $blog)
+                                <x-explore.writer-card :blog="$blog" :key="$key" />
                             @endforeach
                         </ul>
                     </div>
