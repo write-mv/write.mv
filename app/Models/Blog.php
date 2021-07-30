@@ -105,4 +105,9 @@ class Blog extends WriteMvBaseModel implements Viewable
 
         return collect($chartData);
     }
+
+    public function generateBlogAvatar()
+    {
+        return "https://robohash.org/".$this->name;
+    }
 }
