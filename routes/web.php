@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\WhatsNewController;
 use App\Http\Controllers\Account\PasswordController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SignInController;
 use App\Http\Livewire\CustomizeBlog;
 use App\Http\Livewire\Insights;
 use App\Http\Livewire\ListPages;
@@ -34,6 +35,11 @@ use App\Mail\WelcomeEmail;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+Route::get('sign-in/github', [SignInController::class, 'github']);
+Route::get('sign-in/github/redirect', [SignInController::class, 'githubRedirect']);
 
 
 //if (env('APP_ENV') != 'local') {
