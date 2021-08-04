@@ -9,6 +9,9 @@
               <div class="mt-2 mb-10">
                   <img class="inline-block h-28 md:h-32 lg:h-36 w-auto" src="/images/logo.svg" alt="">
               </div>
+              <div class="flex justify-center my-5">
+                <a href="https://www.producthunt.com/posts/write-mv?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-write-mv" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=307162&theme=light" alt="Write.mv - Rant, Share & Scribble | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+              </div>
               <h1 class="mb-4 text-3xl leading-tight font-display font-bold md:leading-tight md:text-5xl lg:mb-8">
                   <span class="sm:text-transparent sm:bg-clip-text"><mark>Write mv</mark></span>
                   is a dhivehi first platform to write,share and spread your words online.
