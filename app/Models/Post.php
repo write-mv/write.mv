@@ -27,7 +27,8 @@ class Post extends WriteMvBaseModel implements Viewable
         "all" => null,
         "published" => "live",
         "draft" => "draft",
-        "scheduled" => "scheduled"
+        "scheduled" => "scheduled",
+        "notion" => "notion"
     ];
 
     protected $casts = [
@@ -306,5 +307,10 @@ class Post extends WriteMvBaseModel implements Viewable
     public function removeTag($tag)
     {
         $this->tags()->detach($tag);
+    }
+
+    public function notion()
+    {
+        
     }
 }

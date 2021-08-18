@@ -66,6 +66,25 @@
 
                 <div class="bg-white dark:bg-gray-900 shadow px-4 py-5 sm:rounded-lg sm:p-6">
                     <div class="md:col-span-1 mb-8">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 poppins dark:text-gray-200">Integrations</h3>
+                        <p class="mt-1 text-sm text-gray-500 poppins font-normal dark:text-gray-400">
+                            Integrate with external services
+                        </p>
+
+                        <div class="mt-8">
+                            <div class="flex items-center space-x-5">
+                                <label class="font-medium text-sm text-gray-900 dark:text-gray-200">
+                                Notion API KEY
+                            </label> 
+                            <input type="password" wire:model="blog.notion_api_key" placeholder="Notion api key" requried="" class="mt-1 rounded-md block w-full sm:text-sm bg-gray-100 border-gray-100 focus:bg-white focus:ring-blue-500 focus:border-blue-500 transition ease-in-out duration-150">
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 shadow px-4 py-5 sm:rounded-lg sm:p-6">
+                    <div class="md:col-span-1 mb-8">
                         <h3 class="text-lg font-medium leading-6 text-gray-900 poppins dark:text-gray-200">Themes</h3>
                         <p class="mt-1 text-sm text-gray-500 poppins font-normal dark:text-gray-400">
                             Customize your blog style with themes.

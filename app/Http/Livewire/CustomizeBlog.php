@@ -36,7 +36,8 @@ class CustomizeBlog extends Component
             "blog.site_title" => "required|string",
             "blog.description" => "nullable|string",
             "blog.name" => ['required', 'string','min:4',  new CheckIfBlockedNameIsUsed(),Rule::unique('blogs', 'name')->ignore($this->blog->id, 'id')],
-            "blog.theme_id" => "nullable"
+            "blog.theme_id" => "nullable",
+            "blog.notion_api_key" => "nullable"
         ];
     }
 

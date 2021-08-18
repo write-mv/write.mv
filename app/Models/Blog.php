@@ -108,6 +108,16 @@ class Blog extends WriteMvBaseModel implements Viewable
 
     public function generateBlogAvatar()
     {
-        return "https://robohash.org/".$this->name;
+        return "https://robohash.org/" . $this->name;
+    }
+
+    public function getNotionApiKey(): string
+    {
+        return $this->notion_api_key;
+    }
+
+    public function isNotionEnabled(): bool
+    {
+        return empty($this->getNotionApiKey()) ? false : true;
     }
 }
