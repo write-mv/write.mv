@@ -133,17 +133,20 @@
                                             </svg>
                                             <span>Delete post</span>
                                         </a>
-                                        <a href="{{ route('stats.show', $post->id) }}"
-                                            class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
-                                            role="menuitem">
-                                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                                </path>
-                                            </svg>
-                                            <span>View stats</span>
-                                        </a>
+                                        @if ($post->isPublished())
+                                            <a href="{{ route('stats.show', $post->id) }}"
+                                                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
+                                                role="menuitem">
+                                                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                                    </path>
+                                                </svg>
+                                                <span>View stats</span>
+                                            </a>
+                                        @endif
                                         @if ($post->isPublished())
                                             <a href="{{ route('domain.posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
                                                 class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
