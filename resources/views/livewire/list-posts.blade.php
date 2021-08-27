@@ -199,7 +199,7 @@
                                                 <span>Delete post</span>
                                             </a>
                                             @if ($post->isPublished())
-                                                <a href="{{ route('domain.posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
+                                                <a href="{{ route('stats.show', $post->id) }}"
                                                     class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
                                                     role="menuitem">
                                                     <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
