@@ -6,7 +6,7 @@
                 <div class="relative mt-2">
 
                     <div class="mt-2 flex items-center justify-between">
-                        <h1 class="font-bold text-2xl leading-10 text-gray-800  {{$post->is_english ? "poppins" : "para-dhivehi"}}">
+                        <h1 class="font-bold text-2xl leading-10 dark:text-gray-200 text-gray-800 {{$post->is_english ? "poppins" : "para-dhivehi"}}">
                             {{$post->title}}
                         </h1>
                         <a href="{{route('insights')}}"
@@ -21,13 +21,13 @@
                     <div class="flex justify-center gap-5">
                         <div class="inline-block align-bottom px-4 pt-5 pb-4 text-left">
                             <div>
-                                <h3 class="text-lg leading-6 font-medium text-gray-900 text-center poppins">
+                                <h3 class="text-lg leading-6 font-medium dark:text-gray-200 text-gray-800 text-center poppins">
                                     Lifetime Summary
                                 </h3>
                                 <dl
-                                    class="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
+                                    class="mt-5 grid grid-cols-1 rounded-lg bg-white dark:bg-gray-900 overflow-hidden divide-y divide-gray-200 dark:divide-gray-600 md:grid-cols-2 md:divide-y-0 md:divide-x">
                                     <div class="px-4 py-5 sm:p-6 poppins">
-                                        <dt class="text-base font-normal text-gray-900">
+                                        <dt class="text-base font-normal text-gray-900 dark:text-gray-200">
                                             Total views
                                         </dt>
                                         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
@@ -38,7 +38,7 @@
                                     </div>
     
                                     <div class="px-4 py-5 sm:p-6 poppins">
-                                        <dt class="text-base font-normal text-gray-900">
+                                        <dt class="text-base font-normal text-gray-900 dark:text-gray-200">
                                             Total visitors
                                         </dt>
                                         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
@@ -55,13 +55,13 @@
     
                         <div class="inline-block align-bottom px-4 pt-5 pb-4 text-left">
                             <div>
-                                <h3 class="text-lg leading-6 font-medium text-gray-900 text-center poppins">
+                                <h3 class="text-lg leading-6 font-medium dark:text-gray-200 text-gray-800 text-center poppins">
                                     Monthly Summary
                                 </h3>
                                 <dl
-                                    class="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
+                                    class="mt-5 grid grid-cols-1 rounded-lg bg-white dark:bg-gray-900 overflow-hidden divide-y divide-gray-200 dark:divide-gray-600 md:grid-cols-2 md:divide-y-0 md:divide-x">
                                     <div class="px-4 py-5 sm:p-6 poppins">
-                                        <dt class="text-base font-normal text-gray-900">
+                                        <dt class="text-base font-normal text-gray-900 dark:text-gray-200">
                                             Views
                                         </dt>
                                         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
@@ -105,7 +105,7 @@
                             </div>
     
                             <div class="px-4 py-5 sm:p-6 poppins">
-                                <dt class="text-base font-normal text-gray-900">
+                                <dt class="text-base font-normal text-gray-900 dark:text-gray-200">
                                     Visitors
                                 </dt>
                                 <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">

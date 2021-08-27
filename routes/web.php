@@ -23,6 +23,7 @@ use App\Models\Blog;
 use App\Models\Post as PostModel;
 use App\Http\Livewire\Post;
 use App\Http\Livewire\ViewStats;
+use Spatie\Activitylog\Models\Activity;
 use App\Mail\WelcomeEmail;
 
 /*
@@ -43,12 +44,12 @@ Route::get('sign-in/github/redirect', [SignInController::class, 'githubRedirect'
 
 
 //if (env('APP_ENV') != 'local') {
-    Route::domain('{name}.write.mv')->as('domain.')->group(function () {
-        Route::get('/', [PostController::class, 'index'])->name('posts.index');
-        Route::get('/feed', FeedController::class);
-        Route::get('/page/{page}', PageController::class)->name('pages.show');
-        Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
-    });
+Route::domain('{name}.write.mv')->as('domain.')->group(function () {
+    Route::get('/', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/feed', FeedController::class);
+    Route::get('/page/{page}', PageController::class)->name('pages.show');
+    Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
+});
 //}
 
 
@@ -75,11 +76,12 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
             'blog' => Blog::first(),
             'total_post_count' => PostModel::count(),
             'published_post_count' => PostModel::live()->count(),
-            'scheduled_post_count' => PostModel::scheduled()->count()
+            'scheduled_post_count' => PostModel::scheduled()->count(),
+            'latest_activities' => Activity::causedBy(Auth::user())->latest()->limit(5)->get()
         ]);
     })->name('dashboard');
 
-  
+
     //Route::get('/responses', ListResponses::class)->name('responses');
     Route::get('/tags', ListTags::class)->name('tags');
 
