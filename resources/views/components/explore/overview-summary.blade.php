@@ -23,7 +23,7 @@
     </div>
 
     <div class="mt-3 break-words">
-        <a href="{{ route('posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
+        <a href="{{ route('domain.posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
             class="hover:underline">
 
             @if ($post->is_english)
@@ -39,7 +39,7 @@
             @endif
         </a>
 
-        <a href="{{ route('posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
+        <a href="{{ route('domain.posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
             class="hover:underline">
             @if ($post->is_english)
             <p class="text-gray-800 leading-7 mt-1">
