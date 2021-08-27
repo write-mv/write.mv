@@ -111,7 +111,7 @@ class Blog extends WriteMvBaseModel implements Viewable
         return "https://robohash.org/" . $this->name;
     }
 
-    public function getNotionApiKey(): string
+    public function getNotionApiKey(): string | null
     {
         return $this->notion_api_key;
     }
