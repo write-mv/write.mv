@@ -71,7 +71,7 @@
                     </h3>
 
                     <div class="dark:bg-gray-900 bg-white sm:rounded-lg">
-                        <ul role="list" class="mt-2 divide-y divide-gray-200 overflow-hidden shadow">
+                        <ul role="list" class="mt-2 divide-y dark:divide-gray-800 divide-gray-200 overflow-hidden shadow">
 
                             @foreach ($latest_activities as $activity)
                                 <li>
@@ -87,7 +87,7 @@
 
 
                                                 <span
-                                                    class="flex flex-col text-gray-900 dark:text-gray-200 text-sm truncate">
+                                                    class="flex flex-col text-gray-700 dark:text-gray-200 text-sm truncate">
                                                     <span class="truncate">{{ $activity->description }}
                                                         {{ Str::afterLast($activity->subject_type, '\\') }}</span>
                                                     <time>{{ $activity->created_at->diffForHumans() }}</time>
