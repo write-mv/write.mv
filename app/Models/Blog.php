@@ -10,6 +10,7 @@ use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Spatie\Activitylog\LogOptions;
 
@@ -39,7 +40,7 @@ class Blog extends WriteMvBaseModel implements Viewable
      *
      * @return void
      */
-    public function RecordView()
+    public function RecordView() : void
     {
         views($this)->record();
     }
@@ -65,7 +66,7 @@ class Blog extends WriteMvBaseModel implements Viewable
      *
      * @return void
      */
-    public function viewsPerMonthDays()
+    public function viewsPerMonthDays() : Collection
     {
         $chartData = [];
 
@@ -88,7 +89,7 @@ class Blog extends WriteMvBaseModel implements Viewable
      *
      * @return void
      */
-    public function uniqueVisitorsPerMonthDays()
+    public function uniqueVisitorsPerMonthDays() : Collection
     {
         $chartData = [];
 
@@ -106,7 +107,7 @@ class Blog extends WriteMvBaseModel implements Viewable
         return collect($chartData);
     }
 
-    public function generateBlogAvatar()
+    public function generateBlogAvatar(): string
     {
         return "https://robohash.org/" . $this->name;
     }
