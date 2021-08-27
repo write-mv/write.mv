@@ -75,7 +75,7 @@
 
                             @foreach ($latest_activities as $activity)
                                 <li>
-                                    <a href="#" class="block px-4 py-4 dark:bg-gray-900 bg-white rounded-lg">
+                                    <a  class="block px-4 py-4 dark:bg-gray-900 bg-white rounded-lg">
                                         <span class="flex items-center space-x-4">
                                             <span class="flex-1 flex space-x-2 truncate">
                                                 <svg class="flex-shrink-0 h-6 w-6 text-gray-400" viewBox="0 0 24 24"
