@@ -71,7 +71,15 @@
                                                     <textarea id="excerpt" name="excerpt" wire:model.lazy="post.excerpt"
                                                         rows="5"
                                                         class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-md rounded-md dark:bg-gray-300 border-gray-300 {{ $post->is_english ? '' : 'para-dhivehi thaana-keyboard' }}"" {{ $post->is_english ? '' : 'dir=rtl' }}></textarea>
-                            @error('post.excerpt') <p class=" mt-2 text-sm
+                            @error('post.excerpt') <p class="
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                         mt-2 text-sm
                                                         text-red-600">{{ $message }}</p> @enderror
                         </div>
                       </div>
@@ -143,14 +151,14 @@
                     <label for="featured_image" class="block text-sm font-medium text-gray-700  dark:text-gray-200 poppins mb-2">Featured Image</label>
                     @if ($upload)
                     <img class="mt-2 rounded-2xl border border-gray-100 dark:border-gray-700 mb-3" src="{{ $upload->temporaryUrl() }}" alt="Featured Image">
-          @elseif($post->featured_image)
+@elseif($post->featured_image)
                 <div class="flex justify-end">
                   <a wire:click="removeFeaturedImage('{{ $post->featured_image }}')" class="cursor-pointer w-4 mr-2 transform hover:text-red-600 hover:scale-110">
                   <x-heroicon-o-trash class="w-6 h-6 mr-1 text-red-500" />
                   </a>
                 </div>
                   <img class="mt-2 rounded-2xl border border-gray-100 dark:border-gray-700 mb-3" src="{{ $post->featuredImageUrl() }}" alt="Featured Image">
-           @else
+@else
                    @endif
 
                     <x-input.filepond wire:model="upload" />
@@ -163,14 +171,22 @@
                   @error('post.featured_image_caption') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
                   </div>
 
-                  <div class="col-span-6 sm:col-span-2 mt-3">
+                  <div class="col-span-6 sm:col-span-2 mt-3" wire:ignore>
                     <label for="tags" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins mb-2">Tags</label>
-                    <x-tag-select
-                    trackBy="id"
-                    placeholder="Select a tag"
-                    wire:model="tags"
-                    :options="$AvailableTags"
+                    <select id="select-tags" wire:model.lazy="tags" multiple placeholder="Select a tag..." autocomplete="off">
+                      @foreach ($AvailableTags as $tag)
+                          <option value="{{ $tag['id'] }}"
+
+                          @foreach ($selectedTags as $selectedTag)
+                          @if ($selectedTag['id'] == $tag['id'])
+                          {{ 'selected="selected"' }}
+                          @endif 
+                        @endforeach >{{ $tag['name'] }}</option>
+                      @endforeach
+                  </select>
                 />
+
+              
                   </div>
 
            
@@ -180,38 +196,23 @@
         </div>
       </div>
     </div>
-      <x-modal.dialog wire:model.defer="showMetaModal">
-          <x-slot name="title">Meta informations</x-slot>
-
-          <x-slot name="content">
-              <div class="col-span-6 sm:col-span-2">
-                <label for="meta_title" class="block text-sm font-medium text-gray-700 poppins">Title</label>
-                <input type="text" name="meta_title" id="meta_title" wire:model.lazy="post.meta.title" class="mt-2 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm text-xl rounded-md border-gray-300">
-                @error('post.meta.title') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
-              </div>
-              <div class="col-span-6 sm:col-span-2 mt-3">
-                <label for="description" class="block text-sm font-medium text-gray-700 poppins">Description</label>
-                <textarea id="meta_description" name="meta_description" wire:model.lazy="post.meta.description" rows="5" class="mt-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-md rounded-md border-gray-300"></textarea>
-                                                    @error('post.meta.description') <p
-                                                            class=" mt-2 text-sm text-red-600">{{ $message }}</p>
-                                                    @enderror
-                                                </div>
-
-
-                                                </x-slot>
-
-                                                <x-slot name="footer">
-                                                    <a wire:click="$set('showMetaModal', false)"
-                                                        class="ml-3 cursor-pointer inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 poppins">
-                                                        Done
-                                                    </a>
-
-                                                </x-slot>
-                                                </x-modal.dialog>
-                </form>
-            </main>
+        @include('livewire.modals.post-meta-information-modal')
+          </form>
+          </main>
 
         </div>
     </div>
 </div>
-<!-- <script src="/js/thaana-keyboard.min.js"></script> -->
+
+@push('scripts')
+            <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.3/dist/js/tom-select.complete.min.js"></script>
+                <script>
+                    new TomSelect("#select-tags", {
+                        maxItems: 5
+                    });
+                </script>
+    @endpush
+
+@push('styles')
+                        <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.3/dist/css/tom-select.css" rel="stylesheet">
+@endpush

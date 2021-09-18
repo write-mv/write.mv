@@ -23,6 +23,7 @@ class Post extends Component
     public $editing = false;
     public $showMetaModal = false;
     public $tags = [];
+    public $selectedTags = [];
 
     protected $messages = [
         'post.slug.unique' => 'You already have a post with that slug.'
@@ -36,7 +37,7 @@ class Post extends Component
             $this->editing = true;
             $this->post = $post;
 
-            $this->tags = $this->makeTags($this->post->tags()->get());
+            $this->selectedTags = $this->makeTags($this->post->tags()->get());
         } else {
             $this->post = $this->makeBlankPost();
         }
@@ -78,7 +79,7 @@ class Post extends Component
 
         $this->post->save();
 
-        $this->post->addTags(collect($this->tags)->pluck('id'));
+        $this->post->addTags($this->tags);
 
 
         $this->upload && $this->post->update([
@@ -114,7 +115,7 @@ class Post extends Component
         }
         return $tag->map(function ($item) {
             return [
-                'id' => $item->id,
+                'id' => (int) $item->id,
                 'name' => $item->name
             ];
         });
