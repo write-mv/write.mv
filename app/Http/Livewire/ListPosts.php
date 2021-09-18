@@ -107,7 +107,7 @@ class ListPosts extends Component
         if ($this->filter == "notion") {
             $posts = $this->getNotionPages();
         } else {
-            $posts = Post::PostTabFilter($this->filter)->with('blog')->search($this->search)
+            $posts = Post::PostTabFilter($this->filter)->with('blog', 'tags')->search($this->search)
                 ->latest('published_date')->paginate($this->perPage);
         }
 
