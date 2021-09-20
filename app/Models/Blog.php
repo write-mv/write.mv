@@ -61,6 +61,11 @@ class Blog extends WriteMvBaseModel implements Viewable
         return $this->belongsTo(Theme::class);
     }
 
+    public function tags() : HasMany
+    {
+        return $this->hasMany(Tag::class);
+    }
+
     /**
      * Calculation for graph viewsPerMonthDays
      *
