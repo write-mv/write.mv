@@ -50,7 +50,7 @@ Route::domain('{name}.write.mv')->as('domain.')->group(function () {
     Route::get('/feed', FeedController::class);
     Route::get('/page/{page}', PageController::class)->name('pages.show');
     Route::get('/tags', [TagController::class, 'index'])->name('tags.index');
-    Route::get('/tag/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
+    Route::get('/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
     Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
 });
 //}
@@ -108,7 +108,7 @@ require __DIR__ . '/auth.php';
 
 //blog
 Route::get('/{name}/tags', [TagController::class, 'index'])->name('tags.index');
-Route::get('/{name}/tag/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
+Route::get('/{name}/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
 
 Route::get('/{name}/{page}', PageController::class)->name('pages.show');
 Route::get('/{name}', [PostController::class, 'index'])->name('posts.index');
