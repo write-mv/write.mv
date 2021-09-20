@@ -50,6 +50,8 @@ class TagController extends Controller
             $themeDir =  "themes::default._tag";
         }
 
+        $this->buildTagSeo($tag);
+
         return view($themeDir, [
             'tag' => $tag,
             'blog' => $blog,

@@ -42,7 +42,7 @@ class PostController extends Controller
             ->where('name', $name)
             ->firstOrFail();
 
-        $post = $blog->posts()->withoutGlobalScopes()->live()->where('slug', $post)->first();
+        $post = $blog->posts()->withoutGlobalScopes()->with('tags')->live()->where('slug', $post)->first();
 
         if (!$post) {
             abort(404);
