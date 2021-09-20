@@ -6945,16 +6945,16 @@
         },
         {
             "name": "write-mv/themes",
-            "version": "v0.2.4.5",
+            "version": "v0.2.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/write-mv/themes.git",
-                "reference": "a4b01d18757bfbd5f5f9285bec649113c7161cd3"
+                "reference": "0447ced5c4d189e30d504af0b374020921125b98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/write-mv/themes/zipball/a4b01d18757bfbd5f5f9285bec649113c7161cd3",
-                "reference": "a4b01d18757bfbd5f5f9285bec649113c7161cd3",
+                "url": "https://api.github.com/repos/write-mv/themes/zipball/0447ced5c4d189e30d504af0b374020921125b98",
+                "reference": "0447ced5c4d189e30d504af0b374020921125b98",
                 "shasum": ""
             },
             "require": {
@@ -6998,9 +6998,9 @@
             ],
             "support": {
                 "issues": "https://github.com/write-mv/themes/issues",
-                "source": "https://github.com/write-mv/themes/tree/v0.2.4.5"
+                "source": "https://github.com/write-mv/themes/tree/v0.2.4.6"
             },
-            "time": "2021-09-20T03:36:38+00:00"
+            "time": "2021-09-20T03:40:50+00:00"
         }
     ],
     "packages-dev": [
