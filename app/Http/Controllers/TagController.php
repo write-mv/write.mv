@@ -34,6 +34,29 @@ class TagController extends Controller
         ]);
     }
 
+    public function show($name, Tag $tag)
+    {
+        $blog = Blog::withoutGlobalScopes()
+            ->with('theme')
+            ->where('name', $name)
+            ->firstOrFail();
+
+        $posts = $tag->posts()->live()->latest('published_date')->simplePaginate(8);
+
+        //Checking the theme dir
+        if ($blog->theme) {
+            $themeDir =  "themes::{$blog->theme->name}._tag";
+        } else {
+            $themeDir =  "themes::default._tag";
+        }
+
+        return view($themeDir, [
+            'tag' => $tag,
+            'blog' => $blog,
+            'posts' => $posts
+        ]);
+    }
+
     protected function buildTagSeo(Tag $tag)
     {
         seo()->csrfToken()
