@@ -70,7 +70,6 @@
                         </svg>
 
                         {{ __('Tags') }}
-                        <span class="hidden sm:inline ml-3 text-xs font-semibold p-1.5 -my-1 bg-red-50 text-red-700 rounded-md">Beta</span>
                     </x-nav-link>
 
                     {{-- <x-nav-link :href="route('responses')" :active="request()->routeIs('responses')"
@@ -194,6 +193,14 @@
 
             <x-responsive-nav-link :href="route('posts')" :active="request()->routeIs('posts*')" class="font-medium">
                 {{ __('Posts') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('pages')" :active="request()->routeIs('pages*')" class="font-medium">
+                {{ __('Pages') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('tags')" :active="request()->routeIs('tags*')" class="font-medium">
+                {{ __('Tags') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('insights')" :active="request()->routeIs('insights')"
