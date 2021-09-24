@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81dfb3c0f7439510d915b34a394b48d3",
+    "content-hash": "78796e402ad4ddbc8d22c1b8ef3706fc",
     "packages": [
         {
             "name": "arielmejiadev/larapex-charts",
@@ -6822,16 +6822,16 @@
         },
         {
             "name": "write-mv/themes",
-            "version": "v0.2.4.7",
+            "version": "v0.2.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/write-mv/themes.git",
-                "reference": "590b2dddcb35a43551f2cc128cf119dea22425d1"
+                "reference": "0447ced5c4d189e30d504af0b374020921125b98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/write-mv/themes/zipball/590b2dddcb35a43551f2cc128cf119dea22425d1",
-                "reference": "590b2dddcb35a43551f2cc128cf119dea22425d1",
+                "url": "https://api.github.com/repos/write-mv/themes/zipball/0447ced5c4d189e30d504af0b374020921125b98",
+                "reference": "0447ced5c4d189e30d504af0b374020921125b98",
                 "shasum": ""
             },
             "require": {
@@ -6875,9 +6875,9 @@
             ],
             "support": {
                 "issues": "https://github.com/write-mv/themes/issues",
-                "source": "https://github.com/write-mv/themes/tree/v0.2.4.7"
+                "source": "https://github.com/write-mv/themes/tree/v0.2.4.6"
             },
-            "time": "2021-09-20T04:00:25+00:00"
+            "time": "2021-09-20T03:40:50+00:00"
         }
     ],
     "packages-dev": [
