@@ -29,7 +29,5 @@ class AppServiceProvider extends ServiceProvider
         Component::macro('notify', function ($message) {
             $this->dispatchBrowserEvent('notify', $message);
         });
-
-        URL::forceScheme('https');
     }
 }
