@@ -22,7 +22,7 @@ class ExploreController extends Controller
       'blog' => function ($query) {
         return $query->withoutGlobalScope(TeamScope::class);
       }
-    ])->latest('published_date')->paginate(16);
+    ])->whereNotIn('display_name', ['anonymous'])->latest('published_date')->paginate(16);
 
 
     return view('pages.explore.overview', [
