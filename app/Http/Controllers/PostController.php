@@ -18,7 +18,7 @@ class PostController extends Controller
 
         $blog->RecordView();
 
-        $posts = $blog->posts()->withoutGlobalScopes()->live()->latest('published_date')->simplePaginate(8);
+        $posts = $blog->posts()->withoutGlobalScopes()->live()->latest('published_date')->whereNotIn('display_name', ['anonymous'])->simplePaginate(8);
 
         //Checking the theme dir
         if ($blog->theme) {
