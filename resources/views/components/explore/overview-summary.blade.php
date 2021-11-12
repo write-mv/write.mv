@@ -7,9 +7,16 @@
                 <div class="flex">
 
                     @if ($post->show_author)
+                        @if($post->display_name == 'anonymous')
+                        <a href="#" class="hover:underline">
+                            <span class="text-gray-900 mr-5">{{ $post->display_name }}</span>
+                        </a>
+
+                        @else
                         <a href="{{route('domain.posts.index',['name' => $post->blog->name])}}" class="hover:underline">
                             <span class="text-gray-900 mr-5">{{ $post->display_name }}</span>
                         </a>
+                        @endif
 
                     @endif
                 </div>
