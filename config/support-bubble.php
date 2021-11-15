@@ -16,7 +16,7 @@ return [
     /*
      * All chat bubble responses will be sent to this email address.
      */
-    'mail_to' => 'j@live.mv',
+    'mail_to' => env('SUPPORT_MAIL'),
 
     /*
      * When set to true use currently logged in user to fill in
