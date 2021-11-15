@@ -56,9 +56,9 @@ Application will be live at: `localhost:8085`
 - [x] Darkmode
 - [x] Account password update
 - [x] Subdomain support
-- [ ] Update the Stats page dark mode (Single post stat page)
-- [ ] Social Login ( Github)
-- [ ] Selecting Tags for a post
+- [x] Update the Stats page dark mode (Single post stat page)
+- [x] Social Login ( Github)
+- [x] Selecting Tags for a post
 
 #### Selecting Tags for a post
 

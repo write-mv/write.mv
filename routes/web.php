@@ -39,6 +39,7 @@ use App\Mail\WelcomeEmail;
 */
 
 
+Route::get('/test', fn() => view('test'));
 
 Route::get('sign-in/github', [SignInController::class, 'github']);
 Route::get('sign-in/github/redirect', [SignInController::class, 'githubRedirect']);
