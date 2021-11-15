@@ -41,7 +41,7 @@
         </main>
         <x-session-notification />
         <x-notification />
-      
+        <x-support-bubble />
     
     </div>
     @include('partials.footer')
