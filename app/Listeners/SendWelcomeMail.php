@@ -8,8 +8,10 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Verified;
 
-class SendWelcomeMail
+class SendWelcomeMail implements ShouldQueue
 {
+    use InteractsWithQueue;
+    
     /**
      * Create the event listener.
      *
