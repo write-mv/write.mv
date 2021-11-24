@@ -15,10 +15,9 @@ class BlogNameUpdated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-
     public $blog;
 
-
+    
     /**
      * Create a new event instance.
      *
