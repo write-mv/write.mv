@@ -49,7 +49,7 @@ Route::get('sign-in/github/redirect', [SignInController::class, 'githubRedirect'
 Route::domain('{name}.write.mv')->as('domain.')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('posts.index');
     Route::get('/feed', FeedController::class);
-    Route::get('/{page}', PageController::class)->name('pages.show');
+    Route::get('/pages/{page}', PageController::class)->name('pages.show');
     Route::get('/tags', [TagController::class, 'index'])->name('tags.index');
     Route::get('/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
     Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
