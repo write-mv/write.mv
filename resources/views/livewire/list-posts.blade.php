@@ -139,7 +139,9 @@
 
                                     <div class="flex items-center text-gray-500 mt-5">
                                         @foreach ($post->tags as $tag)
-                                            <p class="text-xs font-light hover:underline cursor-pointer @if (!$loop->first) ml-2 @endif">#{{ $tag->name }}</p>
+                                            <p
+                                                class="text-xs font-light hover:underline cursor-pointer @if (!$loop->first) ml-2 @endif">
+                                                #{{ $tag->name }}</p>
                                         @endforeach
 
                                     </div>

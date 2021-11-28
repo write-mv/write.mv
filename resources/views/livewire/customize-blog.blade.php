@@ -9,7 +9,8 @@
             <div class="space-y-6">
                 <div class="bg-white dark:bg-gray-900 shadow px-4 py-5 sm:rounded-lg sm:p-6">
                     <div class="md:col-span-1 mb-8">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200 poppins">Blog Information</h3>
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200 poppins">Blog
+                            Information</h3>
                         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400 poppins font-normal">
                             This information will be displayed publicly so be careful what you share.
                         </p>
@@ -19,7 +20,8 @@
                             <div class="grid grid-cols-3 gap-6">
 
                                 <div class="col-span-6 sm:col-span-2">
-                                    <label for="site_title" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Site
+                                    <label for="site_title"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">Site
                                         Title</label>
                                     <input type="text" wire:model.lazy="blog.site_title" name="site_title"
                                         id="site_title" autocomplete="given-name"
@@ -30,7 +32,8 @@
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-2">
-                                    <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">
+                                    <label for="description"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">
                                         Description
                                     </label>
                                     <div class="mt-1">
@@ -44,29 +47,45 @@
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-2">
-                                    <label for="URL" class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">
+                                    <label for="URL"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">
                                         URL
                                     </label>
                                     <div class="mt-1 flex rounded-md shadow-sm poppins font-normal">
                                         <input type="text" wire:model.lazy="blog.name" name="url" id="url"
-                                        class="focus:ring-blue-500 focus:border-blue-500 flex-1 block rounded-none rounded-l-md sm:text-sm border-gray-300 text-gray-500 dark:bg-gray-300">
+                                            class="focus:ring-blue-500 focus:border-blue-500 flex-1 block rounded-none rounded-l-md sm:text-sm border-gray-300 text-gray-500 dark:bg-gray-300">
                                         <span
                                             class="inline-flex items-center px-3 rounded-r-md border border-r-0 border-gray-300 bg-gray-50 dark:bg-gray-300 text-gray-500 text-sm">
                                             .write.mv
                                         </span>
                                     </div>
-                                    @error('blog.name')<p class="mt-2 text-sm text-red-600 poppins" id="email-error">
+                                    @error('blog.name')<p class="mt-2 text-sm text-red-600 poppins">
                                         {{ $message }}</p>@enderror
                                 </div>
+
+
+                                <div class="col-span-6 sm:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 poppins">
+                                        Blog Timezone
+                                    </label>
+                                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400 poppins font-normal">
+                                        Affects published date on posts as well as scheduled future posts.
+                                    </p>
+                                    <select wire:model.lazy="blog.timezone" class="block w-full pl-3 pr-10 py-2 text-base dark:bg-gray-300 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-blue-500 sm:text-sm rounded-md mt-2">
+                                        @foreach (DateTimeZone::listIdentifiers() as $timezone)
+                                            <option value="{{ $timezone }}">{{ $timezone }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('blog.timezone')<p class="mt-2 text-sm text-red-600 poppins">{{ $message }}</p>@enderror
+                                </div>
                             </div>
-
-
                     </div>
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 shadow px-4 py-5 sm:rounded-lg sm:p-6">
                     <div class="md:col-span-1 mb-8">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900 poppins dark:text-gray-200">Integrations</h3>
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 poppins dark:text-gray-200">Integrations
+                        </h3>
                         <p class="mt-1 text-sm text-gray-500 poppins font-normal dark:text-gray-400">
                             Integrate with external services
                         </p>
@@ -74,10 +93,12 @@
                         <div class="mt-8">
                             <div class="flex items-center space-x-5">
                                 <label class="font-medium text-sm text-gray-900 dark:text-gray-200">
-                                Notion API KEY
-                            </label> 
-                            <input type="password" wire:model="blog.notion_api_key" placeholder="Notion api key" requried="" class="mt-1 rounded-md block w-full sm:text-sm bg-gray-100 border-gray-100 focus:bg-white focus:ring-blue-500 focus:border-blue-500 transition ease-in-out duration-150">
-                        </div>
+                                    Notion API KEY
+                                </label>
+                                <input type="password" wire:model="blog.notion_api_key" placeholder="Notion api key"
+                                    requried=""
+                                    class="mt-1 rounded-md block w-full sm:text-sm bg-gray-100 border-gray-100 focus:bg-white focus:ring-blue-500 focus:border-blue-500 transition ease-in-out duration-150">
+                            </div>
                         </div>
                     </div>
 
