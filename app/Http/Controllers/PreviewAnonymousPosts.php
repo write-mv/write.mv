@@ -18,7 +18,7 @@ class PreviewAnonymousPosts extends Controller
     {
         $post = Post::withoutGlobalScopes()->findOrFail($post);
 
-        $blog = $post->blog->withoutGlobalScopes()->first();
+        $blog = $post->blog()->withoutGlobalScopes()->first();
 
         $blog->RecordView();
 
