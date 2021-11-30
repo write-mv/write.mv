@@ -37,6 +37,32 @@ class Post extends WriteMvBaseModel implements Viewable
         "content" => "array"
     ];
 
+    public function getRenderedHtmlContent()
+    {
+        $lexer = new Lexer($this->content);
+        return $lexer->render();
+    }
+
+    /**
+     * Get the published date to the current timezone
+     *
+     * @param $value $value
+     *
+     */
+    public function getPublishedDateAttribute($value)
+    {
+        return Carbon::parse($value)->setTimezone($this->blog->timezone);
+    }
+
+    /*
+
+    public function getContentAttribute($content)
+    {
+        $lexer = new Lexer($content);
+        return new HtmlString($lexer->render());
+    }
+*/
+
     /**
      * Set the user's slug
      *
@@ -58,27 +84,27 @@ class Post extends WriteMvBaseModel implements Viewable
         views($this)->record();
     }
 
-    public function blog() : BelongsTo
+    public function blog(): BelongsTo
     {
         return $this->belongsTo(Blog::class);
     }
 
-    public function user() : BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function team() : BelongsTo
+    public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class);
     }
 
-    public function tags() : BelongsToMany
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
-    public function comments() : HasMany
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
     }
@@ -100,20 +126,7 @@ class Post extends WriteMvBaseModel implements Viewable
         return call_user_func(array(self::class, $this->filters[$filter]));
     }
 
-    public function getRenderedHtmlContent()
-    {
-        $lexer = new Lexer($this->content);
-        return $lexer->render();
-    }
 
-    /*
-
-    public function getContentAttribute($content)
-    {
-        $lexer = new Lexer($content);
-        return new HtmlString($lexer->render());
-    }
-*/
     /**
      * Scope a query to only include published posts.
      *
@@ -182,7 +195,7 @@ class Post extends WriteMvBaseModel implements Viewable
         return $query->where('published_date', '>', $date);
     }
 
-     /**
+    /**
      * Scope a query to only include posts that have a specific tag (by slug).
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
@@ -275,7 +288,7 @@ class Post extends WriteMvBaseModel implements Viewable
         return $this->comments()->with('owner')->Approved()->get()->threaded();
     }
 
-     /**
+    /**
      * Method addTags
      *
      * @param  $tags []
@@ -286,7 +299,7 @@ class Post extends WriteMvBaseModel implements Viewable
     {
         $this->tags()->sync($tags);
     }
-    
+
     /**
      * add a tag to a post
      *
@@ -297,7 +310,7 @@ class Post extends WriteMvBaseModel implements Viewable
     {
         $this->tags()->attach($tag);
     }
-    
+
     /**
      * Remove a tag from a post
      *
@@ -311,6 +324,5 @@ class Post extends WriteMvBaseModel implements Viewable
 
     public function notion()
     {
-        
     }
 }
