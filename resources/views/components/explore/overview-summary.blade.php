@@ -66,18 +66,35 @@
         @endif
 
 
-        <a href="{{ route('domain.posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
-            class="hover:underline">
-            @if ($post->is_english)
-                <p class="text-gray-800 leading-7 mt-1">
-                    {{ $post->excerpt }}
-                </p>
-            @else
-                <p class="text-gray-800 leading-7 mt-1 typer text-right" dir="rtl">
-                    {{ $post->excerpt }}
-                </p>
-            @endif
-        </a>
+        @if ($post->display_name != 'anonymous')
+            <a href="{{ route('domain.posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
+                class="hover:underline">
+                @if ($post->is_english)
+                    <p class="text-gray-800 leading-7 mt-1">
+                        {{ $post->excerpt }}
+                    </p>
+                @else
+                    <p class="text-gray-800 leading-7 mt-1 typer text-right" dir="rtl">
+                        {{ $post->excerpt }}
+                    </p>
+                @endif
+            </a>
+
+        @else
+
+            <a href="{{ route('anonymous.show', ['post' => $post]) }}" class="hover:underline">
+                @if ($post->is_english)
+                    <p class="text-gray-800 leading-7 mt-1">
+                        {{ $post->excerpt }}
+                    </p>
+                @else
+                    <p class="text-gray-800 leading-7 mt-1 typer text-right" dir="rtl">
+                        {{ $post->excerpt }}
+                    </p>
+                @endif
+            </a>
+
+        @endif
 
     </div>
 </div>
