@@ -145,7 +145,7 @@
                                             <span>View stats</span>
                                         </a>
                                         @if ($page->isPublished())
-                                            <a href="{{ route('posts.show', ['name' => $page->blog->name, 'post' => $page->slug]) }}"
+                                            <a href="{{ route('domain.pages.show', ['name' => $page->blog->name, 'page' => $page->slug]) }}"
                                                 class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 poppins"
                                                 role="menuitem">
                                                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor"

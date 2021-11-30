@@ -2,16 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Mail\WelcomeEmail;
+use App\Events\BlogNameUpdated;
+use App\Jobs\GenerateBlogOgImage;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Auth\Events\Verified;
 
-class SendWelcomeMail implements ShouldQueue
+class ReGenerateBlogOgImage
 {
-    use InteractsWithQueue;
-    
     /**
      * Create the event listener.
      *
@@ -25,11 +22,11 @@ class SendWelcomeMail implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  object  $event
+     * @param  BlogNameUpdated  $event
      * @return void
      */
-    public function handle(Verified $event)
+    public function handle(BlogNameUpdated $event)
     {
-        Mail::to($event->user->email)->send(new WelcomeEmail());
+        GenerateBlogOgImage::dispatch($event->blog);
     }
 }

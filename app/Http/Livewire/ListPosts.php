@@ -5,7 +5,10 @@ namespace App\Http\Livewire;
 use App\Models\Post;
 use Livewire\Component;
 use Livewire\WithPagination;
-use DB;
+use App\Models\Blog;
+use FiveamCode\LaravelNotionApi\Entities\Page;
+use FiveamCode\LaravelNotionApi\Notion;
+use Illuminate\Support\Facades\Cache;
 
 class ListPosts extends Component
 {
@@ -17,10 +20,16 @@ class ListPosts extends Component
     public $search = null;
     public $showConfirmModal = false;
     public $filter = "published";
+    public $blog;
 
     public $post_delete_id;
 
     protected $queryString = ['search'];
+
+    public function mount()
+    {
+        $this->blog = Blog::first();
+    }
 
     public function sortBy($field)
     {
@@ -70,20 +79,42 @@ class ListPosts extends Component
         $this->notify('Post published.');
     }
 
+    public function draftNow(Page $page)
+    {
+    }
+
     public function load()
     {
         $this->perPage += 4;
     }
 
+    public function getNotionPages()
+    {
+        $notion = new Notion($this->blog->notion_api_key);
+
+
+        return Cache::remember($this->blog->name . "_notion", 300, function () use ($notion) {
+            return $notion->search()
+                ->onlyPages()
+                ->query()
+                ->asCollection();
+        });
+    }
+
 
     public function render()
     {
-        $query = Post::PostTabFilter($this->filter)->with('blog')->search($this->search)
-            ->latest('published_date');
+        if ($this->filter == "notion") {
+            $posts = $this->getNotionPages();
+        } else {
+            $posts = Post::PostTabFilter($this->filter)->with('blog', 'tags')->search($this->search)
+                ->latest('published_date')->paginate($this->perPage);
+        }
 
 
         return view('livewire.list-posts', [
-            'posts' => $query->paginate($this->perPage),
+            'posts' => $posts,
+            'notion_pages' => $this->blog->isNotionEnabled() ? $this->getNotionPages() : null,
             'all_post_count' => Post::count(),
             'draft_post_count' => Post::draft()->count(),
             'published_post_count' => Post::live()->count(),

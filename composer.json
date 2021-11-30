@@ -14,10 +14,12 @@
         "cesargb/laravel-magiclink": "^2.8",
         "cyrildewit/eloquent-viewable": "^6.0",
         "fideloper/proxy": "^4.4",
+        "fiveam-code/laravel-notion-api": "^0.4.0",
         "fruitcake/laravel-cors": "^2.0",
         "goldspecdigital/laravel-eloquent-uuid": "^8.0",
         "guzzlehttp/guzzle": "^7.3",
         "intervention/image": "^2.5",
+        "jpkleemans/attribute-events": "^1.1",
         "laravel-notification-channels/telegram": "^0.5.1",
         "laravel/framework": "^8.12",
         "laravel/horizon": "^5.7",
@@ -28,7 +30,8 @@
         "nadar/quill-delta-parser": "^2.6",
         "romanzipp/laravel-seo": "^2.2",
         "spatie/laravel-activitylog": "^4.1.1",
-        "write-mv/themes": "^0.2"
+        "spatie/laravel-support-bubble": "^1.2",
+        "write-mv/themes": "0.2.4.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

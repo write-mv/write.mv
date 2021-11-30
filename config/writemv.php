@@ -28,7 +28,11 @@ return [
         "changelog",
         "change-log",
         "write.mv",
-        "writemv"
+        "writemv",
+        "pub",
+        "tags",
+        "tag",
+        "comments"
     ],
 
     "blog_og_image" => [

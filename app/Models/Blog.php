@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\BlogNameUpdated;
 use App\Jobs\GenerateBlogOgImage;
 use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,12 +11,17 @@ use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Spatie\Activitylog\LogOptions;
+use Kleemans\AttributeEvents;
 
 class Blog extends WriteMvBaseModel implements Viewable
 {
-    use HasFactory, BelongsToTeam, InteractsWithViews;
+    use HasFactory, BelongsToTeam, InteractsWithViews, AttributeEvents;
+
+    protected $dispatchesEvents = [
+        'name:*' => BlogNameUpdated::class
+    ];
 
     protected $guarded = [];
 
@@ -39,7 +45,7 @@ class Blog extends WriteMvBaseModel implements Viewable
      *
      * @return void
      */
-    public function RecordView()
+    public function RecordView(): void
     {
         views($this)->record();
     }
@@ -60,12 +66,17 @@ class Blog extends WriteMvBaseModel implements Viewable
         return $this->belongsTo(Theme::class);
     }
 
+    public function tags(): HasMany
+    {
+        return $this->hasMany(Tag::class);
+    }
+
     /**
      * Calculation for graph viewsPerMonthDays
      *
      * @return void
      */
-    public function viewsPerMonthDays()
+    public function viewsPerMonthDays(): Collection
     {
         $chartData = [];
 
@@ -88,7 +99,7 @@ class Blog extends WriteMvBaseModel implements Viewable
      *
      * @return void
      */
-    public function uniqueVisitorsPerMonthDays()
+    public function uniqueVisitorsPerMonthDays(): Collection
     {
         $chartData = [];
 
@@ -106,8 +117,18 @@ class Blog extends WriteMvBaseModel implements Viewable
         return collect($chartData);
     }
 
-    public function generateBlogAvatar()
+    public function generateBlogAvatar(): string
     {
-        return "https://robohash.org/".$this->name;
+        return "https://robohash.org/" . $this->name;
+    }
+
+    public function getNotionApiKey(): string | null
+    {
+        return $this->notion_api_key;
+    }
+
+    public function isNotionEnabled(): bool
+    {
+        return empty($this->getNotionApiKey()) ? false : true;
     }
 }

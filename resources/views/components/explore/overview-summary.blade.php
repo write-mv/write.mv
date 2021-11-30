@@ -7,9 +7,17 @@
                 <div class="flex">
 
                     @if ($post->show_author)
-                        <a href="{{route('domain.posts.index',['name' => $post->blog->name])}}" class="hover:underline">
-                            <span class="text-gray-900 mr-5">{{ $post->display_name }}</span>
-                        </a>
+                        @if ($post->display_name == 'anonymous')
+                            <a href="#" class="hover:underline">
+                                <span class="text-gray-900 mr-5">{{ $post->display_name }}</span>
+                            </a>
+
+                        @else
+                            <a href="{{ route('domain.posts.index', ['name' => $post->blog->name]) }}"
+                                class="hover:underline">
+                                <span class="text-gray-900 mr-5">{{ $post->display_name }}</span>
+                            </a>
+                        @endif
 
                     @endif
                 </div>
@@ -23,32 +31,51 @@
     </div>
 
     <div class="mt-3 break-words">
+
+        @if ($post->display_name != 'anonymous')
+            <a href="{{ route('domain.posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
+                class="hover:underline">
+
+                @if ($post->is_english)
+                    <h3 class="text-xl text-gray-900 font-semibold">
+                        {{ $post->title }}
+                    </h3>
+                @else
+
+                    <h3 class="text-xl text-gray-900 font-semibold text-right typer-bold" dir="rtl">
+                        {{ $post->title }}
+                    </h3>
+
+                @endif
+            </a>
+        @else
+            <a href="{{ route('anonymous.show', ['post' => $post]) }}" class="hover:underline">
+
+                @if ($post->is_english)
+                    <h3 class="text-xl text-gray-900 font-semibold">
+                        {{ $post->title }}
+                    </h3>
+                @else
+
+                    <h3 class="text-xl text-gray-900 font-semibold text-right typer-bold" dir="rtl">
+                        {{ $post->title }}
+                    </h3>
+
+                @endif
+            </a>
+        @endif
+
+
         <a href="{{ route('domain.posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
             class="hover:underline">
-
             @if ($post->is_english)
-            <h3 class="text-xl text-gray-900 font-semibold">
-                {{ $post->title }}
-            </h3>
+                <p class="text-gray-800 leading-7 mt-1">
+                    {{ $post->excerpt }}
+                </p>
             @else
-
-            <h3 class="text-xl text-gray-900 font-semibold text-right typer-bold" dir="rtl">
-                {{ $post->title }}
-            </h3>
-
-            @endif
-        </a>
-
-        <a href="{{ route('domain.posts.show', ['name' => $post->blog->name, 'post' => $post->slug]) }}"
-            class="hover:underline">
-            @if ($post->is_english)
-            <p class="text-gray-800 leading-7 mt-1">
-                {{ $post->excerpt }}
-            </p>
-            @else
-            <p class="text-gray-800 leading-7 mt-1 typer text-right" dir="rtl">
-                {{ $post->excerpt }}
-            </p>
+                <p class="text-gray-800 leading-7 mt-1 typer text-right" dir="rtl">
+                    {{ $post->excerpt }}
+                </p>
             @endif
         </a>
 

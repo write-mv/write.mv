@@ -12,6 +12,8 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Events\BlogNameUpdated;
+use App\Listeners\ReGenerateBlogOgImage;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -36,6 +38,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         Logout::class => [
             ClearTeamIdFromSession::class,
+        ],
+
+
+        BlogNameUpdated::class => [
+            ReGenerateBlogOgImage::class,
         ]
     ];
 
