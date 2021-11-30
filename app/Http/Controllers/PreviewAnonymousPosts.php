@@ -13,8 +13,9 @@ class PreviewAnonymousPosts extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Post $post)
+    public function __invoke(int $post)
     {
+        $post = Post::withoutGlobalScopes()->findOrFail($post);
 
         $post->blog->RecordView();
 
