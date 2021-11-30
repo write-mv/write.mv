@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\WhatsNewController;
 use App\Http\Controllers\Account\PasswordController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PreviewAnonymousPosts;
 use App\Http\Controllers\SignInController;
 use App\Http\Controllers\TagController;
 use App\Http\Livewire\CustomizeBlog;
@@ -107,11 +108,15 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
 
 require __DIR__ . '/auth.php';
 
+//anonymous
+
+Route::get('/pub/{post}', PreviewAnonymousPosts::class)->name('anonymous.show');
+
 //blog
 Route::get('/{name}/tags', [TagController::class, 'index'])->name('tags.index');
 Route::get('/{name}/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
 
-Route::get('/{name}/{page}', PageController::class)->name('pages.show');
+Route::get('/{name}/pages/{page}', PageController::class)->name('pages.show');
 Route::get('/{name}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/{name}/feed', FeedController::class);
 Route::get('/{name}/{post}', [PostController::class, 'show'])->name('posts.show');
