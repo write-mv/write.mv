@@ -45,7 +45,7 @@ class PostController extends Controller
         $post = $blog->posts()->withoutGlobalScopes()->with('tags')->live()->where('slug', $post)->firstOrFail();
 
         if ($post->display_name == 'anonymous') {
-            abort(404);
+           return 'yo anonymous';
         }
 
         $blog->RecordView();
