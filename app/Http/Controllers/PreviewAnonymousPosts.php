@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class PreviewAnonymousPosts extends Controller
@@ -17,19 +18,21 @@ class PreviewAnonymousPosts extends Controller
     {
         $post = Post::withoutGlobalScopes()->findOrFail($post);
 
-        $post->blog->RecordView();
+        $blog = $post->blog->withoutGlobalScopes()->first();
+
+        $blog->RecordView();
 
         $post->RecordView();
 
         //Checking the theme dir
-        if ($post->blog->theme) {
-            $themeDir =  "themes::{$post->blog->theme->name}._post";
+        if ($blog->theme) {
+            $themeDir =  "themes::{$blog->theme->name}._post";
         } else {
             $themeDir =  "themes::default._post";
         }
 
         return view($themeDir, [
-            'blog' => $post->blog,
+            'blog' => $blog,
             'post' => $post
         ]);
     }
