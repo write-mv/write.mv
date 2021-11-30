@@ -51,7 +51,7 @@ class Post extends WriteMvBaseModel implements Viewable
      */
     public function getPublishedDateAttribute($value)
     {
-        return Carbon::parse($value)->setTimezone($this->blog->withoutGlobalScopes()->first()->timezone);
+        return Carbon::parse($value)->setTimezone(Blog::withoutGlobalScopes()->findOrFail($this->blog_id)->timezone);
     }
 
     /*
