@@ -21,7 +21,7 @@ class Post extends WriteMvBaseModel implements Viewable
 
     protected $guarded = [];
 
-    //protected $removeViewsOnDelete = true;
+    protected $removeViewsOnDelete = true;
 
     protected $filters = [
         "all" => null,
