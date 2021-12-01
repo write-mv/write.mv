@@ -33,7 +33,7 @@
                   <div class="self-center md:self-start">
                       <a href="/register"
                           class="block px-8 py-3 text-white font-bold bg-gray-900 border-2 border-transparent rounded transition-colors duration-200 hover:bg-gray-800 focus:bg-gray-700 focus:outline-none focus:border-gray-500">
-                          <span class="align-middle">Get Started</span>
+                          <span class="align-middle">Start your blog</span>
                       </a>
                   </div>
               </div>
