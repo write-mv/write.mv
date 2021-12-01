@@ -14,7 +14,7 @@
               </div>
               <h1 class="mb-4 text-3xl leading-tight font-display font-bold md:leading-tight md:text-5xl lg:mb-8">
                   <span class="sm:text-transparent sm:bg-clip-text"><mark>Write mv</mark></span>
-                  is a dhivehi first platform to write,share and spread your words online.
+                  is a platform to write,share and spread your words online.
               </h1>
               <div class="mb-4 text-gray-500 text-lg font-medium md:mb-8 lg:text-xl">
                   Rant, Share & Scribble
