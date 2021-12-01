@@ -71,7 +71,7 @@
                                                     <textarea id="excerpt" name="excerpt" wire:model.lazy="post.excerpt"
                                                         rows="5"
                                                         class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-md rounded-md dark:bg-gray-300 border-gray-300 {{ $post->is_english ? '' : 'para-dhivehi thaana-keyboard' }}"" {{ $post->is_english ? '' : 'dir=rtl' }}></textarea>
-                            @error('post.excerpt') <p class="  mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+                            @error('post.excerpt') <p class="   mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
                         </div>
                       </div>
                       <div class=" col-span-6 sm:col-span-2 mt-3">
@@ -175,7 +175,7 @@
                         @endforeach >{{ $tag['name'] }}</option>
                       @endforeach
                   </select>
-                />
+                
 
               
                   </div>
@@ -196,14 +196,14 @@
 </div>
 
 @push('scripts')
-              <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.3/dist/js/tom-select.complete.min.js"></script>
-                            <script>
-                                new TomSelect("#select-tags", {
-                                    maxItems: 5
-                                });
-                            </script>
+                  <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.3/dist/js/tom-select.complete.min.js"></script>
+                                <script>
+                                    new TomSelect("#select-tags", {
+                                        maxItems: 5
+                                    });
+                                </script>
     @endpush
 
 @push('styles')
-           <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.3/dist/css/tom-select.css" rel="stylesheet">
+               <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.3/dist/css/tom-select.css" rel="stylesheet">
 @endpush
