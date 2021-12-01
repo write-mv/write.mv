@@ -179,7 +179,7 @@
 
                                 <a href="/register" style="font-family: Poppins;"
                                     class="whitespace-nowrap bg-blue-100 border border-transparent rounded-lg py-2 px-4 inline-flex items-center justify-center text-sm font-medium text-blue-600 hover:bg-blue-200 transition ease-in-out duration-150">
-                                    Sign up
+                                    Start writing
                                 </a>
 
                             @endguest
