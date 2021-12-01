@@ -37,6 +37,10 @@ class Post extends WriteMvBaseModel implements Viewable
         "content" => "array"
     ];
 
+    protected $appends = [
+        'published_date_timezone'
+    ];
+
     public function getRenderedHtmlContent()
     {
         $lexer = new Lexer($this->content);
@@ -49,9 +53,13 @@ class Post extends WriteMvBaseModel implements Viewable
      * @param $value $value
      *
      */
-    public function getPublishedDateAttribute($value)
+    public function getPublishedDateTimeZoneAttribute($value)
     {
-        return Carbon::parse($value)->setTimezone(Blog::withoutGlobalScopes()->findOrFail($this->blog_id)->timezone);
+        try {
+            return Carbon::parse($value)->setTimezone(Blog::withoutGlobalScopes()->findOrFail($this->blog_id)->timezone);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /*
