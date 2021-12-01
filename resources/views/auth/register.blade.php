@@ -9,7 +9,7 @@
                     </h2>
                     <p class="mt-2 text-sm text-gray-600 max-w" style="font-family: Poppins;">
                         Or
-                        <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500"
+                        <a href="/login" class="font-medium text-blue-600 hover:text-blue-500"
                             style="font-family: Poppins;">
                             sign in if you already have one
                         </a>
