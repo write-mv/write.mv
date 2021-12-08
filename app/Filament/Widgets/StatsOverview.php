@@ -17,7 +17,7 @@ class StatsOverview extends BaseWidget
             Card::make('Total Publications', Post::withoutGlobalScopes()->count())->description(Post::withoutGlobalScopes()->whereDate('published_date', Carbon::today())->count() . ' publications today.')
                 ->descriptionColor('success'),
             Card::make('Total Blogs', Blog::withoutGlobalScopes()->count()),
-            Card::make('Total Users', User::count()),
+            Card::make('Total Users', User::withoutGlobalScopes()->count()),
             Card::make('Blog with highest post', Blog::withoutGlobalScopes()->orderByViews()->first()->name),
         ];
     }
