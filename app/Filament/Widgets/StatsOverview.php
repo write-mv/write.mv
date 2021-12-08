@@ -19,6 +19,7 @@ class StatsOverview extends BaseWidget
             Card::make('Total Blogs', Blog::withoutGlobalScopes()->count()),
             Card::make('Total Users', User::withoutGlobalScopes()->count()),
             Card::make('Blog with highest post', Blog::withoutGlobalScopes()->orderByViews()->first()->name),
+            Card::make('Blocked Blogs', Blog::withoutGlobalScopes()->whereNotNull('blocked_at')->count()),
         ];
     }
 }
