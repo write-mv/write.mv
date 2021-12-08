@@ -23,7 +23,16 @@ class Blog extends WriteMvBaseModel implements Viewable
         'name:*' => BlogNameUpdated::class
     ];
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'site_title',
+        'description',
+        'url',
+        'rss_feed_link',
+        'team_id',
+        'social_links',
+        'notification_channels'
+    ];
 
     protected $casts = [
         "meta" => "array"

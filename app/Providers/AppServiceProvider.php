@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
 use Illuminate\Support\Facades\URL;
+use Filament\Facades\Filament;
 
 class AppServiceProvider extends ServiceProvider
 {
