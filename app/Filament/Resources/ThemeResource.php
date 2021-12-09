@@ -12,6 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\Grid;
 
 class ThemeResource extends Resource
 {
@@ -25,7 +26,18 @@ class ThemeResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Grid::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')->required()->unique(),
+                        Forms\Components\TextInput::make('link')
+                    ]),
+
+                Forms\Components\FileUpload::make('preview_img')
+                    ->disk('public')
+                    ->directory('theme_previews')
+                    ->visibility('public'),
+
+                Forms\Components\RichEditor::make('description')
             ]);
     }
 

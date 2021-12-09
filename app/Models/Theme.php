@@ -10,6 +10,8 @@ class Theme extends WriteMvBaseModel
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function blog() : HasMany
     {
         return $this->hasMany(Blog::class);
