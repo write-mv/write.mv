@@ -9,7 +9,7 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Card;
 use Illuminate\Support\Carbon;
 
-class StatsOverview extends BaseWidget
+class AStatsOverview extends BaseWidget
 {
     protected function getCards(): array
     {
