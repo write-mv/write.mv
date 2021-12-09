@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ActivitiesResource\Pages;
 use App\Filament\Resources\ActivitiesResource\RelationManagers;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\Activities;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -54,9 +55,12 @@ class ActivitiesResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListActivities::route('/'),
-            'create' => Pages\CreateActivities::route('/create'),
-            'edit' => Pages\EditActivities::route('/{record}/edit'),
+            'index' => Pages\ListActivities::route('/')
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
     }
 }
