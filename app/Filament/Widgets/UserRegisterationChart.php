@@ -17,7 +17,7 @@ class UserRegisterationChart extends LineChartWidget
      
     protected function getData(): array
     {
-        $data = Trend::model(User::class)
+        $data = Trend::query(User::withoutGlobalScopes())
             ->between(
                 start: now()->startOfYear(),
                 end: now()->endOfYear(),

@@ -16,7 +16,7 @@ class BlogPostsChart extends LineChartWidget
      
     protected function getData(): array
     {
-        $data = Trend::model(Post::class)
+        $data = Trend::query(Post::withoutGlobalScopes())
             ->between(
                 start: now()->startOfYear(),
                 end: now()->endOfYear(),
