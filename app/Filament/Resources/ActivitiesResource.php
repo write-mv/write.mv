@@ -10,10 +10,12 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Spatie\Activitylog\Models\Activity;
+use Filament\Tables\Columns\TextColumn;
 
 class ActivitiesResource extends Resource
 {
-    protected static ?string $model = Activities::class;
+    protected static ?string $model = Activity::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clock';
 
@@ -31,7 +33,11 @@ class ActivitiesResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('description')->searchable(),
+                TextColumn::make('subject_type')->searchable(),
+                TextColumn::make('subject_id')->searchable(),
+                TextColumn::make('created_at')->searchable()->label('Occured At'),
+                TextColumn::make('causer.name')->searchable()->label('Activity By'),
             ])
             ->filters([
                 //
