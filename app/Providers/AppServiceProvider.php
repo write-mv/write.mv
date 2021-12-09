@@ -30,5 +30,9 @@ class AppServiceProvider extends ServiceProvider
         Component::macro('notify', function ($message) {
             $this->dispatchBrowserEvent('notify', $message);
         });
+
+        Filament::serving(function (): void {
+            Filament::registerTheme(mix('css/app.css'));
+        });
     }
 }
