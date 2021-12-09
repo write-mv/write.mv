@@ -9,7 +9,7 @@ class WriteMvActivity extends Activity
 {
     protected $table = 'activity_log';
 
-    public function causers(): MorphTo
+    public function activity_causer(): MorphTo
     {
         return $this->morphTo(__FUNCTION__, 'causer_type', 'causer_id')->withoutGlobalScope(TeamScope::class);
     }

@@ -40,7 +40,7 @@ class ActivitiesResource extends Resource
                 TextColumn::make('subject_type')->searchable(),
                 TextColumn::make('subject_id')->searchable(),
                 TextColumn::make('created_at')->searchable()->label('Occured At'),
-                TextColumn::make('causers.name')->searchable()->label('Activity By'),
+                TextColumn::make('activity_causer.name')->searchable()->label('Activity By'),
             ])
             ->filters([
                 //
