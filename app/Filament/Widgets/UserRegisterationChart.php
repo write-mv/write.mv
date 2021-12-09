@@ -28,7 +28,7 @@ class UserRegisterationChart extends LineChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'publications',
+                    'label' => 'users',
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],
