@@ -22,7 +22,7 @@ class PostController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::{$blog->theme->name}._list";
+            $themeDir =  "themes::themes.{$blog->theme->name}._list";
         } else {
             $themeDir =  "themes::themes.default._list";
         }
