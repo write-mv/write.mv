@@ -34,7 +34,8 @@ class Post extends WriteMvBaseModel implements Viewable
     protected $casts = [
         "published_date" => "datetime",
         "meta" => "array",
-        "content" => "array"
+        "content" => "array",
+        'likes' => 'integer'
     ];
 
     protected $appends = [
@@ -116,6 +117,12 @@ class Post extends WriteMvBaseModel implements Viewable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function postLikes(): HasMany
+    {
+        return $this->hasMany(PostLike::class);
+    }
+
 
 
     public function scopeSearch($query, $search)
@@ -285,6 +292,45 @@ class Post extends WriteMvBaseModel implements Viewable
     {
         return $this->published == true && $this->published_date->lessThanOrEqualTo(now()) ? true : false;
     }
+
+    public function isLikedBy(?string $likerUuid): bool
+    {
+        if ($likerUuid === null) {
+            return false;
+        }
+
+        return PostLike::query()
+            ->where('liker_uuid', $likerUuid)
+            ->where('post_id', $this->id)
+            ->exists();
+    }
+
+    public function addLikeBy(string $likerUuid): self
+    {
+        PostLike::create([
+            'post_id' => $this->id,
+            'liker_uuid' => $likerUuid,
+        ]);
+
+        $this->likes += 1;
+
+        $this->save();
+
+        return $this;
+    }
+
+    public function removeLikeBy(string $likerUuid): void
+    {
+        PostLike::where([
+            'liker_uuid' => $likerUuid,
+            'post_id' => $this->id,
+        ])->delete();
+
+        $this->likes -= 1;
+
+        $this->save();
+    }
+
 
     /**
      * Load a threaded set of comments for the post.
