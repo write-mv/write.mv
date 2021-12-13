@@ -21,9 +21,9 @@ class TagController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::{$blog->theme->name}._tags";
+            $themeDir =  "themes::themes.{$blog->theme->name}._tags";
         } else {
-            $themeDir =  "themes::default._tags";
+            $themeDir =  "themes::themes.default._tags";
         }
 
         $this->buildBlogSeo($blog);
@@ -45,9 +45,9 @@ class TagController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::{$blog->theme->name}._tag";
+            $themeDir =  "themes::themes.{$blog->theme->name}._tag";
         } else {
-            $themeDir =  "themes::default._tag";
+            $themeDir =  "themes::themes.default._tag";
         }
 
         $this->buildTagSeo($tag);

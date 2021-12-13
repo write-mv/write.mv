@@ -24,7 +24,7 @@ class PostController extends Controller
         if ($blog->theme) {
             $themeDir =  "themes::{$blog->theme->name}._list";
         } else {
-            $themeDir =  "themes::default._list";
+            $themeDir =  "themes::themes.default._list";
         }
 
         $this->buildBlogSeo($blog);
@@ -56,9 +56,9 @@ class PostController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::{$blog->theme->name}._post";
+            $themeDir =  "themes::themes.{$blog->theme->name}._post";
         } else {
-            $themeDir =  "themes::default._post";
+            $themeDir =  "themes::themes.default._post";
         }
 
         $this->buildPostSeo($post, $blog);

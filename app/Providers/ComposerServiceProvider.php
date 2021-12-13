@@ -23,9 +23,6 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(
-            'themes::default.partials._nav',
-            'App\Http\ViewComposers\PagesComposer'
-        );
+    
     }
 }

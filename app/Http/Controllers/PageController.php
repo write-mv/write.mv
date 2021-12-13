@@ -26,9 +26,9 @@ class PageController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::{$blog->theme->name}._page";
+            $themeDir =  "themes::themes.{$blog->theme->name}._page";
         } else {
-            $themeDir =  "themes::default._page";
+            $themeDir =  "themes::themes.default._page";
         }
 
 
