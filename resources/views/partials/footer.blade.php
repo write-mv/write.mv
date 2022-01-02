@@ -29,7 +29,7 @@
   
       </div>
       <p class="mt-8 text-center text-base text-gray-400 poppins font-normal">
-        &copy; 2021 Write.mv, Inc. All rights reserved.
+        Copyright &copy; {{ Carbon\Carbon::now()->year }} Write.mv, Inc. All rights reserved.
       </p>
     </div>
   </footer>
