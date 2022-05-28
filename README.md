@@ -1,7 +1,6 @@
 # Write.mv Core source code
 
-This repository contains the actual code on https://www.write.mv
-Actively developing.
+This repository contains the actual code on https://www.write.mv .
 
 # Important to know
 
