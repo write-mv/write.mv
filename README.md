@@ -1,6 +1,11 @@
 # Write.mv Core source code
 
+This repository contains the actual code on https://www.write.mv
 Actively developing.
+
+# Important to know
+
+This was a side project I started for fun. Due to some difficulties I wasn't able to continue with the project. The code for this ofcourse isn't gonna be perfect but anyone is welcome to make it better and play around with it. Cheers : )
 
 ## Mission
 
