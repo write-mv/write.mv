@@ -1,6 +1,6 @@
-# Write.mv Core source code
+# Write.mv
 
-This repository contains the actual code on https://www.write.mv .
+Write.mv is an Open Source micro blogging platform.
 
 # Important to know
 
@@ -53,17 +53,3 @@ sail up
 ```
 
 Application will be live at: `localhost:8085`
-
-
-### TODO
-
-- [x] Darkmode
-- [x] Account password update
-- [x] Subdomain support
-- [x] Update the Stats page dark mode (Single post stat page)
-- [x] Social Login ( Github)
-- [x] Selecting Tags for a post
-
-#### Selecting Tags for a post
-
-For this I have two approach right now. Either use a jquery implementation or to re-write the component outside of livewire context. The last option is better since I am doing a direct page refresh on this page anyways. And this will minimize bundle size to avoid using something extra like a jquery solution.
