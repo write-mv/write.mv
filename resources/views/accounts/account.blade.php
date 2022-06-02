@@ -3,6 +3,7 @@
         <div class="max-w-4xl mx-auto pt-10 pb-12 px-4 lg:pb-16">
             <livewire:account.profile />
             <livewire:account.password />
+            <livewire:account.social-login />
         </div>
     </div>
 </div>

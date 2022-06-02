@@ -68,7 +68,7 @@
                             style="font-family: Poppins;">
                             Sign in
                         </button>
-                        <a href="/sign-in/github"
+                        <a href="/auth/github"
                             class="inline-flex items-center justify-center border border-gray-300 shadow-sm rounded-md py-2 px-5 text-sm font-base text-gray-700 bg-white hover:bg-gray-50 disabled:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <svg class="fill-current w-4 h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path

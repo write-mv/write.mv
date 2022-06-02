@@ -1,5 +1,7 @@
 # Write.mv
 
+![screenshot](screenshot.png)
+
 Write.mv is an Open Source micro blogging platform.
 
 # Important to know

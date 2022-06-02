@@ -30,6 +30,7 @@
         "livewire/livewire": "^2.4",
         "mtownsend/read-time": "^2.0",
         "nadar/quill-delta-parser": "^2.6",
+        "nubs/random-name-generator": "^2.2",
         "romanzipp/laravel-seo": "^2.2",
         "spatie/laravel-activitylog": "^4.1.1",
         "spatie/laravel-support-bubble": "^1.2",

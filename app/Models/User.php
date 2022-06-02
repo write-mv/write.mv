@@ -27,7 +27,10 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         'email',
         'password',
         'role',
-        'team_id'
+        'team_id',
+        'github_id',
+        'github_token',
+        'github_refresh_token'
     ];
 
     /**
@@ -49,7 +52,19 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts() : HasMany
+    public static function boot()
+    {
+
+        parent::boot();
+
+        static::creating(function ($model) {
+
+            $model->role = 'admin';
+        });
+    }
+
+
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
