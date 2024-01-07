@@ -40,11 +40,11 @@ Route::post('/reset-password', (new NewPasswordController())->store(...))
     ->middleware('guest')
     ->name('password.update');
 
-Route::get('/verify-email', EmailVerificationPromptController::__invoke(...))
+Route::get('/verify-email', EmailVerificationPromptController::class)
     ->middleware('auth')
     ->name('verification.notice');
 
-Route::get('/verify-email/{id}/{hash}', VerifyEmailController::__invoke(...))
+Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)
     ->middleware(['auth', 'signed', 'throttle:6,1'])
     ->name('verification.verify');
 
