@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $this->dispatchBrowserEvent('notify', $message);
         });
 
-        Carbon::macro('render', fn($format = 'M jS, Y') => new HtmlString(
+        Carbon::macro('render', fn ($format = 'M jS, Y') => new HtmlString(
             "<time datetime='{$this->format('Y-m-d')}'> {$this->format($format)} </time>"
         ));
 

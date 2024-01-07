@@ -80,7 +80,7 @@ class ThaanaTransliterator
         }
 
         // capitalize every letter AFTER a full-stop (period).
-        $input = preg_replace_callback('/[.!?].*?\w/', fn($matches) => strtoupper((string) $matches[0]), ucfirst(strtolower($input)));
+        $input = preg_replace_callback('/[.!?].*?\w/', fn ($matches) => strtoupper((string) $matches[0]), ucfirst(strtolower($input)));
 
         return ucfirst($input);
     }

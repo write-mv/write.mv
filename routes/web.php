@@ -53,7 +53,7 @@ Route::domain('{name}.write.mv')->as('domain.')->group(function () {
 });
 //}
 
-Route::get('/', fn() => view('pages.welcome'));
+Route::get('/', fn () => view('pages.welcome'));
 
 Route::get('/explore', ExploreController::class)->name('explore');
 //Route::get('/explore', fn () => view('coming-soon'))->name('explore');
@@ -67,7 +67,7 @@ Route::get('/change-log', ChangeLogController::class);
 
 //['auth','verified']
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], function () {
-    Route::get('/', fn() => view('dashboard', [
+    Route::get('/', fn () => view('dashboard', [
         'blog' => Blog::first(),
         'total_post_count' => PostModel::count(),
         'published_post_count' => PostModel::live()->count(),

@@ -14,7 +14,7 @@ class TagController extends Controller
             ->where('name', $name)
             ->firstOrFail();
 
-        $tags = $blog->tags()->orderBy('name')->get()->groupBy(fn($tag) => substr((string) $tag->name, 0, 1));
+        $tags = $blog->tags()->orderBy('name')->get()->groupBy(fn ($tag) => substr((string) $tag->name, 0, 1));
 
         //Checking the theme dir
         if ($blog->theme) {

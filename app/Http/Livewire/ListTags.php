@@ -117,7 +117,7 @@ class ListTags extends Component
     {
         return [
             'tag.name' => 'required|string',
-            'tag.slug' => ['required', 'string', Rule::unique('tags', 'slug')->where(fn($query) => $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->tag->slug))->ignore($this->tag->id, 'id')],
+            'tag.slug' => ['required', 'string', Rule::unique('tags', 'slug')->where(fn ($query) => $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->tag->slug))->ignore($this->tag->id, 'id')],
             'tag.description' => 'nullable',
         ];
     }

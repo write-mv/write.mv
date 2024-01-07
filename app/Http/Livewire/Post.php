@@ -115,7 +115,7 @@ class Post extends Component
             $tag = Tag::all();
         }
 
-        return $tag->map(fn($item) => [
+        return $tag->map(fn ($item) => [
             'id' => (int) $item->id,
             'name' => $item->name,
         ]);
@@ -125,7 +125,7 @@ class Post extends Component
     {
         return [
             'post.title' => ['required', 'string'],
-            'post.slug' => ['required', 'string', Rule::unique('posts', 'slug')->where(fn($query) => $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->post->slug))->ignore($this->post->id, 'id')],
+            'post.slug' => ['required', 'string', Rule::unique('posts', 'slug')->where(fn ($query) => $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->post->slug))->ignore($this->post->id, 'id')],
             'post.content' => 'required',
             'post.excerpt' => 'nullable|string',
             'post.published_date' => 'required',

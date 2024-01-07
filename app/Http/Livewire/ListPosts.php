@@ -98,7 +98,7 @@ class ListPosts extends Component
     {
         $notion = new Notion($this->blog->notion_api_key);
 
-        return Cache::remember($this->blog->name.'_notion', 300, fn() => $notion->search()
+        return Cache::remember($this->blog->name.'_notion', 300, fn () => $notion->search()
             ->onlyPages()
             ->query()
             ->asCollection());
