@@ -3,10 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Traits\DatePeriodGenerator;
+use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 use CyrildeWit\EloquentViewable\Support\Period;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use LarapexChart;
 use Livewire\Component;
 
 class Insights extends Component
