@@ -16,9 +16,7 @@ class ExploreController extends Controller
     public function __invoke(Request $request): View
     {
         $posts = Post::withoutGlobalScopes()->live()->with([
-            'blog' => function ($query) {
-                return $query->withoutGlobalScope(TeamScope::class);
-            },
+            'blog' => fn($query) => $query->withoutGlobalScope(TeamScope::class),
         ])->latest('published_date')->paginate(16);
 
         return view('pages.explore.overview', [

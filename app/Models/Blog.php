@@ -38,6 +38,7 @@ class Blog extends WriteMvBaseModel implements Viewable
         'meta' => 'array',
     ];
 
+    #[\Override]
     public static function boot()
     {
 
@@ -94,7 +95,7 @@ class Blog extends WriteMvBaseModel implements Viewable
                 DB::raw('COUNT(*) as "views"'),
             ])->each(function ($item, $key) use (&$chartData) {
 
-                $chartData[] = ['date' => date('M jS', strtotime($item->date)), 'views' => $item->views];
+                $chartData[] = ['date' => date('M jS', strtotime((string) $item->date)), 'views' => $item->views];
             });
 
         return collect($chartData);
@@ -117,7 +118,7 @@ class Blog extends WriteMvBaseModel implements Viewable
                 DB::raw('COUNT(DISTINCT(visitor)) as "visits"'),
             ])->each(function ($item) use (&$chartData) {
 
-                $chartData[] = ['date' => date('M jS', strtotime($item->date)), 'visits' => $item->visits];
+                $chartData[] = ['date' => date('M jS', strtotime((string) $item->date)), 'visits' => $item->visits];
             });
 
         return collect($chartData);

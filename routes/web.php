@@ -39,23 +39,21 @@ use Spatie\Activitylog\Models\Activity;
 
 Route::get('/test', fn () => view('test'));
 
-Route::get('/auth/github', [SignInController::class, 'github']);
-Route::get('/auth/github/redirect', [SignInController::class, 'githubRedirect']);
+Route::get('/auth/github', (new SignInController())->github(...));
+Route::get('/auth/github/redirect', (new SignInController())->githubRedirect(...));
 
 //if (env('APP_ENV') != 'local') {
 Route::domain('{name}.write.mv')->as('domain.')->group(function () {
-    Route::get('/', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/', (new PostController())->index(...))->name('posts.index');
     Route::get('/feed', FeedController::class);
     Route::get('/pages/{page}', PageController::class)->name('pages.show');
-    Route::get('/tags', [TagController::class, 'index'])->name('tags.index');
-    Route::get('/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
-    Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
+    Route::get('/tags', (new TagController())->index(...))->name('tags.index');
+    Route::get('/tags/{tag:slug}', (new TagController())->show(...))->name('tags.show');
+    Route::get('/{post}', (new PostController())->show(...))->name('posts.show');
 });
 //}
 
-Route::get('/', function () {
-    return view('pages.welcome');
-});
+Route::get('/', fn() => view('pages.welcome'));
 
 Route::get('/explore', ExploreController::class)->name('explore');
 //Route::get('/explore', fn () => view('coming-soon'))->name('explore');
@@ -69,15 +67,13 @@ Route::get('/change-log', ChangeLogController::class);
 
 //['auth','verified']
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], function () {
-    Route::get('/', function () {
-        return view('dashboard', [
-            'blog' => Blog::first(),
-            'total_post_count' => PostModel::count(),
-            'published_post_count' => PostModel::live()->count(),
-            'scheduled_post_count' => PostModel::scheduled()->count(),
-            'latest_activities' => Activity::causedBy(Auth::user())->latest()->limit(5)->get(),
-        ]);
-    })->name('dashboard');
+    Route::get('/', fn() => view('dashboard', [
+        'blog' => Blog::first(),
+        'total_post_count' => PostModel::count(),
+        'published_post_count' => PostModel::live()->count(),
+        'scheduled_post_count' => PostModel::scheduled()->count(),
+        'latest_activities' => Activity::causedBy(Auth::user())->latest()->limit(5)->get(),
+    ]))->name('dashboard');
 
     //Route::get('/responses', ListResponses::class)->name('responses');
     Route::get('/tags', ListTags::class)->name('tags');
@@ -104,12 +100,12 @@ require __DIR__.'/auth.php';
 Route::get('/pub/{post}', PreviewAnonymousPosts::class)->name('anonymous.show');
 
 //blog
-Route::get('/{name}/tags', [TagController::class, 'index'])->name('tags.index');
-Route::get('/{name}/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
+Route::get('/{name}/tags', (new TagController())->index(...))->name('tags.index');
+Route::get('/{name}/tags/{tag:slug}', (new TagController())->show(...))->name('tags.show');
 
 Route::get('/{name}/pages/{page}', PageController::class)->name('pages.show');
-Route::get('/{name}', [PostController::class, 'index'])->name('posts.index');
+Route::get('/{name}', (new PostController())->index(...))->name('posts.index');
 Route::get('/{name}/feed', FeedController::class);
-Route::get('/{name}/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/{name}/{post}', (new PostController())->show(...))->name('posts.show');
 
 //Route::post('/{post}/comments', [CommentsController::class, 'store'])->name('comments.store');

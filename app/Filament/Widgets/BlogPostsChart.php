@@ -9,11 +9,13 @@ use Flowframe\Trend\TrendValue;
 
 class BlogPostsChart extends LineChartWidget
 {
+    #[\Override]
     protected function getHeading(): string
     {
         return 'Blog Publications Trend';
     }
 
+    #[\Override]
     protected function getData(): array
     {
         $data = Trend::query(Post::withoutGlobalScopes())

@@ -11,6 +11,7 @@ use Illuminate\Support\Carbon;
 
 class AStatsOverview extends BaseWidget
 {
+    #[\Override]
     protected function getCards(): array
     {
         return [

@@ -16,6 +16,7 @@ class CommentsResource extends Resource
 
     protected static ?string $navigationGroup = 'Blog Management';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -24,6 +25,7 @@ class CommentsResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -35,6 +37,7 @@ class CommentsResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [
@@ -42,6 +45,7 @@ class CommentsResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [

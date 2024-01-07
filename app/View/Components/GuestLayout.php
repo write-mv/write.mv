@@ -11,6 +11,7 @@ class GuestLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+    #[\Override]
     public function render()
     {
         return view('layouts.guest');

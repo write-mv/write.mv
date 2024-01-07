@@ -11,6 +11,7 @@ class ComposerServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    #[\Override]
     public function register()
     {
         //

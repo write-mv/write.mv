@@ -73,9 +73,7 @@ class Page extends Component
     {
         return [
             'page.title' => ['required', 'string'],
-            'page.slug' => ['required', 'string', Rule::unique('posts', 'slug')->where(function ($query) {
-                return $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->page->slug);
-            })->ignore($this->page->id, 'id')],
+            'page.slug' => ['required', 'string', Rule::unique('posts', 'slug')->where(fn($query) => $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->page->slug))->ignore($this->page->id, 'id')],
             'page.content' => 'required',
             'page.published_date' => 'required',
             'page.published' => 'required',

@@ -56,33 +56,31 @@ class ThaanaTransliterator
     public static function transliterate($input)
     {
         // replace zero width non joiners
-        $input = preg_replace("/\xE2\x80\x8C/u", '', $input);
+        $input = preg_replace("/\xE2\x80\x8C/u", '', (string) $input);
 
         // fix words that normally dont transliterate well
         // like names and english words.
         foreach (self::$word_list as $k => $v) {
-            $input = preg_replace('/\\'.$k.'/u', $v, $input);
+            $input = preg_replace('/\\'.$k.'/u', (string) $v, $input);
         }
 
         // fili_fix first before replacing akuru and fili
         foreach (self::$fili_fix as $k => $v) {
-            $input = preg_replace('/\\'.$k.'/u', $v, $input);
+            $input = preg_replace('/\\'.$k.'/u', (string) $v, $input);
         }
 
         // akuru and fili
         foreach (self::$all_akuru_fili as $k => $v) {
-            $input = preg_replace('/'.$k.'/u', $v, $input);
+            $input = preg_replace('/'.$k.'/u', (string) $v, $input);
         }
 
         // punctuations
         foreach (self::$punctuations as $k => $v) {
-            $input = preg_replace('/\\'.$k.'/u', $v, $input);
+            $input = preg_replace('/\\'.$k.'/u', (string) $v, $input);
         }
 
         // capitalize every letter AFTER a full-stop (period).
-        $input = preg_replace_callback('/[.!?].*?\w/', function ($matches) {
-            return strtoupper($matches[0]);
-        }, ucfirst(strtolower($input)));
+        $input = preg_replace_callback('/[.!?].*?\w/', fn($matches) => strtoupper((string) $matches[0]), ucfirst(strtolower($input)));
 
         return ucfirst($input);
     }

@@ -20,6 +20,7 @@ class ActivitiesResource extends Resource
 
     protected static ?string $navigationGroup = 'Control Panel';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -28,6 +29,7 @@ class ActivitiesResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -43,6 +45,7 @@ class ActivitiesResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [
@@ -50,6 +53,7 @@ class ActivitiesResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [
@@ -57,6 +61,7 @@ class ActivitiesResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->withoutGlobalScopes()->whereNotNull('causer_type');

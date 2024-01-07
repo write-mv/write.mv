@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    #[\Override]
     public function register()
     {
 
@@ -31,12 +32,9 @@ class AppServiceProvider extends ServiceProvider
             $this->dispatchBrowserEvent('notify', $message);
         });
 
-        Carbon::macro('render', function ($format = 'M jS, Y') {
-
-            return new HtmlString(
-                "<time datetime='{$this->format('Y-m-d')}'> {$this->format($format)} </time>"
-            );
-        });
+        Carbon::macro('render', fn($format = 'M jS, Y') => new HtmlString(
+            "<time datetime='{$this->format('Y-m-d')}'> {$this->format($format)} </time>"
+        ));
 
         Filament::serving(function (): void {
             Filament::registerTheme(mix('css/app.css'));

@@ -13,11 +13,11 @@ class Comment extends WriteMvBaseModel
     use HasFactory;
 
     /* status vars */
-    public const APPROVED = 'approved';
+    final public const APPROVED = 'approved';
 
-    public const PENDING = 'pending';
+    final public const PENDING = 'pending';
 
-    public const SPAM = 'spam';
+    final public const SPAM = 'spam';
 
     protected $fillable = [
         'user_id',
@@ -93,6 +93,7 @@ class Comment extends WriteMvBaseModel
      *
      * @return CustomCollection
      */
+    #[\Override]
     public function newCollection(array $models = [])
     {
         return new CommentCollection($models);

@@ -40,7 +40,7 @@ class GenerateBlogOgImage implements ShouldQueue
         $template = Image::make(public_path('images/og-templates/blog-template.png'));
         $canvas->insert($template);
 
-        $canvas->text(strtoupper($this->blog->name), 600, 320, function ($font) {
+        $canvas->text(strtoupper((string) $this->blog->name), 600, 320, function ($font) {
             $font->file(public_path('fonts/Poppins/Poppins-Bold.ttf'));
             $font->size(64);
             $font->color('#ffffff');

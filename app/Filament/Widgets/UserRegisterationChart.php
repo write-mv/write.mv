@@ -9,11 +9,13 @@ use Flowframe\Trend\TrendValue;
 
 class UserRegisterationChart extends LineChartWidget
 {
+    #[\Override]
     protected function getHeading(): string
     {
         return 'User Register Trend';
     }
 
+    #[\Override]
     protected function getData(): array
     {
         $data = Trend::query(User::withoutGlobalScopes())

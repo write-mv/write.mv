@@ -15,6 +15,7 @@ class ViewServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    #[\Override]
     public function register()
     {
         //
