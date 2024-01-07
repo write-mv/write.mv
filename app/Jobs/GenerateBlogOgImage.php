@@ -41,7 +41,7 @@ class GenerateBlogOgImage implements ShouldQueue
         $template = Image::make(public_path("images/og-templates/blog-template.png"));
         $canvas->insert($template);
 
-        $canvas->text(strtoupper($this->blog->name), 600, 320, function ($font) {
+        $canvas->text('Nuvaas', 600, 320, function ($font) {
             $font->file(public_path("fonts/Poppins/Poppins-Bold.ttf"));
             $font->size(64);
             $font->color('#ffffff');
@@ -59,7 +59,7 @@ class GenerateBlogOgImage implements ShouldQueue
             $font->angle(0);
         });
 
-        $file_path_name = config('writemv.blog_og_image.path').Str::random(40).".png";
+        $file_path_name = config('writemv.blog_og_image.path') . Str::random(40) . ".png";
 
         Storage::disk('public')->put($file_path_name, (string) $canvas->encode("png"), [
             'visibility' => 'public',
@@ -70,6 +70,5 @@ class GenerateBlogOgImage implements ShouldQueue
                 "og_image" => $file_path_name
             ]
         ]);
-
     }
 }
