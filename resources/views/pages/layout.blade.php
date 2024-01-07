@@ -73,14 +73,14 @@
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                         Guidelines
                     </a>
-                    <a href="/change-log" style="font-family: Poppins;"
-                    class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
-                    Change log
-                    </a>
-                    <a href="https://write.mv/writemv/" style="font-family: Poppins;"
+                        <a href="/change-log" style="font-family: Poppins;"
+                        class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
+                        Change log
+                        </a>
+                    {{-- <a href="https://write.mv/writemv/" style="font-family: Poppins;"
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                         Our blog
-                    </a>
+                    </a> --}}
                     <a href="/explore" style="font-family: Poppins;"
                         class="ml-10 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">
                         Explore
