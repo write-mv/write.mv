@@ -4,36 +4,41 @@ namespace App\Http\Livewire;
 
 use App\Models\Post as PostModel;
 use App\Models\Tag;
-use Illuminate\Support\Carbon;
-use Livewire\Component;
-use Illuminate\Support\Str;
-use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rule;
 use App\Modules\ThaanaTransliterator;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Post extends Component
 {
     use WithFileUploads;
 
     public PostModel $post;
+
     public $upload;
-    public $label = "Create Post";
+
+    public $label = 'Create Post';
+
     public $editing = false;
+
     public $showMetaModal = false;
+
     public $tags = [];
+
     public $selectedTags = [];
 
     protected $messages = [
-        'post.slug.unique' => 'You already have a post with that slug.'
+        'post.slug.unique' => 'You already have a post with that slug.',
     ];
-
 
     public function mount(PostModel $post)
     {
         if ($post->getKey()) {
-            $this->label = "Edit Post";
+            $this->label = 'Edit Post';
             $this->editing = true;
             $this->post = $post;
 
@@ -47,7 +52,6 @@ class Post extends Component
      * Automatically generating the slug and filling the input
      *
      * @param $title $title [explicite description]
-     *
      * @return void
      */
     public function updatingPostTitle($title)
@@ -81,7 +85,6 @@ class Post extends Component
 
         $this->post->addTags($this->tags);
 
-
         $this->upload && $this->post->update([
             'featured_image' => $this->upload->store('featured_images', 'public'),
         ]);
@@ -91,8 +94,6 @@ class Post extends Component
         } else {
             session()->flash('notification', 'Post Created.');
         }
-
-
 
         return redirect()->route('posts.update', $this->post);
     }
@@ -104,19 +105,20 @@ class Post extends Component
             'display_name' => auth()->user()->name,
             'published' => true,
             'is_english' => false,
-            'show_author' => true
+            'show_author' => true,
         ]);
     }
 
-    public function makeTags(Collection $tag = null): Collection
+    public function makeTags(?Collection $tag = null): Collection
     {
         if (is_null($tag)) {
             $tag = Tag::all();
         }
+
         return $tag->map(function ($item) {
             return [
                 'id' => (int) $item->id,
-                'name' => $item->name
+                'name' => $item->name,
             ];
         });
     }
@@ -140,16 +142,15 @@ class Post extends Component
             'post.meta.title' => 'nullable|string',
             'post.meta.description' => 'nullable|string',
             'upload' => 'nullable|image|max:1000',
-            'tags' => 'array|nullable'
+            'tags' => 'array|nullable',
 
         ];
     }
 
-
     public function render()
     {
         return view('livewire.post', [
-            'AvailableTags' => $this->makeTags()->toArray()
+            'AvailableTags' => $this->makeTags()->toArray(),
         ]);
     }
 }

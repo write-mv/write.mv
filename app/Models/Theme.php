@@ -12,7 +12,7 @@ class Theme extends WriteMvBaseModel
 
     protected $guarded = [];
 
-    public function blog() : HasMany
+    public function blog(): HasMany
     {
         return $this->hasMany(Blog::class);
     }
@@ -20,12 +20,11 @@ class Theme extends WriteMvBaseModel
     /**
      * Order's the selected theme first
      *
-     * @param Builder $query [explicite description]
-     *
+     * @param  Builder  $query [explicite description]
      * @return Builder
      */
     public function scopeOrderBySelectedThemeFirst($query, Blog $blog)
     {
-        return $query->orderByRaw("id = ? DESC", ['id' => $blog->theme_id]);
+        return $query->orderByRaw('id = ? DESC', ['id' => $blog->theme_id]);
     }
 }

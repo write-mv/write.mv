@@ -39,8 +39,8 @@ class GenerateOgForBlogCommand extends Command
      */
     public function handle()
     {
-       Blog::all()->each(function($item, $key){
+        Blog::all()->each(function ($item, $key) {
             GenerateBlogOgImage::dispatch($item);
-       });  
+        });
     }
 }

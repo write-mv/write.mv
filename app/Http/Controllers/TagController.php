@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Tag;
 
@@ -21,16 +20,16 @@ class TagController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::themes.{$blog->theme->name}._tags";
+            $themeDir = "themes::themes.{$blog->theme->name}._tags";
         } else {
-            $themeDir =  "themes::themes.default._tags";
+            $themeDir = 'themes::themes.default._tags';
         }
 
         $this->buildBlogSeo($blog);
 
         return view($themeDir, [
             'blog' => $blog,
-            'tags' => $tags
+            'tags' => $tags,
         ]);
     }
 
@@ -45,9 +44,9 @@ class TagController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::themes.{$blog->theme->name}._tag";
+            $themeDir = "themes::themes.{$blog->theme->name}._tag";
         } else {
-            $themeDir =  "themes::themes.default._tag";
+            $themeDir = 'themes::themes.default._tag';
         }
 
         $this->buildTagSeo($tag);
@@ -55,26 +54,26 @@ class TagController extends Controller
         return view($themeDir, [
             'tag' => $tag,
             'blog' => $blog,
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
     protected function buildTagSeo(Tag $tag)
     {
         seo()->csrfToken()
-            ->title($tag->name . " - Write.mv");
+            ->title($tag->name.' - Write.mv');
     }
 
     protected function buildBlogSeo(Blog $blog)
     {
         seo()->csrfToken()
-            ->title($blog->name . " tags - Write.mv")
+            ->title($blog->name.' tags - Write.mv')
             ->description($blog->description)
             ->twitter('card', 'summary_large_image')
-            ->twitter('image', isset($blog->meta['og_image']) ? url('/storage' . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png")
+            ->twitter('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image']) : 'https://write.mv/images/opengraph.png')
             ->og('site_name', $blog->name)
             ->og('url', route('domain.posts.index', $blog->name))
             ->og('type', 'website')
-            ->og('image', isset($blog->meta['og_image']) ? url('/storage' . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png");
+            ->og('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image']) : 'https://write.mv/images/opengraph.png');
     }
 }

@@ -24,13 +24,14 @@ class BlogFactory extends Factory
     public function definition()
     {
         $name = $this->faker->name();
+
         return [
-            "name" => Str::slug($name),
-            "site_title" => $name,
-            "description" => $this->faker->paragraph(),
-            "url" => url("/".Str::slug($name)),
-            "rss_feed_link" =>  url("/".$name."/feed"),
-            "team_id" => Team::factory()
+            'name' => Str::slug($name),
+            'site_title' => $name,
+            'description' => $this->faker->paragraph(),
+            'url' => url('/'.Str::slug($name)),
+            'rss_feed_link' => url('/'.$name.'/feed'),
+            'team_id' => Team::factory(),
         ];
     }
 }

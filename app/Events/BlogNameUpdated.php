@@ -13,7 +13,6 @@ class BlogNameUpdated
 
     public $blog;
 
-
     /**
      * Create a new event instance.
      *

@@ -3,13 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PagesResource\Pages;
-use App\Filament\Resources\PagesResource\RelationManagers;
 use App\Models\Page;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
 
 class PagesResource extends Resource
 {

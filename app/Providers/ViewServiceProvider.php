@@ -5,8 +5,8 @@ namespace App\Providers;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View as ViewFacade;
-use Illuminate\View\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\View;
 
 class ViewServiceProvider extends ServiceProvider
 {

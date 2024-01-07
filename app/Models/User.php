@@ -2,20 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\BelongsToTeam;
 use Filament\Models\Contracts\FilamentUser;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
-class User extends Authenticatable implements MustVerifyEmail, FilamentUser
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
-    use HasFactory, Notifiable, BelongsToTeam, LogsActivity;
+    use BelongsToTeam, HasFactory, LogsActivity, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         'team_id',
         'github_id',
         'github_token',
-        'github_refresh_token'
+        'github_refresh_token',
     ];
 
     /**
@@ -62,7 +61,6 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
             $model->role = 'admin';
         });
     }
-
 
     public function posts(): HasMany
     {

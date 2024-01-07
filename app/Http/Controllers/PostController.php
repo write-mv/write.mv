@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Blog;
-use Illuminate\Http\Request;
+use App\Models\Post;
 use romanzipp\Seo\Structs\Meta;
 
 class PostController extends Controller
@@ -22,16 +21,16 @@ class PostController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::themes.{$blog->theme->name}._list";
+            $themeDir = "themes::themes.{$blog->theme->name}._list";
         } else {
-            $themeDir =  "themes::themes.default._list";
+            $themeDir = 'themes::themes.default._list';
         }
 
         $this->buildBlogSeo($blog);
 
         return view($themeDir, [
             'blog' => $blog,
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
@@ -56,13 +55,12 @@ class PostController extends Controller
 
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::themes.{$blog->theme->name}._post";
+            $themeDir = "themes::themes.{$blog->theme->name}._post";
         } else {
-            $themeDir =  "themes::themes.default._post";
+            $themeDir = 'themes::themes.default._post';
         }
 
         $this->buildPostSeo($post, $blog);
-
 
         return view($themeDir, [
             'blog' => $blog,
@@ -74,14 +72,14 @@ class PostController extends Controller
     protected function buildPostSeo(Post $post, Blog $blog)
     {
         seo()->csrfToken()
-            ->title($post->title . " - Write.mv")
+            ->title($post->title.' - Write.mv')
             ->description($post->excerpt)
             ->twitter('card', 'summary_large_image')
-            ->twitter('image', url("/storage/" . $post->featured_image))
+            ->twitter('image', url('/storage/'.$post->featured_image))
             ->og('site_name', $blog->name)
-            ->og('url', route('domain.posts.show', ["name" => $blog->name, "post" => $post->slug]))
+            ->og('url', route('domain.posts.show', ['name' => $blog->name, 'post' => $post->slug]))
             ->og('type', 'website')
-            ->og('image', url("/storage/" . $post->featured_image))
+            ->og('image', url('/storage/'.$post->featured_image))
             ->add(
                 Meta::make()
                     ->attr('data-rh', 'true')
@@ -96,13 +94,13 @@ class PostController extends Controller
     protected function buildBlogSeo(Blog $blog)
     {
         seo()->csrfToken()
-            ->title($blog->name . " - Write.mv")
+            ->title($blog->name.' - Write.mv')
             ->description($blog->description)
             ->twitter('card', 'summary_large_image')
-            ->twitter('image', isset($blog->meta['og_image']) ? url('/storage' . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png")
+            ->twitter('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image']) : 'https://write.mv/images/opengraph.png')
             ->og('site_name', $blog->name)
             ->og('url', route('domain.posts.index', $blog->name))
             ->og('type', 'website')
-            ->og('image', isset($blog->meta['og_image']) ? url('/storage' . $blog->meta['og_image'])  : "https://write.mv/images/opengraph.png");
+            ->og('image', isset($blog->meta['og_image']) ? url('/storage'.$blog->meta['og_image']) : 'https://write.mv/images/opengraph.png');
     }
 }

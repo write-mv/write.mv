@@ -24,8 +24,8 @@ class CommentStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "body" => "required|string",
-            "parent_id" => "nullable|integer"
+            'body' => 'required|string',
+            'parent_id' => 'nullable|integer',
         ];
     }
 }

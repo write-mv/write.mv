@@ -1,20 +1,19 @@
 <?php
- 
+
 namespace App\Filament\Widgets;
 
 use App\Models\User;
 use Filament\Widgets\LineChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
- 
+
 class UserRegisterationChart extends LineChartWidget
 {
-
     protected function getHeading(): string
     {
         return 'User Register Trend';
     }
-     
+
     protected function getData(): array
     {
         $data = Trend::query(User::withoutGlobalScopes())
@@ -24,7 +23,7 @@ class UserRegisterationChart extends LineChartWidget
             )
             ->perMonth()
             ->count();
-     
+
         return [
             'datasets' => [
                 [

@@ -3,16 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ActivitiesResource\Pages;
-use App\Filament\Resources\ActivitiesResource\RelationManagers;
-use Illuminate\Database\Eloquent\Builder;
-use App\Models\Activities;
-use Filament\Forms;
+use App\Models\WriteMvActivity;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
-use App\Models\WriteMvActivity;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Builder;
 
 class ActivitiesResource extends Resource
 {
@@ -57,7 +53,7 @@ class ActivitiesResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListActivities::route('/')
+            'index' => Pages\ListActivities::route('/'),
         ];
     }
 

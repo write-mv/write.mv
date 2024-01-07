@@ -5,13 +5,12 @@ use App\Http\Controllers\ChangeLogController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FeedController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\WhatsNewController;
-use App\Http\Controllers\Account\PasswordController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\PreviewAnonymousPosts;
 use App\Http\Controllers\SignInController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\WhatsNewController;
 use App\Http\Livewire\CustomizeBlog;
 use App\Http\Livewire\Insights;
 use App\Http\Livewire\ListPages;
@@ -19,14 +18,13 @@ use App\Http\Livewire\ListPosts;
 use App\Http\Livewire\ListResponses;
 use App\Http\Livewire\ListTags;
 use App\Http\Livewire\Page;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use App\Models\Blog;
-use App\Models\Post as PostModel;
 use App\Http\Livewire\Post;
 use App\Http\Livewire\ViewStats;
+use App\Models\Blog;
+use App\Models\Post as PostModel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Spatie\Activitylog\Models\Activity;
-use App\Mail\WelcomeEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,12 +37,10 @@ use App\Mail\WelcomeEmail;
 |
 */
 
-
-Route::get('/test', fn() => view('test'));
+Route::get('/test', fn () => view('test'));
 
 Route::get('/auth/github', [SignInController::class, 'github']);
 Route::get('/auth/github/redirect', [SignInController::class, 'githubRedirect']);
-
 
 //if (env('APP_ENV') != 'local') {
 Route::domain('{name}.write.mv')->as('domain.')->group(function () {
@@ -57,7 +53,6 @@ Route::domain('{name}.write.mv')->as('domain.')->group(function () {
 });
 //}
 
-
 Route::get('/', function () {
     return view('pages.welcome');
 });
@@ -69,10 +64,8 @@ Route::get('/screen-casts', fn () => view('coming-soon'));
 Route::get('/about', fn () => view('pages.about'));
 Route::get('/publishing-guideline', fn () => view('pages.publishing-guideline'));
 
-
 Route::get('/whats-new', WhatsNewController::class);
 Route::get('/change-log', ChangeLogController::class);
-
 
 //['auth','verified']
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], function () {
@@ -82,10 +75,9 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
             'total_post_count' => PostModel::count(),
             'published_post_count' => PostModel::live()->count(),
             'scheduled_post_count' => PostModel::scheduled()->count(),
-            'latest_activities' => Activity::causedBy(Auth::user())->latest()->limit(5)->get()
+            'latest_activities' => Activity::causedBy(Auth::user())->latest()->limit(5)->get(),
         ]);
     })->name('dashboard');
-
 
     //Route::get('/responses', ListResponses::class)->name('responses');
     Route::get('/tags', ListTags::class)->name('tags');
@@ -98,7 +90,6 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
     Route::get('/posts/new', Post::class)->name('posts.new');
     Route::get('/posts/e/{post}', Post::class)->name('posts.update');
 
-
     Route::get('/stats/{post}', ViewStats::class)->name('stats.show');
     Route::get('/insights', Insights::class)->name('insights');
     Route::get('/blog/{blog}/customize', CustomizeBlog::class)->name('blog.customize');
@@ -106,7 +97,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
     Route::get('/account', AccountController::class)->name('account');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 
 //anonymous
 
@@ -120,6 +111,5 @@ Route::get('/{name}/pages/{page}', PageController::class)->name('pages.show');
 Route::get('/{name}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/{name}/feed', FeedController::class);
 Route::get('/{name}/{post}', [PostController::class, 'show'])->name('posts.show');
-
 
 //Route::post('/{post}/comments', [CommentsController::class, 'store'])->name('comments.store');

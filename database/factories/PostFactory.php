@@ -26,23 +26,23 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            "title" => $this->faker->sentence(),
-            "slug" => Str::slug($this->faker->sentence()),
-            "excerpt" => $this->faker->sentence(),
-            "content" => '{
+            'title' => $this->faker->sentence(),
+            'slug' => Str::slug($this->faker->sentence()),
+            'excerpt' => $this->faker->sentence(),
+            'content' => '{
                 "ops": [
                   {
                     "insert": "get nae naed\n"
                   }
                 ]
               }',
-            "meta" => [],
-            "blog_id" => Blog::factory(),
-            "user_id" => User::factory(),
-            "team_id" => Team::factory(),
-            "is_english" => true,
-            "published" => false,
-            "published_date" => $this->faker->dateTime()
+            'meta' => [],
+            'blog_id' => Blog::factory(),
+            'user_id' => User::factory(),
+            'team_id' => Team::factory(),
+            'is_english' => true,
+            'published' => false,
+            'published_date' => $this->faker->dateTime(),
         ];
     }
 }

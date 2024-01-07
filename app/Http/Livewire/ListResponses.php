@@ -2,17 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Comment;
-use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class ListResponses extends Component
 {
     public $perPage = 8;
+
     public $sortAsc = true;
+
     public $search = null;
 
-    public $filter = "all";
+    public $filter = 'all';
 
     protected $queryString = ['search'];
 
@@ -24,7 +25,7 @@ class ListResponses extends Component
     public function approved(Comment $comment)
     {
         $comment->update([
-            "status" => Comment::APPROVED
+            'status' => Comment::APPROVED,
         ]);
 
         $this->notify('Comment approved.');
@@ -33,7 +34,7 @@ class ListResponses extends Component
     public function markAsPending(Comment $comment)
     {
         $comment->update([
-            "status" => Comment::PENDING
+            'status' => Comment::PENDING,
         ]);
 
         $this->notify('Comment marked as pending.');
@@ -47,7 +48,7 @@ class ListResponses extends Component
             'comments' => $query->paginate($this->perPage),
             'all_comment_count' => Comment::AllBlogCommentsForTheUser()->count(),
             'pending_comment_count' => Comment::Pending()->count(),
-            'approved_comment_count' => Comment::Approved()->count()
+            'approved_comment_count' => Comment::Approved()->count(),
         ]);
     }
 }

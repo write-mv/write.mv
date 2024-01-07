@@ -3,7 +3,6 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Arr;
 
 class CheckIfBlockedNameIsUsed implements Rule
 {
@@ -26,7 +25,7 @@ class CheckIfBlockedNameIsUsed implements Rule
      */
     public function passes($attribute, $value)
     {
-        return in_array(strtolower($value), config('writemv.blocked_names'), TRUE) ? false : true;
+        return in_array(strtolower($value), config('writemv.blocked_names'), true) ? false : true;
     }
 
     /**

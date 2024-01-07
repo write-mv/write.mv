@@ -3,13 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CommentsResource\Pages;
-use App\Filament\Resources\CommentsResource\RelationManagers;
 use App\Models\Comment;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
 
 class CommentsResource extends Resource
 {

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\BlogNameUpdated;
 use App\Listeners\ClearTeamIdFromSession;
+use App\Listeners\ReGenerateBlogOgImage;
 use App\Listeners\SendWelcomeMail;
 use App\Listeners\SetTeamIdInSession;
 use Illuminate\Auth\Events\Login;
@@ -12,8 +14,6 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use App\Events\BlogNameUpdated;
-use App\Listeners\ReGenerateBlogOgImage;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -29,9 +29,8 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         Verified::class => [
-            SendWelcomeMail::class
+            SendWelcomeMail::class,
         ],
-
 
         Login::class => [
             SetTeamIdInSession::class,
@@ -40,10 +39,9 @@ class EventServiceProvider extends ServiceProvider
             ClearTeamIdFromSession::class,
         ],
 
-
         BlogNameUpdated::class => [
             ReGenerateBlogOgImage::class,
-        ]
+        ],
     ];
 
     /**

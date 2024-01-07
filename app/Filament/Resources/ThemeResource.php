@@ -3,16 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ThemeResource\Pages;
-use App\Filament\Resources\ThemeResource\RelationManagers;
 use App\Models\Theme;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Forms\Components\Grid;
 
 class ThemeResource extends Resource
 {
@@ -29,7 +26,7 @@ class ThemeResource extends Resource
                 Grid::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')->required()->unique(),
-                        Forms\Components\TextInput::make('link')
+                        Forms\Components\TextInput::make('link'),
                     ]),
 
                 Forms\Components\FileUpload::make('preview_img')
@@ -37,7 +34,7 @@ class ThemeResource extends Resource
                     ->directory('theme_previews')
                     ->visibility('public'),
 
-                Forms\Components\RichEditor::make('description')
+                Forms\Components\RichEditor::make('description'),
             ]);
     }
 
@@ -46,7 +43,7 @@ class ThemeResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->searchable()->sortable(),
-                TextColumn::make('created_at')->sortable()
+                TextColumn::make('created_at')->sortable(),
             ])
             ->filters([
                 //

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class Tag extends WriteMvBaseModel
 {
-    use HasFactory, BelongsToTeam;
+    use BelongsToTeam, HasFactory;
 
     /**
      * The "booting" method of the model.
@@ -34,16 +34,16 @@ class Tag extends WriteMvBaseModel
     public function scopeSearch($query, $search)
     {
         return empty($search) ? $query
-            : $query->where('name', 'like', '%' . $search . '%')
-            ->orwhere('slug', 'like', '%' . $search . '%');
+            : $query->where('name', 'like', '%'.$search.'%')
+                ->orwhere('slug', 'like', '%'.$search.'%');
     }
 
-    public function blog() : BelongsTo
+    public function blog(): BelongsTo
     {
         return $this->belongsTo(Blog::class);
     }
 
-    public function posts() : BelongsToMany
+    public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class)->withTimestamps();
     }

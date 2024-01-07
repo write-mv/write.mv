@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Traits;
 
-use Illuminate\Support\Carbon;
 use Carbon\CarbonPeriod;
+use Illuminate\Support\Carbon;
 
 trait DatePeriodGenerator
 {
@@ -16,6 +17,6 @@ trait DatePeriodGenerator
         }
 
         return $newDateArray;
-        
+
     }
 }

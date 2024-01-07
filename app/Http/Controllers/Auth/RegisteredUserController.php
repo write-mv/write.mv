@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Team;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Rules\CheckIfBlockedNameIsUsed;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use App\Models\Team;
-use App\Rules\CheckIfBlockedNameIsUsed;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -32,7 +32,6 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -41,26 +40,26 @@ class RegisteredUserController extends Controller
     {
         $inputs = $request->only('name', 'email', 'password', 'blog_name', 'password_confirmation');
 
-        $inputs["blog_name"] = Str::slug($inputs["blog_name"]);
+        $inputs['blog_name'] = Str::slug($inputs['blog_name']);
 
         Validator::make($inputs, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
-            'blog_name' => ['required', 'string', 'min:4',  new CheckIfBlockedNameIsUsed(), Rule::unique('blogs', 'name')]
+            'blog_name' => ['required', 'string', 'min:4',  new CheckIfBlockedNameIsUsed(), Rule::unique('blogs', 'name')],
         ])->validate();
 
         DB::transaction(function () use ($request) {
 
             $team = Team::create([
-                "name" => $request->blog_name
+                'name' => $request->blog_name,
             ]);
 
             Blog::create([
-                "name" => Str::slug($request->blog_name),
-                "site_title" => $request->name,
-                "url" => url("/" . Str::slug($request->blog_name)),
-                "team_id" => $team->id
+                'name' => Str::slug($request->blog_name),
+                'site_title' => $request->name,
+                'url' => url('/'.Str::slug($request->blog_name)),
+                'team_id' => $team->id,
             ]);
 
             Auth::login($user = User::create([
@@ -68,12 +67,10 @@ class RegisteredUserController extends Controller
                 'role' => 'admin',
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'team_id' => $team->id
+                'team_id' => $team->id,
             ]));
             event(new Registered($user));
         });
-
-
 
         return redirect(RouteServiceProvider::HOME);
     }
