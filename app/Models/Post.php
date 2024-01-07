@@ -58,7 +58,7 @@ class Post extends WriteMvBaseModel implements Viewable
     {
         try {
             return Carbon::parse($value)->setTimezone(Blog::withoutGlobalScopes()->findOrFail($this->blog_id)->timezone);
-        } catch (\Throwable $th) {
+        } catch (\Throwable) {
             //throw $th;
         }
     }
@@ -237,7 +237,7 @@ class Post extends WriteMvBaseModel implements Viewable
                 DB::raw('COUNT(*) as "views"'),
             ])->each(function ($item, $key) use (&$chartData) {
 
-                $chartData[] = ['date' => date('M jS', strtotime($item->date)), 'views' => $item->views];
+                $chartData[] = ['date' => date('M jS', strtotime((string) $item->date)), 'views' => $item->views];
             });
 
         return collect($chartData);
@@ -260,7 +260,7 @@ class Post extends WriteMvBaseModel implements Viewable
                 DB::raw('COUNT(DISTINCT(visitor)) as "visits"'),
             ])->each(function ($item, $key) use (&$chartData) {
 
-                $chartData[] = ['date' => date('M jS', strtotime($item->date)), 'visits' => $item->visits];
+                $chartData[] = ['date' => date('M jS', strtotime((string) $item->date)), 'visits' => $item->visits];
             });
 
         return collect($chartData);
@@ -350,10 +350,9 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * add a tag to a post
      *
-     * @param  mixed  $tag
      * @return void
      */
-    public function addTag($tag)
+    public function addTag(mixed $tag)
     {
         $this->tags()->attach($tag);
     }
@@ -361,10 +360,9 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * Remove a tag from a post
      *
-     * @param  mixed  $tag
      * @return void
      */
-    public function removeTag($tag)
+    public function removeTag(mixed $tag)
     {
         $this->tags()->detach($tag);
     }

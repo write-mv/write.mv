@@ -17,6 +17,7 @@ class Tag extends WriteMvBaseModel
      *
      * @return void
      */
+    #[\Override]
     protected static function boot()
     {
         parent::boot();

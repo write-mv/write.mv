@@ -51,6 +51,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    #[\Override]
     public static function boot()
     {
 
