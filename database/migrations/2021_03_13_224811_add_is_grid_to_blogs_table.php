@@ -14,7 +14,7 @@ class AddIsGridToBlogsTable extends Migration
     public function up()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->boolean("is_grid")->default(false);
+            $table->boolean('is_grid')->default(false);
         });
     }
 

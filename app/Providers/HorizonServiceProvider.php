@@ -13,6 +13,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      *
      * @return void
      */
+    #[\Override]
     public function boot()
     {
         parent::boot();
@@ -31,12 +32,11 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      *
      * @return void
      */
+    #[\Override]
     protected function gate()
     {
-        Gate::define('viewHorizon', function ($user) {
-            return in_array($user->email, [
-                'j@live.mv',
-            ]);
-        });
+        Gate::define('viewHorizon', fn ($user) => in_array($user->email, [
+            'j@live.mv',
+        ]));
     }
 }

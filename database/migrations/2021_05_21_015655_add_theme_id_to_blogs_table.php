@@ -28,7 +28,7 @@ class AddThemeIdToBlogsTable extends Migration
     public function down()
     {
         Schema::table('blogs', function (Blueprint $table) {
-           $table->dropColumn('theme_id');
+            $table->dropColumn('theme_id');
         });
     }
 }

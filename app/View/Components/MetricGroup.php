@@ -21,6 +21,7 @@ class MetricGroup extends Component
      *
      * @return \Illuminate\Contracts\View\View|string
      */
+    #[\Override]
     public function render()
     {
         return view('components.metric-group');

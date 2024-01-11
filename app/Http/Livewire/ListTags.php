@@ -3,37 +3,45 @@
 namespace App\Http\Livewire;
 
 use App\Models\Tag;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class ListTags extends Component
 {
     public $per_page = 8;
-    public $search = null;
-    public $editing = false;
-    public $showEditModal = false;
-    public $showConfirmModal = false;
-    public Tag $tag;
-    public $label = "Create tag";
-    public $tag_delete_id;
-    public $sort = "desc";
 
+    public $search = null;
+
+    public $editing = false;
+
+    public $showEditModal = false;
+
+    public $showConfirmModal = false;
+
+    public Tag $tag;
+
+    public $label = 'Create tag';
+
+    public $tag_delete_id;
+
+    public $sort = 'desc';
 
     protected $queryString = ['search', 'sort'];
+
     protected $messages = [
-        'tag.slug.unique' => 'You already have a tag with that slug.'
+        'tag.slug.unique' => 'You already have a tag with that slug.',
     ];
 
     public $colors = [
-        "green",
-        "yellow",
-        "gray",
-        "red",
-        "blue",
-        "indigo",
-        "purple",
-        "pink"
+        'green',
+        'yellow',
+        'gray',
+        'red',
+        'blue',
+        'indigo',
+        'purple',
+        'pink',
     ];
 
     public function mount(): void
@@ -46,7 +54,6 @@ class ListTags extends Component
         $this->tag->slug = Str::slug($name);
     }
 
-
     public function makeBlankTag(): Tag
     {
         return Tag::make();
@@ -54,15 +61,19 @@ class ListTags extends Component
 
     public function create(): void
     {
-        if ($this->tag->getKey()) $this->tag = $this->makeBlankTag();
+        if ($this->tag->getKey()) {
+            $this->tag = $this->makeBlankTag();
+        }
         $this->editing = true;
         $this->showEditModal = true;
     }
 
     public function edit(Tag $tag): void
     {
-        $this->label = "Edit Tag";
-        if ($this->tag->isNot($tag)) $this->tag = $tag;
+        $this->label = 'Edit Tag';
+        if ($this->tag->isNot($tag)) {
+            $this->tag = $tag;
+        }
 
         $this->showEditModal = true;
     }
@@ -72,7 +83,6 @@ class ListTags extends Component
         $this->tag_delete_id = $id;
         $this->showConfirmModal = true;
     }
-
 
     public function destroy()
     {
@@ -92,9 +102,9 @@ class ListTags extends Component
 
         if ($this->editing) {
 
-            $this->notify("Tag updated.");
+            $this->notify('Tag updated.');
         } else {
-            $this->notify("Tag created.");
+            $this->notify('Tag created.');
         }
     }
 
@@ -107,10 +117,8 @@ class ListTags extends Component
     {
         return [
             'tag.name' => 'required|string',
-            'tag.slug' => ['required', 'string', Rule::unique('tags', 'slug')->where(function ($query) {
-                return $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->tag->slug);
-            })->ignore($this->tag->id, 'id')],
-            'tag.description' => 'nullable'
+            'tag.slug' => ['required', 'string', Rule::unique('tags', 'slug')->where(fn ($query) => $query->where('blog_id', auth()->user()->team->blogs()->first()->id)->where('slug', $this->tag->slug))->ignore($this->tag->id, 'id')],
+            'tag.description' => 'nullable',
         ];
     }
 
@@ -121,7 +129,7 @@ class ListTags extends Component
             ->paginate($this->per_page);
 
         return view('livewire.list-tags', [
-            "tags" => $tags
+            'tags' => $tags,
         ]);
     }
 }

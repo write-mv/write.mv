@@ -2,49 +2,50 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\BelongsToTeam;
-use nadar\quill\Lexer;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
+use nadar\quill\Lexer;
 
 class Post extends WriteMvBaseModel implements Viewable
 {
-    use HasFactory, BelongsToTeam, InteractsWithViews;
+    use BelongsToTeam, HasFactory, InteractsWithViews;
 
     protected $guarded = [];
 
     protected $removeViewsOnDelete = true;
 
     protected $filters = [
-        "all" => null,
-        "published" => "live",
-        "draft" => "draft",
-        "scheduled" => "scheduled",
-        "notion" => "notion"
+        'all' => null,
+        'published' => 'live',
+        'draft' => 'draft',
+        'scheduled' => 'scheduled',
+        'notion' => 'notion',
     ];
 
     protected $casts = [
-        "published_date" => "datetime",
-        "meta" => "array",
-        "content" => "array",
-        'likes' => 'integer'
+        'published_date' => 'datetime',
+        'meta' => 'array',
+        'content' => 'array',
+        'likes' => 'integer',
     ];
 
     protected $appends = [
-        'published_date_timezone'
+        'published_date_timezone',
     ];
 
     public function getRenderedHtmlContent()
     {
         $lexer = new Lexer($this->content);
+
         return $lexer->render();
     }
 
@@ -52,13 +53,12 @@ class Post extends WriteMvBaseModel implements Viewable
      * Get the published date to the current timezone
      *
      * @param $value $value
-     *
      */
     public function getPublishedDateTimeZoneAttribute($value)
     {
         try {
             return Carbon::parse($value)->setTimezone(Blog::withoutGlobalScopes()->findOrFail($this->blog_id)->timezone);
-        } catch (\Throwable $th) {
+        } catch (\Throwable) {
             //throw $th;
         }
     }
@@ -123,13 +123,11 @@ class Post extends WriteMvBaseModel implements Viewable
         return $this->hasMany(PostLike::class);
     }
 
-
-
     public function scopeSearch($query, $search)
     {
         return empty($search) ? $query
-            : $query->where('title', 'like', '%' . $search . '%')
-            ->orwhere('slug', 'like', '%' . $search . '%');
+            : $query->where('title', 'like', '%'.$search.'%')
+                ->orwhere('slug', 'like', '%'.$search.'%');
     }
 
     public function scopePostTabFilter($query, $filter)
@@ -138,14 +136,13 @@ class Post extends WriteMvBaseModel implements Viewable
             return;
         }
 
-        return call_user_func(array(self::class, $this->filters[$filter]));
+        return call_user_func([self::class, $this->filters[$filter]]);
     }
-
 
     /**
      * Scope a query to only include published posts.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePublished($query)
@@ -156,7 +153,7 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * Scope a query to only include drafts (unpublished posts).
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeDraft($query)
@@ -167,7 +164,7 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * Scope a query to only include posts whose published_date is in the past (or now).
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeLive($query)
@@ -178,7 +175,7 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * Scope a query to only include posts whose published_date is in the future.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeScheduled($query)
@@ -189,8 +186,8 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * Scope a query to only include posts whose published_date is before a given date.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $date
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $date
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeBeforePublishDate($query, $date)
@@ -201,8 +198,8 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * Scope a query to only include posts whose publish date is after a given date.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $date
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $date
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeAfterPublishDate($query, $date)
@@ -213,8 +210,7 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * Scope a query to only include posts that have a specific tag (by slug).
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $slug
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeTag($query, string $slug)
@@ -223,7 +219,6 @@ class Post extends WriteMvBaseModel implements Viewable
             $query->where('slug', $slug);
         });
     }
-
 
     /**
      * Calculation for graph viewsPerMonthDays
@@ -237,12 +232,12 @@ class Post extends WriteMvBaseModel implements Viewable
         $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
             ->groupBy('date')
             ->orderBy('date', 'ASC')
-            ->get(array(
+            ->get([
                 DB::raw('DATE(viewed_at) as date'),
-                DB::raw('COUNT(*) as "views"')
-            ))->each(function ($item, $key) use (&$chartData) {
+                DB::raw('COUNT(*) as "views"'),
+            ])->each(function ($item, $key) use (&$chartData) {
 
-                $chartData[] = ["date" => date("M jS", strtotime($item->date)), "views" => $item->views];
+                $chartData[] = ['date' => date('M jS', strtotime((string) $item->date)), 'views' => $item->views];
             });
 
         return collect($chartData);
@@ -260,12 +255,12 @@ class Post extends WriteMvBaseModel implements Viewable
         $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
             ->groupBy('date')
             ->orderBy('date', 'ASC')
-            ->get(array(
+            ->get([
                 DB::raw('DATE(viewed_at) as date'),
-                DB::raw('COUNT(DISTINCT(visitor)) as "visits"')
-            ))->each(function ($item, $key) use (&$chartData) {
+                DB::raw('COUNT(DISTINCT(visitor)) as "visits"'),
+            ])->each(function ($item, $key) use (&$chartData) {
 
-                $chartData[] = ["date" => date("M jS", strtotime($item->date)), "visits" => $item->visits];
+                $chartData[] = ['date' => date('M jS', strtotime((string) $item->date)), 'visits' => $item->visits];
             });
 
         return collect($chartData);
@@ -275,7 +270,7 @@ class Post extends WriteMvBaseModel implements Viewable
     {
         return $this->featured_image
             ? Storage::disk('public')->url($this->featured_image)
-            : "";
+            : '';
     }
 
     public function isScheduled()
@@ -331,7 +326,6 @@ class Post extends WriteMvBaseModel implements Viewable
         $this->save();
     }
 
-
     /**
      * Load a threaded set of comments for the post.
      *
@@ -345,8 +339,7 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * Method addTags
      *
-     * @param  $tags []
-     *
+     * @param    $tags []
      * @return void
      */
     public function addTags($tags)
@@ -357,10 +350,9 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * add a tag to a post
      *
-     * @param  mixed $tag
      * @return void
      */
-    public function addTag($tag)
+    public function addTag(mixed $tag)
     {
         $this->tags()->attach($tag);
     }
@@ -368,10 +360,9 @@ class Post extends WriteMvBaseModel implements Viewable
     /**
      * Remove a tag from a post
      *
-     * @param  mixed $tag
      * @return void
      */
-    public function removeTag($tag)
+    public function removeTag(mixed $tag)
     {
         $this->tags()->detach($tag);
     }

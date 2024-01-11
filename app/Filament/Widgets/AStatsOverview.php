@@ -11,10 +11,11 @@ use Illuminate\Support\Carbon;
 
 class AStatsOverview extends BaseWidget
 {
+    #[\Override]
     protected function getCards(): array
     {
         return [
-            Card::make('Total Publications', Post::withoutGlobalScopes()->count())->description(Post::withoutGlobalScopes()->whereDate('published_date', Carbon::today())->count() . ' publications today.')
+            Card::make('Total Publications', Post::withoutGlobalScopes()->count())->description(Post::withoutGlobalScopes()->whereDate('published_date', Carbon::today())->count().' publications today.')
                 ->descriptionColor('success'),
             Card::make('Total Blogs', Blog::withoutGlobalScopes()->count()),
             Card::make('Total Users', User::withoutGlobalScopes()->count()),

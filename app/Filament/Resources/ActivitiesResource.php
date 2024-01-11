@@ -3,16 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ActivitiesResource\Pages;
-use App\Filament\Resources\ActivitiesResource\RelationManagers;
-use Illuminate\Database\Eloquent\Builder;
-use App\Models\Activities;
-use Filament\Forms;
+use App\Models\WriteMvActivity;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
-use App\Models\WriteMvActivity;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Builder;
 
 class ActivitiesResource extends Resource
 {
@@ -24,6 +20,7 @@ class ActivitiesResource extends Resource
 
     protected static ?string $navigationGroup = 'Control Panel';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -32,6 +29,7 @@ class ActivitiesResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -47,6 +45,7 @@ class ActivitiesResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [
@@ -54,13 +53,15 @@ class ActivitiesResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListActivities::route('/')
+            'index' => Pages\ListActivities::route('/'),
         ];
     }
 
+    #[\Override]
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->withoutGlobalScopes()->whereNotNull('causer_type');

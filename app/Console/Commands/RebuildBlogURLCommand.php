@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Models\Blog;
+use Illuminate\Console\Command;
 
 class RebuildBlogURLCommand extends Command
 {
@@ -38,12 +38,12 @@ class RebuildBlogURLCommand extends Command
      */
     public function handle()
     {
-        Blog::all()->each(function($item, $key){
+        Blog::all()->each(function ($item, $key) {
             $item->update([
-                "url" => "https://".$item->name.".write.mv"
+                'url' => 'https://'.$item->name.'.write.mv',
             ]);
         });
 
-        $this->info("Done!");
+        $this->info('Done!');
     }
 }

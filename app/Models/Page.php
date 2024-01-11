@@ -3,18 +3,17 @@
 namespace App\Models;
 
 use App\Traits\BelongsToTeam;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use CyrildeWit\EloquentViewable\InteractsWithViews;
-use CyrildeWit\EloquentViewable\Contracts\Viewable;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
 use nadar\quill\Lexer;
 
 class Page extends Model implements Viewable
 {
-    use HasFactory, BelongsToTeam, InteractsWithViews;
+    use BelongsToTeam, HasFactory, InteractsWithViews;
 
     protected $guarded = [];
 
@@ -26,14 +25,14 @@ class Page extends Model implements Viewable
     protected $casts = [
         'published_date' => 'datetime',
         'meta' => 'array',
-        'content' => 'array'
+        'content' => 'array',
     ];
 
     protected $filters = [
         'all' => null,
         'published' => 'live',
         'draft' => 'draft',
-        'scheduled' => 'scheduled'
+        'scheduled' => 'scheduled',
     ];
 
     public function blog(): BelongsTo
@@ -55,14 +54,14 @@ class Page extends Model implements Viewable
     public function scopeSearch($query, $search)
     {
         return empty($search) ? $query
-            : $query->where('title', 'like', '%' . $search . '%')
-            ->orwhere('slug', 'like', '%' . $search . '%');
+            : $query->where('title', 'like', '%'.$search.'%')
+                ->orwhere('slug', 'like', '%'.$search.'%');
     }
 
     /**
      * Scope a query to only include published posts.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePublished($query)
@@ -73,7 +72,7 @@ class Page extends Model implements Viewable
     /**
      * Scope a query to only include drafts (unpublished posts).
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeDraft($query)
@@ -84,7 +83,7 @@ class Page extends Model implements Viewable
     /**
      * Scope a query to only include posts whose published_date is in the past (or now).
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeLive($query)
@@ -95,7 +94,7 @@ class Page extends Model implements Viewable
     /**
      * Scope a query to only include posts whose published_date is in the future.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeScheduled($query)
@@ -106,8 +105,8 @@ class Page extends Model implements Viewable
     /**
      * Scope a query to only include posts whose published_date is before a given date.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $date
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $date
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeBeforePublishDate($query, $date)
@@ -118,8 +117,8 @@ class Page extends Model implements Viewable
     /**
      * Scope a query to only include posts whose publish date is after a given date.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $date
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $date
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeAfterPublishDate($query, $date)
@@ -148,7 +147,7 @@ class Page extends Model implements Viewable
             return;
         }
 
-        return call_user_func(array(self::class, $this->filters[$filter]));
+        return call_user_func([self::class, $this->filters[$filter]]);
     }
 
     /**
@@ -164,6 +163,7 @@ class Page extends Model implements Viewable
     public function getRenderedHtmlContent()
     {
         $lexer = new Lexer($this->content);
+
         return $lexer->render();
     }
 }

@@ -11,11 +11,16 @@ class ListPages extends Component
     use WithPagination;
 
     public $perPage = 8;
+
     public $sortField = 'created_at';
+
     public $sortAsc = true;
+
     public $search = null;
+
     public $showConfirmModal = false;
-    public $filter = "published";
+
+    public $filter = 'published';
 
     public $page_delete_id;
 
@@ -24,7 +29,7 @@ class ListPages extends Component
     public function sortBy($field)
     {
         if ($this->sortField === $field) {
-            $this->sortAsc = !$this->sortAsc;
+            $this->sortAsc = ! $this->sortAsc;
         } else {
             $this->sortAsc = true;
         }
@@ -53,7 +58,7 @@ class ListPages extends Component
     public function moveToDraft(Page $page)
     {
         $page->update([
-            "published" => false
+            'published' => false,
         ]);
 
         $this->notify('Page drafted.');
@@ -62,8 +67,8 @@ class ListPages extends Component
     public function publishNow(Page $page)
     {
         $page->update([
-            "published" => true,
-            "published_date" => now()
+            'published' => true,
+            'published_date' => now(),
         ]);
 
         $this->notify('Page published.');
@@ -74,12 +79,10 @@ class ListPages extends Component
         $this->perPage += 4;
     }
 
-
     public function render()
     {
         $query = Page::PageTabFilter($this->filter)->with('blog')->search($this->search)
             ->latest('created_at');
-
 
         return view('livewire.list-pages', [
             'pages' => $query->paginate($this->perPage),

@@ -1,19 +1,21 @@
 <?php
- 
+
 namespace App\Filament\Widgets;
 
 use App\Models\Post;
 use Filament\Widgets\LineChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
- 
+
 class BlogPostsChart extends LineChartWidget
 {
+    #[\Override]
     protected function getHeading(): string
     {
         return 'Blog Publications Trend';
     }
-     
+
+    #[\Override]
     protected function getData(): array
     {
         $data = Trend::query(Post::withoutGlobalScopes())
@@ -23,7 +25,7 @@ class BlogPostsChart extends LineChartWidget
             )
             ->perMonth()
             ->count();
-     
+
         return [
             'datasets' => [
                 [

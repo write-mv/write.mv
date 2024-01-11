@@ -3,17 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BlogResource\Pages;
-use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\BadgeColumn;
-use Filament\Tables\Columns\BooleanColumn;
+use Illuminate\Database\Eloquent\Builder;
 
 class BlogResource extends Resource
 {
@@ -23,6 +19,7 @@ class BlogResource extends Resource
 
     protected static ?string $navigationGroup = 'Blog Management';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -31,6 +28,7 @@ class BlogResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -40,7 +38,7 @@ class BlogResource extends Resource
                     ->openUrlInNewTab(),
                 TextColumn::make('site_title')->searchable(),
                 TextColumn::make('team.name')->searchable(),
-                TextColumn::make('created_at')->dateTime()
+                TextColumn::make('created_at')->dateTime(),
             ])
             ->filters([
                 Tables\Filters\Filter::make('blocked')
@@ -48,6 +46,7 @@ class BlogResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [
@@ -55,6 +54,7 @@ class BlogResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [
@@ -63,6 +63,7 @@ class BlogResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->withoutGlobalScopes();

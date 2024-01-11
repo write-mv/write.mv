@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Blog;
+use Illuminate\Http\Request;
 
 class FeedController extends Controller
 {
@@ -17,14 +17,14 @@ class FeedController extends Controller
     {
         $blog = Blog::withoutGlobalScopes()->where('name', $name)->first();
 
-        if (!$blog) {
+        if (! $blog) {
             abort(404);
         }
 
         $posts = $blog->posts()->live()->get();
         $content = view('posts.feed', [
             'posts' => $posts,
-            'blog' => $blog
+            'blog' => $blog,
         ]);
 
         return response($content, 200)

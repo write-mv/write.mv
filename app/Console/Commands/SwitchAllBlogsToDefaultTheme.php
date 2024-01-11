@@ -38,12 +38,12 @@ class SwitchAllBlogsToDefaultTheme extends Command
      */
     public function handle()
     {
-        Blog::all()->each(function($blog){
+        Blog::all()->each(function ($blog) {
             $blog->update([
-                "theme_id" => 1
+                'theme_id' => 1,
             ]);
-        }); 
+        });
 
-        $this->info("All blogs changed to default theme.");
+        $this->info('All blogs changed to default theme.');
     }
 }

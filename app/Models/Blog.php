@@ -5,9 +5,9 @@ namespace App\Models;
 use App\Events\BlogNameUpdated;
 use App\Jobs\GenerateBlogOgImage;
 use App\Traits\BelongsToTeam;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
@@ -17,10 +17,10 @@ use Kleemans\AttributeEvents;
 
 class Blog extends WriteMvBaseModel implements Viewable
 {
-    use HasFactory, BelongsToTeam, InteractsWithViews, AttributeEvents;
+    use AttributeEvents, BelongsToTeam, HasFactory, InteractsWithViews;
 
     protected $dispatchesEvents = [
-        'name:*' => BlogNameUpdated::class
+        'name:*' => BlogNameUpdated::class,
     ];
 
     protected $fillable = [
@@ -31,13 +31,14 @@ class Blog extends WriteMvBaseModel implements Viewable
         'rss_feed_link',
         'team_id',
         'social_links',
-        'notification_channels'
+        'notification_channels',
     ];
 
     protected $casts = [
-        "meta" => "array"
+        'meta' => 'array',
     ];
 
+    #[\Override]
     public static function boot()
     {
 
@@ -51,14 +52,11 @@ class Blog extends WriteMvBaseModel implements Viewable
 
     /**
      * Record the view to the blog
-     *
-     * @return void
      */
     public function RecordView(): void
     {
         views($this)->record();
     }
-
 
     public function posts(): HasMany
     {
@@ -92,12 +90,12 @@ class Blog extends WriteMvBaseModel implements Viewable
         $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
             ->groupBy('date')
             ->orderBy('date', 'ASC')
-            ->get(array(
+            ->get([
                 DB::raw('DATE(viewed_at) as date'),
-                DB::raw('COUNT(*) as "views"')
-            ))->each(function ($item, $key) use (&$chartData) {
+                DB::raw('COUNT(*) as "views"'),
+            ])->each(function ($item, $key) use (&$chartData) {
 
-                $chartData[] = ["date" => date("M jS", strtotime($item->date)), "views" => $item->views];
+                $chartData[] = ['date' => date('M jS', strtotime((string) $item->date)), 'views' => $item->views];
             });
 
         return collect($chartData);
@@ -115,12 +113,12 @@ class Blog extends WriteMvBaseModel implements Viewable
         $this->views()->where('viewed_at', '>=', Carbon::now()->subMonth())
             ->groupBy('date')
             ->orderBy('date', 'ASC')
-            ->get(array(
+            ->get([
                 DB::raw('DATE(viewed_at) as date'),
-                DB::raw('COUNT(DISTINCT(visitor)) as "visits"')
-            ))->each(function ($item) use (&$chartData) {
+                DB::raw('COUNT(DISTINCT(visitor)) as "visits"'),
+            ])->each(function ($item) use (&$chartData) {
 
-                $chartData[] = ["date" => date("M jS", strtotime($item->date)), "visits" => $item->visits];
+                $chartData[] = ['date' => date('M jS', strtotime((string) $item->date)), 'visits' => $item->visits];
             });
 
         return collect($chartData);
@@ -128,10 +126,10 @@ class Blog extends WriteMvBaseModel implements Viewable
 
     public function generateBlogAvatar(): string
     {
-        return "https://robohash.org/" . $this->name;
+        return 'https://robohash.org/'.$this->name;
     }
 
-    public function getNotionApiKey(): string | null
+    public function getNotionApiKey(): ?string
     {
         return $this->notion_api_key;
     }

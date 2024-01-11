@@ -2,24 +2,30 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Post;
-use Livewire\Component;
-use Livewire\WithPagination;
 use App\Models\Blog;
+use App\Models\Post;
 use FiveamCode\LaravelNotionApi\Entities\Page;
 use FiveamCode\LaravelNotionApi\Notion;
 use Illuminate\Support\Facades\Cache;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 class ListPosts extends Component
 {
     use WithPagination;
 
     public $perPage = 8;
+
     public $sortField = 'published_date';
+
     public $sortAsc = true;
+
     public $search = null;
+
     public $showConfirmModal = false;
-    public $filter = "published";
+
+    public $filter = 'published';
+
     public $blog;
 
     public $post_delete_id;
@@ -34,7 +40,7 @@ class ListPosts extends Component
     public function sortBy($field)
     {
         if ($this->sortField === $field) {
-            $this->sortAsc = !$this->sortAsc;
+            $this->sortAsc = ! $this->sortAsc;
         } else {
             $this->sortAsc = true;
         }
@@ -63,7 +69,7 @@ class ListPosts extends Component
     public function moveToDraft(Post $post)
     {
         $post->update([
-            "published" => false
+            'published' => false,
         ]);
 
         $this->notify('Post drafted.');
@@ -72,8 +78,8 @@ class ListPosts extends Component
     public function publishNow(Post $post)
     {
         $post->update([
-            "published" => true,
-            "published_date" => now()
+            'published' => true,
+            'published_date' => now(),
         ]);
 
         $this->notify('Post published.');
@@ -92,25 +98,20 @@ class ListPosts extends Component
     {
         $notion = new Notion($this->blog->notion_api_key);
 
-
-        return Cache::remember($this->blog->name . "_notion", 300, function () use ($notion) {
-            return $notion->search()
-                ->onlyPages()
-                ->query()
-                ->asCollection();
-        });
+        return Cache::remember($this->blog->name.'_notion', 300, fn () => $notion->search()
+            ->onlyPages()
+            ->query()
+            ->asCollection());
     }
-
 
     public function render()
     {
-        if ($this->filter == "notion") {
+        if ($this->filter == 'notion') {
             $posts = $this->getNotionPages();
         } else {
             $posts = Post::PostTabFilter($this->filter)->with('blog', 'tags')->search($this->search)
                 ->latest('published_date')->paginate($this->perPage);
         }
-
 
         return view('livewire.list-posts', [
             'posts' => $posts,

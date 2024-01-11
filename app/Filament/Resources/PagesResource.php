@@ -3,13 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PagesResource\Pages;
-use App\Filament\Resources\PagesResource\RelationManagers;
 use App\Models\Page;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
 
 class PagesResource extends Resource
 {
@@ -19,6 +16,7 @@ class PagesResource extends Resource
 
     protected static ?string $navigationGroup = 'Blog Management';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -27,6 +25,7 @@ class PagesResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -38,6 +37,7 @@ class PagesResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [
@@ -45,6 +45,7 @@ class PagesResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [

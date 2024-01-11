@@ -10,26 +10,20 @@ use Illuminate\View\View;
 
 class ExploreController extends Controller
 {
-  /**
-   * Handle the incoming request.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\View\View
-   */
-  public function __invoke(Request $request): View
-  {
-    $posts = Post::withoutGlobalScopes()->live()->with([
-      'blog' => function ($query) {
-        return $query->withoutGlobalScope(TeamScope::class);
-      }
-    ])->latest('published_date')->paginate(16);
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(Request $request): View
+    {
+        $posts = Post::withoutGlobalScopes()->live()->with([
+            'blog' => fn ($query) => $query->withoutGlobalScope(TeamScope::class),
+        ])->latest('published_date')->paginate(16);
 
-
-    return view('pages.explore.overview', [
-      "posts" => $posts,
-      "blogs" => Blog::withoutGlobalScopes()->orderByViews()->withCount(['posts as posts_count' => function ($query) {
-        $query->withoutGlobalScopes();
-      }])->limit(10)->get()
-    ]);
-  }
+        return view('pages.explore.overview', [
+            'posts' => $posts,
+            'blogs' => Blog::withoutGlobalScopes()->orderByViews()->withCount(['posts as posts_count' => function ($query) {
+                $query->withoutGlobalScopes();
+            }])->limit(10)->get(),
+        ]);
+    }
 }

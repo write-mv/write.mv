@@ -3,12 +3,10 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\ServiceProvider;
-use Livewire\Component;
-use Illuminate\Support\Facades\URL;
 use Filament\Facades\Filament;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\ServiceProvider;
+use Livewire\Component;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,9 +15,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    #[\Override]
     public function register()
     {
-        
+
     }
 
     /**
@@ -33,13 +32,9 @@ class AppServiceProvider extends ServiceProvider
             $this->dispatchBrowserEvent('notify', $message);
         });
 
-
-        Carbon::macro('render', function($format = 'M jS, Y') {
-            
-            return new HtmlString(
-                "<time datetime='{$this->format('Y-m-d')}'> {$this->format($format)} </time>"
-            );
-        });
+        Carbon::macro('render', fn ($format = 'M jS, Y') => new HtmlString(
+            "<time datetime='{$this->format('Y-m-d')}'> {$this->format($format)} </time>"
+        ));
 
         Filament::serving(function (): void {
             Filament::registerTheme(mix('css/app.css'));

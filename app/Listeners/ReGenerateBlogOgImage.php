@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\BlogNameUpdated;
 use App\Jobs\GenerateBlogOgImage;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class ReGenerateBlogOgImage
 {
@@ -22,7 +20,6 @@ class ReGenerateBlogOgImage
     /**
      * Handle the event.
      *
-     * @param  BlogNameUpdated  $event
      * @return void
      */
     public function handle(BlogNameUpdated $event)

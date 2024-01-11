@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Models;
 
 use App\Scopes\TeamScope;
-use Spatie\Activitylog\Models\Activity;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Spatie\Activitylog\Models\Activity;
 
 class WriteMvActivity extends Activity
 {

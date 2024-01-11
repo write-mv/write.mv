@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Blog;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -23,18 +23,16 @@ class PageController extends Controller
         $page = $blog->pages()->withoutGlobalScopes()->live()->where('slug', $page)->firstOrFail();
         $page->RecordView();
 
-
         //Checking the theme dir
         if ($blog->theme) {
-            $themeDir =  "themes::themes.{$blog->theme->name}._page";
+            $themeDir = "themes::themes.{$blog->theme->name}._page";
         } else {
-            $themeDir =  "themes::themes.default._page";
+            $themeDir = 'themes::themes.default._page';
         }
-
 
         return view($themeDir, [
             'blog' => $blog,
-            'page' => $page
+            'page' => $page,
         ]);
     }
 }

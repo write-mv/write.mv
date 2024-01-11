@@ -6,25 +6,13 @@ use Illuminate\View\Component;
 
 class TagSelect extends Component
 {
-    public $options = [];
-
-    public $selected = [];
-
-    public $trackBy;
-
-    public $label;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($options, $selected = [], $trackBy = 'id', $label = 'name')
+    public function __construct(public $options, public $selected = [], public $trackBy = 'id', public $label = 'name')
     {
-        $this->options = $options;
-        $this->selected = $selected;
-        $this->trackBy = $trackBy;
-        $this->label = $label;
     }
 
     /**
@@ -32,6 +20,7 @@ class TagSelect extends Component
      *
      * @return \Illuminate\Contracts\View\View|string
      */
+    #[\Override]
     public function render()
     {
         return view('components.tag-select');
