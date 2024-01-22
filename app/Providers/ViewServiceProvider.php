@@ -30,8 +30,8 @@ class ViewServiceProvider extends ServiceProvider
     {
 
         // Using closure based composers...
-        ViewFacade::composer('layouts.navigation', function (View $view) {
-            $view->with('pending_response_count', Comment::PendingComments(Auth::user())->count());
-        });
+        // ViewFacade::composer('layouts.navigation', function (View $view) {
+        //     $view->with('pending_response_count', Comment::PendingComments(Auth::user())->count());
+        // });
     }
 }

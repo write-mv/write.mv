@@ -15,6 +15,7 @@ class Insights extends Component
 
     public function render()
     {
+
         $blog = Auth::user()->team->blogs()->first();
 
         $stats = Cache::remember('blog_'.$blog->id.'_insight', 300, function () use ($blog) {

@@ -77,7 +77,7 @@ class Comment extends WriteMvBaseModel
 
         return $query->whereIn(
             'post_id',
-            $user->team?->blogs()
+            $user->team->blogs()
                 ->first()
                 ->posts->pluck('id')
         );
