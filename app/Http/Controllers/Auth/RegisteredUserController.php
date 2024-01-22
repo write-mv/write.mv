@@ -57,10 +57,10 @@ class RegisteredUserController extends Controller
             ]);
 
             Blog::create([
-                "name" => Str::slug($request->blog_name),
-                "site_title" => $request->name,
-                "url" => BlogHelper::buildBlogUrl($request->blog_name),
-                "team_id" => $team->id
+                'name' => Str::slug($request->blog_name),
+                'site_title' => $request->name,
+                'url' => BlogHelper::buildBlogUrl($request->blog_name),
+                'team_id' => $team->id,
             ]);
 
             Auth::login($user = User::create([
