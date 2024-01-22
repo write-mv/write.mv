@@ -69,11 +69,6 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         return $this->hasMany(Post::class);
     }
 
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
-
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
